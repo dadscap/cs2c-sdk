@@ -1,0 +1,85 @@
+# ProvidersApi
+
+All URIs are relative to *https://api.cs2c.app*
+
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**listProvidersV1ProvidersGet**](ProvidersApi.md#listprovidersv1providersget) | **GET** /v1/providers | List Providers |
+
+
+
+## listProvidersV1ProvidersGet
+
+> { [key: string]: ProviderInfo; } listProvidersV1ProvidersGet(provider)
+
+List Providers
+
+List supported marketplace providers with capability, fee, currency, and health metadata.  Use the optional &#x60;provider&#x60; query parameter to fetch a single provider by key.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  ProvidersApi,
+} from 'cs2cap-sdk';
+import type { ListProvidersV1ProvidersGetRequest } from 'cs2cap-sdk';
+
+async function example() {
+  console.log("🚀 Testing cs2cap-sdk SDK...");
+  const config = new Configuration({ 
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new ProvidersApi(config);
+
+  const body = {
+    // string | Optional provider key filter (e.g. \"skinport\"). Omit to return all providers. (optional)
+    provider: provider_example,
+  } satisfies ListProvidersV1ProvidersGetRequest;
+
+  try {
+    const data = await api.listProvidersV1ProvidersGet(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **provider** | `string` | Optional provider key filter (e.g. \&quot;skinport\&quot;). Omit to return all providers. | [Optional] [Defaults to `undefined`] |
+
+### Return type
+
+[**{ [key: string]: ProviderInfo; }**](ProviderInfo.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+| **401** | Missing or invalid authentication credentials. |  -  |
+| **403** | Authenticated but not permitted to access this resource. |  -  |
+| **429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
+| **422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant) when available. <br>  |
+| **404** | The requested provider key does not exist. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+

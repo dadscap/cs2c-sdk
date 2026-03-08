@@ -1,0 +1,33 @@
+# MarketTimeWindowMeta
+
+Effective time window used for the analytics query.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**window_kind** | **str** | Type of time window selection used for this query. | 
+**timeframe** | **str** |  | [optional] 
+**start_at** | **datetime** | Inclusive start timestamp of the effective analytics window (UTC). | 
+**end_at** | **datetime** | Exclusive end timestamp of the effective analytics window (UTC). | 
+
+## Example
+
+```python
+from cs2cap_sdk.models.market_time_window_meta import MarketTimeWindowMeta
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of MarketTimeWindowMeta from a JSON string
+market_time_window_meta_instance = MarketTimeWindowMeta.from_json(json)
+# print the JSON string representation of the object
+print(MarketTimeWindowMeta.to_json())
+
+# convert the object into a dict
+market_time_window_meta_dict = market_time_window_meta_instance.to_dict()
+# create an instance of MarketTimeWindowMeta from a dict
+market_time_window_meta_from_dict = MarketTimeWindowMeta.from_dict(market_time_window_meta_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
