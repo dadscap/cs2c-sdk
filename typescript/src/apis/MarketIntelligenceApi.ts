@@ -18,10 +18,8 @@ import type {
   AllProviders,
   ErrorResponse,
   MarketArbitrageResponse,
+  MarketIndicatorsItemResponse,
   MarketItemAnalyticsResponse,
-  MarketRankingListResponse,
-  MinVolumeUsd,
-  ResponseGetIndicatorsV1MarketIndicatorsGet,
   ValidationErrorResponse,
 } from '../models/index';
 import {
@@ -31,14 +29,10 @@ import {
     ErrorResponseToJSON,
     MarketArbitrageResponseFromJSON,
     MarketArbitrageResponseToJSON,
+    MarketIndicatorsItemResponseFromJSON,
+    MarketIndicatorsItemResponseToJSON,
     MarketItemAnalyticsResponseFromJSON,
     MarketItemAnalyticsResponseToJSON,
-    MarketRankingListResponseFromJSON,
-    MarketRankingListResponseToJSON,
-    MinVolumeUsdFromJSON,
-    MinVolumeUsdToJSON,
-    ResponseGetIndicatorsV1MarketIndicatorsGetFromJSON,
-    ResponseGetIndicatorsV1MarketIndicatorsGetToJSON,
     ValidationErrorResponseFromJSON,
     ValidationErrorResponseToJSON,
 } from '../models/index';
@@ -57,10 +51,6 @@ export interface GetIndicatorsV1MarketIndicatorsGetRequest {
     phase?: string | null;
     provider?: string | null;
     interval?: GetIndicatorsV1MarketIndicatorsGetIntervalEnum;
-    limit?: number | null;
-    offset?: number;
-    sortBy?: GetIndicatorsV1MarketIndicatorsGetSortByEnum;
-    order?: GetIndicatorsV1MarketIndicatorsGetOrderEnum;
     currency?: string;
 }
 
@@ -69,20 +59,6 @@ export interface GetItemAnalyticsV1MarketItemsItemIdGetRequest {
     timeframe?: GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum;
     startAt?: Date | null;
     endAt?: Date | null;
-}
-
-export interface GetMarketRankingsV1MarketRankingsMetricGetRequest {
-    metric: GetMarketRankingsV1MarketRankingsMetricGetMetricEnum;
-    timeframe?: GetMarketRankingsV1MarketRankingsMetricGetTimeframeEnum;
-    startAt?: Date | null;
-    endAt?: Date | null;
-    limit?: number | null;
-    cursor?: string | null;
-    order?: GetMarketRankingsV1MarketRankingsMetricGetOrderEnum;
-    providers?: Array<AllProviders> | null;
-    minVolatilityPct?: number | null;
-    minVolumeUsd?: MinVolumeUsd | null;
-    minLiquidityScore?: number | null;
 }
 
 /**
@@ -183,22 +159,6 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
             queryParameters['interval'] = requestParameters['interval'];
         }
 
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        if (requestParameters['offset'] != null) {
-            queryParameters['offset'] = requestParameters['offset'];
-        }
-
-        if (requestParameters['sortBy'] != null) {
-            queryParameters['sort_by'] = requestParameters['sortBy'];
-        }
-
-        if (requestParameters['order'] != null) {
-            queryParameters['order'] = requestParameters['order'];
-        }
-
         if (requestParameters['currency'] != null) {
             queryParameters['currency'] = requestParameters['currency'];
         }
@@ -225,21 +185,21 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Compute technical analysis indicators from OHLCV candle data.  **Modes:**  - **Individual item**: Provide `item_id` (or `market_hash_name`) + `provider`.   Returns full numeric indicator values computed on-the-fly from candle data. - **Bulk screener**: Omit item filters. Returns signal summaries for top items   from pre-computed cache, paginated with offset.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
+     * Compute technical analysis indicators for one item from OHLCV candle data.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
      * Get Indicators
      */
-    async getIndicatorsV1MarketIndicatorsGetRaw(requestParameters: GetIndicatorsV1MarketIndicatorsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResponseGetIndicatorsV1MarketIndicatorsGet>> {
+    async getIndicatorsV1MarketIndicatorsGetRaw(requestParameters: GetIndicatorsV1MarketIndicatorsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketIndicatorsItemResponse>> {
         const requestOptions = await this.getIndicatorsV1MarketIndicatorsGetRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ResponseGetIndicatorsV1MarketIndicatorsGetFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => MarketIndicatorsItemResponseFromJSON(jsonValue));
     }
 
     /**
-     * Compute technical analysis indicators from OHLCV candle data.  **Modes:**  - **Individual item**: Provide `item_id` (or `market_hash_name`) + `provider`.   Returns full numeric indicator values computed on-the-fly from candle data. - **Bulk screener**: Omit item filters. Returns signal summaries for top items   from pre-computed cache, paginated with offset.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
+     * Compute technical analysis indicators for one item from OHLCV candle data.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
      * Get Indicators
      */
-    async getIndicatorsV1MarketIndicatorsGet(requestParameters: GetIndicatorsV1MarketIndicatorsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResponseGetIndicatorsV1MarketIndicatorsGet> {
+    async getIndicatorsV1MarketIndicatorsGet(requestParameters: GetIndicatorsV1MarketIndicatorsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketIndicatorsItemResponse> {
         const response = await this.getIndicatorsV1MarketIndicatorsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -311,101 +271,6 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * Creates request options for getMarketRankingsV1MarketRankingsMetricGet without sending the request
-     */
-    async getMarketRankingsV1MarketRankingsMetricGetRequestOpts(requestParameters: GetMarketRankingsV1MarketRankingsMetricGetRequest): Promise<runtime.RequestOpts> {
-        if (requestParameters['metric'] == null) {
-            throw new runtime.RequiredError(
-                'metric',
-                'Required parameter "metric" was null or undefined when calling getMarketRankingsV1MarketRankingsMetricGet().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters['timeframe'] != null) {
-            queryParameters['timeframe'] = requestParameters['timeframe'];
-        }
-
-        if (requestParameters['startAt'] != null) {
-            queryParameters['start_at'] = (requestParameters['startAt'] as any).toISOString();
-        }
-
-        if (requestParameters['endAt'] != null) {
-            queryParameters['end_at'] = (requestParameters['endAt'] as any).toISOString();
-        }
-
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        if (requestParameters['cursor'] != null) {
-            queryParameters['cursor'] = requestParameters['cursor'];
-        }
-
-        if (requestParameters['order'] != null) {
-            queryParameters['order'] = requestParameters['order'];
-        }
-
-        if (requestParameters['providers'] != null) {
-            queryParameters['providers'] = requestParameters['providers'];
-        }
-
-        if (requestParameters['minVolatilityPct'] != null) {
-            queryParameters['min_volatility_pct'] = requestParameters['minVolatilityPct'];
-        }
-
-        if (requestParameters['minVolumeUsd'] != null) {
-            queryParameters['min_volume_usd'] = requestParameters['minVolumeUsd'];
-        }
-
-        if (requestParameters['minLiquidityScore'] != null) {
-            queryParameters['min_liquidity_score'] = requestParameters['minLiquidityScore'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-
-        let urlPath = `/v1/market/rankings/{metric}`;
-        urlPath = urlPath.replace(`{${"metric"}}`, encodeURIComponent(String(requestParameters['metric'])));
-
-        return {
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        };
-    }
-
-    /**
-     * Return ranked market analytics rows for one metric with cursor pagination.  Supported metrics: - `volatility` - `volume` - `liquidity`  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers` - metric-specific minimum thresholds such as `min_volatility_pct`, `min_volume_usd`, and `min_liquidity_score` - `order`  Response: - ranked items list plus cursor pagination metadata  Tier: Quant-only.
-     * Get Market Rankings
-     */
-    async getMarketRankingsV1MarketRankingsMetricGetRaw(requestParameters: GetMarketRankingsV1MarketRankingsMetricGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketRankingListResponse>> {
-        const requestOptions = await this.getMarketRankingsV1MarketRankingsMetricGetRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => MarketRankingListResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Return ranked market analytics rows for one metric with cursor pagination.  Supported metrics: - `volatility` - `volume` - `liquidity`  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers` - metric-specific minimum thresholds such as `min_volatility_pct`, `min_volume_usd`, and `min_liquidity_score` - `order`  Response: - ranked items list plus cursor pagination metadata  Tier: Quant-only.
-     * Get Market Rankings
-     */
-    async getMarketRankingsV1MarketRankingsMetricGet(requestParameters: GetMarketRankingsV1MarketRankingsMetricGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketRankingListResponse> {
-        const response = await this.getMarketRankingsV1MarketRankingsMetricGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
 }
 
 /**
@@ -419,24 +284,6 @@ export type GetIndicatorsV1MarketIndicatorsGetIntervalEnum = typeof GetIndicator
 /**
  * @export
  */
-export const GetIndicatorsV1MarketIndicatorsGetSortByEnum = {
-    CompositeScore: 'composite_score',
-    Rsi14: 'rsi_14',
-    MacdHistogram: 'macd_histogram',
-    Atr14: 'atr_14'
-} as const;
-export type GetIndicatorsV1MarketIndicatorsGetSortByEnum = typeof GetIndicatorsV1MarketIndicatorsGetSortByEnum[keyof typeof GetIndicatorsV1MarketIndicatorsGetSortByEnum];
-/**
- * @export
- */
-export const GetIndicatorsV1MarketIndicatorsGetOrderEnum = {
-    Asc: 'asc',
-    Desc: 'desc'
-} as const;
-export type GetIndicatorsV1MarketIndicatorsGetOrderEnum = typeof GetIndicatorsV1MarketIndicatorsGetOrderEnum[keyof typeof GetIndicatorsV1MarketIndicatorsGetOrderEnum];
-/**
- * @export
- */
 export const GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum = {
     _1h: '1h',
     _24h: '24h',
@@ -444,30 +291,3 @@ export const GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum = {
     _30d: '30d'
 } as const;
 export type GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum = typeof GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum[keyof typeof GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum];
-/**
- * @export
- */
-export const GetMarketRankingsV1MarketRankingsMetricGetMetricEnum = {
-    Volatility: 'volatility',
-    Volume: 'volume',
-    Liquidity: 'liquidity'
-} as const;
-export type GetMarketRankingsV1MarketRankingsMetricGetMetricEnum = typeof GetMarketRankingsV1MarketRankingsMetricGetMetricEnum[keyof typeof GetMarketRankingsV1MarketRankingsMetricGetMetricEnum];
-/**
- * @export
- */
-export const GetMarketRankingsV1MarketRankingsMetricGetTimeframeEnum = {
-    _1h: '1h',
-    _24h: '24h',
-    _7d: '7d',
-    _30d: '30d'
-} as const;
-export type GetMarketRankingsV1MarketRankingsMetricGetTimeframeEnum = typeof GetMarketRankingsV1MarketRankingsMetricGetTimeframeEnum[keyof typeof GetMarketRankingsV1MarketRankingsMetricGetTimeframeEnum];
-/**
- * @export
- */
-export const GetMarketRankingsV1MarketRankingsMetricGetOrderEnum = {
-    Asc: 'asc',
-    Desc: 'desc'
-} as const;
-export type GetMarketRankingsV1MarketRankingsMetricGetOrderEnum = typeof GetMarketRankingsV1MarketRankingsMetricGetOrderEnum[keyof typeof GetMarketRankingsV1MarketRankingsMetricGetOrderEnum];

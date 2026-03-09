@@ -18,13 +18,12 @@ from typing_extensions import Annotated
 
 from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr, field_validator
-from typing import Any, List, Optional, Union
+from typing import List, Optional, Union
 from typing_extensions import Annotated
 from cs2cap_sdk.models.all_providers import AllProviders
 from cs2cap_sdk.models.market_arbitrage_response import MarketArbitrageResponse
+from cs2cap_sdk.models.market_indicators_item_response import MarketIndicatorsItemResponse
 from cs2cap_sdk.models.market_item_analytics_response import MarketItemAnalyticsResponse
-from cs2cap_sdk.models.market_ranking_list_response import MarketRankingListResponse
-from cs2cap_sdk.models.response_get_indicators_v1_market_indicators_get import ResponseGetIndicatorsV1MarketIndicatorsGet
 
 from cs2cap_sdk.api_client import ApiClient, RequestSerialized
 from cs2cap_sdk.api_response import ApiResponse
@@ -395,15 +394,11 @@ class MarketIntelligenceApi:
     @validate_call
     def get_indicators_v1_market_indicators_get(
         self,
-        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for individual mode. Triggers live computation.")] = None,
+        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for live indicator computation.")] = None,
         market_hash_name: Annotated[Optional[StrictStr], Field(description="Market hash name (alternative to item_id).")] = None,
         phase: Annotated[Optional[StrictStr], Field(description="Doppler phase filter.")] = None,
-        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.")] = None,
+        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for indicator computation.")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Candle interval for indicator computation.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination (bulk screener mode).")] = None,
-        sort_by: Annotated[Optional[StrictStr], Field(description="Sort field for bulk screener mode.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.")] = None,
         _request_timeout: Union[
             None,
@@ -417,29 +412,21 @@ class MarketIntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ResponseGetIndicatorsV1MarketIndicatorsGet:
+    ) -> MarketIndicatorsItemResponse:
         """Get Indicators
 
-        Compute technical analysis indicators from OHLCV candle data.  **Modes:**  - **Individual item**: Provide `item_id` (or `market_hash_name`) + `provider`.   Returns full numeric indicator values computed on-the-fly from candle data. - **Bulk screener**: Omit item filters. Returns signal summaries for top items   from pre-computed cache, paginated with offset.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
+        Compute technical analysis indicators for one item from OHLCV candle data.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
 
-        :param item_id: Item ID for individual mode. Triggers live computation.
+        :param item_id: Item ID for live indicator computation.
         :type item_id: int
         :param market_hash_name: Market hash name (alternative to item_id).
         :type market_hash_name: str
         :param phase: Doppler phase filter.
         :type phase: str
-        :param provider: Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.
+        :param provider: Single provider key string (singular parameter). Required for indicator computation.
         :type provider: str
         :param interval: Candle interval for indicator computation.
         :type interval: str
-        :param limit: Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.
-        :type limit: int
-        :param offset: Number of results to skip for pagination (bulk screener mode).
-        :type offset: int
-        :param sort_by: Sort field for bulk screener mode.
-        :type sort_by: str
-        :param order: Sort order.
-        :type order: str
         :param currency: Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.
         :type currency: str
         :param _request_timeout: timeout setting for this request. If one
@@ -470,10 +457,6 @@ class MarketIntelligenceApi:
             phase=phase,
             provider=provider,
             interval=interval,
-            limit=limit,
-            offset=offset,
-            sort_by=sort_by,
-            order=order,
             currency=currency,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -482,13 +465,12 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResponseGetIndicatorsV1MarketIndicatorsGet",
+            '200': "MarketIndicatorsItemResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
             '422': "ErrorResponse",
             '400': "ErrorResponse",
-            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -504,15 +486,11 @@ class MarketIntelligenceApi:
     @validate_call
     def get_indicators_v1_market_indicators_get_with_http_info(
         self,
-        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for individual mode. Triggers live computation.")] = None,
+        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for live indicator computation.")] = None,
         market_hash_name: Annotated[Optional[StrictStr], Field(description="Market hash name (alternative to item_id).")] = None,
         phase: Annotated[Optional[StrictStr], Field(description="Doppler phase filter.")] = None,
-        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.")] = None,
+        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for indicator computation.")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Candle interval for indicator computation.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination (bulk screener mode).")] = None,
-        sort_by: Annotated[Optional[StrictStr], Field(description="Sort field for bulk screener mode.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.")] = None,
         _request_timeout: Union[
             None,
@@ -526,29 +504,21 @@ class MarketIntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[ResponseGetIndicatorsV1MarketIndicatorsGet]:
+    ) -> ApiResponse[MarketIndicatorsItemResponse]:
         """Get Indicators
 
-        Compute technical analysis indicators from OHLCV candle data.  **Modes:**  - **Individual item**: Provide `item_id` (or `market_hash_name`) + `provider`.   Returns full numeric indicator values computed on-the-fly from candle data. - **Bulk screener**: Omit item filters. Returns signal summaries for top items   from pre-computed cache, paginated with offset.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
+        Compute technical analysis indicators for one item from OHLCV candle data.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
 
-        :param item_id: Item ID for individual mode. Triggers live computation.
+        :param item_id: Item ID for live indicator computation.
         :type item_id: int
         :param market_hash_name: Market hash name (alternative to item_id).
         :type market_hash_name: str
         :param phase: Doppler phase filter.
         :type phase: str
-        :param provider: Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.
+        :param provider: Single provider key string (singular parameter). Required for indicator computation.
         :type provider: str
         :param interval: Candle interval for indicator computation.
         :type interval: str
-        :param limit: Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.
-        :type limit: int
-        :param offset: Number of results to skip for pagination (bulk screener mode).
-        :type offset: int
-        :param sort_by: Sort field for bulk screener mode.
-        :type sort_by: str
-        :param order: Sort order.
-        :type order: str
         :param currency: Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.
         :type currency: str
         :param _request_timeout: timeout setting for this request. If one
@@ -579,10 +549,6 @@ class MarketIntelligenceApi:
             phase=phase,
             provider=provider,
             interval=interval,
-            limit=limit,
-            offset=offset,
-            sort_by=sort_by,
-            order=order,
             currency=currency,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -591,13 +557,12 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResponseGetIndicatorsV1MarketIndicatorsGet",
+            '200': "MarketIndicatorsItemResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
             '422': "ErrorResponse",
             '400': "ErrorResponse",
-            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -613,15 +578,11 @@ class MarketIntelligenceApi:
     @validate_call
     def get_indicators_v1_market_indicators_get_without_preload_content(
         self,
-        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for individual mode. Triggers live computation.")] = None,
+        item_id: Annotated[Optional[StrictInt], Field(description="Item ID for live indicator computation.")] = None,
         market_hash_name: Annotated[Optional[StrictStr], Field(description="Market hash name (alternative to item_id).")] = None,
         phase: Annotated[Optional[StrictStr], Field(description="Doppler phase filter.")] = None,
-        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.")] = None,
+        provider: Annotated[Optional[StrictStr], Field(description="Single provider key string (singular parameter). Required for indicator computation.")] = None,
         interval: Annotated[Optional[StrictStr], Field(description="Candle interval for indicator computation.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.")] = None,
-        offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination (bulk screener mode).")] = None,
-        sort_by: Annotated[Optional[StrictStr], Field(description="Sort field for bulk screener mode.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.")] = None,
         _request_timeout: Union[
             None,
@@ -638,26 +599,18 @@ class MarketIntelligenceApi:
     ) -> RESTResponseType:
         """Get Indicators
 
-        Compute technical analysis indicators from OHLCV candle data.  **Modes:**  - **Individual item**: Provide `item_id` (or `market_hash_name`) + `provider`.   Returns full numeric indicator values computed on-the-fly from candle data. - **Bulk screener**: Omit item filters. Returns signal summaries for top items   from pre-computed cache, paginated with offset.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
+        Compute technical analysis indicators for one item from OHLCV candle data.  **Indicators:**  - **Momentum**: RSI(14), MACD(12/26/9), SMA(20/50/200), EMA(12/26), Bollinger Bands(20,2σ) - **Volatility**: ATR(14), Historical Volatility(20), Keltner Channels(20/10/2) - **Volume**: VWAP, OBV, Volume SMA(20)  **Tier**: Quant-only.
 
-        :param item_id: Item ID for individual mode. Triggers live computation.
+        :param item_id: Item ID for live indicator computation.
         :type item_id: int
         :param market_hash_name: Market hash name (alternative to item_id).
         :type market_hash_name: str
         :param phase: Doppler phase filter.
         :type phase: str
-        :param provider: Single provider key string (singular parameter). Required for individual mode and optional as a single-provider filter for bulk screener mode.
+        :param provider: Single provider key string (singular parameter). Required for indicator computation.
         :type provider: str
         :param interval: Candle interval for indicator computation.
         :type interval: str
-        :param limit: Maximum number of results to return (bulk screener mode). Defaults to the effective tier cap.
-        :type limit: int
-        :param offset: Number of results to skip for pagination (bulk screener mode).
-        :type offset: int
-        :param sort_by: Sort field for bulk screener mode.
-        :type sort_by: str
-        :param order: Sort order.
-        :type order: str
         :param currency: Target currency for price-level indicators (e.g. ``USD``, ``EUR``). Provider-native prices are converted via FX rates. Default: ``USD``.
         :type currency: str
         :param _request_timeout: timeout setting for this request. If one
@@ -688,10 +641,6 @@ class MarketIntelligenceApi:
             phase=phase,
             provider=provider,
             interval=interval,
-            limit=limit,
-            offset=offset,
-            sort_by=sort_by,
-            order=order,
             currency=currency,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -700,13 +649,12 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "ResponseGetIndicatorsV1MarketIndicatorsGet",
+            '200': "MarketIndicatorsItemResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
             '422': "ErrorResponse",
             '400': "ErrorResponse",
-            '503': "ErrorResponse",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -722,10 +670,6 @@ class MarketIntelligenceApi:
         phase,
         provider,
         interval,
-        limit,
-        offset,
-        sort_by,
-        order,
         currency,
         _request_auth,
         _content_type,
@@ -768,22 +712,6 @@ class MarketIntelligenceApi:
         if interval is not None:
             
             _query_params.append(('interval', interval))
-            
-        if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
-        if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
-        if sort_by is not None:
-            
-            _query_params.append(('sort_by', sort_by))
-            
-        if order is not None:
-            
-            _query_params.append(('order', order))
             
         if currency is not None:
             
@@ -1156,471 +1084,6 @@ class MarketIntelligenceApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/market/items/{item_id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def get_market_rankings_v1_market_rankings_metric_get(
-        self,
-        metric: Annotated[StrictStr, Field(description="Ranking metric.")],
-        timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return. Defaults to the effective tier cap.")] = None,
-        cursor: Annotated[Optional[StrictStr], Field(description="Opaque pagination cursor from a previous response.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
-        providers: Annotated[Optional[List[AllProviders]], Field(description="Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.")] = None,
-        min_volatility_pct: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum volatility score. Only valid for metric=volatility.")] = None,
-        min_volume_usd: Annotated[Optional[Any], Field(description="Minimum 24h depletion-activity value in USD. Only valid for metric=volume")] = None,
-        min_liquidity_score: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum liquidity score. Only valid for metric=liquidity.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> MarketRankingListResponse:
-        """Get Market Rankings
-
-        Return ranked market analytics rows for one metric with cursor pagination.  Supported metrics: - `volatility` - `volume` - `liquidity`  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers` - metric-specific minimum thresholds such as `min_volatility_pct`, `min_volume_usd`, and `min_liquidity_score` - `order`  Response: - ranked items list plus cursor pagination metadata  Tier: Quant-only.
-
-        :param metric: Ranking metric. (required)
-        :type metric: str
-        :param timeframe: Analysis time window.
-        :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
-        :param limit: Maximum number of results to return. Defaults to the effective tier cap.
-        :type limit: int
-        :param cursor: Opaque pagination cursor from a previous response.
-        :type cursor: str
-        :param order: Sort order.
-        :type order: str
-        :param providers: Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.
-        :type providers: List[AllProviders]
-        :param min_volatility_pct: Minimum volatility score. Only valid for metric=volatility.
-        :type min_volatility_pct: float
-        :param min_volume_usd: Minimum 24h depletion-activity value in USD. Only valid for metric=volume
-        :type min_volume_usd: MinVolumeUsd
-        :param min_liquidity_score: Minimum liquidity score. Only valid for metric=liquidity.
-        :type min_liquidity_score: float
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_market_rankings_v1_market_rankings_metric_get_serialize(
-            metric=metric,
-            timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
-            limit=limit,
-            cursor=cursor,
-            order=order,
-            providers=providers,
-            min_volatility_pct=min_volatility_pct,
-            min_volume_usd=min_volume_usd,
-            min_liquidity_score=min_liquidity_score,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketRankingListResponse",
-            '401': "ErrorResponse",
-            '403': "ErrorResponse",
-            '429': "ErrorResponse",
-            '422': "ValidationErrorResponse",
-            '400': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def get_market_rankings_v1_market_rankings_metric_get_with_http_info(
-        self,
-        metric: Annotated[StrictStr, Field(description="Ranking metric.")],
-        timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return. Defaults to the effective tier cap.")] = None,
-        cursor: Annotated[Optional[StrictStr], Field(description="Opaque pagination cursor from a previous response.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
-        providers: Annotated[Optional[List[AllProviders]], Field(description="Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.")] = None,
-        min_volatility_pct: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum volatility score. Only valid for metric=volatility.")] = None,
-        min_volume_usd: Annotated[Optional[Any], Field(description="Minimum 24h depletion-activity value in USD. Only valid for metric=volume")] = None,
-        min_liquidity_score: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum liquidity score. Only valid for metric=liquidity.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[MarketRankingListResponse]:
-        """Get Market Rankings
-
-        Return ranked market analytics rows for one metric with cursor pagination.  Supported metrics: - `volatility` - `volume` - `liquidity`  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers` - metric-specific minimum thresholds such as `min_volatility_pct`, `min_volume_usd`, and `min_liquidity_score` - `order`  Response: - ranked items list plus cursor pagination metadata  Tier: Quant-only.
-
-        :param metric: Ranking metric. (required)
-        :type metric: str
-        :param timeframe: Analysis time window.
-        :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
-        :param limit: Maximum number of results to return. Defaults to the effective tier cap.
-        :type limit: int
-        :param cursor: Opaque pagination cursor from a previous response.
-        :type cursor: str
-        :param order: Sort order.
-        :type order: str
-        :param providers: Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.
-        :type providers: List[AllProviders]
-        :param min_volatility_pct: Minimum volatility score. Only valid for metric=volatility.
-        :type min_volatility_pct: float
-        :param min_volume_usd: Minimum 24h depletion-activity value in USD. Only valid for metric=volume
-        :type min_volume_usd: MinVolumeUsd
-        :param min_liquidity_score: Minimum liquidity score. Only valid for metric=liquidity.
-        :type min_liquidity_score: float
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_market_rankings_v1_market_rankings_metric_get_serialize(
-            metric=metric,
-            timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
-            limit=limit,
-            cursor=cursor,
-            order=order,
-            providers=providers,
-            min_volatility_pct=min_volatility_pct,
-            min_volume_usd=min_volume_usd,
-            min_liquidity_score=min_liquidity_score,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketRankingListResponse",
-            '401': "ErrorResponse",
-            '403': "ErrorResponse",
-            '429': "ErrorResponse",
-            '422': "ValidationErrorResponse",
-            '400': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def get_market_rankings_v1_market_rankings_metric_get_without_preload_content(
-        self,
-        metric: Annotated[StrictStr, Field(description="Ranking metric.")],
-        timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of results to return. Defaults to the effective tier cap.")] = None,
-        cursor: Annotated[Optional[StrictStr], Field(description="Opaque pagination cursor from a previous response.")] = None,
-        order: Annotated[Optional[StrictStr], Field(description="Sort order.")] = None,
-        providers: Annotated[Optional[List[AllProviders]], Field(description="Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.")] = None,
-        min_volatility_pct: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum volatility score. Only valid for metric=volatility.")] = None,
-        min_volume_usd: Annotated[Optional[Any], Field(description="Minimum 24h depletion-activity value in USD. Only valid for metric=volume")] = None,
-        min_liquidity_score: Annotated[Optional[Union[Annotated[float, Field(strict=True, ge=0)], Annotated[int, Field(strict=True, ge=0)]]], Field(description="Minimum liquidity score. Only valid for metric=liquidity.")] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get Market Rankings
-
-        Return ranked market analytics rows for one metric with cursor pagination.  Supported metrics: - `volatility` - `volume` - `liquidity`  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers` - metric-specific minimum thresholds such as `min_volatility_pct`, `min_volume_usd`, and `min_liquidity_score` - `order`  Response: - ranked items list plus cursor pagination metadata  Tier: Quant-only.
-
-        :param metric: Ranking metric. (required)
-        :type metric: str
-        :param timeframe: Analysis time window.
-        :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
-        :param limit: Maximum number of results to return. Defaults to the effective tier cap.
-        :type limit: int
-        :param cursor: Opaque pagination cursor from a previous response.
-        :type cursor: str
-        :param order: Sort order.
-        :type order: str
-        :param providers: Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values.
-        :type providers: List[AllProviders]
-        :param min_volatility_pct: Minimum volatility score. Only valid for metric=volatility.
-        :type min_volatility_pct: float
-        :param min_volume_usd: Minimum 24h depletion-activity value in USD. Only valid for metric=volume
-        :type min_volume_usd: MinVolumeUsd
-        :param min_liquidity_score: Minimum liquidity score. Only valid for metric=liquidity.
-        :type min_liquidity_score: float
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._get_market_rankings_v1_market_rankings_metric_get_serialize(
-            metric=metric,
-            timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
-            limit=limit,
-            cursor=cursor,
-            order=order,
-            providers=providers,
-            min_volatility_pct=min_volatility_pct,
-            min_volume_usd=min_volume_usd,
-            min_liquidity_score=min_liquidity_score,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketRankingListResponse",
-            '401': "ErrorResponse",
-            '403': "ErrorResponse",
-            '429': "ErrorResponse",
-            '422': "ValidationErrorResponse",
-            '400': "ErrorResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _get_market_rankings_v1_market_rankings_metric_get_serialize(
-        self,
-        metric,
-        timeframe,
-        start_at,
-        end_at,
-        limit,
-        cursor,
-        order,
-        providers,
-        min_volatility_pct,
-        min_volume_usd,
-        min_liquidity_score,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            'providers': 'multi',
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if metric is not None:
-            _path_params['metric'] = metric
-        # process the query parameters
-        if timeframe is not None:
-            
-            _query_params.append(('timeframe', timeframe))
-            
-        if start_at is not None:
-            if isinstance(start_at, datetime):
-                _query_params.append(
-                    (
-                        'start_at',
-                        start_at.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('start_at', start_at))
-            
-        if end_at is not None:
-            if isinstance(end_at, datetime):
-                _query_params.append(
-                    (
-                        'end_at',
-                        end_at.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('end_at', end_at))
-            
-        if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
-        if cursor is not None:
-            
-            _query_params.append(('cursor', cursor))
-            
-        if order is not None:
-            
-            _query_params.append(('order', order))
-            
-        if providers is not None:
-            
-            _query_params.append(('providers', providers))
-            
-        if min_volatility_pct is not None:
-            
-            _query_params.append(('min_volatility_pct', min_volatility_pct))
-            
-        if min_volume_usd is not None:
-            
-            _query_params.append(('min_volume_usd', min_volume_usd))
-            
-        if min_liquidity_score is not None:
-            
-            _query_params.append(('min_liquidity_score', min_liquidity_score))
-            
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'BearerAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/market/rankings/{metric}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

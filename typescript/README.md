@@ -73,7 +73,6 @@ All URIs are relative to *https://api.cs2c.app*
 *MarketIntelligenceApi* | [**getArbitrageOpportunitiesV1MarketArbitrageGet**](docs/MarketIntelligenceApi.md#getarbitrageopportunitiesv1marketarbitrageget) | **GET** /v1/market/arbitrage | Get Arbitrage Opportunities
 *MarketIntelligenceApi* | [**getIndicatorsV1MarketIndicatorsGet**](docs/MarketIntelligenceApi.md#getindicatorsv1marketindicatorsget) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**getItemAnalyticsV1MarketItemsItemIdGet**](docs/MarketIntelligenceApi.md#getitemanalyticsv1marketitemsitemidget) | **GET** /v1/market/items/{item_id} | Get Item Analytics
-*MarketIntelligenceApi* | [**getMarketRankingsV1MarketRankingsMetricGet**](docs/MarketIntelligenceApi.md#getmarketrankingsv1marketrankingsmetricget) | **GET** /v1/market/rankings/{metric} | Get Market Rankings
 *PricesApi* | [**listPricesV1PricesGet**](docs/PricesApi.md#listpricesv1pricesget) | **GET** /v1/prices | List Prices
 *PricesApi* | [**priceCandlesV1PricesCandlesGet**](docs/PricesApi.md#pricecandlesv1pricescandlesget) | **GET** /v1/prices/candles | Price Candles
 *PricesApi* | [**priceHistoryV1PricesHistoryGet**](docs/PricesApi.md#pricehistoryv1priceshistoryget) | **GET** /v1/prices/history | Price History
@@ -99,7 +98,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [IndicatorVolume](docs/IndicatorVolume.md)
 - [InspectInfo](docs/InspectInfo.md)
 - [ItemOut](docs/ItemOut.md)
-- [ItemsInner](docs/ItemsInner.md)
 - [LocInner](docs/LocInner.md)
 - [MarketArbitrageData](docs/MarketArbitrageData.md)
 - [MarketArbitrageItem](docs/MarketArbitrageItem.md)
@@ -109,8 +107,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketIndicatorsItemData](docs/MarketIndicatorsItemData.md)
 - [MarketIndicatorsItemResponse](docs/MarketIndicatorsItemResponse.md)
 - [MarketIndicatorsMeta](docs/MarketIndicatorsMeta.md)
-- [MarketIndicatorsScreenerItem](docs/MarketIndicatorsScreenerItem.md)
-- [MarketIndicatorsScreenerResponse](docs/MarketIndicatorsScreenerResponse.md)
 - [MarketItem](docs/MarketItem.md)
 - [MarketItemAnalyticsCoverage](docs/MarketItemAnalyticsCoverage.md)
 - [MarketItemAnalyticsData](docs/MarketItemAnalyticsData.md)
@@ -118,14 +114,7 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketItemAnalyticsResponse](docs/MarketItemAnalyticsResponse.md)
 - [MarketItemAnalyticsSummary](docs/MarketItemAnalyticsSummary.md)
 - [MarketMeta](docs/MarketMeta.md)
-- [MarketRankingData](docs/MarketRankingData.md)
-- [MarketRankingLiquidityItem](docs/MarketRankingLiquidityItem.md)
-- [MarketRankingListResponse](docs/MarketRankingListResponse.md)
-- [MarketRankingMeta](docs/MarketRankingMeta.md)
-- [MarketRankingVolatilityItem](docs/MarketRankingVolatilityItem.md)
-- [MarketRankingVolumeItem](docs/MarketRankingVolumeItem.md)
 - [MarketTimeWindowMeta](docs/MarketTimeWindowMeta.md)
-- [MinVolumeUsd](docs/MinVolumeUsd.md)
 - [PaginatedResponseItemOut](docs/PaginatedResponseItemOut.md)
 - [PaginationMeta](docs/PaginationMeta.md)
 - [PhaseName](docs/PhaseName.md)
@@ -144,7 +133,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [ProviderHealth](docs/ProviderHealth.md)
 - [ProviderInfo](docs/ProviderInfo.md)
 - [RecentSalesProvider](docs/RecentSalesProvider.md)
-- [ResponseGetIndicatorsV1MarketIndicatorsGet](docs/ResponseGetIndicatorsV1MarketIndicatorsGet.md)
 - [SaleRecordDetail](docs/SaleRecordDetail.md)
 - [SalesFiltersMeta](docs/SalesFiltersMeta.md)
 - [SalesHistoryResponse](docs/SalesHistoryResponse.md)

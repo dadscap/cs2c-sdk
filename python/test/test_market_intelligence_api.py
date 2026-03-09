@@ -48,13 +48,6 @@ class TestMarketIntelligenceApi(unittest.TestCase):
         """
         pass
 
-    def test_get_market_rankings_v1_market_rankings_metric_get(self) -> None:
-        """Test case for get_market_rankings_v1_market_rankings_metric_get
-
-        Get Market Rankings
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()
