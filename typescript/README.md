@@ -73,7 +73,6 @@ All URIs are relative to *https://api.cs2c.app*
 *MarketIntelligenceApi* | [**getArbitrageOpportunitiesV1MarketArbitrageGet**](docs/MarketIntelligenceApi.md#getarbitrageopportunitiesv1marketarbitrageget) | **GET** /v1/market/arbitrage | Get Arbitrage Opportunities
 *MarketIntelligenceApi* | [**getIndicatorsV1MarketIndicatorsGet**](docs/MarketIntelligenceApi.md#getindicatorsv1marketindicatorsget) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**getItemAnalyticsV1MarketItemsItemIdGet**](docs/MarketIntelligenceApi.md#getitemanalyticsv1marketitemsitemidget) | **GET** /v1/market/items/{item_id} | Get Item Analytics
-*MarketIntelligenceApi* | [**getMarketMoversV1MarketMoversGet**](docs/MarketIntelligenceApi.md#getmarketmoversv1marketmoversget) | **GET** /v1/market/movers | Get Market Movers
 *MarketIntelligenceApi* | [**getMarketRankingsV1MarketRankingsMetricGet**](docs/MarketIntelligenceApi.md#getmarketrankingsv1marketrankingsmetricget) | **GET** /v1/market/rankings/{metric} | Get Market Rankings
 *PricesApi* | [**listPricesV1PricesGet**](docs/PricesApi.md#listpricesv1pricesget) | **GET** /v1/prices | List Prices
 *PricesApi* | [**priceCandlesV1PricesCandlesGet**](docs/PricesApi.md#pricecandlesv1pricescandlesget) | **GET** /v1/prices/candles | Price Candles
@@ -119,9 +118,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketItemAnalyticsResponse](docs/MarketItemAnalyticsResponse.md)
 - [MarketItemAnalyticsSummary](docs/MarketItemAnalyticsSummary.md)
 - [MarketMeta](docs/MarketMeta.md)
-- [MarketMoverItem](docs/MarketMoverItem.md)
-- [MarketMoversData](docs/MarketMoversData.md)
-- [MarketMoversResponse](docs/MarketMoversResponse.md)
 - [MarketRankingData](docs/MarketRankingData.md)
 - [MarketRankingLiquidityItem](docs/MarketRankingLiquidityItem.md)
 - [MarketRankingListResponse](docs/MarketRankingListResponse.md)
@@ -129,8 +125,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketRankingVolatilityItem](docs/MarketRankingVolatilityItem.md)
 - [MarketRankingVolumeItem](docs/MarketRankingVolumeItem.md)
 - [MarketTimeWindowMeta](docs/MarketTimeWindowMeta.md)
-- [MaxPriceUsd](docs/MaxPriceUsd.md)
-- [MinPriceUsd](docs/MinPriceUsd.md)
 - [MinVolumeUsd](docs/MinVolumeUsd.md)
 - [PaginatedResponseItemOut](docs/PaginatedResponseItemOut.md)
 - [PaginationMeta](docs/PaginationMeta.md)

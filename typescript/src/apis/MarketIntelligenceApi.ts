@@ -19,10 +19,7 @@ import type {
   ErrorResponse,
   MarketArbitrageResponse,
   MarketItemAnalyticsResponse,
-  MarketMoversResponse,
   MarketRankingListResponse,
-  MaxPriceUsd,
-  MinPriceUsd,
   MinVolumeUsd,
   ResponseGetIndicatorsV1MarketIndicatorsGet,
   ValidationErrorResponse,
@@ -36,14 +33,8 @@ import {
     MarketArbitrageResponseToJSON,
     MarketItemAnalyticsResponseFromJSON,
     MarketItemAnalyticsResponseToJSON,
-    MarketMoversResponseFromJSON,
-    MarketMoversResponseToJSON,
     MarketRankingListResponseFromJSON,
     MarketRankingListResponseToJSON,
-    MaxPriceUsdFromJSON,
-    MaxPriceUsdToJSON,
-    MinPriceUsdFromJSON,
-    MinPriceUsdToJSON,
     MinVolumeUsdFromJSON,
     MinVolumeUsdToJSON,
     ResponseGetIndicatorsV1MarketIndicatorsGetFromJSON,
@@ -78,19 +69,6 @@ export interface GetItemAnalyticsV1MarketItemsItemIdGetRequest {
     timeframe?: GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum;
     startAt?: Date | null;
     endAt?: Date | null;
-}
-
-export interface GetMarketMoversV1MarketMoversGetRequest {
-    timeframe?: GetMarketMoversV1MarketMoversGetTimeframeEnum;
-    startAt?: Date | null;
-    endAt?: Date | null;
-    limitPerSide?: number | null;
-    providers?: Array<AllProviders> | null;
-    minVolume?: number | null;
-    minPriceUsd?: MinPriceUsd | null;
-    maxPriceUsd?: MaxPriceUsd | null;
-    sortBy?: GetMarketMoversV1MarketMoversGetSortByEnum;
-    order?: GetMarketMoversV1MarketMoversGetOrderEnum;
 }
 
 export interface GetMarketRankingsV1MarketRankingsMetricGetRequest {
@@ -334,93 +312,6 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMarketMoversV1MarketMoversGet without sending the request
-     */
-    async getMarketMoversV1MarketMoversGetRequestOpts(requestParameters: GetMarketMoversV1MarketMoversGetRequest): Promise<runtime.RequestOpts> {
-        const queryParameters: any = {};
-
-        if (requestParameters['timeframe'] != null) {
-            queryParameters['timeframe'] = requestParameters['timeframe'];
-        }
-
-        if (requestParameters['startAt'] != null) {
-            queryParameters['start_at'] = (requestParameters['startAt'] as any).toISOString();
-        }
-
-        if (requestParameters['endAt'] != null) {
-            queryParameters['end_at'] = (requestParameters['endAt'] as any).toISOString();
-        }
-
-        if (requestParameters['limitPerSide'] != null) {
-            queryParameters['limit_per_side'] = requestParameters['limitPerSide'];
-        }
-
-        if (requestParameters['providers'] != null) {
-            queryParameters['providers'] = requestParameters['providers'];
-        }
-
-        if (requestParameters['minVolume'] != null) {
-            queryParameters['min_volume'] = requestParameters['minVolume'];
-        }
-
-        if (requestParameters['minPriceUsd'] != null) {
-            queryParameters['min_price_usd'] = requestParameters['minPriceUsd'];
-        }
-
-        if (requestParameters['maxPriceUsd'] != null) {
-            queryParameters['max_price_usd'] = requestParameters['maxPriceUsd'];
-        }
-
-        if (requestParameters['sortBy'] != null) {
-            queryParameters['sort_by'] = requestParameters['sortBy'];
-        }
-
-        if (requestParameters['order'] != null) {
-            queryParameters['order'] = requestParameters['order'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-
-        let urlPath = `/v1/market/movers`;
-
-        return {
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        };
-    }
-
-    /**
-     * Return the top gainers and losers for a requested analysis window.  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers`, `min_volume`, `min_price_usd`, `max_price_usd` - `sort_by` and `order`  Response: - `meta`: generation time, data source, freshness, and effective window - `data.gainers`: positive movers for the selected window - `data.losers`: negative movers for the selected window  Tier: Quant-only.
-     * Get Market Movers
-     */
-    async getMarketMoversV1MarketMoversGetRaw(requestParameters: GetMarketMoversV1MarketMoversGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketMoversResponse>> {
-        const requestOptions = await this.getMarketMoversV1MarketMoversGetRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => MarketMoversResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Return the top gainers and losers for a requested analysis window.  Filters: - `timeframe` or explicit `start_at` + `end_at` - `providers`, `min_volume`, `min_price_usd`, `max_price_usd` - `sort_by` and `order`  Response: - `meta`: generation time, data source, freshness, and effective window - `data.gainers`: positive movers for the selected window - `data.losers`: negative movers for the selected window  Tier: Quant-only.
-     * Get Market Movers
-     */
-    async getMarketMoversV1MarketMoversGet(requestParameters: GetMarketMoversV1MarketMoversGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketMoversResponse> {
-        const response = await this.getMarketMoversV1MarketMoversGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Creates request options for getMarketRankingsV1MarketRankingsMetricGet without sending the request
      */
     async getMarketRankingsV1MarketRankingsMetricGetRequestOpts(requestParameters: GetMarketRankingsV1MarketRankingsMetricGetRequest): Promise<runtime.RequestOpts> {
@@ -553,34 +444,6 @@ export const GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum = {
     _30d: '30d'
 } as const;
 export type GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum = typeof GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum[keyof typeof GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum];
-/**
- * @export
- */
-export const GetMarketMoversV1MarketMoversGetTimeframeEnum = {
-    _1h: '1h',
-    _24h: '24h',
-    _7d: '7d',
-    _30d: '30d'
-} as const;
-export type GetMarketMoversV1MarketMoversGetTimeframeEnum = typeof GetMarketMoversV1MarketMoversGetTimeframeEnum[keyof typeof GetMarketMoversV1MarketMoversGetTimeframeEnum];
-/**
- * @export
- */
-export const GetMarketMoversV1MarketMoversGetSortByEnum = {
-    PriceChangeAbs: 'price_change_abs',
-    PriceChangePct: 'price_change_pct',
-    Volume: 'volume',
-    CurrentPrice: 'current_price'
-} as const;
-export type GetMarketMoversV1MarketMoversGetSortByEnum = typeof GetMarketMoversV1MarketMoversGetSortByEnum[keyof typeof GetMarketMoversV1MarketMoversGetSortByEnum];
-/**
- * @export
- */
-export const GetMarketMoversV1MarketMoversGetOrderEnum = {
-    Asc: 'asc',
-    Desc: 'desc'
-} as const;
-export type GetMarketMoversV1MarketMoversGetOrderEnum = typeof GetMarketMoversV1MarketMoversGetOrderEnum[keyof typeof GetMarketMoversV1MarketMoversGetOrderEnum];
 /**
  * @export
  */

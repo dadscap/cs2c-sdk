@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**get_arbitrage_opportunities_v1_market_arbitrage_get**](MarketIntelligenceApi.md#get_arbitrage_opportunities_v1_market_arbitrage_get) | **GET** /v1/market/arbitrage | Get Arbitrage Opportunities
 [**get_indicators_v1_market_indicators_get**](MarketIntelligenceApi.md#get_indicators_v1_market_indicators_get) | **GET** /v1/market/indicators | Get Indicators
 [**get_item_analytics_v1_market_items_item_id_get**](MarketIntelligenceApi.md#get_item_analytics_v1_market_items_item_id_get) | **GET** /v1/market/items/{item_id} | Get Item Analytics
-[**get_market_movers_v1_market_movers_get**](MarketIntelligenceApi.md#get_market_movers_v1_market_movers_get) | **GET** /v1/market/movers | Get Market Movers
 [**get_market_rankings_v1_market_rankings_metric_get**](MarketIntelligenceApi.md#get_market_rankings_v1_market_rankings_metric_get) | **GET** /v1/market/rankings/{metric} | Get Market Rankings
 
 
@@ -327,119 +326,6 @@ Name | Type | Description  | Notes
 **429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
 **422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  |
 **404** | No analytics data exists for the provided item_id. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_market_movers_v1_market_movers_get**
-> MarketMoversResponse get_market_movers_v1_market_movers_get(timeframe=timeframe, start_at=start_at, end_at=end_at, limit_per_side=limit_per_side, providers=providers, min_volume=min_volume, min_price_usd=min_price_usd, max_price_usd=max_price_usd, sort_by=sort_by, order=order)
-
-Get Market Movers
-
-Return the top gainers and losers for a requested analysis window.
-
-Filters:
-- `timeframe` or explicit `start_at` + `end_at`
-- `providers`, `min_volume`, `min_price_usd`, `max_price_usd`
-- `sort_by` and `order`
-
-Response:
-- `meta`: generation time, data source, freshness, and effective window
-- `data.gainers`: positive movers for the selected window
-- `data.losers`: negative movers for the selected window
-
-Tier: Quant-only.
-
-### Example
-
-* Bearer Authentication (BearerAuth):
-
-```python
-import cs2cap_sdk
-from cs2cap_sdk.models.all_providers import AllProviders
-from cs2cap_sdk.models.market_movers_response import MarketMoversResponse
-from cs2cap_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.cs2c.app
-# See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
-    host = "https://api.cs2c.app"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
-    timeframe = 24h # str | Analysis time window. (optional) (default to 24h)
-    start_at = '2013-10-20T19:20:30+01:00' # datetime | Range start (UTC, inclusive). Must be paired with end_at. (optional)
-    end_at = '2013-10-20T19:20:30+01:00' # datetime | Range end (UTC, exclusive). Must be paired with start_at. (optional)
-    limit_per_side = 56 # int | Maximum results per side (gainers/losers). Defaults to the effective tier cap. (optional)
-    providers = [cs2cap_sdk.AllProviders()] # List[AllProviders] | Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values. (optional)
-    min_volume = 56 # int | Minimum 24h depletion activity volume. (optional)
-    min_price_usd = cs2cap_sdk.MinPriceUsd() # MinPriceUsd | Minimum current price in USD. (optional)
-    max_price_usd = cs2cap_sdk.MaxPriceUsd() # MaxPriceUsd | Maximum current price in USD. (optional)
-    sort_by = price_change_abs # str | Sort field for ranking results. (optional) (default to price_change_abs)
-    order = desc # str | Sort order. (optional) (default to desc)
-
-    try:
-        # Get Market Movers
-        api_response = api_instance.get_market_movers_v1_market_movers_get(timeframe=timeframe, start_at=start_at, end_at=end_at, limit_per_side=limit_per_side, providers=providers, min_volume=min_volume, min_price_usd=min_price_usd, max_price_usd=max_price_usd, sort_by=sort_by, order=order)
-        print("The response of MarketIntelligenceApi->get_market_movers_v1_market_movers_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling MarketIntelligenceApi->get_market_movers_v1_market_movers_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **timeframe** | **str**| Analysis time window. | [optional] [default to 24h]
- **start_at** | **datetime**| Range start (UTC, inclusive). Must be paired with end_at. | [optional] 
- **end_at** | **datetime**| Range end (UTC, exclusive). Must be paired with start_at. | [optional] 
- **limit_per_side** | **int**| Maximum results per side (gainers/losers). Defaults to the effective tier cap. | [optional] 
- **providers** | [**List[AllProviders]**](AllProviders.md)| Provider key enum filters (plural parameter). Repeat &#x60;providers&#x60; to pass multiple values. | [optional] 
- **min_volume** | **int**| Minimum 24h depletion activity volume. | [optional] 
- **min_price_usd** | [**MinPriceUsd**](.md)| Minimum current price in USD. | [optional] 
- **max_price_usd** | [**MaxPriceUsd**](.md)| Maximum current price in USD. | [optional] 
- **sort_by** | **str**| Sort field for ranking results. | [optional] [default to price_change_abs]
- **order** | **str**| Sort order. | [optional] [default to desc]
-
-### Return type
-
-[**MarketMoversResponse**](MarketMoversResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**401** | Missing or invalid authentication credentials. |  -  |
-**403** | Analytics tier required to access this endpoint. |  -  |
-**429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
-**422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

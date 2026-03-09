@@ -7,7 +7,6 @@ All URIs are relative to *https://api.cs2c.app*
 | [**getArbitrageOpportunitiesV1MarketArbitrageGet**](MarketIntelligenceApi.md#getarbitrageopportunitiesv1marketarbitrageget) | **GET** /v1/market/arbitrage | Get Arbitrage Opportunities |
 | [**getIndicatorsV1MarketIndicatorsGet**](MarketIntelligenceApi.md#getindicatorsv1marketindicatorsget) | **GET** /v1/market/indicators | Get Indicators |
 | [**getItemAnalyticsV1MarketItemsItemIdGet**](MarketIntelligenceApi.md#getitemanalyticsv1marketitemsitemidget) | **GET** /v1/market/items/{item_id} | Get Item Analytics |
-| [**getMarketMoversV1MarketMoversGet**](MarketIntelligenceApi.md#getmarketmoversv1marketmoversget) | **GET** /v1/market/movers | Get Market Movers |
 | [**getMarketRankingsV1MarketRankingsMetricGet**](MarketIntelligenceApi.md#getmarketrankingsv1marketrankingsmetricget) | **GET** /v1/market/rankings/{metric} | Get Market Rankings |
 
 
@@ -285,108 +284,6 @@ example().catch(console.error);
 | **429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
 | **422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant) when available. <br>  |
 | **404** | No analytics data exists for the provided item_id. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
-
-
-## getMarketMoversV1MarketMoversGet
-
-> MarketMoversResponse getMarketMoversV1MarketMoversGet(timeframe, startAt, endAt, limitPerSide, providers, minVolume, minPriceUsd, maxPriceUsd, sortBy, order)
-
-Get Market Movers
-
-Return the top gainers and losers for a requested analysis window.  Filters: - &#x60;timeframe&#x60; or explicit &#x60;start_at&#x60; + &#x60;end_at&#x60; - &#x60;providers&#x60;, &#x60;min_volume&#x60;, &#x60;min_price_usd&#x60;, &#x60;max_price_usd&#x60; - &#x60;sort_by&#x60; and &#x60;order&#x60;  Response: - &#x60;meta&#x60;: generation time, data source, freshness, and effective window - &#x60;data.gainers&#x60;: positive movers for the selected window - &#x60;data.losers&#x60;: negative movers for the selected window  Tier: Quant-only.
-
-### Example
-
-```ts
-import {
-  Configuration,
-  MarketIntelligenceApi,
-} from 'cs2cap-sdk';
-import type { GetMarketMoversV1MarketMoversGetRequest } from 'cs2cap-sdk';
-
-async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
-  const config = new Configuration({ 
-    // Configure HTTP bearer authorization: BearerAuth
-    accessToken: "YOUR BEARER TOKEN",
-  });
-  const api = new MarketIntelligenceApi(config);
-
-  const body = {
-    // '1h' | '24h' | '7d' | '30d' | Analysis time window. (optional)
-    timeframe: timeframe_example,
-    // Date | Range start (UTC, inclusive). Must be paired with end_at. (optional)
-    startAt: 2013-10-20T19:20:30+01:00,
-    // Date | Range end (UTC, exclusive). Must be paired with start_at. (optional)
-    endAt: 2013-10-20T19:20:30+01:00,
-    // number | Maximum results per side (gainers/losers). Defaults to the effective tier cap. (optional)
-    limitPerSide: 56,
-    // Array<AllProviders> | Provider key enum filters (plural parameter). Repeat `providers` to pass multiple values. (optional)
-    providers: ...,
-    // number | Minimum 24h depletion activity volume. (optional)
-    minVolume: 56,
-    // MinPriceUsd | Minimum current price in USD. (optional)
-    minPriceUsd: ...,
-    // MaxPriceUsd | Maximum current price in USD. (optional)
-    maxPriceUsd: ...,
-    // 'price_change_abs' | 'price_change_pct' | 'volume' | 'current_price' | Sort field for ranking results. (optional)
-    sortBy: sortBy_example,
-    // 'asc' | 'desc' | Sort order. (optional)
-    order: order_example,
-  } satisfies GetMarketMoversV1MarketMoversGetRequest;
-
-  try {
-    const data = await api.getMarketMoversV1MarketMoversGet(body);
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Run the test
-example().catch(console.error);
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **timeframe** | `1h`, `24h`, `7d`, `30d` | Analysis time window. | [Optional] [Defaults to `&#39;24h&#39;`] [Enum: 1h, 24h, 7d, 30d] |
-| **startAt** | `Date` | Range start (UTC, inclusive). Must be paired with end_at. | [Optional] [Defaults to `undefined`] |
-| **endAt** | `Date` | Range end (UTC, exclusive). Must be paired with start_at. | [Optional] [Defaults to `undefined`] |
-| **limitPerSide** | `number` | Maximum results per side (gainers/losers). Defaults to the effective tier cap. | [Optional] [Defaults to `undefined`] |
-| **providers** | `Array<AllProviders>` | Provider key enum filters (plural parameter). Repeat &#x60;providers&#x60; to pass multiple values. | [Optional] |
-| **minVolume** | `number` | Minimum 24h depletion activity volume. | [Optional] [Defaults to `undefined`] |
-| **minPriceUsd** | [](.md) | Minimum current price in USD. | [Optional] [Defaults to `undefined`] |
-| **maxPriceUsd** | [](.md) | Maximum current price in USD. | [Optional] [Defaults to `undefined`] |
-| **sortBy** | `price_change_abs`, `price_change_pct`, `volume`, `current_price` | Sort field for ranking results. | [Optional] [Defaults to `&#39;price_change_abs&#39;`] [Enum: price_change_abs, price_change_pct, volume, current_price] |
-| **order** | `asc`, `desc` | Sort order. | [Optional] [Defaults to `&#39;desc&#39;`] [Enum: asc, desc] |
-
-### Return type
-
-[**MarketMoversResponse**](MarketMoversResponse.md)
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Successful Response |  -  |
-| **401** | Missing or invalid authentication credentials. |  -  |
-| **403** | Analytics tier required to access this endpoint. |  -  |
-| **429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant). <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
-| **422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier (free, pro, quant) when available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
