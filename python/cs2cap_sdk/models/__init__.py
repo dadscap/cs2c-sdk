@@ -23,6 +23,7 @@ from cs2cap_sdk.models.buy_order_provider import BuyOrderProvider
 from cs2cap_sdk.models.charm_info import CharmInfo
 from cs2cap_sdk.models.error_response import ErrorResponse
 from cs2cap_sdk.models.fx_rates_response import FXRatesResponse
+from cs2cap_sdk.models.ip_reset_response import IPResetResponse
 from cs2cap_sdk.models.indicator_data_coverage import IndicatorDataCoverage
 from cs2cap_sdk.models.indicator_momentum import IndicatorMomentum
 from cs2cap_sdk.models.indicator_signals import IndicatorSignals

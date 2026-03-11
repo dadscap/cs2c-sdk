@@ -75,22 +75,15 @@ configuration = cs2cap_sdk.Configuration(
 # Enter a context with an instance of the API client
 with cs2cap_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.BidsApi(api_client)
-    item_id = 56 # int | Filter by item ID. When provided, canonical market_hash_name and phase from catalog are used and take precedence over request market_hash_name/phase. (optional)
-    market_hash_name = 'market_hash_name_example' # str | Optional market_hash_name to filter for specific item. Ignored when item_id is provided. (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Optional phase to filter (global or combined with market_hash_name). Ignored when item_id is provided. (optional)
-    providers = [cs2cap_sdk.BuyOrderProvider()] # List[BuyOrderProvider] | Providers to include (provider-key enum values that support buy orders). Repeat `providers` to pass multiple values. (optional)
-    currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
-    limit = 1000 # int | Maximum number of results to return. (optional) (default to 1000)
-    offset = 0 # int | Number of results to skip for pagination. (optional) (default to 0)
+    api_instance = cs2cap_sdk.AccountApi(api_client)
 
     try:
-        # List Bids
-        api_response = api_instance.list_bids_v1_bids_get(item_id=item_id, market_hash_name=market_hash_name, phase=phase, providers=providers, currency=currency, limit=limit, offset=offset)
-        print("The response of BidsApi->list_bids_v1_bids_get:\n")
+        # Reset Free Tier Ip Binding
+        api_response = api_instance.reset_free_tier_ip_binding_v1_account_key_reset_ip_post()
+        print("The response of AccountApi->reset_free_tier_ip_binding_v1_account_key_reset_ip_post:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling BidsApi->list_bids_v1_bids_get: %s\n" % e)
+        print("Exception when calling AccountApi->reset_free_tier_ip_binding_v1_account_key_reset_ip_post: %s\n" % e)
 
 ```
 
@@ -100,6 +93,7 @@ All URIs are relative to *https://api.cs2c.app*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountApi* | [**reset_free_tier_ip_binding_v1_account_key_reset_ip_post**](docs/AccountApi.md#reset_free_tier_ip_binding_v1_account_key_reset_ip_post) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *BidsApi* | [**list_bids_v1_bids_get**](docs/BidsApi.md#list_bids_v1_bids_get) | **GET** /v1/bids | List Bids
 *ForeignExchangeApi* | [**get_fx_rates_v1_fx_get**](docs/ForeignExchangeApi.md#get_fx_rates_v1_fx_get) | **GET** /v1/fx | Get Fx Rates
 *ItemsApi* | [**get_market_ids_v1_items_market_ids_get**](docs/ItemsApi.md#get_market_ids_v1_items_market_ids_get) | **GET** /v1/items/market-ids | Get Market Ids
@@ -125,6 +119,7 @@ Class | Method | HTTP request | Description
  - [CharmInfo](docs/CharmInfo.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [FXRatesResponse](docs/FXRatesResponse.md)
+ - [IPResetResponse](docs/IPResetResponse.md)
  - [IndicatorDataCoverage](docs/IndicatorDataCoverage.md)
  - [IndicatorMomentum](docs/IndicatorMomentum.md)
  - [IndicatorSignals](docs/IndicatorSignals.md)

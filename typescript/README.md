@@ -16,9 +16,9 @@ Next, try it out.
 ```ts
 import {
   Configuration,
-  BidsApi,
+  AccountApi,
 } from 'cs2cap-sdk';
-import type { ListBidsV1BidsGetRequest } from 'cs2cap-sdk';
+import type { ResetFreeTierIpBindingV1AccountKeyResetIpPostRequest } from 'cs2cap-sdk';
 
 async function example() {
   console.log("🚀 Testing cs2cap-sdk SDK...");
@@ -26,27 +26,10 @@ async function example() {
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
   });
-  const api = new BidsApi(config);
-
-  const body = {
-    // number | Filter by item ID. When provided, canonical market_hash_name and phase from catalog are used and take precedence over request market_hash_name/phase. (optional)
-    itemId: 56,
-    // string | Optional market_hash_name to filter for specific item. Ignored when item_id is provided. (optional)
-    marketHashName: marketHashName_example,
-    // PhaseName | Optional phase to filter (global or combined with market_hash_name). Ignored when item_id is provided. (optional)
-    phase: ...,
-    // Array<BuyOrderProvider> | Providers to include (provider-key enum values that support buy orders). Repeat `providers` to pass multiple values. (optional)
-    providers: ...,
-    // string | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional)
-    currency: currency_example,
-    // number | Maximum number of results to return. (optional)
-    limit: 56,
-    // number | Number of results to skip for pagination. (optional)
-    offset: 56,
-  } satisfies ListBidsV1BidsGetRequest;
+  const api = new AccountApi(config);
 
   try {
-    const data = await api.listBidsV1BidsGet(body);
+    const data = await api.resetFreeTierIpBindingV1AccountKeyResetIpPost();
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -66,6 +49,7 @@ All URIs are relative to *https://api.cs2c.app*
 
 | Class | Method | HTTP request | Description
 | ----- | ------ | ------------ | -------------
+*AccountApi* | [**resetFreeTierIpBindingV1AccountKeyResetIpPost**](docs/AccountApi.md#resetfreetieripbindingv1accountkeyresetippost) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *BidsApi* | [**listBidsV1BidsGet**](docs/BidsApi.md#listbidsv1bidsget) | **GET** /v1/bids | List Bids
 *ForeignExchangeApi* | [**getFxRatesV1FxGet**](docs/ForeignExchangeApi.md#getfxratesv1fxget) | **GET** /v1/fx | Get Fx Rates
 *ItemsApi* | [**getMarketIdsV1ItemsMarketIdsGet**](docs/ItemsApi.md#getmarketidsv1itemsmarketidsget) | **GET** /v1/items/market-ids | Get Market Ids
@@ -91,6 +75,7 @@ All URIs are relative to *https://api.cs2c.app*
 - [CharmInfo](docs/CharmInfo.md)
 - [ErrorResponse](docs/ErrorResponse.md)
 - [FXRatesResponse](docs/FXRatesResponse.md)
+- [IPResetResponse](docs/IPResetResponse.md)
 - [IndicatorDataCoverage](docs/IndicatorDataCoverage.md)
 - [IndicatorMomentum](docs/IndicatorMomentum.md)
 - [IndicatorSignals](docs/IndicatorSignals.md)

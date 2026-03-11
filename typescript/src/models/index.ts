@@ -9,6 +9,7 @@ export * from './BuyOrderProvider';
 export * from './CharmInfo';
 export * from './ErrorResponse';
 export * from './FXRatesResponse';
+export * from './IPResetResponse';
 export * from './IndicatorDataCoverage';
 export * from './IndicatorMomentum';
 export * from './IndicatorSignals';
