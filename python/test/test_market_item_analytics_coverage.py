@@ -38,14 +38,12 @@ class TestMarketItemAnalyticsCoverage(unittest.TestCase):
             return MarketItemAnalyticsCoverage(
                 provider_count = 56,
                 providers_with_volume = 56,
-                providers_with_liquidity = 56,
                 providers_with_bid_side = 56
             )
         else:
             return MarketItemAnalyticsCoverage(
                 provider_count = 56,
                 providers_with_volume = 56,
-                providers_with_liquidity = 56,
                 providers_with_bid_side = 56,
         )
         """

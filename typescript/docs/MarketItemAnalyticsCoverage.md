@@ -9,7 +9,6 @@ Name | Type
 ------------ | -------------
 `providerCount` | number
 `providersWithVolume` | number
-`providersWithLiquidity` | number
 `providersWithBidSide` | number
 
 ## Example
@@ -21,7 +20,6 @@ import type { MarketItemAnalyticsCoverage } from 'cs2cap-sdk'
 const example = {
   "providerCount": null,
   "providersWithVolume": null,
-  "providersWithLiquidity": null,
   "providersWithBidSide": null,
 } satisfies MarketItemAnalyticsCoverage
 

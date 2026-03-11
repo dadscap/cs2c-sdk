@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider_count** | **int** | Number of providers represented in this payload. | 
 **providers_with_volume** | **int** | Providers with depletion activity volume data. | 
-**providers_with_liquidity** | **int** | Providers with liquidity value. | 
 **providers_with_bid_side** | **int** | Providers with bid side value. | 
 
 ## Example

@@ -1,15 +1,12 @@
 # MarketTimeWindowMeta
 
-Effective time window used for the analytics query.
+Preset time window used for the analytics query.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**window_kind** | **str** | Type of time window selection used for this query. | 
-**timeframe** | **str** |  | [optional] 
-**start_at** | **datetime** | Inclusive start timestamp of the effective analytics window (UTC). | 
-**end_at** | **datetime** | Exclusive end timestamp of the effective analytics window (UTC). | 
+**timeframe** | **str** | Selected timeframe preset for this query. | 
 
 ## Example
 

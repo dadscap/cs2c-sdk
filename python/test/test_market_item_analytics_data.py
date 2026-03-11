@@ -44,7 +44,6 @@ class TestMarketItemAnalyticsData(unittest.TestCase):
                 coverage = cs2cap_sdk.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
                     provider_count = 56, 
                     providers_with_volume = 56, 
-                    providers_with_liquidity = 56, 
                     providers_with_bid_side = 56, )
             )
         else:
@@ -56,7 +55,6 @@ class TestMarketItemAnalyticsData(unittest.TestCase):
                 coverage = cs2cap_sdk.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
                     provider_count = 56, 
                     providers_with_volume = 56, 
-                    providers_with_liquidity = 56, 
                     providers_with_bid_side = 56, ),
         )
         """

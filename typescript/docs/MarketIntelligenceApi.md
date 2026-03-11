@@ -191,11 +191,11 @@ example().catch(console.error);
 
 ## getItemAnalyticsV1MarketItemsItemIdGet
 
-> MarketItemAnalyticsResponse getItemAnalyticsV1MarketItemsItemIdGet(itemId, timeframe, startAt, endAt)
+> MarketItemAnalyticsResponse getItemAnalyticsV1MarketItemsItemIdGet(itemId, timeframe)
 
 Get Item Analytics
 
-Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset &#x60;timeframe&#x60; - or explicit &#x60;start_at&#x60; + &#x60;end_at&#x60;  Tier: Pro and Quant.
+Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset &#x60;timeframe&#x60; only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
 
 ### Example
 
@@ -219,10 +219,6 @@ async function example() {
     itemId: 56,
     // '1h' | '24h' | '7d' | '30d' | Analysis time window. (optional)
     timeframe: timeframe_example,
-    // Date | Range start (UTC, inclusive). Must be paired with end_at. (optional)
-    startAt: 2013-10-20T19:20:30+01:00,
-    // Date | Range end (UTC, exclusive). Must be paired with start_at. (optional)
-    endAt: 2013-10-20T19:20:30+01:00,
   } satisfies GetItemAnalyticsV1MarketItemsItemIdGetRequest;
 
   try {
@@ -244,8 +240,6 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **itemId** | `number` | Item ID. | [Defaults to `undefined`] |
 | **timeframe** | `1h`, `24h`, `7d`, `30d` | Analysis time window. | [Optional] [Defaults to `&#39;24h&#39;`] [Enum: 1h, 24h, 7d, 30d] |
-| **startAt** | `Date` | Range start (UTC, inclusive). Must be paired with end_at. | [Optional] [Defaults to `undefined`] |
-| **endAt** | `Date` | Range end (UTC, exclusive). Must be paired with start_at. | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 

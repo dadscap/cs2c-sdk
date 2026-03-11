@@ -49,6 +49,54 @@ export interface MarketItemAnalyticsSummary {
      * @memberof MarketItemAnalyticsSummary
      */
     avgSpreadPct?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    liquidityScore?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    listingScore?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    gapScore?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    volumeScore?: number | null;
+    /**
+     * Whether Doppler bonus was applied.
+     * @type {boolean}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    dopplerBonus?: boolean;
+    /**
+     * Whether a bid-above-ask anomaly was detected.
+     * @type {boolean}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    priceAnomaly?: boolean;
+    /**
+     * Whether the high-tier override was applied.
+     * @type {boolean}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    highTierOverride?: boolean;
+    /**
+     * 
+     * @type {Date}
+     * @memberof MarketItemAnalyticsSummary
+     */
+    liquidityLastUpdated?: Date | null;
 }
 
 /**
@@ -75,6 +123,14 @@ export function MarketItemAnalyticsSummaryFromJSONTyped(json: any, ignoreDiscrim
         'bestAskUsd': json['best_ask_usd'] == null ? undefined : json['best_ask_usd'],
         'bestBidUsd': json['best_bid_usd'] == null ? undefined : json['best_bid_usd'],
         'avgSpreadPct': json['avg_spread_pct'] == null ? undefined : json['avg_spread_pct'],
+        'liquidityScore': json['liquidity_score'] == null ? undefined : json['liquidity_score'],
+        'listingScore': json['listing_score'] == null ? undefined : json['listing_score'],
+        'gapScore': json['gap_score'] == null ? undefined : json['gap_score'],
+        'volumeScore': json['volume_score'] == null ? undefined : json['volume_score'],
+        'dopplerBonus': json['doppler_bonus'] == null ? undefined : json['doppler_bonus'],
+        'priceAnomaly': json['price_anomaly'] == null ? undefined : json['price_anomaly'],
+        'highTierOverride': json['high_tier_override'] == null ? undefined : json['high_tier_override'],
+        'liquidityLastUpdated': json['liquidity_last_updated'] == null ? undefined : (new Date(json['liquidity_last_updated'])),
     };
 }
 
@@ -94,6 +150,14 @@ export function MarketItemAnalyticsSummaryToJSONTyped(value?: MarketItemAnalytic
         'best_ask_usd': value['bestAskUsd'],
         'best_bid_usd': value['bestBidUsd'],
         'avg_spread_pct': value['avgSpreadPct'],
+        'liquidity_score': value['liquidityScore'],
+        'listing_score': value['listingScore'],
+        'gap_score': value['gapScore'],
+        'volume_score': value['volumeScore'],
+        'doppler_bonus': value['dopplerBonus'],
+        'price_anomaly': value['priceAnomaly'],
+        'high_tier_override': value['highTierOverride'],
+        'liquidity_last_updated': value['liquidityLastUpdated'] == null ? value['liquidityLastUpdated'] : value['liquidityLastUpdated'].toISOString(),
     };
 }
 

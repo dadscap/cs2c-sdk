@@ -18,7 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -33,7 +34,15 @@ class MarketItemAnalyticsSummary(BaseModel):
     best_ask_usd: Optional[Annotated[str, Field(strict=True)]] = None
     best_bid_usd: Optional[Annotated[str, Field(strict=True)]] = None
     avg_spread_pct: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["provider_count", "total_volume_24h", "best_ask_usd", "best_bid_usd", "avg_spread_pct"]
+    liquidity_score: Optional[StrictInt] = None
+    listing_score: Optional[StrictInt] = None
+    gap_score: Optional[StrictInt] = None
+    volume_score: Optional[StrictInt] = None
+    doppler_bonus: Optional[StrictBool] = Field(default=False, description="Whether Doppler bonus was applied.")
+    price_anomaly: Optional[StrictBool] = Field(default=False, description="Whether a bid-above-ask anomaly was detected.")
+    high_tier_override: Optional[StrictBool] = Field(default=False, description="Whether the high-tier override was applied.")
+    liquidity_last_updated: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["provider_count", "total_volume_24h", "best_ask_usd", "best_bid_usd", "avg_spread_pct", "liquidity_score", "listing_score", "gap_score", "volume_score", "doppler_bonus", "price_anomaly", "high_tier_override", "liquidity_last_updated"]
 
     @field_validator('best_ask_usd')
     def best_ask_usd_validate_regular_expression(cls, value):
@@ -109,6 +118,31 @@ class MarketItemAnalyticsSummary(BaseModel):
         if self.avg_spread_pct is None and "avg_spread_pct" in self.model_fields_set:
             _dict['avg_spread_pct'] = None
 
+        # set to None if liquidity_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.liquidity_score is None and "liquidity_score" in self.model_fields_set:
+            _dict['liquidity_score'] = None
+
+        # set to None if listing_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.listing_score is None and "listing_score" in self.model_fields_set:
+            _dict['listing_score'] = None
+
+        # set to None if gap_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.gap_score is None and "gap_score" in self.model_fields_set:
+            _dict['gap_score'] = None
+
+        # set to None if volume_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.volume_score is None and "volume_score" in self.model_fields_set:
+            _dict['volume_score'] = None
+
+        # set to None if liquidity_last_updated (nullable) is None
+        # and model_fields_set contains the field
+        if self.liquidity_last_updated is None and "liquidity_last_updated" in self.model_fields_set:
+            _dict['liquidity_last_updated'] = None
+
         return _dict
 
     @classmethod
@@ -125,7 +159,15 @@ class MarketItemAnalyticsSummary(BaseModel):
             "total_volume_24h": obj.get("total_volume_24h"),
             "best_ask_usd": obj.get("best_ask_usd"),
             "best_bid_usd": obj.get("best_bid_usd"),
-            "avg_spread_pct": obj.get("avg_spread_pct")
+            "avg_spread_pct": obj.get("avg_spread_pct"),
+            "liquidity_score": obj.get("liquidity_score"),
+            "listing_score": obj.get("listing_score"),
+            "gap_score": obj.get("gap_score"),
+            "volume_score": obj.get("volume_score"),
+            "doppler_bonus": obj.get("doppler_bonus") if obj.get("doppler_bonus") is not None else False,
+            "price_anomaly": obj.get("price_anomaly") if obj.get("price_anomaly") is not None else False,
+            "high_tier_override": obj.get("high_tier_override") if obj.get("high_tier_override") is not None else False,
+            "liquidity_last_updated": obj.get("liquidity_last_updated")
         })
         return _obj
 

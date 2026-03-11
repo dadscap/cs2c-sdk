@@ -18,28 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
 class MarketTimeWindowMeta(BaseModel):
     """
-    Effective time window used for the analytics query.
+    Preset time window used for the analytics query.
     """ # noqa: E501
-    window_kind: StrictStr = Field(description="Type of time window selection used for this query.")
-    timeframe: Optional[StrictStr] = None
-    start_at: datetime = Field(description="Inclusive start timestamp of the effective analytics window (UTC).")
-    end_at: datetime = Field(description="Exclusive end timestamp of the effective analytics window (UTC).")
-    __properties: ClassVar[List[str]] = ["window_kind", "timeframe", "start_at", "end_at"]
-
-    @field_validator('window_kind')
-    def window_kind_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['preset', 'range']):
-            raise ValueError("must be one of enum values ('preset', 'range')")
-        return value
+    timeframe: StrictStr = Field(description="Selected timeframe preset for this query.")
+    __properties: ClassVar[List[str]] = ["timeframe"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,11 +69,6 @@ class MarketTimeWindowMeta(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if timeframe (nullable) is None
-        # and model_fields_set contains the field
-        if self.timeframe is None and "timeframe" in self.model_fields_set:
-            _dict['timeframe'] = None
-
         return _dict
 
     @classmethod
@@ -97,10 +81,7 @@ class MarketTimeWindowMeta(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "window_kind": obj.get("window_kind"),
-            "timeframe": obj.get("timeframe"),
-            "start_at": obj.get("start_at"),
-            "end_at": obj.get("end_at")
+            "timeframe": obj.get("timeframe")
         })
         return _obj
 

@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_item_analytics_v1_market_items_item_id_get**
-> MarketItemAnalyticsResponse get_item_analytics_v1_market_items_item_id_get(item_id, timeframe=timeframe, start_at=start_at, end_at=end_at)
+> MarketItemAnalyticsResponse get_item_analytics_v1_market_items_item_id_get(item_id, timeframe=timeframe)
 
 Get Item Analytics
 
@@ -221,12 +221,12 @@ Return per-item market analytics across providers for a requested time window.
 
 Includes:
 - best ask, best bid, and spread summary
-- provider-level liquidity, volume, depth, and bid-side metrics
+- item-level liquidity summary and provider-level price/depth/volume metrics
 - coverage diagnostics showing which providers contributed data
 
-Window selection:
-- preset `timeframe`
-- or explicit `start_at` + `end_at`
+Window selection uses preset `timeframe` only.
+The selected timeframe affects the item-level liquidity summary only.
+Provider volume fields remain literal trailing 24h/7d depletion metrics.
 
 Tier: Pro and Quant.
 
@@ -262,12 +262,10 @@ with cs2cap_sdk.ApiClient(configuration) as api_client:
     api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
     item_id = 56 # int | Item ID.
     timeframe = 24h # str | Analysis time window. (optional) (default to 24h)
-    start_at = '2013-10-20T19:20:30+01:00' # datetime | Range start (UTC, inclusive). Must be paired with end_at. (optional)
-    end_at = '2013-10-20T19:20:30+01:00' # datetime | Range end (UTC, exclusive). Must be paired with start_at. (optional)
 
     try:
         # Get Item Analytics
-        api_response = api_instance.get_item_analytics_v1_market_items_item_id_get(item_id, timeframe=timeframe, start_at=start_at, end_at=end_at)
+        api_response = api_instance.get_item_analytics_v1_market_items_item_id_get(item_id, timeframe=timeframe)
         print("The response of MarketIntelligenceApi->get_item_analytics_v1_market_items_item_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -283,8 +281,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item_id** | **int**| Item ID. | 
  **timeframe** | **str**| Analysis time window. | [optional] [default to 24h]
- **start_at** | **datetime**| Range start (UTC, inclusive). Must be paired with end_at. | [optional] 
- **end_at** | **datetime**| Range end (UTC, exclusive). Must be paired with start_at. | [optional] 
 
 ### Return type
 

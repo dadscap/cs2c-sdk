@@ -36,16 +36,11 @@ class TestMarketTimeWindowMeta(unittest.TestCase):
         model = MarketTimeWindowMeta()
         if include_optional:
             return MarketTimeWindowMeta(
-                window_kind = 'preset',
-                timeframe = '',
-                start_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                end_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                timeframe = ''
             )
         else:
             return MarketTimeWindowMeta(
-                window_kind = 'preset',
-                start_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                end_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                timeframe = '',
         )
         """
 

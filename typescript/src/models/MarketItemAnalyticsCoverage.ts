@@ -32,12 +32,6 @@ export interface MarketItemAnalyticsCoverage {
      */
     providersWithVolume: number;
     /**
-     * Providers with liquidity value.
-     * @type {number}
-     * @memberof MarketItemAnalyticsCoverage
-     */
-    providersWithLiquidity: number;
-    /**
      * Providers with bid side value.
      * @type {number}
      * @memberof MarketItemAnalyticsCoverage
@@ -51,7 +45,6 @@ export interface MarketItemAnalyticsCoverage {
 export function instanceOfMarketItemAnalyticsCoverage(value: object): value is MarketItemAnalyticsCoverage {
     if (!('providerCount' in value) || value['providerCount'] === undefined) return false;
     if (!('providersWithVolume' in value) || value['providersWithVolume'] === undefined) return false;
-    if (!('providersWithLiquidity' in value) || value['providersWithLiquidity'] === undefined) return false;
     if (!('providersWithBidSide' in value) || value['providersWithBidSide'] === undefined) return false;
     return true;
 }
@@ -68,7 +61,6 @@ export function MarketItemAnalyticsCoverageFromJSONTyped(json: any, ignoreDiscri
         
         'providerCount': json['provider_count'],
         'providersWithVolume': json['providers_with_volume'],
-        'providersWithLiquidity': json['providers_with_liquidity'],
         'providersWithBidSide': json['providers_with_bid_side'],
     };
 }
@@ -86,7 +78,6 @@ export function MarketItemAnalyticsCoverageToJSONTyped(value?: MarketItemAnalyti
         
         'provider_count': value['providerCount'],
         'providers_with_volume': value['providersWithVolume'],
-        'providers_with_liquidity': value['providersWithLiquidity'],
         'providers_with_bid_side': value['providersWithBidSide'],
     };
 }

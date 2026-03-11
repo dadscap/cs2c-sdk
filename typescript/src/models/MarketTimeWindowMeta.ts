@@ -14,55 +14,24 @@
 
 import { mapValues } from '../runtime';
 /**
- * Effective time window used for the analytics query.
+ * Preset time window used for the analytics query.
  * @export
  * @interface MarketTimeWindowMeta
  */
 export interface MarketTimeWindowMeta {
     /**
-     * Type of time window selection used for this query.
-     * @type {MarketTimeWindowMetaWindowKindEnum}
-     * @memberof MarketTimeWindowMeta
-     */
-    windowKind: MarketTimeWindowMetaWindowKindEnum;
-    /**
-     * 
+     * Selected timeframe preset for this query.
      * @type {string}
      * @memberof MarketTimeWindowMeta
      */
-    timeframe?: string | null;
-    /**
-     * Inclusive start timestamp of the effective analytics window (UTC).
-     * @type {Date}
-     * @memberof MarketTimeWindowMeta
-     */
-    startAt: Date;
-    /**
-     * Exclusive end timestamp of the effective analytics window (UTC).
-     * @type {Date}
-     * @memberof MarketTimeWindowMeta
-     */
-    endAt: Date;
+    timeframe: string;
 }
-
-
-/**
- * @export
- */
-export const MarketTimeWindowMetaWindowKindEnum = {
-    Preset: 'preset',
-    Range: 'range'
-} as const;
-export type MarketTimeWindowMetaWindowKindEnum = typeof MarketTimeWindowMetaWindowKindEnum[keyof typeof MarketTimeWindowMetaWindowKindEnum];
-
 
 /**
  * Check if a given object implements the MarketTimeWindowMeta interface.
  */
 export function instanceOfMarketTimeWindowMeta(value: object): value is MarketTimeWindowMeta {
-    if (!('windowKind' in value) || value['windowKind'] === undefined) return false;
-    if (!('startAt' in value) || value['startAt'] === undefined) return false;
-    if (!('endAt' in value) || value['endAt'] === undefined) return false;
+    if (!('timeframe' in value) || value['timeframe'] === undefined) return false;
     return true;
 }
 
@@ -76,10 +45,7 @@ export function MarketTimeWindowMetaFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'windowKind': json['window_kind'],
-        'timeframe': json['timeframe'] == null ? undefined : json['timeframe'],
-        'startAt': (new Date(json['start_at'])),
-        'endAt': (new Date(json['end_at'])),
+        'timeframe': json['timeframe'],
     };
 }
 
@@ -94,10 +60,7 @@ export function MarketTimeWindowMetaToJSONTyped(value?: MarketTimeWindowMeta | n
 
     return {
         
-        'window_kind': value['windowKind'],
         'timeframe': value['timeframe'],
-        'start_at': value['startAt'].toISOString(),
-        'end_at': value['endAt'].toISOString(),
     };
 }
 

@@ -11,6 +11,14 @@ Name | Type | Description | Notes
 **best_ask_usd** | **str** |  | [optional] 
 **best_bid_usd** | **str** |  | [optional] 
 **avg_spread_pct** | **float** |  | [optional] 
+**liquidity_score** | **int** |  | [optional] 
+**listing_score** | **int** |  | [optional] 
+**gap_score** | **int** |  | [optional] 
+**volume_score** | **int** |  | [optional] 
+**doppler_bonus** | **bool** | Whether Doppler bonus was applied. | [optional] [default to False]
+**price_anomaly** | **bool** | Whether a bid-above-ask anomaly was detected. | [optional] [default to False]
+**high_tier_override** | **bool** | Whether the high-tier override was applied. | [optional] [default to False]
+**liquidity_last_updated** | **datetime** |  | [optional] 
 
 ## Example
 

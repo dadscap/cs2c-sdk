@@ -12,6 +12,14 @@ Name | Type
 `bestAskUsd` | string
 `bestBidUsd` | string
 `avgSpreadPct` | number
+`liquidityScore` | number
+`listingScore` | number
+`gapScore` | number
+`volumeScore` | number
+`dopplerBonus` | boolean
+`priceAnomaly` | boolean
+`highTierOverride` | boolean
+`liquidityLastUpdated` | Date
 
 ## Example
 
@@ -25,6 +33,14 @@ const example = {
   "bestAskUsd": null,
   "bestBidUsd": null,
   "avgSpreadPct": null,
+  "liquidityScore": null,
+  "listingScore": null,
+  "gapScore": null,
+  "volumeScore": null,
+  "dopplerBonus": null,
+  "priceAnomaly": null,
+  "highTierOverride": null,
+  "liquidityLastUpdated": null,
 } satisfies MarketItemAnalyticsSummary
 
 console.log(example)

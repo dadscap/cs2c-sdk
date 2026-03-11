@@ -17,16 +17,7 @@ Name | Type
 `volume24h` | number
 `volume7d` | number
 `totalValue24hUsd` | string
-`liquidityScore` | number
-`exec` | number
-`turnover` | number
-`breadth` | number
-`dos` | number
-`dosProxy` | number
-`usedProxy` | boolean
-`confidence` | number
 `bidAnomaly` | boolean
-`liquidityLastUpdated` | Date
 
 ## Example
 
@@ -45,16 +36,7 @@ const example = {
   "volume24h": null,
   "volume7d": null,
   "totalValue24hUsd": null,
-  "liquidityScore": null,
-  "exec": null,
-  "turnover": null,
-  "breadth": null,
-  "dos": null,
-  "dosProxy": null,
-  "usedProxy": null,
-  "confidence": null,
   "bidAnomaly": null,
-  "liquidityLastUpdated": null,
 } satisfies MarketItemAnalyticsProvider
 
 console.log(example)

@@ -16,16 +16,7 @@ Name | Type | Description | Notes
 **volume_24h** | **int** |  | [optional] 
 **volume_7d** | **int** |  | [optional] 
 **total_value_24h_usd** | **str** |  | [optional] 
-**liquidity_score** | **float** |  | [optional] 
-**var_exec** | **float** |  | [optional] 
-**turnover** | **float** |  | [optional] 
-**breadth** | **float** |  | [optional] 
-**dos** | **float** |  | [optional] 
-**dos_proxy** | **float** |  | [optional] 
-**used_proxy** | **bool** |  | [optional] 
-**confidence** | **float** |  | [optional] 
 **bid_anomaly** | **bool** |  | [optional] 
-**liquidity_last_updated** | **datetime** |  | [optional] 
 
 ## Example
 

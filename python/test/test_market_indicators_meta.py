@@ -40,10 +40,7 @@ class TestMarketIndicatorsMeta(unittest.TestCase):
                 data_source = 'cache',
                 freshness_sec = 0.0,
                 window = cs2cap_sdk.models.market_time_window_meta.MarketTimeWindowMeta(
-                    window_kind = 'preset', 
-                    timeframe = '', 
-                    start_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    end_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
+                    timeframe = '', ),
                 interval = '',
                 provider = ''
             )

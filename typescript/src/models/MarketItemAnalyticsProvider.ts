@@ -81,64 +81,10 @@ export interface MarketItemAnalyticsProvider {
     totalValue24hUsd?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    liquidityScore?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    exec?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    turnover?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    breadth?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    dos?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    dosProxy?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    usedProxy?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    confidence?: number | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof MarketItemAnalyticsProvider
      */
     bidAnomaly?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof MarketItemAnalyticsProvider
-     */
-    liquidityLastUpdated?: Date | null;
 }
 
 /**
@@ -170,16 +116,7 @@ export function MarketItemAnalyticsProviderFromJSONTyped(json: any, ignoreDiscri
         'volume24h': json['volume_24h'] == null ? undefined : json['volume_24h'],
         'volume7d': json['volume_7d'] == null ? undefined : json['volume_7d'],
         'totalValue24hUsd': json['total_value_24h_usd'] == null ? undefined : json['total_value_24h_usd'],
-        'liquidityScore': json['liquidity_score'] == null ? undefined : json['liquidity_score'],
-        'exec': json['exec'] == null ? undefined : json['exec'],
-        'turnover': json['turnover'] == null ? undefined : json['turnover'],
-        'breadth': json['breadth'] == null ? undefined : json['breadth'],
-        'dos': json['dos'] == null ? undefined : json['dos'],
-        'dosProxy': json['dos_proxy'] == null ? undefined : json['dos_proxy'],
-        'usedProxy': json['used_proxy'] == null ? undefined : json['used_proxy'],
-        'confidence': json['confidence'] == null ? undefined : json['confidence'],
         'bidAnomaly': json['bid_anomaly'] == null ? undefined : json['bid_anomaly'],
-        'liquidityLastUpdated': json['liquidity_last_updated'] == null ? undefined : (new Date(json['liquidity_last_updated'])),
     };
 }
 
@@ -204,16 +141,7 @@ export function MarketItemAnalyticsProviderToJSONTyped(value?: MarketItemAnalyti
         'volume_24h': value['volume24h'],
         'volume_7d': value['volume7d'],
         'total_value_24h_usd': value['totalValue24hUsd'],
-        'liquidity_score': value['liquidityScore'],
-        'exec': value['exec'],
-        'turnover': value['turnover'],
-        'breadth': value['breadth'],
-        'dos': value['dos'],
-        'dos_proxy': value['dosProxy'],
-        'used_proxy': value['usedProxy'],
-        'confidence': value['confidence'],
         'bid_anomaly': value['bidAnomaly'],
-        'liquidity_last_updated': value['liquidityLastUpdated'] == null ? value['liquidityLastUpdated'] : value['liquidityLastUpdated'].toISOString(),
     };
 }
 

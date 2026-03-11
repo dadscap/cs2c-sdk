@@ -1,16 +1,13 @@
 
 # MarketTimeWindowMeta
 
-Effective time window used for the analytics query.
+Preset time window used for the analytics query.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`windowKind` | string
 `timeframe` | string
-`startAt` | Date
-`endAt` | Date
 
 ## Example
 
@@ -19,10 +16,7 @@ import type { MarketTimeWindowMeta } from 'cs2cap-sdk'
 
 // TODO: Update the object below with actual values
 const example = {
-  "windowKind": null,
   "timeframe": null,
-  "startAt": null,
-  "endAt": null,
 } satisfies MarketTimeWindowMeta
 
 console.log(example)

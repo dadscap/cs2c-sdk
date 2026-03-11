@@ -29,9 +29,8 @@ class MarketItemAnalyticsCoverage(BaseModel):
     """ # noqa: E501
     provider_count: StrictInt = Field(description="Number of providers represented in this payload.")
     providers_with_volume: StrictInt = Field(description="Providers with depletion activity volume data.")
-    providers_with_liquidity: StrictInt = Field(description="Providers with liquidity value.")
     providers_with_bid_side: StrictInt = Field(description="Providers with bid side value.")
-    __properties: ClassVar[List[str]] = ["provider_count", "providers_with_volume", "providers_with_liquidity", "providers_with_bid_side"]
+    __properties: ClassVar[List[str]] = ["provider_count", "providers_with_volume", "providers_with_bid_side"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,7 +85,6 @@ class MarketItemAnalyticsCoverage(BaseModel):
         _obj = cls.model_validate({
             "provider_count": obj.get("provider_count"),
             "providers_with_volume": obj.get("providers_with_volume"),
-            "providers_with_liquidity": obj.get("providers_with_liquidity"),
             "providers_with_bid_side": obj.get("providers_with_bid_side")
         })
         return _obj

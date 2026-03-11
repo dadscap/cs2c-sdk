@@ -16,7 +16,6 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from datetime import datetime
 from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Union
 from typing_extensions import Annotated
@@ -759,8 +758,6 @@ class MarketIntelligenceApi:
         self,
         item_id: Annotated[StrictInt, Field(description="Item ID.")],
         timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -776,16 +773,12 @@ class MarketIntelligenceApi:
     ) -> MarketItemAnalyticsResponse:
         """Get Item Analytics
 
-        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset `timeframe` - or explicit `start_at` + `end_at`  Tier: Pro and Quant.
+        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset `timeframe` only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
 
         :param item_id: Item ID. (required)
         :type item_id: int
         :param timeframe: Analysis time window.
         :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -811,8 +804,6 @@ class MarketIntelligenceApi:
         _param = self._get_item_analytics_v1_market_items_item_id_get_serialize(
             item_id=item_id,
             timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -843,8 +834,6 @@ class MarketIntelligenceApi:
         self,
         item_id: Annotated[StrictInt, Field(description="Item ID.")],
         timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -860,16 +849,12 @@ class MarketIntelligenceApi:
     ) -> ApiResponse[MarketItemAnalyticsResponse]:
         """Get Item Analytics
 
-        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset `timeframe` - or explicit `start_at` + `end_at`  Tier: Pro and Quant.
+        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset `timeframe` only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
 
         :param item_id: Item ID. (required)
         :type item_id: int
         :param timeframe: Analysis time window.
         :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -895,8 +880,6 @@ class MarketIntelligenceApi:
         _param = self._get_item_analytics_v1_market_items_item_id_get_serialize(
             item_id=item_id,
             timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -927,8 +910,6 @@ class MarketIntelligenceApi:
         self,
         item_id: Annotated[StrictInt, Field(description="Item ID.")],
         timeframe: Annotated[Optional[StrictStr], Field(description="Analysis time window.")] = None,
-        start_at: Annotated[Optional[datetime], Field(description="Range start (UTC, inclusive). Must be paired with end_at.")] = None,
-        end_at: Annotated[Optional[datetime], Field(description="Range end (UTC, exclusive). Must be paired with start_at.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -944,16 +925,12 @@ class MarketIntelligenceApi:
     ) -> RESTResponseType:
         """Get Item Analytics
 
-        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset `timeframe` - or explicit `start_at` + `end_at`  Tier: Pro and Quant.
+        Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset `timeframe` only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
 
         :param item_id: Item ID. (required)
         :type item_id: int
         :param timeframe: Analysis time window.
         :type timeframe: str
-        :param start_at: Range start (UTC, inclusive). Must be paired with end_at.
-        :type start_at: datetime
-        :param end_at: Range end (UTC, exclusive). Must be paired with start_at.
-        :type end_at: datetime
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -979,8 +956,6 @@ class MarketIntelligenceApi:
         _param = self._get_item_analytics_v1_market_items_item_id_get_serialize(
             item_id=item_id,
             timeframe=timeframe,
-            start_at=start_at,
-            end_at=end_at,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1006,8 +981,6 @@ class MarketIntelligenceApi:
         self,
         item_id,
         timeframe,
-        start_at,
-        end_at,
         _request_auth,
         _content_type,
         _headers,
@@ -1035,32 +1008,6 @@ class MarketIntelligenceApi:
         if timeframe is not None:
             
             _query_params.append(('timeframe', timeframe))
-            
-        if start_at is not None:
-            if isinstance(start_at, datetime):
-                _query_params.append(
-                    (
-                        'start_at',
-                        start_at.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('start_at', start_at))
-            
-        if end_at is not None:
-            if isinstance(end_at, datetime):
-                _query_params.append(
-                    (
-                        'end_at',
-                        end_at.strftime(
-                            self.api_client.configuration.datetime_format
-                        )
-                    )
-                )
-            else:
-                _query_params.append(('end_at', end_at))
             
         # process the header parameters
         # process the form parameters

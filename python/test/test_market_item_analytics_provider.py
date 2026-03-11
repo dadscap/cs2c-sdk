@@ -46,16 +46,7 @@ class TestMarketItemAnalyticsProvider(unittest.TestCase):
                 volume_24h = 56,
                 volume_7d = 56,
                 total_value_24h_usd = ERROR_TO_EXAMPLE_VALUE,
-                liquidity_score = 1.337,
-                var_exec = 1.337,
-                turnover = 1.337,
-                breadth = 1.337,
-                dos = 1.337,
-                dos_proxy = 1.337,
-                used_proxy = True,
-                confidence = 1.337,
-                bid_anomaly = True,
-                liquidity_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+                bid_anomaly = True
             )
         else:
             return MarketItemAnalyticsProvider(

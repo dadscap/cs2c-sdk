@@ -18,7 +18,6 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
@@ -39,17 +38,8 @@ class MarketItemAnalyticsProvider(BaseModel):
     volume_24h: Optional[StrictInt] = None
     volume_7d: Optional[StrictInt] = None
     total_value_24h_usd: Optional[Annotated[str, Field(strict=True)]] = None
-    liquidity_score: Optional[Union[StrictFloat, StrictInt]] = None
-    var_exec: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="exec")
-    turnover: Optional[Union[StrictFloat, StrictInt]] = None
-    breadth: Optional[Union[StrictFloat, StrictInt]] = None
-    dos: Optional[Union[StrictFloat, StrictInt]] = None
-    dos_proxy: Optional[Union[StrictFloat, StrictInt]] = None
-    used_proxy: Optional[StrictBool] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
     bid_anomaly: Optional[StrictBool] = None
-    liquidity_last_updated: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["provider", "ask_usd", "bid_usd", "spread_usd", "spread_pct", "ask_depth", "bid_depth", "volume_24h", "volume_7d", "total_value_24h_usd", "liquidity_score", "exec", "turnover", "breadth", "dos", "dos_proxy", "used_proxy", "confidence", "bid_anomaly", "liquidity_last_updated"]
+    __properties: ClassVar[List[str]] = ["provider", "ask_usd", "bid_usd", "spread_usd", "spread_pct", "ask_depth", "bid_depth", "volume_24h", "volume_7d", "total_value_24h_usd", "bid_anomaly"]
 
     @field_validator('ask_usd')
     def ask_usd_validate_regular_expression(cls, value):
@@ -167,55 +157,10 @@ class MarketItemAnalyticsProvider(BaseModel):
         if self.total_value_24h_usd is None and "total_value_24h_usd" in self.model_fields_set:
             _dict['total_value_24h_usd'] = None
 
-        # set to None if liquidity_score (nullable) is None
-        # and model_fields_set contains the field
-        if self.liquidity_score is None and "liquidity_score" in self.model_fields_set:
-            _dict['liquidity_score'] = None
-
-        # set to None if var_exec (nullable) is None
-        # and model_fields_set contains the field
-        if self.var_exec is None and "var_exec" in self.model_fields_set:
-            _dict['exec'] = None
-
-        # set to None if turnover (nullable) is None
-        # and model_fields_set contains the field
-        if self.turnover is None and "turnover" in self.model_fields_set:
-            _dict['turnover'] = None
-
-        # set to None if breadth (nullable) is None
-        # and model_fields_set contains the field
-        if self.breadth is None and "breadth" in self.model_fields_set:
-            _dict['breadth'] = None
-
-        # set to None if dos (nullable) is None
-        # and model_fields_set contains the field
-        if self.dos is None and "dos" in self.model_fields_set:
-            _dict['dos'] = None
-
-        # set to None if dos_proxy (nullable) is None
-        # and model_fields_set contains the field
-        if self.dos_proxy is None and "dos_proxy" in self.model_fields_set:
-            _dict['dos_proxy'] = None
-
-        # set to None if used_proxy (nullable) is None
-        # and model_fields_set contains the field
-        if self.used_proxy is None and "used_proxy" in self.model_fields_set:
-            _dict['used_proxy'] = None
-
-        # set to None if confidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.confidence is None and "confidence" in self.model_fields_set:
-            _dict['confidence'] = None
-
         # set to None if bid_anomaly (nullable) is None
         # and model_fields_set contains the field
         if self.bid_anomaly is None and "bid_anomaly" in self.model_fields_set:
             _dict['bid_anomaly'] = None
-
-        # set to None if liquidity_last_updated (nullable) is None
-        # and model_fields_set contains the field
-        if self.liquidity_last_updated is None and "liquidity_last_updated" in self.model_fields_set:
-            _dict['liquidity_last_updated'] = None
 
         return _dict
 
@@ -239,16 +184,7 @@ class MarketItemAnalyticsProvider(BaseModel):
             "volume_24h": obj.get("volume_24h"),
             "volume_7d": obj.get("volume_7d"),
             "total_value_24h_usd": obj.get("total_value_24h_usd"),
-            "liquidity_score": obj.get("liquidity_score"),
-            "exec": obj.get("exec"),
-            "turnover": obj.get("turnover"),
-            "breadth": obj.get("breadth"),
-            "dos": obj.get("dos"),
-            "dos_proxy": obj.get("dos_proxy"),
-            "used_proxy": obj.get("used_proxy"),
-            "confidence": obj.get("confidence"),
-            "bid_anomaly": obj.get("bid_anomaly"),
-            "liquidity_last_updated": obj.get("liquidity_last_updated")
+            "bid_anomaly": obj.get("bid_anomaly")
         })
         return _obj
 

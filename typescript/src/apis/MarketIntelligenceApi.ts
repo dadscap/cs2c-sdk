@@ -57,8 +57,6 @@ export interface GetIndicatorsV1MarketIndicatorsGetRequest {
 export interface GetItemAnalyticsV1MarketItemsItemIdGetRequest {
     itemId: number;
     timeframe?: GetItemAnalyticsV1MarketItemsItemIdGetTimeframeEnum;
-    startAt?: Date | null;
-    endAt?: Date | null;
 }
 
 /**
@@ -221,14 +219,6 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
             queryParameters['timeframe'] = requestParameters['timeframe'];
         }
 
-        if (requestParameters['startAt'] != null) {
-            queryParameters['start_at'] = (requestParameters['startAt'] as any).toISOString();
-        }
-
-        if (requestParameters['endAt'] != null) {
-            queryParameters['end_at'] = (requestParameters['endAt'] as any).toISOString();
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -252,7 +242,7 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset `timeframe` - or explicit `start_at` + `end_at`  Tier: Pro and Quant.
+     * Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset `timeframe` only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
      * Get Item Analytics
      */
     async getItemAnalyticsV1MarketItemsItemIdGetRaw(requestParameters: GetItemAnalyticsV1MarketItemsItemIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketItemAnalyticsResponse>> {
@@ -263,7 +253,7 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - provider-level liquidity, volume, depth, and bid-side metrics - coverage diagnostics showing which providers contributed data  Window selection: - preset `timeframe` - or explicit `start_at` + `end_at`  Tier: Pro and Quant.
+     * Return per-item market analytics across providers for a requested time window.  Includes: - best ask, best bid, and spread summary - item-level liquidity summary and provider-level price/depth/volume metrics - coverage diagnostics showing which providers contributed data  Window selection uses preset `timeframe` only. The selected timeframe affects the item-level liquidity summary only. Provider volume fields remain literal trailing 24h/7d depletion metrics.  Tier: Pro and Quant.
      * Get Item Analytics
      */
     async getItemAnalyticsV1MarketItemsItemIdGet(requestParameters: GetItemAnalyticsV1MarketItemsItemIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketItemAnalyticsResponse> {

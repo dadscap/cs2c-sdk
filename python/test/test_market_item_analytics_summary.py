@@ -40,7 +40,15 @@ class TestMarketItemAnalyticsSummary(unittest.TestCase):
                 total_volume_24h = 56,
                 best_ask_usd = ERROR_TO_EXAMPLE_VALUE,
                 best_bid_usd = ERROR_TO_EXAMPLE_VALUE,
-                avg_spread_pct = 1.337
+                avg_spread_pct = 1.337,
+                liquidity_score = 56,
+                listing_score = 56,
+                gap_score = 56,
+                volume_score = 56,
+                doppler_bonus = True,
+                price_anomaly = True,
+                high_tier_override = True,
+                liquidity_last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return MarketItemAnalyticsSummary(
