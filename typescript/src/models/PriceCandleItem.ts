@@ -50,7 +50,7 @@ export interface PriceCandleItem {
      */
     c: number;
     /**
-     * Last observed listing quantity in the bucket. This is a supply/depth proxy, not transaction volume.
+     * Bucket quantity derived from depletion activity (negative delta_qty summed within the bucket). This is a supply-flow proxy, not transaction volume.
      * @type {number}
      * @memberof PriceCandleItem
      */

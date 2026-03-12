@@ -32,7 +32,7 @@ class PriceCandleItem(BaseModel):
     h: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
     l: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
     c: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
-    v: StrictInt = Field(description="Last observed listing quantity in the bucket. This is a supply/depth proxy, not transaction volume.")
+    v: StrictInt = Field(description="Bucket quantity derived from depletion activity (negative delta_qty summed within the bucket). This is a supply-flow proxy, not transaction volume.")
     __properties: ClassVar[List[str]] = ["t", "o", "h", "l", "c", "v"]
 
     model_config = ConfigDict(

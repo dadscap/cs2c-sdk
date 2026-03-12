@@ -152,7 +152,7 @@ Notes:
 Response:
 - `meta`: Item, interval, provider/phase, currency, start/end.
 - `data`: Candle buckets in oldest-to-newest order (`t`, `o`, `h`, `l`, `c`, `v`).
-  `v` is the last observed listing quantity in the bucket, not transaction volume.
+  `v` is depletion-derived bucket quantity (`volume_qty`), not transaction volume.
 - `pagination`: Standardized pagination footer with cursor state.
 
 Requirements:
