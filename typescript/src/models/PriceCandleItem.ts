@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * Single OHLC candle data point (time-varying fields only).
+ * Single OHLCV candle data point (time-varying fields only).
  * @export
  * @interface PriceCandleItem
  */
@@ -49,6 +49,12 @@ export interface PriceCandleItem {
      * @memberof PriceCandleItem
      */
     c: number;
+    /**
+     * Last observed listing quantity in the bucket. This is a supply/depth proxy, not transaction volume.
+     * @type {number}
+     * @memberof PriceCandleItem
+     */
+    v: number;
 }
 
 /**
@@ -60,6 +66,7 @@ export function instanceOfPriceCandleItem(value: object): value is PriceCandleIt
     if (!('h' in value) || value['h'] === undefined) return false;
     if (!('l' in value) || value['l'] === undefined) return false;
     if (!('c' in value) || value['c'] === undefined) return false;
+    if (!('v' in value) || value['v'] === undefined) return false;
     return true;
 }
 
@@ -78,6 +85,7 @@ export function PriceCandleItemFromJSONTyped(json: any, ignoreDiscriminator: boo
         'h': json['h'],
         'l': json['l'],
         'c': json['c'],
+        'v': json['v'],
     };
 }
 
@@ -97,6 +105,7 @@ export function PriceCandleItemToJSONTyped(value?: PriceCandleItem | null, ignor
         'h': value['h'],
         'l': value['l'],
         'c': value['c'],
+        'v': value['v'],
     };
 }
 

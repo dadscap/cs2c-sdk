@@ -39,7 +39,7 @@ class MarketItemAnalyticsSummary(BaseModel):
     gap_score: Optional[StrictInt] = None
     volume_score: Optional[StrictInt] = None
     doppler_bonus: Optional[StrictBool] = Field(default=False, description="Whether Doppler bonus was applied.")
-    price_anomaly: Optional[StrictBool] = Field(default=False, description="Whether a bid-above-ask anomaly was detected.")
+    price_anomaly: Optional[StrictBool] = Field(default=False, description="Whether a same-provider bid-above-ask anomaly was detected, excluding Steam.")
     high_tier_override: Optional[StrictBool] = Field(default=False, description="Whether the high-tier override was applied.")
     liquidity_last_updated: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["provider_count", "total_volume_24h", "best_ask_usd", "best_bid_usd", "avg_spread_pct", "liquidity_score", "listing_score", "gap_score", "volume_score", "doppler_bonus", "price_anomaly", "high_tier_override", "liquidity_last_updated"]

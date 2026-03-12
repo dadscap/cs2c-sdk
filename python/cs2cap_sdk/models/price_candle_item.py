@@ -25,14 +25,15 @@ from typing_extensions import Self
 
 class PriceCandleItem(BaseModel):
     """
-    Single OHLC candle data point (time-varying fields only).
+    Single OHLCV candle data point (time-varying fields only).
     """ # noqa: E501
     t: StrictInt = Field(description="Unix timestamp in seconds (UTC).")
     o: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
     h: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
     l: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
     c: StrictInt = Field(description="Money amount in minor units of the response currency (for example USD cents when currency=USD). Divide by 100 for display.")
-    __properties: ClassVar[List[str]] = ["t", "o", "h", "l", "c"]
+    v: StrictInt = Field(description="Last observed listing quantity in the bucket. This is a supply/depth proxy, not transaction volume.")
+    __properties: ClassVar[List[str]] = ["t", "o", "h", "l", "c", "v"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,7 +90,8 @@ class PriceCandleItem(BaseModel):
             "o": obj.get("o"),
             "h": obj.get("h"),
             "l": obj.get("l"),
-            "c": obj.get("c")
+            "c": obj.get("c"),
+            "v": obj.get("v")
         })
         return _obj
 

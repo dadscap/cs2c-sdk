@@ -51,7 +51,8 @@ class TestPriceCandlesPage(unittest.TestCase):
                         o = 56, 
                         h = 56, 
                         l = 56, 
-                        c = 56, )
+                        c = 56, 
+                        v = 56, )
                     ],
                 pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
@@ -78,7 +79,8 @@ class TestPriceCandlesPage(unittest.TestCase):
                         o = 56, 
                         h = 56, 
                         l = 56, 
-                        c = 56, )
+                        c = 56, 
+                        v = 56, )
                     ],
                 pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 

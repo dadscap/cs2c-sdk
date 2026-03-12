@@ -1,6 +1,6 @@
 # PriceCandleItem
 
-Single OHLC candle data point (time-varying fields only).
+Single OHLCV candle data point (time-varying fields only).
 
 ## Properties
 
@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **h** | **int** | Money amount in minor units of the response currency (for example USD cents when currency&#x3D;USD). Divide by 100 for display. | 
 **l** | **int** | Money amount in minor units of the response currency (for example USD cents when currency&#x3D;USD). Divide by 100 for display. | 
 **c** | **int** | Money amount in minor units of the response currency (for example USD cents when currency&#x3D;USD). Divide by 100 for display. | 
+**v** | **int** | Last observed listing quantity in the bucket. This is a supply/depth proxy, not transaction volume. | 
 
 ## Example
 

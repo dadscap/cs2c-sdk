@@ -1,7 +1,7 @@
 
 # PriceCandleItem
 
-Single OHLC candle data point (time-varying fields only).
+Single OHLCV candle data point (time-varying fields only).
 
 ## Properties
 
@@ -12,6 +12,7 @@ Name | Type
 `h` | number
 `l` | number
 `c` | number
+`v` | number
 
 ## Example
 
@@ -25,6 +26,7 @@ const example = {
   "h": null,
   "l": null,
   "c": null,
+  "v": null,
 } satisfies PriceCandleItem
 
 console.log(example)

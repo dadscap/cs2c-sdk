@@ -80,7 +80,7 @@ export interface MarketItemAnalyticsSummary {
      */
     dopplerBonus?: boolean;
     /**
-     * Whether a bid-above-ask anomaly was detected.
+     * Whether a same-provider bid-above-ask anomaly was detected, excluding Steam.
      * @type {boolean}
      * @memberof MarketItemAnalyticsSummary
      */

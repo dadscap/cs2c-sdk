@@ -40,7 +40,8 @@ class TestPriceCandleItem(unittest.TestCase):
                 o = 56,
                 h = 56,
                 l = 56,
-                c = 56
+                c = 56,
+                v = 56
             )
         else:
             return PriceCandleItem(
@@ -49,6 +50,7 @@ class TestPriceCandleItem(unittest.TestCase):
                 h = 56,
                 l = 56,
                 c = 56,
+                v = 56,
         )
         """
 

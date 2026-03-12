@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 Price Candles
 
-Return OHLC candle data for a single item and single provider.
+Return OHLCV candle data for a single item and single provider.
 
 Parameters:
 - Item filter: `item_id` or `market_hash_name` (one is required).
@@ -151,7 +151,8 @@ Notes:
 
 Response:
 - `meta`: Item, interval, provider/phase, currency, start/end.
-- `data`: Candle buckets in oldest-to-newest order (`t`, `o`, `h`, `l`, `c`).
+- `data`: Candle buckets in oldest-to-newest order (`t`, `o`, `h`, `l`, `c`, `v`).
+  `v` is the last observed listing quantity in the bucket, not transaction volume.
 - `pagination`: Standardized pagination footer with cursor state.
 
 Requirements:

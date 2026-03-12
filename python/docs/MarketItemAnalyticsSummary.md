@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **gap_score** | **int** |  | [optional] 
 **volume_score** | **int** |  | [optional] 
 **doppler_bonus** | **bool** | Whether Doppler bonus was applied. | [optional] [default to False]
-**price_anomaly** | **bool** | Whether a bid-above-ask anomaly was detected. | [optional] [default to False]
+**price_anomaly** | **bool** | Whether a same-provider bid-above-ask anomaly was detected, excluding Steam. | [optional] [default to False]
 **high_tier_override** | **bool** | Whether the high-tier override was applied. | [optional] [default to False]
 **liquidity_last_updated** | **datetime** |  | [optional] 
 
