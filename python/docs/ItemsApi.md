@@ -90,7 +90,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_items_v1_items_get**
-> PaginatedResponseItemOut list_items_v1_items_get(q=q, item_id=item_id, market_hash_name=market_hash_name, item_type=item_type, item_subtype=item_subtype, weapon_type=weapon_type, base_name=base_name, skin_name=skin_name, wear_name=wear_name, phase=phase, collection=collection, crates=crates, rarity_name=rarity_name, rarity_color=rarity_color, style_name=style_name, is_stattrak=is_stattrak, is_souvenir=is_souvenir, limit=limit, offset=offset)
+> ItemsPaginatedResponseItemOut list_items_v1_items_get(q=q, item_id=item_id, market_hash_name=market_hash_name, item_type=item_type, item_subtype=item_subtype, weapon_type=weapon_type, base_name=base_name, skin_name=skin_name, wear_name=wear_name, phase=phase, collection=collection, crates=crates, rarity_name=rarity_name, rarity_color=rarity_color, style_name=style_name, is_stattrak=is_stattrak, is_souvenir=is_souvenir, limit=limit, offset=offset)
 
 List Items
 
@@ -100,6 +100,10 @@ Filters:
 - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase`
 - `q` for case-insensitive substring search on `market_hash_name`
 - `item_id` for direct lookup
+
+Pagination:
+- provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000)
+- omit `limit` to return all matched items from `offset` onward in one response, for any tier
 
 Response:
 - paginated item records with canonical identifiers and item metadata
@@ -113,7 +117,7 @@ Use this endpoint to resolve canonical `item_id` values before calling prices, b
 
 ```python
 import cs2cap_sdk
-from cs2cap_sdk.models.paginated_response_item_out import PaginatedResponseItemOut
+from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
 from cs2cap_sdk.rest import ApiException
 from pprint import pprint
 
@@ -154,7 +158,7 @@ with cs2cap_sdk.ApiClient(configuration) as api_client:
     style_name = 'style_name_example' # str | Exact style name match (case-insensitive) (optional)
     is_stattrak = True # bool | Filter by StatTrak items (optional)
     is_souvenir = True # bool | Filter by Souvenir items (optional)
-    limit = 56 # int | Maximum number of items to return. (optional)
+    limit = 56 # int | Maximum number of items to return. Omit to return all matched items from `offset` onward in one response. (optional)
     offset = 0 # int | Number of results to skip for pagination. (optional) (default to 0)
 
     try:
@@ -190,12 +194,12 @@ Name | Type | Description  | Notes
  **style_name** | **str**| Exact style name match (case-insensitive) | [optional] 
  **is_stattrak** | **bool**| Filter by StatTrak items | [optional] 
  **is_souvenir** | **bool**| Filter by Souvenir items | [optional] 
- **limit** | **int**| Maximum number of items to return. | [optional] 
+ **limit** | **int**| Maximum number of items to return. Omit to return all matched items from &#x60;offset&#x60; onward in one response. | [optional] 
  **offset** | **int**| Number of results to skip for pagination. | [optional] [default to 0]
 
 ### Return type
 
-[**PaginatedResponseItemOut**](PaginatedResponseItemOut.md)
+[**ItemsPaginatedResponseItemOut**](ItemsPaginatedResponseItemOut.md)
 
 ### Authorization
 

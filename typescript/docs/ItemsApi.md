@@ -78,11 +78,11 @@ This endpoint does not need any parameter.
 
 ## listItemsV1ItemsGet
 
-> PaginatedResponseItemOut listItemsV1ItemsGet(q, itemId, marketHashName, itemType, itemSubtype, weaponType, baseName, skinName, wearName, phase, collection, crates, rarityName, rarityColor, styleName, isStattrak, isSouvenir, limit, offset)
+> ItemsPaginatedResponseItemOut listItemsV1ItemsGet(q, itemId, marketHashName, itemType, itemSubtype, weaponType, baseName, skinName, wearName, phase, collection, crates, rarityName, rarityColor, styleName, isStattrak, isSouvenir, limit, offset)
 
 List Items
 
-Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as &#x60;item_type&#x60;, &#x60;collection&#x60;, &#x60;rarity_name&#x60;, and &#x60;phase&#x60; - &#x60;q&#x60; for case-insensitive substring search on &#x60;market_hash_name&#x60; - &#x60;item_id&#x60; for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional &#x60;supply&#x60; values when available  Use this endpoint to resolve canonical &#x60;item_id&#x60; values before calling prices, bids, sales, or market analytics.
+Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as &#x60;item_type&#x60;, &#x60;collection&#x60;, &#x60;rarity_name&#x60;, and &#x60;phase&#x60; - &#x60;q&#x60; for case-insensitive substring search on &#x60;market_hash_name&#x60; - &#x60;item_id&#x60; for direct lookup  Pagination: - provide &#x60;limit&#x60; to request a paginated slice (still tier-capped, endpoint max 1000) - omit &#x60;limit&#x60; to return all matched items from &#x60;offset&#x60; onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional &#x60;supply&#x60; values when available  Use this endpoint to resolve canonical &#x60;item_id&#x60; values before calling prices, bids, sales, or market analytics.
 
 ### Example
 
@@ -136,7 +136,7 @@ async function example() {
     isStattrak: true,
     // boolean | Filter by Souvenir items (optional)
     isSouvenir: true,
-    // number | Maximum number of items to return. (optional)
+    // number | Maximum number of items to return. Omit to return all matched items from `offset` onward in one response. (optional)
     limit: 56,
     // number | Number of results to skip for pagination. (optional)
     offset: 56,
@@ -176,12 +176,12 @@ example().catch(console.error);
 | **styleName** | `string` | Exact style name match (case-insensitive) | [Optional] [Defaults to `undefined`] |
 | **isStattrak** | `boolean` | Filter by StatTrak items | [Optional] [Defaults to `undefined`] |
 | **isSouvenir** | `boolean` | Filter by Souvenir items | [Optional] [Defaults to `undefined`] |
-| **limit** | `number` | Maximum number of items to return. | [Optional] [Defaults to `undefined`] |
+| **limit** | `number` | Maximum number of items to return. Omit to return all matched items from &#x60;offset&#x60; onward in one response. | [Optional] [Defaults to `undefined`] |
 | **offset** | `number` | Number of results to skip for pagination. | [Optional] [Defaults to `0`] |
 
 ### Return type
 
-[**PaginatedResponseItemOut**](PaginatedResponseItemOut.md)
+[**ItemsPaginatedResponseItemOut**](ItemsPaginatedResponseItemOut.md)
 
 ### Authorization
 

@@ -16,17 +16,17 @@
 import * as runtime from '../runtime';
 import type {
   ErrorResponse,
+  ItemsPaginatedResponseItemOut,
   MarketIdsResponse,
-  PaginatedResponseItemOut,
   ValidationErrorResponse,
 } from '../models/index';
 import {
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+    ItemsPaginatedResponseItemOutFromJSON,
+    ItemsPaginatedResponseItemOutToJSON,
     MarketIdsResponseFromJSON,
     MarketIdsResponseToJSON,
-    PaginatedResponseItemOutFromJSON,
-    PaginatedResponseItemOutToJSON,
     ValidationErrorResponseFromJSON,
     ValidationErrorResponseToJSON,
 } from '../models/index';
@@ -209,21 +209,21 @@ export class ItemsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
+     * Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Pagination: - provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000) - omit `limit` to return all matched items from `offset` onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
      * List Items
      */
-    async listItemsV1ItemsGetRaw(requestParameters: ListItemsV1ItemsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PaginatedResponseItemOut>> {
+    async listItemsV1ItemsGetRaw(requestParameters: ListItemsV1ItemsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ItemsPaginatedResponseItemOut>> {
         const requestOptions = await this.listItemsV1ItemsGetRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PaginatedResponseItemOutFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ItemsPaginatedResponseItemOutFromJSON(jsonValue));
     }
 
     /**
-     * Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
+     * Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Pagination: - provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000) - omit `limit` to return all matched items from `offset` onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
      * List Items
      */
-    async listItemsV1ItemsGet(requestParameters: ListItemsV1ItemsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PaginatedResponseItemOut> {
+    async listItemsV1ItemsGet(requestParameters: ListItemsV1ItemsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ItemsPaginatedResponseItemOut> {
         const response = await this.listItemsV1ItemsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

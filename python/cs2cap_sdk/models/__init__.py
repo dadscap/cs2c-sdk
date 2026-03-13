@@ -31,6 +31,8 @@ from cs2cap_sdk.models.indicator_volatility import IndicatorVolatility
 from cs2cap_sdk.models.indicator_volume import IndicatorVolume
 from cs2cap_sdk.models.inspect_info import InspectInfo
 from cs2cap_sdk.models.item_out import ItemOut
+from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
+from cs2cap_sdk.models.items_pagination_meta import ItemsPaginationMeta
 from cs2cap_sdk.models.loc_inner import LocInner
 from cs2cap_sdk.models.market_arbitrage_data import MarketArbitrageData
 from cs2cap_sdk.models.market_arbitrage_item import MarketArbitrageItem
@@ -48,7 +50,6 @@ from cs2cap_sdk.models.market_item_analytics_response import MarketItemAnalytics
 from cs2cap_sdk.models.market_item_analytics_summary import MarketItemAnalyticsSummary
 from cs2cap_sdk.models.market_meta import MarketMeta
 from cs2cap_sdk.models.market_time_window_meta import MarketTimeWindowMeta
-from cs2cap_sdk.models.paginated_response_item_out import PaginatedResponseItemOut
 from cs2cap_sdk.models.pagination_meta import PaginationMeta
 from cs2cap_sdk.models.phase_name import PhaseName
 from cs2cap_sdk.models.price_candle_item import PriceCandleItem

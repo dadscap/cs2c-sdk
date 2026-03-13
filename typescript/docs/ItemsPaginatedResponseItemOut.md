@@ -1,5 +1,5 @@
 
-# PaginatedResponseItemOut
+# ItemsPaginatedResponseItemOut
 
 
 ## Properties
@@ -7,18 +7,18 @@
 Name | Type
 ------------ | -------------
 `items` | [Array&lt;ItemOut&gt;](ItemOut.md)
-`pagination` | [PaginationMeta](PaginationMeta.md)
+`pagination` | [ItemsPaginationMeta](ItemsPaginationMeta.md)
 
 ## Example
 
 ```typescript
-import type { PaginatedResponseItemOut } from 'cs2cap-sdk'
+import type { ItemsPaginatedResponseItemOut } from 'cs2cap-sdk'
 
 // TODO: Update the object below with actual values
 const example = {
   "items": null,
   "pagination": null,
-} satisfies PaginatedResponseItemOut
+} satisfies ItemsPaginatedResponseItemOut
 
 console.log(example)
 
@@ -27,7 +27,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as PaginatedResponseItemOut
+const exampleParsed = JSON.parse(exampleJSON) as ItemsPaginatedResponseItemOut
 console.log(exampleParsed)
 ```
 

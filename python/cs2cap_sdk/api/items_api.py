@@ -19,8 +19,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
+from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
 from cs2cap_sdk.models.market_ids_response import MarketIdsResponse
-from cs2cap_sdk.models.paginated_response_item_out import PaginatedResponseItemOut
 
 from cs2cap_sdk.api_client import ApiClient, RequestSerialized
 from cs2cap_sdk.api_response import ApiResponse
@@ -318,7 +318,7 @@ class ItemsApi:
         style_name: Annotated[Optional[StrictStr], Field(description="Exact style name match (case-insensitive)")] = None,
         is_stattrak: Annotated[Optional[StrictBool], Field(description="Filter by StatTrak items")] = None,
         is_souvenir: Annotated[Optional[StrictBool], Field(description="Filter by Souvenir items")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination.")] = None,
         _request_timeout: Union[
             None,
@@ -332,10 +332,10 @@ class ItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PaginatedResponseItemOut:
+    ) -> ItemsPaginatedResponseItemOut:
         """List Items
 
-        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
+        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Pagination: - provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000) - omit `limit` to return all matched items from `offset` onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
 
         :param q: Search by name substring (case-insensitive)
         :type q: str
@@ -371,7 +371,7 @@ class ItemsApi:
         :type is_stattrak: bool
         :param is_souvenir: Filter by Souvenir items
         :type is_souvenir: bool
-        :param limit: Maximum number of items to return.
+        :param limit: Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.
         :type limit: int
         :param offset: Number of results to skip for pagination.
         :type offset: int
@@ -424,7 +424,7 @@ class ItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedResponseItemOut",
+            '200': "ItemsPaginatedResponseItemOut",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
@@ -461,7 +461,7 @@ class ItemsApi:
         style_name: Annotated[Optional[StrictStr], Field(description="Exact style name match (case-insensitive)")] = None,
         is_stattrak: Annotated[Optional[StrictBool], Field(description="Filter by StatTrak items")] = None,
         is_souvenir: Annotated[Optional[StrictBool], Field(description="Filter by Souvenir items")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination.")] = None,
         _request_timeout: Union[
             None,
@@ -475,10 +475,10 @@ class ItemsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PaginatedResponseItemOut]:
+    ) -> ApiResponse[ItemsPaginatedResponseItemOut]:
         """List Items
 
-        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
+        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Pagination: - provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000) - omit `limit` to return all matched items from `offset` onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
 
         :param q: Search by name substring (case-insensitive)
         :type q: str
@@ -514,7 +514,7 @@ class ItemsApi:
         :type is_stattrak: bool
         :param is_souvenir: Filter by Souvenir items
         :type is_souvenir: bool
-        :param limit: Maximum number of items to return.
+        :param limit: Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.
         :type limit: int
         :param offset: Number of results to skip for pagination.
         :type offset: int
@@ -567,7 +567,7 @@ class ItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedResponseItemOut",
+            '200': "ItemsPaginatedResponseItemOut",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
@@ -604,7 +604,7 @@ class ItemsApi:
         style_name: Annotated[Optional[StrictStr], Field(description="Exact style name match (case-insensitive)")] = None,
         is_stattrak: Annotated[Optional[StrictBool], Field(description="Filter by StatTrak items")] = None,
         is_souvenir: Annotated[Optional[StrictBool], Field(description="Filter by Souvenir items")] = None,
-        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return.")] = None,
+        limit: Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.")] = None,
         offset: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="Number of results to skip for pagination.")] = None,
         _request_timeout: Union[
             None,
@@ -621,7 +621,7 @@ class ItemsApi:
     ) -> RESTResponseType:
         """List Items
 
-        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
+        Search the normalized CS2 item catalog with exact-match metadata filters and offset pagination.  Filters: - exact catalog fields such as `item_type`, `collection`, `rarity_name`, and `phase` - `q` for case-insensitive substring search on `market_hash_name` - `item_id` for direct lookup  Pagination: - provide `limit` to request a paginated slice (still tier-capped, endpoint max 1000) - omit `limit` to return all matched items from `offset` onward in one response, for any tier  Response: - paginated item records with canonical identifiers and item metadata - optional `supply` values when available  Use this endpoint to resolve canonical `item_id` values before calling prices, bids, sales, or market analytics.
 
         :param q: Search by name substring (case-insensitive)
         :type q: str
@@ -657,7 +657,7 @@ class ItemsApi:
         :type is_stattrak: bool
         :param is_souvenir: Filter by Souvenir items
         :type is_souvenir: bool
-        :param limit: Maximum number of items to return.
+        :param limit: Maximum number of items to return. Omit to return all matched items from `offset` onward in one response.
         :type limit: int
         :param offset: Number of results to skip for pagination.
         :type offset: int
@@ -710,7 +710,7 @@ class ItemsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PaginatedResponseItemOut",
+            '200': "ItemsPaginatedResponseItemOut",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",

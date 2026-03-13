@@ -15,10 +15,10 @@
 
 import unittest
 
-from cs2cap_sdk.models.paginated_response_item_out import PaginatedResponseItemOut
+from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
 
-class TestPaginatedResponseItemOut(unittest.TestCase):
-    """PaginatedResponseItemOut unit test stubs"""
+class TestItemsPaginatedResponseItemOut(unittest.TestCase):
+    """ItemsPaginatedResponseItemOut unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestPaginatedResponseItemOut(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> PaginatedResponseItemOut:
-        """Test PaginatedResponseItemOut
+    def make_instance(self, include_optional) -> ItemsPaginatedResponseItemOut:
+        """Test ItemsPaginatedResponseItemOut
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `PaginatedResponseItemOut`
+        # uncomment below to create an instance of `ItemsPaginatedResponseItemOut`
         """
-        model = PaginatedResponseItemOut()
+        model = ItemsPaginatedResponseItemOut()
         if include_optional:
-            return PaginatedResponseItemOut(
+            return ItemsPaginatedResponseItemOut(
                 items = [
                     cs2cap_sdk.models.item_out.ItemOut(
                         item_id = 56, 
@@ -63,16 +63,16 @@ class TestPaginatedResponseItemOut(unittest.TestCase):
                         image_url = '', 
                         supply = 56, )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
-                    limit = 1.0, 
+                pagination = cs2cap_sdk.models.items_pagination_meta.ItemsPaginationMeta(
+                    limit = 0.0, 
                     offset = 0.0, 
-                    total = -1.0, 
+                    total = 0.0, 
                     has_next = True, 
                     has_prev = True, 
                     next_cursor = '', )
             )
         else:
-            return PaginatedResponseItemOut(
+            return ItemsPaginatedResponseItemOut(
                 items = [
                     cs2cap_sdk.models.item_out.ItemOut(
                         item_id = 56, 
@@ -100,18 +100,18 @@ class TestPaginatedResponseItemOut(unittest.TestCase):
                         image_url = '', 
                         supply = 56, )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
-                    limit = 1.0, 
+                pagination = cs2cap_sdk.models.items_pagination_meta.ItemsPaginationMeta(
+                    limit = 0.0, 
                     offset = 0.0, 
-                    total = -1.0, 
+                    total = 0.0, 
                     has_next = True, 
                     has_prev = True, 
                     next_cursor = '', ),
         )
         """
 
-    def testPaginatedResponseItemOut(self):
-        """Test PaginatedResponseItemOut"""
+    def testItemsPaginatedResponseItemOut(self):
+        """Test ItemsPaginatedResponseItemOut"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

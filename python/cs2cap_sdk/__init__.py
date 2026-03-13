@@ -53,6 +53,8 @@ __all__ = [
     "IndicatorVolume",
     "InspectInfo",
     "ItemOut",
+    "ItemsPaginatedResponseItemOut",
+    "ItemsPaginationMeta",
     "LocInner",
     "MarketArbitrageData",
     "MarketArbitrageItem",
@@ -70,7 +72,6 @@ __all__ = [
     "MarketItemAnalyticsSummary",
     "MarketMeta",
     "MarketTimeWindowMeta",
-    "PaginatedResponseItemOut",
     "PaginationMeta",
     "PhaseName",
     "PriceCandleItem",
@@ -136,6 +137,8 @@ from cs2cap_sdk.models.indicator_volatility import IndicatorVolatility as Indica
 from cs2cap_sdk.models.indicator_volume import IndicatorVolume as IndicatorVolume
 from cs2cap_sdk.models.inspect_info import InspectInfo as InspectInfo
 from cs2cap_sdk.models.item_out import ItemOut as ItemOut
+from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut as ItemsPaginatedResponseItemOut
+from cs2cap_sdk.models.items_pagination_meta import ItemsPaginationMeta as ItemsPaginationMeta
 from cs2cap_sdk.models.loc_inner import LocInner as LocInner
 from cs2cap_sdk.models.market_arbitrage_data import MarketArbitrageData as MarketArbitrageData
 from cs2cap_sdk.models.market_arbitrage_item import MarketArbitrageItem as MarketArbitrageItem
@@ -153,7 +156,6 @@ from cs2cap_sdk.models.market_item_analytics_response import MarketItemAnalytics
 from cs2cap_sdk.models.market_item_analytics_summary import MarketItemAnalyticsSummary as MarketItemAnalyticsSummary
 from cs2cap_sdk.models.market_meta import MarketMeta as MarketMeta
 from cs2cap_sdk.models.market_time_window_meta import MarketTimeWindowMeta as MarketTimeWindowMeta
-from cs2cap_sdk.models.paginated_response_item_out import PaginatedResponseItemOut as PaginatedResponseItemOut
 from cs2cap_sdk.models.pagination_meta import PaginationMeta as PaginationMeta
 from cs2cap_sdk.models.phase_name import PhaseName as PhaseName
 from cs2cap_sdk.models.price_candle_item import PriceCandleItem as PriceCandleItem

@@ -21,16 +21,16 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
 from cs2cap_sdk.models.item_out import ItemOut
-from cs2cap_sdk.models.pagination_meta import PaginationMeta
+from cs2cap_sdk.models.items_pagination_meta import ItemsPaginationMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PaginatedResponseItemOut(BaseModel):
+class ItemsPaginatedResponseItemOut(BaseModel):
     """
-    PaginatedResponseItemOut
+    ItemsPaginatedResponseItemOut
     """ # noqa: E501
     items: List[ItemOut] = Field(description="List of returned items.")
-    pagination: PaginationMeta = Field(description="Pagination metadata for this response.")
+    pagination: ItemsPaginationMeta = Field(description="Pagination metadata for this `/v1/items` response.")
     __properties: ClassVar[List[str]] = ["items", "pagination"]
 
     model_config = ConfigDict(
@@ -51,7 +51,7 @@ class PaginatedResponseItemOut(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PaginatedResponseItemOut from a JSON string"""
+        """Create an instance of ItemsPaginatedResponseItemOut from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class PaginatedResponseItemOut(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PaginatedResponseItemOut from a dict"""
+        """Create an instance of ItemsPaginatedResponseItemOut from a dict"""
         if obj is None:
             return None
 
@@ -95,7 +95,7 @@ class PaginatedResponseItemOut(BaseModel):
 
         _obj = cls.model_validate({
             "items": [ItemOut.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
-            "pagination": PaginationMeta.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
+            "pagination": ItemsPaginationMeta.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
         })
         return _obj
 
