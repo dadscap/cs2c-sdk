@@ -19,6 +19,7 @@ https://api.cs2c.app
 
 ## Notes
 
-- The published spec is intentionally limited to the public market-data API surface.
-- Account, auth, billing-management, and admin endpoints are excluded.
+- The published spec is intentionally limited to the documented external API surface.
+- Admin, auth, and billing-management endpoints are excluded.
+- Account watchlist, alerts, and API-key IP reset endpoints are included.
 - Regenerate from the source repo when the public OpenAPI changes.

@@ -76,14 +76,15 @@ configuration = cs2cap_sdk.Configuration(
 with cs2cap_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cs2cap_sdk.AccountApi(api_client)
+    alert_create_request = cs2cap_sdk.AlertCreateRequest() # AlertCreateRequest | 
 
     try:
-        # Reset Free Tier Ip Binding
-        api_response = api_instance.reset_free_tier_ip_binding_v1_account_key_reset_ip_post()
-        print("The response of AccountApi->reset_free_tier_ip_binding_v1_account_key_reset_ip_post:\n")
+        # Create Alert Route
+        api_response = api_instance.create_alert_route_v1_account_alerts_post(alert_create_request)
+        print("The response of AccountApi->create_alert_route_v1_account_alerts_post:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AccountApi->reset_free_tier_ip_binding_v1_account_key_reset_ip_post: %s\n" % e)
+        print("Exception when calling AccountApi->create_alert_route_v1_account_alerts_post: %s\n" % e)
 
 ```
 
@@ -93,6 +94,14 @@ All URIs are relative to *https://api.cs2c.app*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountApi* | [**create_alert_route_v1_account_alerts_post**](docs/AccountApi.md#create_alert_route_v1_account_alerts_post) | **POST** /v1/account/alerts | Create Alert Route
+*AccountApi* | [**create_watchlist_entry_v1_account_watchlist_post**](docs/AccountApi.md#create_watchlist_entry_v1_account_watchlist_post) | **POST** /v1/account/watchlist | Create Watchlist Entry
+*AccountApi* | [**delete_alert_route_v1_account_alerts_alert_id_delete**](docs/AccountApi.md#delete_alert_route_v1_account_alerts_alert_id_delete) | **DELETE** /v1/account/alerts/{alert_id} | Delete Alert Route
+*AccountApi* | [**delete_watchlist_entry_v1_account_watchlist_item_id_delete**](docs/AccountApi.md#delete_watchlist_entry_v1_account_watchlist_item_id_delete) | **DELETE** /v1/account/watchlist/{item_id} | Delete Watchlist Entry
+*AccountApi* | [**get_alert_event_history_v1_account_alerts_events_get**](docs/AccountApi.md#get_alert_event_history_v1_account_alerts_events_get) | **GET** /v1/account/alerts/events | Get Alert Event History
+*AccountApi* | [**get_alerts_v1_account_alerts_get**](docs/AccountApi.md#get_alerts_v1_account_alerts_get) | **GET** /v1/account/alerts | Get Alerts
+*AccountApi* | [**get_watchlist_v1_account_watchlist_get**](docs/AccountApi.md#get_watchlist_v1_account_watchlist_get) | **GET** /v1/account/watchlist | Get Watchlist
+*AccountApi* | [**patch_alert_v1_account_alerts_alert_id_patch**](docs/AccountApi.md#patch_alert_v1_account_alerts_alert_id_patch) | **PATCH** /v1/account/alerts/{alert_id} | Patch Alert
 *AccountApi* | [**reset_free_tier_ip_binding_v1_account_key_reset_ip_post**](docs/AccountApi.md#reset_free_tier_ip_binding_v1_account_key_reset_ip_post) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *BidsApi* | [**list_bids_v1_bids_get**](docs/BidsApi.md#list_bids_v1_bids_get) | **GET** /v1/bids | List Bids
 *ForeignExchangeApi* | [**get_fx_rates_v1_fx_get**](docs/ForeignExchangeApi.md#get_fx_rates_v1_fx_get) | **GET** /v1/fx | Get Fx Rates
@@ -110,6 +119,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccountMutationResponse](docs/AccountMutationResponse.md)
+ - [AlertCreateRequest](docs/AlertCreateRequest.md)
+ - [AlertDefinition](docs/AlertDefinition.md)
+ - [AlertDeliverySummary](docs/AlertDeliverySummary.md)
+ - [AlertEventSummary](docs/AlertEventSummary.md)
+ - [AlertEventsResponse](docs/AlertEventsResponse.md)
+ - [AlertItemSummary](docs/AlertItemSummary.md)
+ - [AlertListResponse](docs/AlertListResponse.md)
+ - [AlertUpdateRequest](docs/AlertUpdateRequest.md)
  - [AllProviders](docs/AllProviders.md)
  - [BidsFilterMeta](docs/BidsFilterMeta.md)
  - [BidsMeta](docs/BidsMeta.md)
@@ -168,8 +186,13 @@ Class | Method | HTTP request | Description
  - [SalesHistoryResponse](docs/SalesHistoryResponse.md)
  - [SalesMeta](docs/SalesMeta.md)
  - [StickerInfo](docs/StickerInfo.md)
+ - [ThresholdValue](docs/ThresholdValue.md)
+ - [ThresholdValue1](docs/ThresholdValue1.md)
  - [ValidationErrorItem](docs/ValidationErrorItem.md)
  - [ValidationErrorResponse](docs/ValidationErrorResponse.md)
+ - [WatchlistCreateRequest](docs/WatchlistCreateRequest.md)
+ - [WatchlistItem](docs/WatchlistItem.md)
+ - [WatchlistResponse](docs/WatchlistResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

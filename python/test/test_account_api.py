@@ -27,6 +27,62 @@ class TestAccountApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_alert_route_v1_account_alerts_post(self) -> None:
+        """Test case for create_alert_route_v1_account_alerts_post
+
+        Create Alert Route
+        """
+        pass
+
+    def test_create_watchlist_entry_v1_account_watchlist_post(self) -> None:
+        """Test case for create_watchlist_entry_v1_account_watchlist_post
+
+        Create Watchlist Entry
+        """
+        pass
+
+    def test_delete_alert_route_v1_account_alerts_alert_id_delete(self) -> None:
+        """Test case for delete_alert_route_v1_account_alerts_alert_id_delete
+
+        Delete Alert Route
+        """
+        pass
+
+    def test_delete_watchlist_entry_v1_account_watchlist_item_id_delete(self) -> None:
+        """Test case for delete_watchlist_entry_v1_account_watchlist_item_id_delete
+
+        Delete Watchlist Entry
+        """
+        pass
+
+    def test_get_alert_event_history_v1_account_alerts_events_get(self) -> None:
+        """Test case for get_alert_event_history_v1_account_alerts_events_get
+
+        Get Alert Event History
+        """
+        pass
+
+    def test_get_alerts_v1_account_alerts_get(self) -> None:
+        """Test case for get_alerts_v1_account_alerts_get
+
+        Get Alerts
+        """
+        pass
+
+    def test_get_watchlist_v1_account_watchlist_get(self) -> None:
+        """Test case for get_watchlist_v1_account_watchlist_get
+
+        Get Watchlist
+        """
+        pass
+
+    def test_patch_alert_v1_account_alerts_alert_id_patch(self) -> None:
+        """Test case for patch_alert_v1_account_alerts_alert_id_patch
+
+        Patch Alert
+        """
+        pass
+
     def test_reset_free_tier_ip_binding_v1_account_key_reset_ip_post(self) -> None:
         """Test case for reset_free_tier_ip_binding_v1_account_key_reset_ip_post
 

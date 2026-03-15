@@ -15,23 +15,532 @@
 
 import * as runtime from '../runtime';
 import type {
+  AccountMutationResponse,
+  AlertCreateRequest,
+  AlertDefinition,
+  AlertEventsResponse,
+  AlertListResponse,
+  AlertUpdateRequest,
   ErrorResponse,
   IPResetResponse,
   ValidationErrorResponse,
+  WatchlistCreateRequest,
+  WatchlistItem,
+  WatchlistResponse,
 } from '../models/index';
 import {
+    AccountMutationResponseFromJSON,
+    AccountMutationResponseToJSON,
+    AlertCreateRequestFromJSON,
+    AlertCreateRequestToJSON,
+    AlertDefinitionFromJSON,
+    AlertDefinitionToJSON,
+    AlertEventsResponseFromJSON,
+    AlertEventsResponseToJSON,
+    AlertListResponseFromJSON,
+    AlertListResponseToJSON,
+    AlertUpdateRequestFromJSON,
+    AlertUpdateRequestToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
     IPResetResponseFromJSON,
     IPResetResponseToJSON,
     ValidationErrorResponseFromJSON,
     ValidationErrorResponseToJSON,
+    WatchlistCreateRequestFromJSON,
+    WatchlistCreateRequestToJSON,
+    WatchlistItemFromJSON,
+    WatchlistItemToJSON,
+    WatchlistResponseFromJSON,
+    WatchlistResponseToJSON,
 } from '../models/index';
+
+export interface CreateAlertRouteV1AccountAlertsPostRequest {
+    alertCreateRequest: AlertCreateRequest;
+}
+
+export interface CreateWatchlistEntryV1AccountWatchlistPostRequest {
+    watchlistCreateRequest: WatchlistCreateRequest;
+}
+
+export interface DeleteAlertRouteV1AccountAlertsAlertIdDeleteRequest {
+    alertId: string;
+}
+
+export interface DeleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequest {
+    itemId: number;
+}
+
+export interface GetAlertEventHistoryV1AccountAlertsEventsGetRequest {
+    limit?: number;
+    cursor?: string | null;
+}
+
+export interface GetWatchlistV1AccountWatchlistGetRequest {
+    limit?: number;
+    cursor?: string | null;
+    search?: string | null;
+}
+
+export interface PatchAlertV1AccountAlertsAlertIdPatchRequest {
+    alertId: string;
+    alertUpdateRequest: AlertUpdateRequest;
+}
 
 /**
  * 
  */
 export class AccountApi extends runtime.BaseAPI {
+
+    /**
+     * Creates request options for createAlertRouteV1AccountAlertsPost without sending the request
+     */
+    async createAlertRouteV1AccountAlertsPostRequestOpts(requestParameters: CreateAlertRouteV1AccountAlertsPostRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['alertCreateRequest'] == null) {
+            throw new runtime.RequiredError(
+                'alertCreateRequest',
+                'Required parameter "alertCreateRequest" was null or undefined when calling createAlertRouteV1AccountAlertsPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/alerts`;
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AlertCreateRequestToJSON(requestParameters['alertCreateRequest']),
+        };
+    }
+
+    /**
+     * Create a new account alert.
+     * Create Alert Route
+     */
+    async createAlertRouteV1AccountAlertsPostRaw(requestParameters: CreateAlertRouteV1AccountAlertsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlertDefinition>> {
+        const requestOptions = await this.createAlertRouteV1AccountAlertsPostRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlertDefinitionFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a new account alert.
+     * Create Alert Route
+     */
+    async createAlertRouteV1AccountAlertsPost(requestParameters: CreateAlertRouteV1AccountAlertsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlertDefinition> {
+        const response = await this.createAlertRouteV1AccountAlertsPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for createWatchlistEntryV1AccountWatchlistPost without sending the request
+     */
+    async createWatchlistEntryV1AccountWatchlistPostRequestOpts(requestParameters: CreateWatchlistEntryV1AccountWatchlistPostRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['watchlistCreateRequest'] == null) {
+            throw new runtime.RequiredError(
+                'watchlistCreateRequest',
+                'Required parameter "watchlistCreateRequest" was null or undefined when calling createWatchlistEntryV1AccountWatchlistPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/watchlist`;
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WatchlistCreateRequestToJSON(requestParameters['watchlistCreateRequest']),
+        };
+    }
+
+    /**
+     * Save one item to the default account watchlist.
+     * Create Watchlist Entry
+     */
+    async createWatchlistEntryV1AccountWatchlistPostRaw(requestParameters: CreateWatchlistEntryV1AccountWatchlistPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WatchlistItem>> {
+        const requestOptions = await this.createWatchlistEntryV1AccountWatchlistPostRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WatchlistItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Save one item to the default account watchlist.
+     * Create Watchlist Entry
+     */
+    async createWatchlistEntryV1AccountWatchlistPost(requestParameters: CreateWatchlistEntryV1AccountWatchlistPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WatchlistItem> {
+        const response = await this.createWatchlistEntryV1AccountWatchlistPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for deleteAlertRouteV1AccountAlertsAlertIdDelete without sending the request
+     */
+    async deleteAlertRouteV1AccountAlertsAlertIdDeleteRequestOpts(requestParameters: DeleteAlertRouteV1AccountAlertsAlertIdDeleteRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['alertId'] == null) {
+            throw new runtime.RequiredError(
+                'alertId',
+                'Required parameter "alertId" was null or undefined when calling deleteAlertRouteV1AccountAlertsAlertIdDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/alerts/{alert_id}`;
+        urlPath = urlPath.replace(`{${"alert_id"}}`, encodeURIComponent(String(requestParameters['alertId'])));
+
+        return {
+            path: urlPath,
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Delete an account alert.
+     * Delete Alert Route
+     */
+    async deleteAlertRouteV1AccountAlertsAlertIdDeleteRaw(requestParameters: DeleteAlertRouteV1AccountAlertsAlertIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountMutationResponse>> {
+        const requestOptions = await this.deleteAlertRouteV1AccountAlertsAlertIdDeleteRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AccountMutationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete an account alert.
+     * Delete Alert Route
+     */
+    async deleteAlertRouteV1AccountAlertsAlertIdDelete(requestParameters: DeleteAlertRouteV1AccountAlertsAlertIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountMutationResponse> {
+        const response = await this.deleteAlertRouteV1AccountAlertsAlertIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for deleteWatchlistEntryV1AccountWatchlistItemIdDelete without sending the request
+     */
+    async deleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequestOpts(requestParameters: DeleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['itemId'] == null) {
+            throw new runtime.RequiredError(
+                'itemId',
+                'Required parameter "itemId" was null or undefined when calling deleteWatchlistEntryV1AccountWatchlistItemIdDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/watchlist/{item_id}`;
+        urlPath = urlPath.replace(`{${"item_id"}}`, encodeURIComponent(String(requestParameters['itemId'])));
+
+        return {
+            path: urlPath,
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Delete one item from the default account watchlist.
+     * Delete Watchlist Entry
+     */
+    async deleteWatchlistEntryV1AccountWatchlistItemIdDeleteRaw(requestParameters: DeleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountMutationResponse>> {
+        const requestOptions = await this.deleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AccountMutationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete one item from the default account watchlist.
+     * Delete Watchlist Entry
+     */
+    async deleteWatchlistEntryV1AccountWatchlistItemIdDelete(requestParameters: DeleteWatchlistEntryV1AccountWatchlistItemIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountMutationResponse> {
+        const response = await this.deleteWatchlistEntryV1AccountWatchlistItemIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getAlertEventHistoryV1AccountAlertsEventsGet without sending the request
+     */
+    async getAlertEventHistoryV1AccountAlertsEventsGetRequestOpts(requestParameters: GetAlertEventHistoryV1AccountAlertsEventsGetRequest): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/alerts/events`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * List recent alert trigger events with delivery status.
+     * Get Alert Event History
+     */
+    async getAlertEventHistoryV1AccountAlertsEventsGetRaw(requestParameters: GetAlertEventHistoryV1AccountAlertsEventsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlertEventsResponse>> {
+        const requestOptions = await this.getAlertEventHistoryV1AccountAlertsEventsGetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlertEventsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List recent alert trigger events with delivery status.
+     * Get Alert Event History
+     */
+    async getAlertEventHistoryV1AccountAlertsEventsGet(requestParameters: GetAlertEventHistoryV1AccountAlertsEventsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlertEventsResponse> {
+        const response = await this.getAlertEventHistoryV1AccountAlertsEventsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getAlertsV1AccountAlertsGet without sending the request
+     */
+    async getAlertsV1AccountAlertsGetRequestOpts(): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/alerts`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * List configured alerts for the authenticated user.
+     * Get Alerts
+     */
+    async getAlertsV1AccountAlertsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlertListResponse>> {
+        const requestOptions = await this.getAlertsV1AccountAlertsGetRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlertListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List configured alerts for the authenticated user.
+     * Get Alerts
+     */
+    async getAlertsV1AccountAlertsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlertListResponse> {
+        const response = await this.getAlertsV1AccountAlertsGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getWatchlistV1AccountWatchlistGet without sending the request
+     */
+    async getWatchlistV1AccountWatchlistGetRequestOpts(requestParameters: GetWatchlistV1AccountWatchlistGetRequest): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
+        }
+
+        if (requestParameters['search'] != null) {
+            queryParameters['search'] = requestParameters['search'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/watchlist`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * List saved watchlist items for the authenticated user.
+     * Get Watchlist
+     */
+    async getWatchlistV1AccountWatchlistGetRaw(requestParameters: GetWatchlistV1AccountWatchlistGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WatchlistResponse>> {
+        const requestOptions = await this.getWatchlistV1AccountWatchlistGetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WatchlistResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List saved watchlist items for the authenticated user.
+     * Get Watchlist
+     */
+    async getWatchlistV1AccountWatchlistGet(requestParameters: GetWatchlistV1AccountWatchlistGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WatchlistResponse> {
+        const response = await this.getWatchlistV1AccountWatchlistGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for patchAlertV1AccountAlertsAlertIdPatch without sending the request
+     */
+    async patchAlertV1AccountAlertsAlertIdPatchRequestOpts(requestParameters: PatchAlertV1AccountAlertsAlertIdPatchRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['alertId'] == null) {
+            throw new runtime.RequiredError(
+                'alertId',
+                'Required parameter "alertId" was null or undefined when calling patchAlertV1AccountAlertsAlertIdPatch().'
+            );
+        }
+
+        if (requestParameters['alertUpdateRequest'] == null) {
+            throw new runtime.RequiredError(
+                'alertUpdateRequest',
+                'Required parameter "alertUpdateRequest" was null or undefined when calling patchAlertV1AccountAlertsAlertIdPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/account/alerts/{alert_id}`;
+        urlPath = urlPath.replace(`{${"alert_id"}}`, encodeURIComponent(String(requestParameters['alertId'])));
+
+        return {
+            path: urlPath,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AlertUpdateRequestToJSON(requestParameters['alertUpdateRequest']),
+        };
+    }
+
+    /**
+     * Update an existing account alert.
+     * Patch Alert
+     */
+    async patchAlertV1AccountAlertsAlertIdPatchRaw(requestParameters: PatchAlertV1AccountAlertsAlertIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlertDefinition>> {
+        const requestOptions = await this.patchAlertV1AccountAlertsAlertIdPatchRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlertDefinitionFromJSON(jsonValue));
+    }
+
+    /**
+     * Update an existing account alert.
+     * Patch Alert
+     */
+    async patchAlertV1AccountAlertsAlertIdPatch(requestParameters: PatchAlertV1AccountAlertsAlertIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlertDefinition> {
+        const response = await this.patchAlertV1AccountAlertsAlertIdPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Creates request options for resetFreeTierIpBindingV1AccountKeyResetIpPost without sending the request

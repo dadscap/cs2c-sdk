@@ -18,7 +18,7 @@ import {
   Configuration,
   AccountApi,
 } from 'cs2cap-sdk';
-import type { ResetFreeTierIpBindingV1AccountKeyResetIpPostRequest } from 'cs2cap-sdk';
+import type { CreateAlertRouteV1AccountAlertsPostRequest } from 'cs2cap-sdk';
 
 async function example() {
   console.log("🚀 Testing cs2cap-sdk SDK...");
@@ -28,8 +28,13 @@ async function example() {
   });
   const api = new AccountApi(config);
 
+  const body = {
+    // AlertCreateRequest
+    alertCreateRequest: ...,
+  } satisfies CreateAlertRouteV1AccountAlertsPostRequest;
+
   try {
-    const data = await api.resetFreeTierIpBindingV1AccountKeyResetIpPost();
+    const data = await api.createAlertRouteV1AccountAlertsPost(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -49,6 +54,14 @@ All URIs are relative to *https://api.cs2c.app*
 
 | Class | Method | HTTP request | Description
 | ----- | ------ | ------------ | -------------
+*AccountApi* | [**createAlertRouteV1AccountAlertsPost**](docs/AccountApi.md#createalertroutev1accountalertspost) | **POST** /v1/account/alerts | Create Alert Route
+*AccountApi* | [**createWatchlistEntryV1AccountWatchlistPost**](docs/AccountApi.md#createwatchlistentryv1accountwatchlistpost) | **POST** /v1/account/watchlist | Create Watchlist Entry
+*AccountApi* | [**deleteAlertRouteV1AccountAlertsAlertIdDelete**](docs/AccountApi.md#deletealertroutev1accountalertsalertiddelete) | **DELETE** /v1/account/alerts/{alert_id} | Delete Alert Route
+*AccountApi* | [**deleteWatchlistEntryV1AccountWatchlistItemIdDelete**](docs/AccountApi.md#deletewatchlistentryv1accountwatchlistitemiddelete) | **DELETE** /v1/account/watchlist/{item_id} | Delete Watchlist Entry
+*AccountApi* | [**getAlertEventHistoryV1AccountAlertsEventsGet**](docs/AccountApi.md#getalerteventhistoryv1accountalertseventsget) | **GET** /v1/account/alerts/events | Get Alert Event History
+*AccountApi* | [**getAlertsV1AccountAlertsGet**](docs/AccountApi.md#getalertsv1accountalertsget) | **GET** /v1/account/alerts | Get Alerts
+*AccountApi* | [**getWatchlistV1AccountWatchlistGet**](docs/AccountApi.md#getwatchlistv1accountwatchlistget) | **GET** /v1/account/watchlist | Get Watchlist
+*AccountApi* | [**patchAlertV1AccountAlertsAlertIdPatch**](docs/AccountApi.md#patchalertv1accountalertsalertidpatch) | **PATCH** /v1/account/alerts/{alert_id} | Patch Alert
 *AccountApi* | [**resetFreeTierIpBindingV1AccountKeyResetIpPost**](docs/AccountApi.md#resetfreetieripbindingv1accountkeyresetippost) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *BidsApi* | [**listBidsV1BidsGet**](docs/BidsApi.md#listbidsv1bidsget) | **GET** /v1/bids | List Bids
 *ForeignExchangeApi* | [**getFxRatesV1FxGet**](docs/ForeignExchangeApi.md#getfxratesv1fxget) | **GET** /v1/fx | Get Fx Rates
@@ -66,6 +79,15 @@ All URIs are relative to *https://api.cs2c.app*
 
 ### Models
 
+- [AccountMutationResponse](docs/AccountMutationResponse.md)
+- [AlertCreateRequest](docs/AlertCreateRequest.md)
+- [AlertDefinition](docs/AlertDefinition.md)
+- [AlertDeliverySummary](docs/AlertDeliverySummary.md)
+- [AlertEventSummary](docs/AlertEventSummary.md)
+- [AlertEventsResponse](docs/AlertEventsResponse.md)
+- [AlertItemSummary](docs/AlertItemSummary.md)
+- [AlertListResponse](docs/AlertListResponse.md)
+- [AlertUpdateRequest](docs/AlertUpdateRequest.md)
 - [AllProviders](docs/AllProviders.md)
 - [BidsFilterMeta](docs/BidsFilterMeta.md)
 - [BidsMeta](docs/BidsMeta.md)
@@ -124,8 +146,13 @@ All URIs are relative to *https://api.cs2c.app*
 - [SalesHistoryResponse](docs/SalesHistoryResponse.md)
 - [SalesMeta](docs/SalesMeta.md)
 - [StickerInfo](docs/StickerInfo.md)
+- [ThresholdValue](docs/ThresholdValue.md)
+- [ThresholdValue1](docs/ThresholdValue1.md)
 - [ValidationErrorItem](docs/ValidationErrorItem.md)
 - [ValidationErrorResponse](docs/ValidationErrorResponse.md)
+- [WatchlistCreateRequest](docs/WatchlistCreateRequest.md)
+- [WatchlistItem](docs/WatchlistItem.md)
+- [WatchlistResponse](docs/WatchlistResponse.md)
 
 ### Authorization
 
