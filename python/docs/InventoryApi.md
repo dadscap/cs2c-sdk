@@ -1,0 +1,173 @@
+# cs2cap_sdk.InventoryApi
+
+All URIs are relative to *https://api.cs2c.app*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**fetch_steam_inventory**](InventoryApi.md#fetch_steam_inventory) | **GET** /v1/inventory/steam | Fetch Steam Inventory
+[**fetch_steam_inventory_by_steam_id**](InventoryApi.md#fetch_steam_inventory_by_steam_id) | **GET** /v1/inventory/steam/lookup | Fetch Steam Inventory by Steam ID
+
+
+# **fetch_steam_inventory**
+> SteamInventoryResponse fetch_steam_inventory()
+
+Fetch Steam Inventory
+
+Fetch the authenticated user's live CS2 inventory from Steam. Requires a linked Steam account. No data is persisted — use the portfolio import endpoint to add items to a portfolio.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import cs2cap_sdk
+from cs2cap_sdk.models.steam_inventory_response import SteamInventoryResponse
+from cs2cap_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.cs2c.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cs2cap_sdk.Configuration(
+    host = "https://api.cs2c.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = cs2cap_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with cs2cap_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cs2cap_sdk.InventoryApi(api_client)
+
+    try:
+        # Fetch Steam Inventory
+        api_response = api_instance.fetch_steam_inventory()
+        print("The response of InventoryApi->fetch_steam_inventory:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InventoryApi->fetch_steam_inventory: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SteamInventoryResponse**](SteamInventoryResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**401** | Missing or invalid authentication credentials. |  -  |
+**403** | No linked Steam account. |  -  |
+**429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
+**422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  |
+**503** | Steam inventory unavailable. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fetch_steam_inventory_by_steam_id**
+> SteamInventoryResponse fetch_steam_inventory_by_steam_id(steam_id)
+
+Fetch Steam Inventory by Steam ID
+
+Fetch the CS2 inventory for any Steam account by Steam64ID or vanity URL. Accepts a 17-digit Steam64ID (e.g. `76561197964243909`) or a custom URL name (e.g. `dadscap`). Vanity URL resolution requires a Steam Web API key to be configured. No data is persisted.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import cs2cap_sdk
+from cs2cap_sdk.models.steam_inventory_response import SteamInventoryResponse
+from cs2cap_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.cs2c.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cs2cap_sdk.Configuration(
+    host = "https://api.cs2c.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = cs2cap_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with cs2cap_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cs2cap_sdk.InventoryApi(api_client)
+    steam_id = 'steam_id_example' # str | Steam64ID (17-digit) or vanity URL name (e.g. 'dadscap').
+
+    try:
+        # Fetch Steam Inventory by Steam ID
+        api_response = api_instance.fetch_steam_inventory_by_steam_id(steam_id)
+        print("The response of InventoryApi->fetch_steam_inventory_by_steam_id:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InventoryApi->fetch_steam_inventory_by_steam_id: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **steam_id** | **str**| Steam64ID (17-digit) or vanity URL name (e.g. &#39;dadscap&#39;). | 
+
+### Return type
+
+[**SteamInventoryResponse**](SteamInventoryResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**401** | Missing or invalid authentication credentials. |  -  |
+**403** | Authenticated but not permitted to access this resource. |  -  |
+**429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
+**422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  |
+**400** | Steam ID could not be resolved. |  -  |
+**503** | Steam inventory unavailable. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

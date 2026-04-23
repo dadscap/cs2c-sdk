@@ -1,0 +1,39 @@
+export async function* decodeLines(
+  body: ReadableStream<Uint8Array> | null,
+): AsyncGenerator<string> {
+  if (!body) {
+    return;
+  }
+
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+
+      buffer += decoder.decode(value, { stream: true });
+      let newlineIndex = buffer.indexOf("\n");
+      while (newlineIndex >= 0) {
+        const line = buffer.slice(0, newlineIndex).trim();
+        buffer = buffer.slice(newlineIndex + 1);
+        if (line) {
+          yield line;
+        }
+        newlineIndex = buffer.indexOf("\n");
+      }
+    }
+
+    buffer += decoder.decode();
+    const tail = buffer.trim();
+    if (tail) {
+      yield tail;
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
