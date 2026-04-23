@@ -6,7 +6,8 @@ Request body for POST /v1/bids/batch.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**item_ids** | **List[int]** | Normalized catalog item IDs to look up. | 
+**item_ids** | **List[int]** |  | [optional] 
+**market_hash_names** | **List[str]** |  | [optional] 
 **providers** | **List[str]** |  | [optional] 
 **currency** | **str** | Target currency code for returned bids. | [optional] [default to 'USD']
 

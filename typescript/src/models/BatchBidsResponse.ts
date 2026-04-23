@@ -52,6 +52,12 @@ export interface BatchBidsResponse {
      * @memberof BatchBidsResponse
      */
     itemsNotFound: Array<number>;
+    /**
+     * Market hash names that could not be resolved to a catalog item.
+     * @type {Array<string>}
+     * @memberof BatchBidsResponse
+     */
+    namesNotFound?: Array<string>;
 }
 
 /**
@@ -77,6 +83,7 @@ export function BatchBidsResponseFromJSONTyped(json: any, ignoreDiscriminator: b
         'meta': BatchBidsMetaFromJSON(json['meta']),
         'items': ((json['items'] as Array<any>).map(BatchBidItemFromJSON)),
         'itemsNotFound': json['items_not_found'],
+        'namesNotFound': json['names_not_found'] == null ? undefined : json['names_not_found'],
     };
 }
 
@@ -94,6 +101,7 @@ export function BatchBidsResponseToJSONTyped(value?: BatchBidsResponse | null, i
         'meta': BatchBidsMetaToJSON(value['meta']),
         'items': ((value['items'] as Array<any>).map(BatchBidItemToJSON)),
         'items_not_found': value['itemsNotFound'],
+        'names_not_found': value['namesNotFound'],
     };
 }
 

@@ -20,6 +20,7 @@ import type {
   ErrorResponse,
   MarketArbitrageResponse,
   MarketIndicatorsItemResponse,
+  MarketIndicesResponse,
   MarketItemAnalyticsResponse,
   MarketItemsSnapshotResponse,
   ValidationErrorResponse,
@@ -35,6 +36,8 @@ import {
     MarketArbitrageResponseToJSON,
     MarketIndicatorsItemResponseFromJSON,
     MarketIndicatorsItemResponseToJSON,
+    MarketIndicesResponseFromJSON,
+    MarketIndicesResponseToJSON,
     MarketItemAnalyticsResponseFromJSON,
     MarketItemAnalyticsResponseToJSON,
     MarketItemsSnapshotResponseFromJSON,
@@ -61,6 +64,10 @@ export interface GetIndicatorsRequest {
 
 export interface GetItemAnalyticsRequest {
     itemId: number;
+}
+
+export interface GetMarketCapIndicesRequest {
+    groupBy?: GetMarketCapIndicesGroupByEnum;
 }
 
 /**
@@ -304,6 +311,57 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * Creates request options for getMarketCapIndices without sending the request
+     */
+    async getMarketCapIndicesRequestOpts(requestParameters: GetMarketCapIndicesRequest): Promise<runtime.RequestOpts> {
+        const queryParameters: any = {};
+
+        if (requestParameters['groupBy'] != null) {
+            queryParameters['group_by'] = requestParameters['groupBy'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/v1/market/indices`;
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+     * Get Market Cap Indices
+     */
+    async getMarketCapIndicesRaw(requestParameters: GetMarketCapIndicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketIndicesResponse>> {
+        const requestOptions = await this.getMarketCapIndicesRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MarketIndicesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+     * Get Market Cap Indices
+     */
+    async getMarketCapIndices(requestParameters: GetMarketCapIndicesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketIndicesResponse> {
+        const response = await this.getMarketCapIndicesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
 }
 
 /**
@@ -314,3 +372,11 @@ export const GetIndicatorsIntervalEnum = {
     _1d: '1d'
 } as const;
 export type GetIndicatorsIntervalEnum = typeof GetIndicatorsIntervalEnum[keyof typeof GetIndicatorsIntervalEnum];
+/**
+ * @export
+ */
+export const GetMarketCapIndicesGroupByEnum = {
+    ItemType: 'item_type',
+    WeaponType: 'weapon_type'
+} as const;
+export type GetMarketCapIndicesGroupByEnum = typeof GetMarketCapIndicesGroupByEnum[keyof typeof GetMarketCapIndicesGroupByEnum];

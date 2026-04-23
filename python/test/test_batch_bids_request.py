@@ -38,6 +38,9 @@ class TestBatchBidsRequest(unittest.TestCase):
                 item_ids = [
                     56
                     ],
+                market_hash_names = [
+                    ''
+                    ],
                 providers = [
                     ''
                     ],
@@ -45,9 +48,6 @@ class TestBatchBidsRequest(unittest.TestCase):
             )
         else:
             return BatchBidsRequest(
-                item_ids = [
-                    56
-                    ],
         )
         """
 

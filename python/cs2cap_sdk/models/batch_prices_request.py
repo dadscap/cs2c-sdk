@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,10 +26,11 @@ class BatchPricesRequest(BaseModel):
     """
     Request body for POST /v1/prices/batch.
     """ # noqa: E501
-    item_ids: Annotated[List[StrictInt], Field(min_length=1)] = Field(description="Normalized catalog item IDs to look up.")
+    item_ids: Optional[List[StrictInt]] = None
+    market_hash_names: Optional[List[StrictStr]] = None
     providers: Optional[List[StrictStr]] = None
     currency: Optional[StrictStr] = Field(default='USD', description="Target currency code for returned prices.")
-    __properties: ClassVar[List[str]] = ["item_ids", "providers", "currency"]
+    __properties: ClassVar[List[str]] = ["item_ids", "market_hash_names", "providers", "currency"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -71,6 +71,16 @@ class BatchPricesRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if item_ids (nullable) is None
+        # and model_fields_set contains the field
+        if self.item_ids is None and "item_ids" in self.model_fields_set:
+            _dict['item_ids'] = None
+
+        # set to None if market_hash_names (nullable) is None
+        # and model_fields_set contains the field
+        if self.market_hash_names is None and "market_hash_names" in self.model_fields_set:
+            _dict['market_hash_names'] = None
+
         # set to None if providers (nullable) is None
         # and model_fields_set contains the field
         if self.providers is None and "providers" in self.model_fields_set:
@@ -89,6 +99,7 @@ class BatchPricesRequest(BaseModel):
 
         _obj = cls.model_validate({
             "item_ids": obj.get("item_ids"),
+            "market_hash_names": obj.get("market_hash_names"),
             "providers": obj.get("providers"),
             "currency": obj.get("currency") if obj.get("currency") is not None else 'USD'
         })

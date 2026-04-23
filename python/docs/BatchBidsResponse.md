@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **meta** | [**BatchBidsMeta**](BatchBidsMeta.md) | Response metadata. | 
 **items** | [**List[BatchBidItem]**](BatchBidItem.md) | Per-item bid data. | 
 **items_not_found** | **List[int]** | Item IDs with no bid data available. | 
+**names_not_found** | **List[str]** | Market hash names that could not be resolved to a catalog item. | [optional] 
 
 ## Example
 

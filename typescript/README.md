@@ -1,4 +1,4 @@
-# cs2cap-sdk@1.0.0
+# @cs2cap.com/sdk@1.0.0
 
 A TypeScript SDK client for the api.cs2c.app API.
 
@@ -7,7 +7,7 @@ A TypeScript SDK client for the api.cs2c.app API.
 First, install the SDK from npm.
 
 ```bash
-npm install cs2cap-sdk --save
+npm install @cs2cap.com/sdk --save
 ```
 
 Next, try it out.
@@ -17,11 +17,11 @@ Next, try it out.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-sdk';
-import type { CreateSubKeyRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { CreateSubKeyRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -89,6 +89,7 @@ All URIs are relative to *https://api.cs2c.app*
 *MarketIntelligenceApi* | [**getIndicators**](docs/MarketIntelligenceApi.md#getindicators) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**getItemAnalytics**](docs/MarketIntelligenceApi.md#getitemanalytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 *MarketIntelligenceApi* | [**getMarketAnalyticsSnapshot**](docs/MarketIntelligenceApi.md#getmarketanalyticssnapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
+*MarketIntelligenceApi* | [**getMarketCapIndices**](docs/MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indices | Get Market Cap Indices
 *PortfolioApi* | [**addItemToPortfolio**](docs/PortfolioApi.md#additemtoportfolio) | **POST** /v1/portfolio/{portfolio_id}/items | Add Item to Portfolio
 *PortfolioApi* | [**addTransaction**](docs/PortfolioApi.md#addtransaction) | **POST** /v1/portfolio/{portfolio_id}/transactions | Add Transaction
 *PortfolioApi* | [**createPortfolio**](docs/PortfolioApi.md#createportfolio) | **POST** /v1/portfolio | Create Portfolio
@@ -170,9 +171,13 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketArbitrageItem](docs/MarketArbitrageItem.md)
 - [MarketArbitrageMeta](docs/MarketArbitrageMeta.md)
 - [MarketArbitrageResponse](docs/MarketArbitrageResponse.md)
+- [MarketIndexGroup](docs/MarketIndexGroup.md)
 - [MarketIndicatorsItemData](docs/MarketIndicatorsItemData.md)
 - [MarketIndicatorsItemResponse](docs/MarketIndicatorsItemResponse.md)
 - [MarketIndicatorsMeta](docs/MarketIndicatorsMeta.md)
+- [MarketIndicesData](docs/MarketIndicesData.md)
+- [MarketIndicesMeta](docs/MarketIndicesMeta.md)
+- [MarketIndicesResponse](docs/MarketIndicesResponse.md)
 - [MarketItem](docs/MarketItem.md)
 - [MarketItemAnalyticsCoverage](docs/MarketItemAnalyticsCoverage.md)
 - [MarketItemAnalyticsData](docs/MarketItemAnalyticsData.md)

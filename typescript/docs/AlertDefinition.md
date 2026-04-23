@@ -20,7 +20,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { AlertDefinition } from 'cs2cap-sdk'
+import type { AlertDefinition } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

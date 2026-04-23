@@ -129,6 +129,7 @@ Class | Method | HTTP request | Description
 *MarketIntelligenceApi* | [**get_indicators**](docs/MarketIntelligenceApi.md#get_indicators) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**get_item_analytics**](docs/MarketIntelligenceApi.md#get_item_analytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 *MarketIntelligenceApi* | [**get_market_analytics_snapshot**](docs/MarketIntelligenceApi.md#get_market_analytics_snapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
+*MarketIntelligenceApi* | [**get_market_cap_indices**](docs/MarketIntelligenceApi.md#get_market_cap_indices) | **GET** /v1/market/indices | Get Market Cap Indices
 *PortfolioApi* | [**add_item_to_portfolio**](docs/PortfolioApi.md#add_item_to_portfolio) | **POST** /v1/portfolio/{portfolio_id}/items | Add Item to Portfolio
 *PortfolioApi* | [**add_transaction**](docs/PortfolioApi.md#add_transaction) | **POST** /v1/portfolio/{portfolio_id}/transactions | Add Transaction
 *PortfolioApi* | [**create_portfolio**](docs/PortfolioApi.md#create_portfolio) | **POST** /v1/portfolio | Create Portfolio
@@ -210,9 +211,13 @@ Class | Method | HTTP request | Description
  - [MarketArbitrageItem](docs/MarketArbitrageItem.md)
  - [MarketArbitrageMeta](docs/MarketArbitrageMeta.md)
  - [MarketArbitrageResponse](docs/MarketArbitrageResponse.md)
+ - [MarketIndexGroup](docs/MarketIndexGroup.md)
  - [MarketIndicatorsItemData](docs/MarketIndicatorsItemData.md)
  - [MarketIndicatorsItemResponse](docs/MarketIndicatorsItemResponse.md)
  - [MarketIndicatorsMeta](docs/MarketIndicatorsMeta.md)
+ - [MarketIndicesData](docs/MarketIndicesData.md)
+ - [MarketIndicesMeta](docs/MarketIndicesMeta.md)
+ - [MarketIndicesResponse](docs/MarketIndicesResponse.md)
  - [MarketItem](docs/MarketItem.md)
  - [MarketItemAnalyticsCoverage](docs/MarketItemAnalyticsCoverage.md)
  - [MarketItemAnalyticsData](docs/MarketItemAnalyticsData.md)

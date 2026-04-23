@@ -15,7 +15,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { MarketMeta } from 'cs2cap-sdk'
+import type { MarketMeta } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

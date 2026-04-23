@@ -59,6 +59,9 @@ class TestBatchBidsResponse(unittest.TestCase):
                     ],
                 items_not_found = [
                     56
+                    ],
+                names_not_found = [
+                    ''
                     ]
             )
         else:

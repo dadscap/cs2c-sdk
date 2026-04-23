@@ -52,6 +52,12 @@ export interface BatchPricesResponse {
      * @memberof BatchPricesResponse
      */
     itemsNotFound: Array<number>;
+    /**
+     * Market hash names that could not be resolved to a catalog item.
+     * @type {Array<string>}
+     * @memberof BatchPricesResponse
+     */
+    namesNotFound?: Array<string>;
 }
 
 /**
@@ -77,6 +83,7 @@ export function BatchPricesResponseFromJSONTyped(json: any, ignoreDiscriminator:
         'meta': BatchPricesMetaFromJSON(json['meta']),
         'items': ((json['items'] as Array<any>).map(BatchPriceItemFromJSON)),
         'itemsNotFound': json['items_not_found'],
+        'namesNotFound': json['names_not_found'] == null ? undefined : json['names_not_found'],
     };
 }
 
@@ -94,6 +101,7 @@ export function BatchPricesResponseToJSONTyped(value?: BatchPricesResponse | nul
         'meta': BatchPricesMetaToJSON(value['meta']),
         'items': ((value['items'] as Array<any>).map(BatchPriceItemToJSON)),
         'items_not_found': value['itemsNotFound'],
+        'names_not_found': value['namesNotFound'],
     };
 }
 

@@ -8,17 +8,19 @@ Request body for POST /v1/prices/batch.
 Name | Type
 ------------ | -------------
 `itemIds` | Array&lt;number&gt;
+`marketHashNames` | Array&lt;string&gt;
 `providers` | Array&lt;string&gt;
 `currency` | string
 
 ## Example
 
 ```typescript
-import type { BatchPricesRequest } from 'cs2cap-sdk'
+import type { BatchPricesRequest } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {
   "itemIds": null,
+  "marketHashNames": null,
   "providers": null,
   "currency": null,
 } satisfies BatchPricesRequest

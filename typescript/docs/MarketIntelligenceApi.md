@@ -8,6 +8,7 @@ All URIs are relative to *https://api.cs2c.app*
 | [**getIndicators**](MarketIntelligenceApi.md#getindicators) | **GET** /v1/market/indicators | Get Indicators |
 | [**getItemAnalytics**](MarketIntelligenceApi.md#getitemanalytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics |
 | [**getMarketAnalyticsSnapshot**](MarketIntelligenceApi.md#getmarketanalyticssnapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot |
+| [**getMarketCapIndices**](MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indices | Get Market Cap Indices |
 
 
 
@@ -25,11 +26,11 @@ Scan providers for cross-market arbitrage opportunities.  Filters: - &#x60;min_s
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap-sdk';
-import type { GetArbitrageOpportunitiesRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { GetArbitrageOpportunitiesRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -113,11 +114,11 @@ Compute technical analysis indicators for one item from OHLCV candle data.  **In
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap-sdk';
-import type { GetIndicatorsRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { GetIndicatorsRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -201,11 +202,11 @@ Return per-item market analytics across providers.  Includes: - best ask, best b
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap-sdk';
-import type { GetItemAnalyticsRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { GetItemAnalyticsRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -277,11 +278,11 @@ Return the full market as a cached, summary-only snapshot.  Includes: - one row 
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap-sdk';
-import type { GetMarketAnalyticsSnapshotRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { GetMarketAnalyticsSnapshotRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -307,6 +308,82 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**MarketItemsSnapshotResponse**](MarketItemsSnapshotResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful Response |  -  |
+| **401** | Missing or invalid authentication credentials. |  -  |
+| **403** | Analytics tier required to access this endpoint. |  -  |
+| **429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier code. <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
+| **422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  |
+| **503** | Snapshot cache unavailable and initial build failed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getMarketCapIndices
+
+> MarketIndicesResponse getMarketCapIndices(groupBy)
+
+Get Market Cap Indices
+
+Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by &#x60;item_type&#x60; or &#x60;weapon_type&#x60;. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by &#x60;marketcap_usd desc&#x60; - totals computed from the same filtered item set  Tier: Quant-only.
+
+### Example
+
+```ts
+import {
+  Configuration,
+  MarketIntelligenceApi,
+} from '@cs2cap.com/sdk';
+import type { GetMarketCapIndicesRequest } from '@cs2cap.com/sdk';
+
+async function example() {
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  const config = new Configuration({ 
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+  });
+  const api = new MarketIntelligenceApi(config);
+
+  const body = {
+    // 'item_type' | 'weapon_type' | Catalog dimension used to group snapshot items. (optional)
+    groupBy: groupBy_example,
+  } satisfies GetMarketCapIndicesRequest;
+
+  try {
+    const data = await api.getMarketCapIndices(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupBy** | `item_type`, `weapon_type` | Catalog dimension used to group snapshot items. | [Optional] [Defaults to `&#39;item_type&#39;`] [Enum: item_type, weapon_type] |
+
+### Return type
+
+[**MarketIndicesResponse**](MarketIndicesResponse.md)
 
 ### Authorization
 

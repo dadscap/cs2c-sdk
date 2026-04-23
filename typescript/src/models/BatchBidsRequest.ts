@@ -20,11 +20,17 @@ import { mapValues } from '../runtime';
  */
 export interface BatchBidsRequest {
     /**
-     * Normalized catalog item IDs to look up.
+     * 
      * @type {Array<number>}
      * @memberof BatchBidsRequest
      */
-    itemIds: Array<number>;
+    itemIds?: Array<number> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof BatchBidsRequest
+     */
+    marketHashNames?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
@@ -43,7 +49,6 @@ export interface BatchBidsRequest {
  * Check if a given object implements the BatchBidsRequest interface.
  */
 export function instanceOfBatchBidsRequest(value: object): value is BatchBidsRequest {
-    if (!('itemIds' in value) || value['itemIds'] === undefined) return false;
     return true;
 }
 
@@ -57,7 +62,8 @@ export function BatchBidsRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'itemIds': json['item_ids'],
+        'itemIds': json['item_ids'] == null ? undefined : json['item_ids'],
+        'marketHashNames': json['market_hash_names'] == null ? undefined : json['market_hash_names'],
         'providers': json['providers'] == null ? undefined : json['providers'],
         'currency': json['currency'] == null ? undefined : json['currency'],
     };
@@ -75,6 +81,7 @@ export function BatchBidsRequestToJSONTyped(value?: BatchBidsRequest | null, ign
     return {
         
         'item_ids': value['itemIds'],
+        'market_hash_names': value['marketHashNames'],
         'providers': value['providers'],
         'currency': value['currency'],
     };

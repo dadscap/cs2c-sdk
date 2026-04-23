@@ -23,11 +23,11 @@ Fetch the authenticated user\&#39;s live CS2 inventory from Steam. Requires a li
 import {
   Configuration,
   InventoryApi,
-} from 'cs2cap-sdk';
-import type { FetchSteamInventoryRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { FetchSteamInventoryRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -91,11 +91,11 @@ Fetch the CS2 inventory for any Steam account by Steam64ID or vanity URL. Accept
 import {
   Configuration,
   InventoryApi,
-} from 'cs2cap-sdk';
-import type { FetchSteamInventoryBySteamIdRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { FetchSteamInventoryBySteamIdRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

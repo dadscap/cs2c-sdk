@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **meta** | [**BatchPricesMeta**](BatchPricesMeta.md) | Response metadata. | 
 **items** | [**List[BatchPriceItem]**](BatchPriceItem.md) | Per-item price data. | 
 **items_not_found** | **List[int]** | Item IDs with no price data available. | 
+**names_not_found** | **List[str]** | Market hash names that could not be resolved to a catalog item. | [optional] 
 
 ## Example
 

@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from cs2cap_sdk.models.batch_price_item import BatchPriceItem
 from cs2cap_sdk.models.batch_prices_meta import BatchPricesMeta
 from typing import Optional, Set
@@ -31,7 +31,8 @@ class BatchPricesResponse(BaseModel):
     meta: BatchPricesMeta = Field(description="Response metadata.")
     items: List[BatchPriceItem] = Field(description="Per-item price data.")
     items_not_found: List[StrictInt] = Field(description="Item IDs with no price data available.")
-    __properties: ClassVar[List[str]] = ["meta", "items", "items_not_found"]
+    names_not_found: Optional[List[StrictStr]] = Field(default=None, description="Market hash names that could not be resolved to a catalog item.")
+    __properties: ClassVar[List[str]] = ["meta", "items", "items_not_found", "names_not_found"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,7 +97,8 @@ class BatchPricesResponse(BaseModel):
         _obj = cls.model_validate({
             "meta": BatchPricesMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
             "items": [BatchPriceItem.from_dict(_item) for _item in obj["items"]] if obj.get("items") is not None else None,
-            "items_not_found": obj.get("items_not_found")
+            "items_not_found": obj.get("items_not_found"),
+            "names_not_found": obj.get("names_not_found")
         })
         return _obj
 

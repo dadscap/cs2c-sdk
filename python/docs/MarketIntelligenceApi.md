@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_indicators**](MarketIntelligenceApi.md#get_indicators) | **GET** /v1/market/indicators | Get Indicators
 [**get_item_analytics**](MarketIntelligenceApi.md#get_item_analytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 [**get_market_analytics_snapshot**](MarketIntelligenceApi.md#get_market_analytics_snapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
+[**get_market_cap_indices**](MarketIntelligenceApi.md#get_market_cap_indices) | **GET** /v1/market/indices | Get Market Cap Indices
 
 
 # **get_arbitrage_opportunities**
@@ -372,6 +373,99 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**MarketItemsSnapshotResponse**](MarketItemsSnapshotResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**401** | Missing or invalid authentication credentials. |  -  |
+**403** | Analytics tier required to access this endpoint. |  -  |
+**429** | Rate limit exceeded (burst or monthly quota). |  * Retry-After - Seconds to wait before retrying when present. <br>  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  * X-RateLimit-Limit - Monthly request quota for this key (returned on quota 429). <br>  * X-RateLimit-Remaining - Remaining monthly requests (returned on quota 429). <br>  * X-RateLimit-Reset - Seconds until monthly quota reset (returned on quota 429). <br>  |
+**422** | Request validation failed. The detail list contains field-specific validation errors. |  * X-RateLimit-Tier - Authenticated caller tier code when available. <br>  |
+**503** | Snapshot cache unavailable and initial build failed. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_market_cap_indices**
+> MarketIndicesResponse get_market_cap_indices(group_by=group_by)
+
+Get Market Cap Indices
+
+Aggregate the cached 24h market snapshot into category-level indices.
+
+Supports grouping by `item_type` or `weapon_type`.
+Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.
+
+Response:
+- no pagination
+- groups sorted by `marketcap_usd desc`
+- totals computed from the same filtered item set
+
+Tier: Quant-only.
+
+### Example
+
+* Bearer Authentication (BearerAuth):
+
+```python
+import cs2cap_sdk
+from cs2cap_sdk.models.market_indices_response import MarketIndicesResponse
+from cs2cap_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.cs2c.app
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cs2cap_sdk.Configuration(
+    host = "https://api.cs2c.app"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: BearerAuth
+configuration = cs2cap_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with cs2cap_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    group_by = item_type # str | Catalog dimension used to group snapshot items. (optional) (default to item_type)
+
+    try:
+        # Get Market Cap Indices
+        api_response = api_instance.get_market_cap_indices(group_by=group_by)
+        print("The response of MarketIntelligenceApi->get_market_cap_indices:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MarketIntelligenceApi->get_market_cap_indices: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_by** | **str**| Catalog dimension used to group snapshot items. | [optional] [default to item_type]
+
+### Return type
+
+[**MarketIndicesResponse**](MarketIndicesResponse.md)
 
 ### Authorization
 

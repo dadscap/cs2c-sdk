@@ -11,7 +11,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { BuyOrderProvider } from 'cs2cap-sdk'
+import type { BuyOrderProvider } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

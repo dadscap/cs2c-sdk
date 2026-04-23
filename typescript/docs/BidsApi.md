@@ -24,11 +24,11 @@ Retrieve current bids (buy orders) for multiple items in a single request.  Maxi
 import {
   Configuration,
   BidsApi,
-} from 'cs2cap-sdk';
-import type { BatchBidLookupRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { BatchBidLookupRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -100,11 +100,11 @@ Return current highest bids from providers that support buy orders.  Filters: - 
 import {
   Configuration,
   BidsApi,
-} from 'cs2cap-sdk';
-import type { ListBidsRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { ListBidsRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -195,11 +195,11 @@ Return the full live bids snapshot as an NDJSON stream.  Behavior: - pro and qua
 import {
   Configuration,
   BidsApi,
-} from 'cs2cap-sdk';
-import type { StreamFullBidsSnapshotRequest } from 'cs2cap-sdk';
+} from '@cs2cap.com/sdk';
+import type { StreamFullBidsSnapshotRequest } from '@cs2cap.com/sdk';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-sdk SDK...");
+  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

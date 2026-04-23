@@ -13,7 +13,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { ChildAPIKeyListResponse } from 'cs2cap-sdk'
+import type { ChildAPIKeyListResponse } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

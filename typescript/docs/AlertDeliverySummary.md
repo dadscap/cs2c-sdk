@@ -21,7 +21,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { AlertDeliverySummary } from 'cs2cap-sdk'
+import type { AlertDeliverySummary } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

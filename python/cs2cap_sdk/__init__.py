@@ -96,9 +96,13 @@ __all__ = [
     "MarketArbitrageItem",
     "MarketArbitrageMeta",
     "MarketArbitrageResponse",
+    "MarketIndexGroup",
     "MarketIndicatorsItemData",
     "MarketIndicatorsItemResponse",
     "MarketIndicatorsMeta",
+    "MarketIndicesData",
+    "MarketIndicesMeta",
+    "MarketIndicesResponse",
     "MarketItem",
     "MarketItemAnalyticsCoverage",
     "MarketItemAnalyticsData",
@@ -257,9 +261,13 @@ from cs2cap_sdk.models.market_arbitrage_data import MarketArbitrageData as Marke
 from cs2cap_sdk.models.market_arbitrage_item import MarketArbitrageItem as MarketArbitrageItem
 from cs2cap_sdk.models.market_arbitrage_meta import MarketArbitrageMeta as MarketArbitrageMeta
 from cs2cap_sdk.models.market_arbitrage_response import MarketArbitrageResponse as MarketArbitrageResponse
+from cs2cap_sdk.models.market_index_group import MarketIndexGroup as MarketIndexGroup
 from cs2cap_sdk.models.market_indicators_item_data import MarketIndicatorsItemData as MarketIndicatorsItemData
 from cs2cap_sdk.models.market_indicators_item_response import MarketIndicatorsItemResponse as MarketIndicatorsItemResponse
 from cs2cap_sdk.models.market_indicators_meta import MarketIndicatorsMeta as MarketIndicatorsMeta
+from cs2cap_sdk.models.market_indices_data import MarketIndicesData as MarketIndicesData
+from cs2cap_sdk.models.market_indices_meta import MarketIndicesMeta as MarketIndicesMeta
+from cs2cap_sdk.models.market_indices_response import MarketIndicesResponse as MarketIndicesResponse
 from cs2cap_sdk.models.market_item import MarketItem as MarketItem
 from cs2cap_sdk.models.market_item_analytics_coverage import MarketItemAnalyticsCoverage as MarketItemAnalyticsCoverage
 from cs2cap_sdk.models.market_item_analytics_data import MarketItemAnalyticsData as MarketItemAnalyticsData

@@ -14,7 +14,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PortfolioHistoryPage } from 'cs2cap-sdk'
+import type { PortfolioHistoryPage } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {

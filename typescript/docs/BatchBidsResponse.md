@@ -10,17 +10,19 @@ Name | Type
 `meta` | [BatchBidsMeta](BatchBidsMeta.md)
 `items` | [Array&lt;BatchBidItem&gt;](BatchBidItem.md)
 `itemsNotFound` | Array&lt;number&gt;
+`namesNotFound` | Array&lt;string&gt;
 
 ## Example
 
 ```typescript
-import type { BatchBidsResponse } from 'cs2cap-sdk'
+import type { BatchBidsResponse } from '@cs2cap.com/sdk'
 
 // TODO: Update the object below with actual values
 const example = {
   "meta": null,
   "items": null,
   "itemsNotFound": null,
+  "namesNotFound": null,
 } satisfies BatchBidsResponse
 
 console.log(example)
