@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
-import { AccountApi, ItemsApi } from "cs2cap-sdk";
+import { ItemsApi } from "cs2cap-sdk";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";
@@ -40,21 +40,13 @@ async function main(): Promise<number> {
   const configuration = buildConfiguration(bearerToken);
 
   try {
-    const accountApi = new AccountApi(configuration);
     const itemsApi = new ItemsApi(configuration);
 
-    const resetResponse = await accountApi.resetFreeTierIpBindingV1AccountKeyResetIpPost();
     const itemsResponse = await itemsApi.listItemsV1ItemsGet({
       itemType: args.itemType,
       q: args.query,
       limit: args.limit,
     });
-
-    console.log("Free-tier IP reset result:");
-    console.log(`- ok: ${resetResponse.ok}`);
-    console.log(`- key_id: ${resetResponse.keyId}`);
-    console.log(`- cooldown_sec: ${resetResponse.cooldownSec}`);
-    console.log();
 
     const rows = itemsResponse.items.map((item) => [
       item.itemId ?? "N/A",

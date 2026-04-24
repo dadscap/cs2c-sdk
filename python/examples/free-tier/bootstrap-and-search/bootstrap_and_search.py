@@ -16,7 +16,7 @@ from _shared.render import render_table  # noqa: E402
 def build_parser() -> argparse.ArgumentParser:
     # Keep the example configurable without changing the source file.
     parser = argparse.ArgumentParser(
-        description="Free-tier bootstrap example using reset-ip and item search.",
+        description="Free-tier item search example.",
     )
     parser.add_argument(
         "--item-type",
@@ -54,13 +54,8 @@ def main() -> int:
     try:
         with cs2cap_sdk.ApiClient(configuration) as client:
             # Split APIs by surface so each call site stays explicit.
-            account_api = cs2cap_sdk.AccountApi(client)
             items_api = cs2cap_sdk.ItemsApi(client)
 
-            # Free-tier keys are IP-bound, so rebind first.
-            reset_response = account_api.reset_free_tier_ip_binding_v1_account_key_reset_ip_post()
-
-            # Then fetch a small catalog slice for follow-up workflows.
             items_response = items_api.list_items_v1_items_get(
                 item_type=args.item_type,
                 q=args.query,
@@ -71,13 +66,6 @@ def main() -> int:
         # API errors are shown tersely because this is an example script.
         print(f"API request failed: {exc}", file=sys.stderr)
         return 1
-
-    # Print the reset response separately so the bootstrap step is visible.
-    print("Free-tier IP reset result:")
-    print(f"- ok: {reset_response.ok}")
-    print(f"- key_id: {reset_response.key_id}")
-    print(f"- cooldown_sec: {reset_response.cooldown_sec}")
-    print()
 
     # Flatten the returned item models into plain strings for terminal output.
     rows: list[list[str]] = []

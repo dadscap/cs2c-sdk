@@ -30,8 +30,6 @@ https://api.cs2c.app
 1. Create an account at [cs2cap.com](https://cs2cap.com) and verify your email address.
 2. Navigate to [cs2cap.com/account/api-keys](https://cs2cap.com/account/api-keys) and generate a key.
 
-> **Note for free-tier keys:** Free keys are bound to the IP address that made the generation request. If your IP at request time differs from the IP you query from, calls will be rejected. Use the bootstrap example to rebind the key to your current IP if needed.
-
 When you are ready to unlock additional endpoints and higher rate limits, upgrade at [cs2cap.com/account/billing](https://cs2cap.com/account/billing).
 
 ---

@@ -1,10 +1,6 @@
 # Bootstrap and Search
 
-Rebind the free-tier key to your current IP, then search the catalog and print a
-compact result table.
-
-Free-tier keys are IP-bound. This script calls the reset-IP endpoint first so all subsequent
-requests are accepted from your current network address.
+Search the catalog and print a compact result table.
 
 ## Tier
 
