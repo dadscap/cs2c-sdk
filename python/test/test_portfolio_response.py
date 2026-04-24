@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_response import PortfolioResponse
+from cs2cap.models.portfolio_response import PortfolioResponse
 
 class TestPortfolioResponse(unittest.TestCase):
     """PortfolioResponse unit test stubs"""
@@ -35,15 +35,15 @@ class TestPortfolioResponse(unittest.TestCase):
         model = PortfolioResponse()
         if include_optional:
             return PortfolioResponse(
-                meta = cs2cap_sdk.models.portfolio_meta.PortfolioMeta(
+                meta = cs2cap.models.portfolio_meta.PortfolioMeta(
                     currency = '', 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     providers_queried = [
                         ''
                         ], ),
-                data = cs2cap_sdk.models.portfolio_data.PortfolioData(
+                data = cs2cap.models.portfolio_data.PortfolioData(
                     line_items = [
-                        cs2cap_sdk.models.portfolio_line_item.PortfolioLineItem(
+                        cs2cap.models.portfolio_line_item.PortfolioLineItem(
                             item_id = 56, 
                             market_hash_name = '', 
                             phase = '', 
@@ -52,7 +52,7 @@ class TestPortfolioResponse(unittest.TestCase):
                             best_bid = 56, 
                             item_value = 56, 
                             providers = [
-                                cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                                cs2cap.models.batch_price_quote.BatchPriceQuote(
                                     provider = '', 
                                     lowest_ask = 56, 
                                     quantity = 56, 
@@ -68,15 +68,15 @@ class TestPortfolioResponse(unittest.TestCase):
             )
         else:
             return PortfolioResponse(
-                meta = cs2cap_sdk.models.portfolio_meta.PortfolioMeta(
+                meta = cs2cap.models.portfolio_meta.PortfolioMeta(
                     currency = '', 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     providers_queried = [
                         ''
                         ], ),
-                data = cs2cap_sdk.models.portfolio_data.PortfolioData(
+                data = cs2cap.models.portfolio_data.PortfolioData(
                     line_items = [
-                        cs2cap_sdk.models.portfolio_line_item.PortfolioLineItem(
+                        cs2cap.models.portfolio_line_item.PortfolioLineItem(
                             item_id = 56, 
                             market_hash_name = '', 
                             phase = '', 
@@ -85,7 +85,7 @@ class TestPortfolioResponse(unittest.TestCase):
                             best_bid = 56, 
                             item_value = 56, 
                             providers = [
-                                cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                                cs2cap.models.batch_price_quote.BatchPriceQuote(
                                     provider = '', 
                                     lowest_ask = 56, 
                                     quantity = 56, 

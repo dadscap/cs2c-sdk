@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item_analytics_provider import MarketItemAnalyticsProvider
+from cs2cap.models.market_item_analytics_provider import MarketItemAnalyticsProvider
 
 class TestMarketItemAnalyticsProvider(unittest.TestCase):
     """MarketItemAnalyticsProvider unit test stubs"""

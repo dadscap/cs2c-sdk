@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_history_filters_meta import PriceHistoryFiltersMeta
+from cs2cap.models.price_history_filters_meta import PriceHistoryFiltersMeta
 
 class TestPriceHistoryFiltersMeta(unittest.TestCase):
     """PriceHistoryFiltersMeta unit test stubs"""

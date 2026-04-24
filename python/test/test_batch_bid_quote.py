@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_bid_quote import BatchBidQuote
+from cs2cap.models.batch_bid_quote import BatchBidQuote
 
 class TestBatchBidQuote(unittest.TestCase):
     """BatchBidQuote unit test stubs"""

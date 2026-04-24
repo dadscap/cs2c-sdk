@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.indicator_data_coverage import IndicatorDataCoverage
+from cs2cap.models.indicator_data_coverage import IndicatorDataCoverage
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.cursor_pagination_meta import CursorPaginationMeta
+from cs2cap.models.cursor_pagination_meta import CursorPaginationMeta
 
 # TODO update the JSON string below
 json = "{}"

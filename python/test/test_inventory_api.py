@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.inventory_api import InventoryApi
+from cs2cap.api.inventory_api import InventoryApi
 
 
 class TestInventoryApi(unittest.TestCase):

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_candles_meta import PriceCandlesMeta
+from cs2cap.models.price_candles_meta import PriceCandlesMeta
 
 class TestPriceCandlesMeta(unittest.TestCase):
     """PriceCandlesMeta unit test stubs"""

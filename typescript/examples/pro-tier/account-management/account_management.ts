@@ -8,8 +8,8 @@ import type {
   WatchlistCreateRequest,
   WatchlistItem,
   WatchlistResponse,
-} from "cs2cap-sdk";
-import { AccountApi, ItemsApi } from "cs2cap-sdk";
+} from "cs2cap";
+import { AccountApi, ItemsApi } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";

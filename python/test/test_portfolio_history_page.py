@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_history_page import PortfolioHistoryPage
+from cs2cap.models.portfolio_history_page import PortfolioHistoryPage
 
 class TestPortfolioHistoryPage(unittest.TestCase):
     """PortfolioHistoryPage unit test stubs"""
@@ -35,7 +35,7 @@ class TestPortfolioHistoryPage(unittest.TestCase):
         model = PortfolioHistoryPage()
         if include_optional:
             return PortfolioHistoryPage(
-                meta = cs2cap_sdk.models.portfolio_history_meta.PortfolioHistoryMeta(
+                meta = cs2cap.models.portfolio_history_meta.PortfolioHistoryMeta(
                     portfolio_id = '', 
                     currency = '', 
                     providers_queried = [
@@ -47,14 +47,14 @@ class TestPortfolioHistoryPage(unittest.TestCase):
                     holdings_basis = 'ledger_close', 
                     valuation_basis = 'best_provider_close', ),
                 data = [
-                    cs2cap_sdk.models.portfolio_history_point.PortfolioHistoryPoint(
+                    cs2cap.models.portfolio_history_point.PortfolioHistoryPoint(
                         date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                         total_value = 56, 
                         positions = 56, 
                         items_valued = 56, 
                         items_missing_price = 56, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 
@@ -62,7 +62,7 @@ class TestPortfolioHistoryPage(unittest.TestCase):
             )
         else:
             return PortfolioHistoryPage(
-                meta = cs2cap_sdk.models.portfolio_history_meta.PortfolioHistoryMeta(
+                meta = cs2cap.models.portfolio_history_meta.PortfolioHistoryMeta(
                     portfolio_id = '', 
                     currency = '', 
                     providers_queried = [
@@ -74,14 +74,14 @@ class TestPortfolioHistoryPage(unittest.TestCase):
                     holdings_basis = 'ledger_close', 
                     valuation_basis = 'best_provider_close', ),
                 data = [
-                    cs2cap_sdk.models.portfolio_history_point.PortfolioHistoryPoint(
+                    cs2cap.models.portfolio_history_point.PortfolioHistoryPoint(
                         date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                         total_value = 56, 
                         positions = 56, 
                         items_valued = 56, 
                         items_missing_price = 56, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 

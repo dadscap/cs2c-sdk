@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
+from cs2cap.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
 
 # TODO update the JSON string below
 json = "{}"

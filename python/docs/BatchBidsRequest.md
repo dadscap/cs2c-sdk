@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.batch_bids_request import BatchBidsRequest
+from cs2cap.models.batch_bids_request import BatchBidsRequest
 
 # TODO update the JSON string below
 json = "{}"

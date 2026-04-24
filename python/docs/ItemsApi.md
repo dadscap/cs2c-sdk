@@ -1,4 +1,4 @@
-# cs2cap_sdk.ItemsApi
+# cs2cap.ItemsApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -20,14 +20,14 @@ Return catalog counts and filter option values for frontend search controls.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.items_metadata_response import ItemsMetadataResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.items_metadata_response import ItemsMetadataResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -37,14 +37,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.ItemsApi(api_client)
+    api_instance = cs2cap.ItemsApi(api_client)
 
     try:
         # Get Item Catalog Metadata
@@ -113,14 +113,14 @@ Use this endpoint to resolve canonical `item_id` values before calling prices, b
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -130,14 +130,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.ItemsApi(api_client)
+    api_instance = cs2cap.ItemsApi(api_client)
     q = 'q_example' # str | Search by name substring (case-insensitive) (optional)
     item_id = 56 # int | Exact item ID match (optional)
     market_hash_name = 'market_hash_name_example' # str | Exact market hash name match (case-insensitive) (optional)

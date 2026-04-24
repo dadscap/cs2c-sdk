@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.buy_order_provider import BuyOrderProvider
+from cs2cap.models.buy_order_provider import BuyOrderProvider
 
 class TestBuyOrderProvider(unittest.TestCase):
     """BuyOrderProvider unit test stubs"""

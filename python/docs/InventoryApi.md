@@ -1,4 +1,4 @@
-# cs2cap_sdk.InventoryApi
+# cs2cap.InventoryApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -20,14 +20,14 @@ Fetch the authenticated user's live CS2 inventory from Steam. Requires a linked 
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.steam_inventory_response import SteamInventoryResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.steam_inventory_response import SteamInventoryResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -37,14 +37,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.InventoryApi(api_client)
+    api_instance = cs2cap.InventoryApi(api_client)
 
     try:
         # Fetch Steam Inventory
@@ -99,14 +99,14 @@ Fetch the CS2 inventory for any Steam account by Steam64ID or vanity URL. Accept
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.steam_inventory_response import SteamInventoryResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.steam_inventory_response import SteamInventoryResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -116,14 +116,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.InventoryApi(api_client)
+    api_instance = cs2cap.InventoryApi(api_client)
     steam_id = 'steam_id_example' # str | Steam64ID (17-digit) or vanity URL name (e.g. 'dadscap').
 
     try:

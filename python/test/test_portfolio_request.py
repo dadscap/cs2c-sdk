@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_request import PortfolioRequest
+from cs2cap.models.portfolio_request import PortfolioRequest
 
 class TestPortfolioRequest(unittest.TestCase):
     """PortfolioRequest unit test stubs"""
@@ -36,7 +36,7 @@ class TestPortfolioRequest(unittest.TestCase):
         if include_optional:
             return PortfolioRequest(
                 items = [
-                    cs2cap_sdk.models.portfolio_request_item.PortfolioRequestItem(
+                    cs2cap.models.portfolio_request_item.PortfolioRequestItem(
                         item_id = 56, 
                         quantity = 1.0, )
                     ],
@@ -48,7 +48,7 @@ class TestPortfolioRequest(unittest.TestCase):
         else:
             return PortfolioRequest(
                 items = [
-                    cs2cap_sdk.models.portfolio_request_item.PortfolioRequestItem(
+                    cs2cap.models.portfolio_request_item.PortfolioRequestItem(
                         item_id = 56, 
                         quantity = 1.0, )
                     ],

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.steam_inventory_item import SteamInventoryItem
+from cs2cap.models.steam_inventory_item import SteamInventoryItem
 
 class TestSteamInventoryItem(unittest.TestCase):
     """SteamInventoryItem unit test stubs"""
@@ -48,13 +48,13 @@ class TestSteamInventoryItem(unittest.TestCase):
                 inspect_link = '',
                 name_tag = '',
                 stickers = [
-                    cs2cap_sdk.models.sticker_info.StickerInfo(
+                    cs2cap.models.sticker_info.StickerInfo(
                         name = '', 
                         slot = 56, 
                         wear = 1.337, )
                     ],
                 charms = [
-                    cs2cap_sdk.models.charm_info.CharmInfo(
+                    cs2cap.models.charm_info.CharmInfo(
                         name = '', 
                         pattern_id = 56, )
                     ]

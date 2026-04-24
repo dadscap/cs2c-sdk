@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
+from cs2cap.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.watchlist_create_response import WatchlistCreateResponse
+from cs2cap.models.watchlist_create_response import WatchlistCreateResponse
 
 # TODO update the JSON string below
 json = "{}"

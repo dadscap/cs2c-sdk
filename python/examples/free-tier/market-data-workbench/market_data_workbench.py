@@ -3,8 +3,8 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -55,11 +55,11 @@ def main() -> int:
     configuration = build_configuration(bearer_token)
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
-            items_api = cs2cap_sdk.ItemsApi(client)
-            providers_api = cs2cap_sdk.ProvidersApi(client)
-            fx_api = cs2cap_sdk.ForeignExchangeApi(client)
-            prices_api = cs2cap_sdk.PricesApi(client)
+        with cs2cap.ApiClient(configuration) as client:
+            items_api = cs2cap.ItemsApi(client)
+            providers_api = cs2cap.ProvidersApi(client)
+            fx_api = cs2cap.ForeignExchangeApi(client)
+            prices_api = cs2cap.PricesApi(client)
 
             catalog_items = resolve_catalog_items(
                 items_api,

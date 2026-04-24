@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.cursor_pagination_meta import CursorPaginationMeta
+from cs2cap.models.cursor_pagination_meta import CursorPaginationMeta
 
 class TestCursorPaginationMeta(unittest.TestCase):
     """CursorPaginationMeta unit test stubs"""

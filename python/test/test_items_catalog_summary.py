@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.items_catalog_summary import ItemsCatalogSummary
+from cs2cap.models.items_catalog_summary import ItemsCatalogSummary
 
 class TestItemsCatalogSummary(unittest.TestCase):
     """ItemsCatalogSummary unit test stubs"""

@@ -1,4 +1,4 @@
-# cs2cap_sdk.PricesApi
+# cs2cap.PricesApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -27,15 +27,15 @@ Prices are in minor units of the requested currency (e.g. USD cents when `curren
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.batch_prices_request import BatchPricesRequest
-from cs2cap_sdk.models.batch_prices_response import BatchPricesResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.batch_prices_request import BatchPricesRequest
+from cs2cap.models.batch_prices_response import BatchPricesResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -45,15 +45,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PricesApi(api_client)
-    batch_prices_request = cs2cap_sdk.BatchPricesRequest() # BatchPricesRequest | 
+    api_instance = cs2cap.PricesApi(api_client)
+    batch_prices_request = cs2cap.BatchPricesRequest() # BatchPricesRequest | 
 
     try:
         # Batch Price Lookup
@@ -135,15 +135,15 @@ Requirements:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.all_providers import AllProviders
-from cs2cap_sdk.models.prices_paginated_response_market_item import PricesPaginatedResponseMarketItem
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.all_providers import AllProviders
+from cs2cap.models.prices_paginated_response_market_item import PricesPaginatedResponseMarketItem
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -153,18 +153,18 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PricesApi(api_client)
+    api_instance = cs2cap.PricesApi(api_client)
     item_id = 56 # int | Item ID (fastest lookup). Use /v1/items to search for IDs. (optional)
     market_hash_name = 'market_hash_name_example' # str | Exact item name. For Doppler items without phase, aggregates all phases (sums quantities, min price). (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Doppler phase (Phase 1-4, Black Pearl, Emerald, Sapphire, Ruby). Works with or without market_hash_name. (optional)
-    providers = [cs2cap_sdk.AllProviders()] # List[AllProviders] | Provider keys to include (enum values). Repeat the query parameter to pass multiple providers, e.g. providers=steam&providers=skinport. (optional)
+    phase = cs2cap.PhaseName() # PhaseName | Doppler phase (Phase 1-4, Black Pearl, Emerald, Sapphire, Ruby). Works with or without market_hash_name. (optional)
+    providers = [cs2cap.AllProviders()] # List[AllProviders] | Provider keys to include (enum values). Repeat the query parameter to pass multiple providers, e.g. providers=steam&providers=skinport. (optional)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
     limit = 56 # int | Results per page. Defaults to the effective tier cap. (optional)
     offset = 0 # int | Pagination offset (optional) (default to 0)
@@ -244,7 +244,7 @@ Response:
 - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps.
 - `data`: Candle buckets in oldest-to-newest order
   (`t`, `o`, `h`, `l`, `c`, `v`, `q`, `providers`).
-  `o`/`c` are unweighted averages across provider snapshots, `l` is the minimum provider
+  `o`/`c` are the lowest effective provider prices, `l` is the minimum provider
   low, `h` is capped at `median(provider_highs) * 1.5`, `v` is the non-negative depletion
   flow between buckets, and `q` is the summed close-side inventory at bucket end when
   available. `providers.l` and `providers.h` identify the provider keys contributing the
@@ -263,14 +263,14 @@ Requirements:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.price_candles_page import PriceCandlesPage
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.price_candles_page import PriceCandlesPage
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -280,17 +280,17 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PricesApi(api_client)
+    api_instance = cs2cap.PricesApi(api_client)
     item_id = 56 # int | Filter by item ID (optional)
     market_hash_name = 'market_hash_name_example' # str | Filter by market hash name (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Filter by phase (e.g., Phase 1, Ruby, Sapphire) (optional)
+    phase = cs2cap.PhaseName() # PhaseName | Filter by phase (e.g., Phase 1, Ruby, Sapphire) (optional)
     start = '2013-10-20T19:20:30+01:00' # datetime | Start timestamp (ISO 8601, inclusive) (optional)
     end = '2013-10-20T19:20:30+01:00' # datetime | End timestamp (ISO 8601, exclusive) (optional)
     lookback = '7d' # str | Lookback window in days. Use `7d` or plain `7`; both mean 7 days and set start=now-lookback. (optional)
@@ -363,7 +363,8 @@ Return historical price snapshots.
 
 Parameters:
 - Filters: `item_id`, `market_hash_name`, `phase`, `provider` (singular string key).
-- Time window: `start`, `end` (ISO 8601).
+- Time window: `start`, `end` (ISO 8601). If `start` is omitted, the
+  endpoint defaults to the last 14 days of raw history.
 - `currency`: Quote currency (default `USD`).
 - `limit`: Items per page.
 - `cursor`: Opaque cursor from `next_cursor` for the next page.
@@ -384,14 +385,14 @@ Requirements:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.price_snapshot_page import PriceSnapshotPage
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.price_snapshot_page import PriceSnapshotPage
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -401,18 +402,18 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PricesApi(api_client)
+    api_instance = cs2cap.PricesApi(api_client)
     item_id = 56 # int | Filter by item ID (optional)
     market_hash_name = 'market_hash_name_example' # str | Filter by market hash name (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Filter by phase (e.g., Phase 1, Ruby, Sapphire) (optional)
-    provider = cs2cap_sdk.AllProviders() # AllProviders | Single provider key for provider-scoped historical snapshots. Use repeated `providers` on `/v1/prices` for live snapshot filtering; `/v1/prices/candles` is composite and intentionally has no provider filter. (optional)
+    phase = cs2cap.PhaseName() # PhaseName | Filter by phase (e.g., Phase 1, Ruby, Sapphire) (optional)
+    provider = cs2cap.AllProviders() # AllProviders | Single provider key for provider-scoped historical snapshots. Use repeated `providers` on `/v1/prices` for live snapshot filtering; `/v1/prices/candles` is composite and intentionally has no provider filter. (optional)
     start = '2013-10-20T19:20:30+01:00' # datetime | ISO 8601 timestamp (optional)
     end = '2013-10-20T19:20:30+01:00' # datetime | ISO 8601 timestamp (optional)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
@@ -493,14 +494,14 @@ Behavior:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.all_providers import AllProviders
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.all_providers import AllProviders
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -510,15 +511,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PricesApi(api_client)
-    providers = [cs2cap_sdk.AllProviders()] # List[AllProviders] |  (optional)
+    api_instance = cs2cap.PricesApi(api_client)
+    providers = [cs2cap.AllProviders()] # List[AllProviders] |  (optional)
 
     try:
         # Stream Full Prices Snapshot

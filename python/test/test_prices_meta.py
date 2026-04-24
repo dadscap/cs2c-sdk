@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.prices_meta import PricesMeta
+from cs2cap.models.prices_meta import PricesMeta
 
 class TestPricesMeta(unittest.TestCase):
     """PricesMeta unit test stubs"""
@@ -36,7 +36,7 @@ class TestPricesMeta(unittest.TestCase):
         if include_optional:
             return PricesMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.prices_filter_meta.PricesFilterMeta(
+                filters = cs2cap.models.prices_filter_meta.PricesFilterMeta(
                     market_hash_name = '', 
                     phase = '', 
                     requested_providers = [
@@ -49,7 +49,7 @@ class TestPricesMeta(unittest.TestCase):
         else:
             return PricesMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.prices_filter_meta.PricesFilterMeta(
+                filters = cs2cap.models.prices_filter_meta.PricesFilterMeta(
                     market_hash_name = '', 
                     phase = '', 
                     requested_providers = [

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_snapshot_page import PriceSnapshotPage
+from cs2cap.models.price_snapshot_page import PriceSnapshotPage
 
 class TestPriceSnapshotPage(unittest.TestCase):
     """PriceSnapshotPage unit test stubs"""
@@ -35,12 +35,12 @@ class TestPriceSnapshotPage(unittest.TestCase):
         model = PriceSnapshotPage()
         if include_optional:
             return PriceSnapshotPage(
-                meta = cs2cap_sdk.models.price_history_meta.PriceHistoryMeta(
+                meta = cs2cap.models.price_history_meta.PriceHistoryMeta(
                     currency = '', 
                     filters = null, 
                     result_count = 0.0, ),
                 items = [
-                    cs2cap_sdk.models.price_snapshot.PriceSnapshot(
+                    cs2cap.models.price_snapshot.PriceSnapshot(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -50,7 +50,7 @@ class TestPriceSnapshotPage(unittest.TestCase):
                         currency = '', 
                         quantity = 56, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 
@@ -58,12 +58,12 @@ class TestPriceSnapshotPage(unittest.TestCase):
             )
         else:
             return PriceSnapshotPage(
-                meta = cs2cap_sdk.models.price_history_meta.PriceHistoryMeta(
+                meta = cs2cap.models.price_history_meta.PriceHistoryMeta(
                     currency = '', 
                     filters = null, 
                     result_count = 0.0, ),
                 items = [
-                    cs2cap_sdk.models.price_snapshot.PriceSnapshot(
+                    cs2cap.models.price_snapshot.PriceSnapshot(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -73,7 +73,7 @@ class TestPriceSnapshotPage(unittest.TestCase):
                         currency = '', 
                         quantity = 56, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.webhook_secret_response import WebhookSecretResponse
+from cs2cap.models.webhook_secret_response import WebhookSecretResponse
 
 # TODO update the JSON string below
 json = "{}"

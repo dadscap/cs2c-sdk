@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_history_meta import PortfolioHistoryMeta
+from cs2cap.models.portfolio_history_meta import PortfolioHistoryMeta
 
 class TestPortfolioHistoryMeta(unittest.TestCase):
     """PortfolioHistoryMeta unit test stubs"""

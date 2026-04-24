@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.account_alerts_api import AccountAlertsApi
+from cs2cap.api.account_alerts_api import AccountAlertsApi
 
 
 class TestAccountAlertsApi(unittest.TestCase):

@@ -1,4 +1,4 @@
-# cs2cap_sdk.AccountWebhooksApi
+# cs2cap.AccountWebhooksApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -25,15 +25,15 @@ Create one outbound webhook destination and return its signing secret once.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_create_request import WebhookCreateRequest
-from cs2cap_sdk.models.webhook_secret_response import WebhookSecretResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_create_request import WebhookCreateRequest
+from cs2cap.models.webhook_secret_response import WebhookSecretResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -43,15 +43,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
-    webhook_create_request = cs2cap_sdk.WebhookCreateRequest() # WebhookCreateRequest | 
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
+    webhook_create_request = cs2cap.WebhookCreateRequest() # WebhookCreateRequest | 
 
     try:
         # Create Webhook
@@ -108,14 +108,14 @@ Delete one outbound webhook destination owned by the authenticated account.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.account_mutation_response import AccountMutationResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.account_mutation_response import AccountMutationResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -125,14 +125,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
     webhook_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -190,14 +190,14 @@ Fetch one outbound webhook delivery job with its attempt history.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_delivery_detail import WebhookDeliveryDetail
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_delivery_detail import WebhookDeliveryDetail
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -207,14 +207,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
     delivery_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -272,14 +272,14 @@ List outbound webhook delivery jobs for the authenticated account.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_deliveries_response import WebhookDeliveriesResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_deliveries_response import WebhookDeliveriesResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -289,14 +289,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
     limit = 50 # int | Requested page size. Values are clamped to the range 1..100. (optional) (default to 50)
     offset = 0 # int | Requested offset into delivery history. (optional) (default to 0)
 
@@ -356,14 +356,14 @@ List outbound webhook destinations configured for the authenticated account.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_endpoints_response import WebhookEndpointsResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_endpoints_response import WebhookEndpointsResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -373,14 +373,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
 
     try:
         # List Webhooks
@@ -434,14 +434,14 @@ Rotate one webhook destination signing secret and return the new secret once.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_secret_response import WebhookSecretResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_secret_response import WebhookSecretResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -451,14 +451,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
     webhook_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -516,15 +516,15 @@ Update mutable outbound webhook destination fields.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.webhook_endpoint_summary import WebhookEndpointSummary
-from cs2cap_sdk.models.webhook_update_request import WebhookUpdateRequest
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.webhook_endpoint_summary import WebhookEndpointSummary
+from cs2cap.models.webhook_update_request import WebhookUpdateRequest
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -534,16 +534,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWebhooksApi(api_client)
+    api_instance = cs2cap.AccountWebhooksApi(api_client)
     webhook_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    webhook_update_request = cs2cap_sdk.WebhookUpdateRequest() # WebhookUpdateRequest | 
+    webhook_update_request = cs2cap.WebhookUpdateRequest() # WebhookUpdateRequest | 
 
     try:
         # Update Webhook

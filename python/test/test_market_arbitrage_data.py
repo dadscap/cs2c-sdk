@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_arbitrage_data import MarketArbitrageData
+from cs2cap.models.market_arbitrage_data import MarketArbitrageData
 
 class TestMarketArbitrageData(unittest.TestCase):
     """MarketArbitrageData unit test stubs"""

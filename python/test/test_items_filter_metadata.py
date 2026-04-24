@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.items_filter_metadata import ItemsFilterMetadata
+from cs2cap.models.items_filter_metadata import ItemsFilterMetadata
 
 class TestItemsFilterMetadata(unittest.TestCase):
     """ItemsFilterMetadata unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.api_key_info import APIKeyInfo
+from cs2cap.models.api_key_info import APIKeyInfo
 
 class TestAPIKeyInfo(unittest.TestCase):
     """APIKeyInfo unit test stubs"""

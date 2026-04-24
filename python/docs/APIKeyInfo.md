@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.api_key_info import APIKeyInfo
+from cs2cap.models.api_key_info import APIKeyInfo
 
 # TODO update the JSON string below
 json = "{}"

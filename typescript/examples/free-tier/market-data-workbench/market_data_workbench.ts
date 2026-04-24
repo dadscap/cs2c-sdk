@@ -6,7 +6,7 @@ import {
   ItemsApi,
   PricesApi,
   ProvidersApi,
-} from "cs2cap-sdk";
+} from "cs2cap";
 
 import { callOrSkip, formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";

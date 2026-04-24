@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_bids_response import BatchBidsResponse
+from cs2cap.models.batch_bids_response import BatchBidsResponse
 
 class TestBatchBidsResponse(unittest.TestCase):
     """BatchBidsResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestBatchBidsResponse(unittest.TestCase):
         model = BatchBidsResponse()
         if include_optional:
             return BatchBidsResponse(
-                meta = cs2cap_sdk.models.batch_bids_meta.BatchBidsMeta(
+                meta = cs2cap.models.batch_bids_meta.BatchBidsMeta(
                     currency = '', 
                     requested_item_count = 56, 
                     found_item_count = 56, 
@@ -44,12 +44,12 @@ class TestBatchBidsResponse(unittest.TestCase):
                         ], 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 items = [
-                    cs2cap_sdk.models.batch_bid_item.BatchBidItem(
+                    cs2cap.models.batch_bid_item.BatchBidItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         quotes = [
-                            cs2cap_sdk.models.batch_bid_quote.BatchBidQuote(
+                            cs2cap.models.batch_bid_quote.BatchBidQuote(
                                 provider = '', 
                                 highest_bid = 56, 
                                 num_bids = 56, 
@@ -66,7 +66,7 @@ class TestBatchBidsResponse(unittest.TestCase):
             )
         else:
             return BatchBidsResponse(
-                meta = cs2cap_sdk.models.batch_bids_meta.BatchBidsMeta(
+                meta = cs2cap.models.batch_bids_meta.BatchBidsMeta(
                     currency = '', 
                     requested_item_count = 56, 
                     found_item_count = 56, 
@@ -75,12 +75,12 @@ class TestBatchBidsResponse(unittest.TestCase):
                         ], 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 items = [
-                    cs2cap_sdk.models.batch_bid_item.BatchBidItem(
+                    cs2cap.models.batch_bid_item.BatchBidItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         quotes = [
-                            cs2cap_sdk.models.batch_bid_quote.BatchBidQuote(
+                            cs2cap.models.batch_bid_quote.BatchBidQuote(
                                 provider = '', 
                                 highest_bid = 56, 
                                 num_bids = 56, 

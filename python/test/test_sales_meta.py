@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.sales_meta import SalesMeta
+from cs2cap.models.sales_meta import SalesMeta
 
 class TestSalesMeta(unittest.TestCase):
     """SalesMeta unit test stubs"""
@@ -36,7 +36,7 @@ class TestSalesMeta(unittest.TestCase):
         if include_optional:
             return SalesMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.sales_filters_meta.SalesFiltersMeta(
+                filters = cs2cap.models.sales_filters_meta.SalesFiltersMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 
@@ -52,7 +52,7 @@ class TestSalesMeta(unittest.TestCase):
         else:
             return SalesMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.sales_filters_meta.SalesFiltersMeta(
+                filters = cs2cap.models.sales_filters_meta.SalesFiltersMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 

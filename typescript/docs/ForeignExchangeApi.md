@@ -22,11 +22,11 @@ Return latest foreign exchange rates.  Parameters: - None.  Response: - &#x60;ti
 import {
   Configuration,
   ForeignExchangeApi,
-} from '@cs2cap.com/sdk';
-import type { GetFxRatesRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { GetFxRatesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

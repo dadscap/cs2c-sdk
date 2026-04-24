@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.indicator_data_coverage import IndicatorDataCoverage
+from cs2cap.models.indicator_data_coverage import IndicatorDataCoverage
 
 class TestIndicatorDataCoverage(unittest.TestCase):
     """IndicatorDataCoverage unit test stubs"""

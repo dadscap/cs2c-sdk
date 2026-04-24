@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_list_response import AlertListResponse
+from cs2cap.models.alert_list_response import AlertListResponse
 
 class TestAlertListResponse(unittest.TestCase):
     """AlertListResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestAlertListResponse(unittest.TestCase):
         if include_optional:
             return AlertListResponse(
                 alerts = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -47,7 +47,7 @@ class TestAlertListResponse(unittest.TestCase):
         else:
             return AlertListResponse(
                 alerts = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

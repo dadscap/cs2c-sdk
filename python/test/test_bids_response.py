@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.bids_response import BidsResponse
+from cs2cap.models.bids_response import BidsResponse
 
 class TestBidsResponse(unittest.TestCase):
     """BidsResponse unit test stubs"""
@@ -35,14 +35,14 @@ class TestBidsResponse(unittest.TestCase):
         model = BidsResponse()
         if include_optional:
             return BidsResponse(
-                meta = cs2cap_sdk.models.bids_meta.BidsMeta(
+                meta = cs2cap.models.bids_meta.BidsMeta(
                     currency = '', 
                     filters = null, 
                     providers_queried = [
                         ''
                         ], ),
                 items = [
-                    cs2cap_sdk.models.buy_order_item.BuyOrderItem(
+                    cs2cap.models.buy_order_item.BuyOrderItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -52,7 +52,7 @@ class TestBidsResponse(unittest.TestCase):
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -62,14 +62,14 @@ class TestBidsResponse(unittest.TestCase):
             )
         else:
             return BidsResponse(
-                meta = cs2cap_sdk.models.bids_meta.BidsMeta(
+                meta = cs2cap.models.bids_meta.BidsMeta(
                     currency = '', 
                     filters = null, 
                     providers_queried = [
                         ''
                         ], ),
                 items = [
-                    cs2cap_sdk.models.buy_order_item.BuyOrderItem(
+                    cs2cap.models.buy_order_item.BuyOrderItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -79,7 +79,7 @@ class TestBidsResponse(unittest.TestCase):
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -14,7 +14,7 @@ from _shared.render import format_money, format_timestamp, parse_iso8601, render
 
 
 def summarize_prices(
-    prices: list[cs2cap_sdk.MarketItem],
+    prices: list[cs2cap.MarketItem],
     currency: str = "USD",
 ) -> str:
     if not prices:
@@ -26,7 +26,7 @@ def summarize_prices(
 
 
 def summarize_bids(
-    bids: list[cs2cap_sdk.BuyOrderItem],
+    bids: list[cs2cap.BuyOrderItem],
     currency: str = "USD",
 ) -> str:
     if not bids:
@@ -38,7 +38,7 @@ def summarize_bids(
 
 
 def summarize_sales(
-    sales: list[cs2cap_sdk.SaleRecordDetail],
+    sales: list[cs2cap.SaleRecordDetail],
     currency: str = "USD",
 ) -> str:
     if not sales:
@@ -62,12 +62,12 @@ def main() -> int:
     configuration = build_configuration(bearer_token)
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
+        with cs2cap.ApiClient(configuration) as client:
             # Keep each API surface explicit instead of hiding calls behind wrappers.
-            items_api = cs2cap_sdk.ItemsApi(client)
-            prices_api = cs2cap_sdk.PricesApi(client)
-            bids_api = cs2cap_sdk.BidsApi(client)
-            sales_api = cs2cap_sdk.SalesApi(client)
+            items_api = cs2cap.ItemsApi(client)
+            prices_api = cs2cap.PricesApi(client)
+            bids_api = cs2cap.BidsApi(client)
+            sales_api = cs2cap.SalesApi(client)
 
             # Start from the catalog so downstream calls can use canonical item IDs.
             items_response = items_api.list_items_v1_items_get(

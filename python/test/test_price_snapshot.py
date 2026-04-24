@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_snapshot import PriceSnapshot
+from cs2cap.models.price_snapshot import PriceSnapshot
 
 class TestPriceSnapshot(unittest.TestCase):
     """PriceSnapshot unit test stubs"""

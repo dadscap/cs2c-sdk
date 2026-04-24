@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.alert_batch_create_result import AlertBatchCreateResult
+from cs2cap.models.alert_batch_create_result import AlertBatchCreateResult
 
 # TODO update the JSON string below
 json = "{}"

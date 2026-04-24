@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.loc_inner import LocInner
+from cs2cap.models.loc_inner import LocInner
 
 class TestLocInner(unittest.TestCase):
     """LocInner unit test stubs"""

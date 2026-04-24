@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.phase_name import PhaseName
+from cs2cap.models.phase_name import PhaseName
 
 class TestPhaseName(unittest.TestCase):
     """PhaseName unit test stubs"""

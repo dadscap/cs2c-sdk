@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_create_batch_request import WatchlistCreateBatchRequest
+from cs2cap.models.watchlist_create_batch_request import WatchlistCreateBatchRequest
 
 class TestWatchlistCreateBatchRequest(unittest.TestCase):
     """WatchlistCreateBatchRequest unit test stubs"""

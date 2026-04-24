@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_delivery_summary import AlertDeliverySummary
+from cs2cap.models.alert_delivery_summary import AlertDeliverySummary
 
 class TestAlertDeliverySummary(unittest.TestCase):
     """AlertDeliverySummary unit test stubs"""

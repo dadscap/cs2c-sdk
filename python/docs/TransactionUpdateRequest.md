@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.transaction_update_request import TransactionUpdateRequest
+from cs2cap.models.transaction_update_request import TransactionUpdateRequest
 
 # TODO update the JSON string below
 json = "{}"

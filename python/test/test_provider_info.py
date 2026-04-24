@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.provider_info import ProviderInfo
+from cs2cap.models.provider_info import ProviderInfo
 
 class TestProviderInfo(unittest.TestCase):
     """ProviderInfo unit test stubs"""
@@ -40,14 +40,14 @@ class TestProviderInfo(unittest.TestCase):
                 code = '',
                 market_type = '',
                 default_currency = '',
-                fees = cs2cap_sdk.models.provider_fees.ProviderFees(
+                fees = cs2cap.models.provider_fees.ProviderFees(
                     sell_fee = 1.337, 
                     insta_sell_fee = 1.337, 
                     trading_spread_fee = 1.337, ),
-                features = cs2cap_sdk.models.provider_features.ProviderFeatures(
+                features = cs2cap.models.provider_features.ProviderFeatures(
                     has_buy_orders = True, 
                     has_recent_sales = True, ),
-                health = cs2cap_sdk.models.provider_health.ProviderHealth(
+                health = cs2cap.models.provider_health.ProviderHealth(
                     status = '', 
                     last_checked_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     total_offers = 56, 
@@ -60,14 +60,14 @@ class TestProviderInfo(unittest.TestCase):
             return ProviderInfo(
                 key = '',
                 logo = '',
-                fees = cs2cap_sdk.models.provider_fees.ProviderFees(
+                fees = cs2cap.models.provider_fees.ProviderFees(
                     sell_fee = 1.337, 
                     insta_sell_fee = 1.337, 
                     trading_spread_fee = 1.337, ),
-                features = cs2cap_sdk.models.provider_features.ProviderFeatures(
+                features = cs2cap.models.provider_features.ProviderFeatures(
                     has_buy_orders = True, 
                     has_recent_sales = True, ),
-                health = cs2cap_sdk.models.provider_health.ProviderHealth(
+                health = cs2cap.models.provider_health.ProviderHealth(
                     status = '', 
                     last_checked_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     total_offers = 56, 

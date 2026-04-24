@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.sales_filters_meta import SalesFiltersMeta
+from cs2cap.models.sales_filters_meta import SalesFiltersMeta
 
 class TestSalesFiltersMeta(unittest.TestCase):
     """SalesFiltersMeta unit test stubs"""

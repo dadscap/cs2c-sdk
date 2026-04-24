@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item import MarketItem
+from cs2cap.models.market_item import MarketItem
 
 class TestMarketItem(unittest.TestCase):
     """MarketItem unit test stubs"""

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.watchlist_item import WatchlistItem
+from cs2cap.models.watchlist_item import WatchlistItem
 
 # TODO update the JSON string below
 json = "{}"

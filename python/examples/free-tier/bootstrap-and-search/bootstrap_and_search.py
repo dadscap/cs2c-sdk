@@ -2,8 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -52,9 +52,9 @@ def main() -> int:
     configuration = build_configuration(bearer_token)
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
+        with cs2cap.ApiClient(configuration) as client:
             # Split APIs by surface so each call site stays explicit.
-            items_api = cs2cap_sdk.ItemsApi(client)
+            items_api = cs2cap.ItemsApi(client)
 
             items_response = items_api.list_items_v1_items_get(
                 item_type=args.item_type,

@@ -14,7 +14,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { WebhookCreateRequest } from '@cs2cap.com/sdk'
+import type { WebhookCreateRequest } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

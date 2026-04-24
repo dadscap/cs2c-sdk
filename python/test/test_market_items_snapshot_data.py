@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_items_snapshot_data import MarketItemsSnapshotData
+from cs2cap.models.market_items_snapshot_data import MarketItemsSnapshotData
 
 class TestMarketItemsSnapshotData(unittest.TestCase):
     """MarketItemsSnapshotData unit test stubs"""
@@ -36,7 +36,7 @@ class TestMarketItemsSnapshotData(unittest.TestCase):
         if include_optional:
             return MarketItemsSnapshotData(
                 items = [
-                    cs2cap_sdk.models.market_items_snapshot_item.MarketItemsSnapshotItem(
+                    cs2cap.models.market_items_snapshot_item.MarketItemsSnapshotItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -46,7 +46,7 @@ class TestMarketItemsSnapshotData(unittest.TestCase):
         else:
             return MarketItemsSnapshotData(
                 items = [
-                    cs2cap_sdk.models.market_items_snapshot_item.MarketItemsSnapshotItem(
+                    cs2cap.models.market_items_snapshot_item.MarketItemsSnapshotItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 

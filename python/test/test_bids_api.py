@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.bids_api import BidsApi
+from cs2cap.api.bids_api import BidsApi
 
 
 class TestBidsApi(unittest.TestCase):

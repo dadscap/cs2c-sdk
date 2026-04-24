@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.account_mutation_response import AccountMutationResponse
+from cs2cap.models.account_mutation_response import AccountMutationResponse
 
 class TestAccountMutationResponse(unittest.TestCase):
     """AccountMutationResponse unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.recent_sales_provider import RecentSalesProvider
+from cs2cap.models.recent_sales_provider import RecentSalesProvider
 
 class TestRecentSalesProvider(unittest.TestCase):
     """RecentSalesProvider unit test stubs"""

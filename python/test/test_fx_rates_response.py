@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.fx_rates_response import FXRatesResponse
+from cs2cap.models.fx_rates_response import FXRatesResponse
 
 class TestFXRatesResponse(unittest.TestCase):
     """FXRatesResponse unit test stubs"""

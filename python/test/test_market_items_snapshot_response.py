@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_items_snapshot_response import MarketItemsSnapshotResponse
+from cs2cap.models.market_items_snapshot_response import MarketItemsSnapshotResponse
 
 class TestMarketItemsSnapshotResponse(unittest.TestCase):
     """MarketItemsSnapshotResponse unit test stubs"""
@@ -35,14 +35,14 @@ class TestMarketItemsSnapshotResponse(unittest.TestCase):
         model = MarketItemsSnapshotResponse()
         if include_optional:
             return MarketItemsSnapshotResponse(
-                meta = cs2cap_sdk.models.market_meta.MarketMeta(
+                meta = cs2cap.models.market_meta.MarketMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
                     window = null, ),
-                data = cs2cap_sdk.models.market_items_snapshot_data.MarketItemsSnapshotData(
+                data = cs2cap.models.market_items_snapshot_data.MarketItemsSnapshotData(
                     items = [
-                        cs2cap_sdk.models.market_items_snapshot_item.MarketItemsSnapshotItem(
+                        cs2cap.models.market_items_snapshot_item.MarketItemsSnapshotItem(
                             item_id = 56, 
                             market_hash_name = '', 
                             phase = '', 
@@ -51,14 +51,14 @@ class TestMarketItemsSnapshotResponse(unittest.TestCase):
             )
         else:
             return MarketItemsSnapshotResponse(
-                meta = cs2cap_sdk.models.market_meta.MarketMeta(
+                meta = cs2cap.models.market_meta.MarketMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
                     window = null, ),
-                data = cs2cap_sdk.models.market_items_snapshot_data.MarketItemsSnapshotData(
+                data = cs2cap.models.market_items_snapshot_data.MarketItemsSnapshotData(
                     items = [
-                        cs2cap_sdk.models.market_items_snapshot_item.MarketItemsSnapshotItem(
+                        cs2cap.models.market_items_snapshot_item.MarketItemsSnapshotItem(
                             item_id = 56, 
                             market_hash_name = '', 
                             phase = '', 

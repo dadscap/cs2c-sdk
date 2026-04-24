@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.inspect_info import InspectInfo
+from cs2cap.models.inspect_info import InspectInfo
 
 class TestInspectInfo(unittest.TestCase):
     """InspectInfo unit test stubs"""

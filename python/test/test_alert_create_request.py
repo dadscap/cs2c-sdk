@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_create_request import AlertCreateRequest
+from cs2cap.models.alert_create_request import AlertCreateRequest
 
 class TestAlertCreateRequest(unittest.TestCase):
     """AlertCreateRequest unit test stubs"""

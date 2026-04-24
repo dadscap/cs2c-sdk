@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item_analytics_summary import MarketItemAnalyticsSummary
+from cs2cap.models.market_item_analytics_summary import MarketItemAnalyticsSummary
 
 class TestMarketItemAnalyticsSummary(unittest.TestCase):
     """MarketItemAnalyticsSummary unit test stubs"""

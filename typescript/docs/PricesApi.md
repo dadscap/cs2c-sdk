@@ -26,11 +26,11 @@ Retrieve current prices for multiple items in a single request.  Maximum 100 ite
 import {
   Configuration,
   PricesApi,
-} from '@cs2cap.com/sdk';
-import type { BatchPriceLookupRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { BatchPriceLookupRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -102,11 +102,11 @@ Return current lowest ask listings.  Parameters: - &#x60;item_id&#x60;: Exact it
 import {
   Configuration,
   PricesApi,
-} from '@cs2cap.com/sdk';
-import type { ListPricesRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { ListPricesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -188,7 +188,7 @@ example().catch(console.error);
 
 Price Candles
 
-Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: &#x60;item_id&#x60; or &#x60;market_hash_name&#x60; (one is required). - Optional filter: &#x60;phase&#x60;. - Time window: &#x60;start&#x60;/&#x60;end&#x60; (ISO 8601) or &#x60;lookback&#x60; (for example &#x60;7d&#x60; or &#x60;7&#x60;). - &#x60;interval&#x60;: &#x60;5m&#x60;, &#x60;1h&#x60;, or &#x60;1d&#x60;. - &#x60;fill&#x60;: Include empty buckets with carry-forward prices when &#x60;true&#x60;. - &#x60;currency&#x60;: Quote currency (default &#x60;USD&#x60;). - &#x60;limit&#x60;, &#x60;cursor&#x60;: Cursor-based pagination controls.  Notes: - If both &#x60;start&#x60; and &#x60;lookback&#x60; are sent, &#x60;lookback&#x60; takes precedence. - Maximum lookback depends on &#x60;interval&#x60;:   &#x60;5m&#x60; up to 7 days, &#x60;1h&#x60; up to 30 days, &#x60;1d&#x60; up to 365 days.  Response: - &#x60;meta&#x60;: Item, provider scope, interval, phase, currency, start/end timestamps. - &#x60;data&#x60;: Candle buckets in oldest-to-newest order   (&#x60;t&#x60;, &#x60;o&#x60;, &#x60;h&#x60;, &#x60;l&#x60;, &#x60;c&#x60;, &#x60;v&#x60;, &#x60;q&#x60;, &#x60;providers&#x60;).   &#x60;o&#x60;/&#x60;c&#x60; are unweighted averages across provider snapshots, &#x60;l&#x60; is the minimum provider   low, &#x60;h&#x60; is capped at &#x60;median(provider_highs) * 1.5&#x60;, &#x60;v&#x60; is the non-negative depletion   flow between buckets, and &#x60;q&#x60; is the summed close-side inventory at bucket end when   available. &#x60;providers.l&#x60; and &#x60;providers.h&#x60; identify the provider keys contributing the   returned low/high values. For &#x60;1d&#x60; requests starting more than 30 days back, &#x60;v&#x60; falls   back to legacy depletion-derived &#x60;volume_qty&#x60; and &#x60;q&#x60; is &#x60;null&#x60;. - &#x60;pagination&#x60;: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to &#x60;/v1/prices/candles&#x60;. - &#x60;item_id&#x60; or &#x60;market_hash_name&#x60; is required. - &#x60;start&#x60;/&#x60;end&#x60; must be valid ISO 8601 timestamps. - &#x60;limit&#x60; is capped by your tier.
+Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: &#x60;item_id&#x60; or &#x60;market_hash_name&#x60; (one is required). - Optional filter: &#x60;phase&#x60;. - Time window: &#x60;start&#x60;/&#x60;end&#x60; (ISO 8601) or &#x60;lookback&#x60; (for example &#x60;7d&#x60; or &#x60;7&#x60;). - &#x60;interval&#x60;: &#x60;5m&#x60;, &#x60;1h&#x60;, or &#x60;1d&#x60;. - &#x60;fill&#x60;: Include empty buckets with carry-forward prices when &#x60;true&#x60;. - &#x60;currency&#x60;: Quote currency (default &#x60;USD&#x60;). - &#x60;limit&#x60;, &#x60;cursor&#x60;: Cursor-based pagination controls.  Notes: - If both &#x60;start&#x60; and &#x60;lookback&#x60; are sent, &#x60;lookback&#x60; takes precedence. - Maximum lookback depends on &#x60;interval&#x60;:   &#x60;5m&#x60; up to 7 days, &#x60;1h&#x60; up to 30 days, &#x60;1d&#x60; up to 365 days.  Response: - &#x60;meta&#x60;: Item, provider scope, interval, phase, currency, start/end timestamps. - &#x60;data&#x60;: Candle buckets in oldest-to-newest order   (&#x60;t&#x60;, &#x60;o&#x60;, &#x60;h&#x60;, &#x60;l&#x60;, &#x60;c&#x60;, &#x60;v&#x60;, &#x60;q&#x60;, &#x60;providers&#x60;).   &#x60;o&#x60;/&#x60;c&#x60; are the lowest effective provider prices, &#x60;l&#x60; is the minimum provider   low, &#x60;h&#x60; is capped at &#x60;median(provider_highs) * 1.5&#x60;, &#x60;v&#x60; is the non-negative depletion   flow between buckets, and &#x60;q&#x60; is the summed close-side inventory at bucket end when   available. &#x60;providers.l&#x60; and &#x60;providers.h&#x60; identify the provider keys contributing the   returned low/high values. For &#x60;1d&#x60; requests starting more than 30 days back, &#x60;v&#x60; falls   back to legacy depletion-derived &#x60;volume_qty&#x60; and &#x60;q&#x60; is &#x60;null&#x60;. - &#x60;pagination&#x60;: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to &#x60;/v1/prices/candles&#x60;. - &#x60;item_id&#x60; or &#x60;market_hash_name&#x60; is required. - &#x60;start&#x60;/&#x60;end&#x60; must be valid ISO 8601 timestamps. - &#x60;limit&#x60; is capped by your tier.
 
 ### Example
 
@@ -196,11 +196,11 @@ Return composite OHLCV candle data for a single item across all providers.  Para
 import {
   Configuration,
   PricesApi,
-} from '@cs2cap.com/sdk';
-import type { PriceCandlesRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { PriceCandlesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -294,7 +294,7 @@ example().catch(console.error);
 
 Price History
 
-Return historical price snapshots.  Parameters: - Filters: &#x60;item_id&#x60;, &#x60;market_hash_name&#x60;, &#x60;phase&#x60;, &#x60;provider&#x60; (singular string key). - Time window: &#x60;start&#x60;, &#x60;end&#x60; (ISO 8601). - &#x60;currency&#x60;: Quote currency (default &#x60;USD&#x60;). - &#x60;limit&#x60;: Items per page. - &#x60;cursor&#x60;: Opaque cursor from &#x60;next_cursor&#x60; for the next page.  Response: - &#x60;items&#x60;: Historical snapshots ordered newest first. - &#x60;meta&#x60;: Applied filters and time window. - &#x60;pagination&#x60;: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to &#x60;/v1/prices/history&#x60;. - &#x60;start&#x60;/&#x60;end&#x60; must be valid ISO 8601 timestamps. - Requested time range must be within the endpoint retention window. - &#x60;limit&#x60; is capped by your tier.
+Return historical price snapshots.  Parameters: - Filters: &#x60;item_id&#x60;, &#x60;market_hash_name&#x60;, &#x60;phase&#x60;, &#x60;provider&#x60; (singular string key). - Time window: &#x60;start&#x60;, &#x60;end&#x60; (ISO 8601). If &#x60;start&#x60; is omitted, the   endpoint defaults to the last 14 days of raw history. - &#x60;currency&#x60;: Quote currency (default &#x60;USD&#x60;). - &#x60;limit&#x60;: Items per page. - &#x60;cursor&#x60;: Opaque cursor from &#x60;next_cursor&#x60; for the next page.  Response: - &#x60;items&#x60;: Historical snapshots ordered newest first. - &#x60;meta&#x60;: Applied filters and time window. - &#x60;pagination&#x60;: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to &#x60;/v1/prices/history&#x60;. - &#x60;start&#x60;/&#x60;end&#x60; must be valid ISO 8601 timestamps. - Requested time range must be within the endpoint retention window. - &#x60;limit&#x60; is capped by your tier.
 
 ### Example
 
@@ -302,11 +302,11 @@ Return historical price snapshots.  Parameters: - Filters: &#x60;item_id&#x60;, 
 import {
   Configuration,
   PricesApi,
-} from '@cs2cap.com/sdk';
-import type { PriceHistoryRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { PriceHistoryRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -402,11 +402,11 @@ Return the full live prices snapshot as an NDJSON stream.  Behavior: - pro and q
 import {
   Configuration,
   PricesApi,
-} from '@cs2cap.com/sdk';
-import type { StreamFullPricesSnapshotRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { StreamFullPricesSnapshotRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

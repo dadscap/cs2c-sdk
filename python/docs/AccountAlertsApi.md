@@ -1,4 +1,4 @@
-# cs2cap_sdk.AccountAlertsApi
+# cs2cap.AccountAlertsApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -36,15 +36,15 @@ Rules:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.alert_create_request import AlertCreateRequest
-from cs2cap_sdk.models.alert_definition import AlertDefinition
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.alert_create_request import AlertCreateRequest
+from cs2cap.models.alert_definition import AlertDefinition
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -54,15 +54,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
-    alert_create_request = cs2cap_sdk.AlertCreateRequest() # AlertCreateRequest | 
+    api_instance = cs2cap.AccountAlertsApi(api_client)
+    alert_create_request = cs2cap.AlertCreateRequest() # AlertCreateRequest | 
 
     try:
         # Create Alert
@@ -128,15 +128,15 @@ Rules:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.alert_batch_create_request import AlertBatchCreateRequest
-from cs2cap_sdk.models.alert_batch_create_response import AlertBatchCreateResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.alert_batch_create_request import AlertBatchCreateRequest
+from cs2cap.models.alert_batch_create_response import AlertBatchCreateResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -146,15 +146,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
-    alert_batch_create_request = cs2cap_sdk.AlertBatchCreateRequest() # AlertBatchCreateRequest | 
+    api_instance = cs2cap.AccountAlertsApi(api_client)
+    alert_batch_create_request = cs2cap.AlertBatchCreateRequest() # AlertBatchCreateRequest | 
 
     try:
         # Create Alerts Batch
@@ -213,14 +213,14 @@ Delete one alert definition owned by the authenticated user.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.account_mutation_response import AccountMutationResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.account_mutation_response import AccountMutationResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -230,14 +230,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
+    api_instance = cs2cap.AccountAlertsApi(api_client)
     alert_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -300,14 +300,14 @@ Behavior:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.alert_events_response import AlertEventsResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.alert_events_response import AlertEventsResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -317,14 +317,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
+    api_instance = cs2cap.AccountAlertsApi(api_client)
     limit = 50 # int | Requested page size. Values are clamped to the range 1..100. (optional) (default to 50)
     offset = 0 # int | Requested offset into the event history. (optional) (default to 0)
 
@@ -390,14 +390,14 @@ Behavior:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.alert_list_response import AlertListResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.alert_list_response import AlertListResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -407,14 +407,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
+    api_instance = cs2cap.AccountAlertsApi(api_client)
     limit = 50 # int | Requested page size. Values are clamped to the range 1..200. (optional) (default to 50)
     offset = 0 # int | Zero-based starting position for this page. (optional) (default to 0)
     search = 'search_example' # str | Exact numeric item_id match or case-insensitive market_hash_name substring. (optional)
@@ -478,15 +478,15 @@ At least one of `threshold_value`, `threshold_currency`, or `is_enabled` must be
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.alert_definition import AlertDefinition
-from cs2cap_sdk.models.alert_update_request import AlertUpdateRequest
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.alert_definition import AlertDefinition
+from cs2cap.models.alert_update_request import AlertUpdateRequest
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -496,16 +496,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAlertsApi(api_client)
+    api_instance = cs2cap.AccountAlertsApi(api_client)
     alert_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    alert_update_request = cs2cap_sdk.AlertUpdateRequest() # AlertUpdateRequest | 
+    alert_update_request = cs2cap.AlertUpdateRequest() # AlertUpdateRequest | 
 
     try:
         # Update Alert

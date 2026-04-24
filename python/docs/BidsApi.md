@@ -1,4 +1,4 @@
-# cs2cap_sdk.BidsApi
+# cs2cap.BidsApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -25,15 +25,15 @@ Prices are in minor units of the requested currency (e.g. USD cents when `curren
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.batch_bids_request import BatchBidsRequest
-from cs2cap_sdk.models.batch_bids_response import BatchBidsResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.batch_bids_request import BatchBidsRequest
+from cs2cap.models.batch_bids_response import BatchBidsResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -43,15 +43,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.BidsApi(api_client)
-    batch_bids_request = cs2cap_sdk.BatchBidsRequest() # BatchBidsRequest | 
+    api_instance = cs2cap.BidsApi(api_client)
+    batch_bids_request = cs2cap.BatchBidsRequest() # BatchBidsRequest | 
 
     try:
         # Batch Bid Lookup
@@ -125,15 +125,15 @@ Response:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.bids_response import BidsResponse
-from cs2cap_sdk.models.buy_order_provider import BuyOrderProvider
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.bids_response import BidsResponse
+from cs2cap.models.buy_order_provider import BuyOrderProvider
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -143,18 +143,18 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.BidsApi(api_client)
+    api_instance = cs2cap.BidsApi(api_client)
     item_id = 56 # int | Filter by item ID. When provided, canonical market_hash_name and phase from catalog are used and take precedence over request market_hash_name/phase. (optional)
     market_hash_name = 'market_hash_name_example' # str | Optional market_hash_name to filter for specific item. Ignored when item_id is provided. (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Optional phase to filter (global or combined with market_hash_name). Ignored when item_id is provided. (optional)
-    providers = [cs2cap_sdk.BuyOrderProvider()] # List[BuyOrderProvider] | Providers to include (provider-key enum values that support buy orders). Repeat `providers` to pass multiple values. (optional)
+    phase = cs2cap.PhaseName() # PhaseName | Optional phase to filter (global or combined with market_hash_name). Ignored when item_id is provided. (optional)
+    providers = [cs2cap.BuyOrderProvider()] # List[BuyOrderProvider] | Providers to include (provider-key enum values that support buy orders). Repeat `providers` to pass multiple values. (optional)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
     limit = 1000 # int | Maximum number of results to return. (optional) (default to 1000)
     offset = 0 # int | Number of results to skip for pagination. (optional) (default to 0)
@@ -232,14 +232,14 @@ Behavior:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.buy_order_provider import BuyOrderProvider
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.buy_order_provider import BuyOrderProvider
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -249,15 +249,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.BidsApi(api_client)
-    providers = [cs2cap_sdk.BuyOrderProvider()] # List[BuyOrderProvider] |  (optional)
+    api_instance = cs2cap.BidsApi(api_client)
+    providers = [cs2cap.BuyOrderProvider()] # List[BuyOrderProvider] |  (optional)
 
     try:
         # Stream Full Bids Snapshot

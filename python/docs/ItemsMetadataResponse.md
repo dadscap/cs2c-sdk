@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.items_metadata_response import ItemsMetadataResponse
+from cs2cap.models.items_metadata_response import ItemsMetadataResponse
 
 # TODO update the JSON string below
 json = "{}"

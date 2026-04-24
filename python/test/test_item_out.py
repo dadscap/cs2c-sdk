@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.item_out import ItemOut
+from cs2cap.models.item_out import ItemOut
 
 class TestItemOut(unittest.TestCase):
     """ItemOut unit test stubs"""

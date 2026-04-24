@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
+from cs2cap.models.items_paginated_response_item_out import ItemsPaginatedResponseItemOut
 
 class TestItemsPaginatedResponseItemOut(unittest.TestCase):
     """ItemsPaginatedResponseItemOut unit test stubs"""
@@ -36,7 +36,7 @@ class TestItemsPaginatedResponseItemOut(unittest.TestCase):
         if include_optional:
             return ItemsPaginatedResponseItemOut(
                 items = [
-                    cs2cap_sdk.models.item_out.ItemOut(
+                    cs2cap.models.item_out.ItemOut(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -62,7 +62,7 @@ class TestItemsPaginatedResponseItemOut(unittest.TestCase):
                         image_url = '', 
                         supply = 56, )
                     ],
-                pagination = cs2cap_sdk.models.items_pagination_meta.ItemsPaginationMeta(
+                pagination = cs2cap.models.items_pagination_meta.ItemsPaginationMeta(
                     limit = 0.0, 
                     offset = 0.0, 
                     total = 0.0, 
@@ -73,7 +73,7 @@ class TestItemsPaginatedResponseItemOut(unittest.TestCase):
         else:
             return ItemsPaginatedResponseItemOut(
                 items = [
-                    cs2cap_sdk.models.item_out.ItemOut(
+                    cs2cap.models.item_out.ItemOut(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -99,7 +99,7 @@ class TestItemsPaginatedResponseItemOut(unittest.TestCase):
                         image_url = '', 
                         supply = 56, )
                     ],
-                pagination = cs2cap_sdk.models.items_pagination_meta.ItemsPaginationMeta(
+                pagination = cs2cap.models.items_pagination_meta.ItemsPaginationMeta(
                     limit = 0.0, 
                     offset = 0.0, 
                     total = 0.0, 

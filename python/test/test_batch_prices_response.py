@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_prices_response import BatchPricesResponse
+from cs2cap.models.batch_prices_response import BatchPricesResponse
 
 class TestBatchPricesResponse(unittest.TestCase):
     """BatchPricesResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestBatchPricesResponse(unittest.TestCase):
         model = BatchPricesResponse()
         if include_optional:
             return BatchPricesResponse(
-                meta = cs2cap_sdk.models.batch_prices_meta.BatchPricesMeta(
+                meta = cs2cap.models.batch_prices_meta.BatchPricesMeta(
                     currency = '', 
                     requested_item_count = 56, 
                     found_item_count = 56, 
@@ -44,12 +44,12 @@ class TestBatchPricesResponse(unittest.TestCase):
                         ], 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 items = [
-                    cs2cap_sdk.models.batch_price_item.BatchPriceItem(
+                    cs2cap.models.batch_price_item.BatchPriceItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         quotes = [
-                            cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                            cs2cap.models.batch_price_quote.BatchPriceQuote(
                                 provider = '', 
                                 lowest_ask = 56, 
                                 quantity = 56, 
@@ -66,7 +66,7 @@ class TestBatchPricesResponse(unittest.TestCase):
             )
         else:
             return BatchPricesResponse(
-                meta = cs2cap_sdk.models.batch_prices_meta.BatchPricesMeta(
+                meta = cs2cap.models.batch_prices_meta.BatchPricesMeta(
                     currency = '', 
                     requested_item_count = 56, 
                     found_item_count = 56, 
@@ -75,12 +75,12 @@ class TestBatchPricesResponse(unittest.TestCase):
                         ], 
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 items = [
-                    cs2cap_sdk.models.batch_price_item.BatchPriceItem(
+                    cs2cap.models.batch_price_item.BatchPriceItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         quotes = [
-                            cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                            cs2cap.models.batch_price_quote.BatchPriceQuote(
                                 provider = '', 
                                 lowest_ask = 56, 
                                 quantity = 56, 

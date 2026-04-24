@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.validation_error_item import ValidationErrorItem
+from cs2cap.models.validation_error_item import ValidationErrorItem
 
 # TODO update the JSON string below
 json = "{}"

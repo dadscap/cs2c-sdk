@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_prices_request import BatchPricesRequest
+from cs2cap.models.batch_prices_request import BatchPricesRequest
 
 class TestBatchPricesRequest(unittest.TestCase):
     """BatchPricesRequest unit test stubs"""

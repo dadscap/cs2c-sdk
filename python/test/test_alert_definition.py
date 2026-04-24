@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_definition import AlertDefinition
+from cs2cap.models.alert_definition import AlertDefinition
 
 class TestAlertDefinition(unittest.TestCase):
     """AlertDefinition unit test stubs"""
@@ -43,7 +43,7 @@ class TestAlertDefinition(unittest.TestCase):
                 last_triggered_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                item = cs2cap_sdk.models.alert_item_summary.AlertItemSummary(
+                item = cs2cap.models.alert_item_summary.AlertItemSummary(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', )
@@ -56,7 +56,7 @@ class TestAlertDefinition(unittest.TestCase):
                 is_enabled = True,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                item = cs2cap_sdk.models.alert_item_summary.AlertItemSummary(
+                item = cs2cap.models.alert_item_summary.AlertItemSummary(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', ),

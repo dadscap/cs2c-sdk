@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_meta import MarketMeta
+from cs2cap.models.market_meta import MarketMeta
 
 class TestMarketMeta(unittest.TestCase):
     """MarketMeta unit test stubs"""
@@ -38,7 +38,7 @@ class TestMarketMeta(unittest.TestCase):
                 generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 data_source = 'cache',
                 freshness_sec = 0.0,
-                window = cs2cap_sdk.models.market_time_window_meta.MarketTimeWindowMeta(
+                window = cs2cap.models.market_time_window_meta.MarketTimeWindowMeta(
                     timeframe = '', )
             )
         else:

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_data import PortfolioData
+from cs2cap.models.portfolio_data import PortfolioData
 
 class TestPortfolioData(unittest.TestCase):
     """PortfolioData unit test stubs"""
@@ -36,7 +36,7 @@ class TestPortfolioData(unittest.TestCase):
         if include_optional:
             return PortfolioData(
                 line_items = [
-                    cs2cap_sdk.models.portfolio_line_item.PortfolioLineItem(
+                    cs2cap.models.portfolio_line_item.PortfolioLineItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -45,7 +45,7 @@ class TestPortfolioData(unittest.TestCase):
                         best_bid = 56, 
                         item_value = 56, 
                         providers = [
-                            cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                            cs2cap.models.batch_price_quote.BatchPriceQuote(
                                 provider = '', 
                                 lowest_ask = 56, 
                                 quantity = 56, 
@@ -62,7 +62,7 @@ class TestPortfolioData(unittest.TestCase):
         else:
             return PortfolioData(
                 line_items = [
-                    cs2cap_sdk.models.portfolio_line_item.PortfolioLineItem(
+                    cs2cap.models.portfolio_line_item.PortfolioLineItem(
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
@@ -71,7 +71,7 @@ class TestPortfolioData(unittest.TestCase):
                         best_bid = 56, 
                         item_value = 56, 
                         providers = [
-                            cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                            cs2cap.models.batch_price_quote.BatchPriceQuote(
                                 provider = '', 
                                 lowest_ask = 56, 
                                 quantity = 56, 

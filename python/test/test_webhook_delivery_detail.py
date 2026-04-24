@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_delivery_detail import WebhookDeliveryDetail
+from cs2cap.models.webhook_delivery_detail import WebhookDeliveryDetail
 
 class TestWebhookDeliveryDetail(unittest.TestCase):
     """WebhookDeliveryDetail unit test stubs"""
@@ -50,7 +50,7 @@ class TestWebhookDeliveryDetail(unittest.TestCase):
                 completed_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 payload = { },
                 attempts = [
-                    cs2cap_sdk.models.webhook_delivery_attempt_summary.WebhookDeliveryAttemptSummary(
+                    cs2cap.models.webhook_delivery_attempt_summary.WebhookDeliveryAttemptSummary(
                         attempt_number = 56, 
                         status = '', 
                         http_status = 56, 
@@ -72,7 +72,7 @@ class TestWebhookDeliveryDetail(unittest.TestCase):
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 payload = { },
                 attempts = [
-                    cs2cap_sdk.models.webhook_delivery_attempt_summary.WebhookDeliveryAttemptSummary(
+                    cs2cap.models.webhook_delivery_attempt_summary.WebhookDeliveryAttemptSummary(
                         attempt_number = 56, 
                         status = '', 
                         http_status = 56, 

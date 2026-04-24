@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.account_watchlist_api import AccountWatchlistApi
+from cs2cap.api.account_watchlist_api import AccountWatchlistApi
 
 
 class TestAccountWatchlistApi(unittest.TestCase):

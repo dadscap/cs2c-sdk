@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_index_group import MarketIndexGroup
+from cs2cap.models.market_index_group import MarketIndexGroup
 
 class TestMarketIndexGroup(unittest.TestCase):
     """MarketIndexGroup unit test stubs"""

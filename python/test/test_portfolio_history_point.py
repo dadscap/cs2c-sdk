@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_history_point import PortfolioHistoryPoint
+from cs2cap.models.portfolio_history_point import PortfolioHistoryPoint
 
 class TestPortfolioHistoryPoint(unittest.TestCase):
     """PortfolioHistoryPoint unit test stubs"""

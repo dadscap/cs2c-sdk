@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_candles_page import PriceCandlesPage
+from cs2cap.models.price_candles_page import PriceCandlesPage
 
 class TestPriceCandlesPage(unittest.TestCase):
     """PriceCandlesPage unit test stubs"""
@@ -35,7 +35,7 @@ class TestPriceCandlesPage(unittest.TestCase):
         model = PriceCandlesPage()
         if include_optional:
             return PriceCandlesPage(
-                meta = cs2cap_sdk.models.price_candles_meta.PriceCandlesMeta(
+                meta = cs2cap.models.price_candles_meta.PriceCandlesMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 
@@ -45,7 +45,7 @@ class TestPriceCandlesPage(unittest.TestCase):
                     start = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 data = [
-                    cs2cap_sdk.models.price_candle_item.PriceCandleItem(
+                    cs2cap.models.price_candle_item.PriceCandleItem(
                         t = 56, 
                         o = 56, 
                         h = 56, 
@@ -55,7 +55,7 @@ class TestPriceCandlesPage(unittest.TestCase):
                         q = 56, 
                         providers = null, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 
@@ -63,7 +63,7 @@ class TestPriceCandlesPage(unittest.TestCase):
             )
         else:
             return PriceCandlesPage(
-                meta = cs2cap_sdk.models.price_candles_meta.PriceCandlesMeta(
+                meta = cs2cap.models.price_candles_meta.PriceCandlesMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 
@@ -73,7 +73,7 @@ class TestPriceCandlesPage(unittest.TestCase):
                     start = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     end = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ),
                 data = [
-                    cs2cap_sdk.models.price_candle_item.PriceCandleItem(
+                    cs2cap.models.price_candle_item.PriceCandleItem(
                         t = 56, 
                         o = 56, 
                         h = 56, 
@@ -83,7 +83,7 @@ class TestPriceCandlesPage(unittest.TestCase):
                         q = 56, 
                         providers = null, )
                     ],
-                pagination = cs2cap_sdk.models.cursor_pagination_meta.CursorPaginationMeta(
+                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
                     limit = 1, 
                     has_next = True, 
                     has_prev = True, 

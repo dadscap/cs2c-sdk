@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.child_api_key_list_response import ChildAPIKeyListResponse
+from cs2cap.models.child_api_key_list_response import ChildAPIKeyListResponse
 
 class TestChildAPIKeyListResponse(unittest.TestCase):
     """ChildAPIKeyListResponse unit test stubs"""
@@ -36,11 +36,11 @@ class TestChildAPIKeyListResponse(unittest.TestCase):
         if include_optional:
             return ChildAPIKeyListResponse(
                 keys = [
-                    cs2cap_sdk.models.child_api_key_detail_response.ChildAPIKeyDetailResponse(
+                    cs2cap.models.child_api_key_detail_response.ChildAPIKeyDetailResponse(
                         key = null, 
                         requests_this_month = 56, )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -51,11 +51,11 @@ class TestChildAPIKeyListResponse(unittest.TestCase):
         else:
             return ChildAPIKeyListResponse(
                 keys = [
-                    cs2cap_sdk.models.child_api_key_detail_response.ChildAPIKeyDetailResponse(
+                    cs2cap.models.child_api_key_detail_response.ChildAPIKeyDetailResponse(
                         key = null, 
                         requests_this_month = 56, )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

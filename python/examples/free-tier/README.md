@@ -7,7 +7,7 @@ Use a free-tier key to get started with catalog browsing and the read-only marke
 
 ## Run
 
-Run from the `python/` directory after installing `cs2cap-sdk`:
+Run from the `python/` directory after installing `cs2cap`:
 
 ```bash
 python examples/free-tier/bootstrap-and-search/bootstrap_and_search.py

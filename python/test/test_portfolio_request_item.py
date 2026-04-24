@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_request_item import PortfolioRequestItem
+from cs2cap.models.portfolio_request_item import PortfolioRequestItem
 
 class TestPortfolioRequestItem(unittest.TestCase):
     """PortfolioRequestItem unit test stubs"""

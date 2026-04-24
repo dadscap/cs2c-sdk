@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.items_metadata_response import ItemsMetadataResponse
+from cs2cap.models.items_metadata_response import ItemsMetadataResponse
 
 class TestItemsMetadataResponse(unittest.TestCase):
     """ItemsMetadataResponse unit test stubs"""
@@ -35,9 +35,9 @@ class TestItemsMetadataResponse(unittest.TestCase):
         model = ItemsMetadataResponse()
         if include_optional:
             return ItemsMetadataResponse(
-                catalog = cs2cap_sdk.models.items_catalog_summary.ItemsCatalogSummary(
+                catalog = cs2cap.models.items_catalog_summary.ItemsCatalogSummary(
                     total_items = 56, ),
-                filters = cs2cap_sdk.models.items_filter_metadata.ItemsFilterMetadata(
+                filters = cs2cap.models.items_filter_metadata.ItemsFilterMetadata(
                     item_type = [
                         ''
                         ], 
@@ -68,9 +68,9 @@ class TestItemsMetadataResponse(unittest.TestCase):
             )
         else:
             return ItemsMetadataResponse(
-                catalog = cs2cap_sdk.models.items_catalog_summary.ItemsCatalogSummary(
+                catalog = cs2cap.models.items_catalog_summary.ItemsCatalogSummary(
                     total_items = 56, ),
-                filters = cs2cap_sdk.models.items_filter_metadata.ItemsFilterMetadata(
+                filters = cs2cap.models.items_filter_metadata.ItemsFilterMetadata(
                     item_type = [
                         ''
                         ], 

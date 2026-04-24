@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.indicator_volatility import IndicatorVolatility
+from cs2cap.models.indicator_volatility import IndicatorVolatility
 
 # TODO update the JSON string below
 json = "{}"

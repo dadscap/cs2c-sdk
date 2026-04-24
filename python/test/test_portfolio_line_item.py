@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_line_item import PortfolioLineItem
+from cs2cap.models.portfolio_line_item import PortfolioLineItem
 
 class TestPortfolioLineItem(unittest.TestCase):
     """PortfolioLineItem unit test stubs"""
@@ -43,7 +43,7 @@ class TestPortfolioLineItem(unittest.TestCase):
                 best_bid = 56,
                 item_value = 56,
                 providers = [
-                    cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                    cs2cap.models.batch_price_quote.BatchPriceQuote(
                         provider = '', 
                         lowest_ask = 56, 
                         quantity = 56, 

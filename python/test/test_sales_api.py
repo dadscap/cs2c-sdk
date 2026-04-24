@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.sales_api import SalesApi
+from cs2cap.api.sales_api import SalesApi
 
 
 class TestSalesApi(unittest.TestCase):

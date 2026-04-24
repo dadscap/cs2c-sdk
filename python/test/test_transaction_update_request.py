@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.transaction_update_request import TransactionUpdateRequest
+from cs2cap.models.transaction_update_request import TransactionUpdateRequest
 
 class TestTransactionUpdateRequest(unittest.TestCase):
     """TransactionUpdateRequest unit test stubs"""

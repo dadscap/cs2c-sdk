@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_arbitrage_response import MarketArbitrageResponse
+from cs2cap.models.market_arbitrage_response import MarketArbitrageResponse
 
 class TestMarketArbitrageResponse(unittest.TestCase):
     """MarketArbitrageResponse unit test stubs"""
@@ -35,13 +35,13 @@ class TestMarketArbitrageResponse(unittest.TestCase):
         model = MarketArbitrageResponse()
         if include_optional:
             return MarketArbitrageResponse(
-                meta = cs2cap_sdk.models.market_arbitrage_meta.MarketArbitrageMeta(
+                meta = cs2cap.models.market_arbitrage_meta.MarketArbitrageMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
                     window = null, ),
                 data = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -51,13 +51,13 @@ class TestMarketArbitrageResponse(unittest.TestCase):
             )
         else:
             return MarketArbitrageResponse(
-                meta = cs2cap_sdk.models.market_arbitrage_meta.MarketArbitrageMeta(
+                meta = cs2cap.models.market_arbitrage_meta.MarketArbitrageMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
                     window = null, ),
                 data = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

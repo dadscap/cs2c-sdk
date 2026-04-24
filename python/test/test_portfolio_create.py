@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_create import PortfolioCreate
+from cs2cap.models.portfolio_create import PortfolioCreate
 
 class TestPortfolioCreate(unittest.TestCase):
     """PortfolioCreate unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_out import PortfolioOut
+from cs2cap.models.portfolio_out import PortfolioOut
 
 class TestPortfolioOut(unittest.TestCase):
     """PortfolioOut unit test stubs"""

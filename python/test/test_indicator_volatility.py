@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.indicator_volatility import IndicatorVolatility
+from cs2cap.models.indicator_volatility import IndicatorVolatility
 
 class TestIndicatorVolatility(unittest.TestCase):
     """IndicatorVolatility unit test stubs"""

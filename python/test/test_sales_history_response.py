@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.sales_history_response import SalesHistoryResponse
+from cs2cap.models.sales_history_response import SalesHistoryResponse
 
 class TestSalesHistoryResponse(unittest.TestCase):
     """SalesHistoryResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestSalesHistoryResponse(unittest.TestCase):
         model = SalesHistoryResponse()
         if include_optional:
             return SalesHistoryResponse(
-                meta = cs2cap_sdk.models.sales_meta.SalesMeta(
+                meta = cs2cap.models.sales_meta.SalesMeta(
                     currency = '', 
                     filters = null, 
                     providers_queried = [
@@ -43,7 +43,7 @@ class TestSalesHistoryResponse(unittest.TestCase):
                         ], 
                     result_count = 0.0, ),
                 items = [
-                    cs2cap_sdk.models.sale_record_detail.SaleRecordDetail(
+                    cs2cap.models.sale_record_detail.SaleRecordDetail(
                         date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         provider = '', 
                         price = 56, 
@@ -54,13 +54,13 @@ class TestSalesHistoryResponse(unittest.TestCase):
                         float = 1.337, 
                         paint_seed = 56, 
                         stickers = [
-                            cs2cap_sdk.models.sticker_info.StickerInfo(
+                            cs2cap.models.sticker_info.StickerInfo(
                                 name = '', 
                                 slot = 56, 
                                 wear = 1.337, )
                             ], 
                         charms = [
-                            cs2cap_sdk.models.charm_info.CharmInfo(
+                            cs2cap.models.charm_info.CharmInfo(
                                 name = '', 
                                 pattern_id = 56, )
                             ], 
@@ -72,7 +72,7 @@ class TestSalesHistoryResponse(unittest.TestCase):
             )
         else:
             return SalesHistoryResponse(
-                meta = cs2cap_sdk.models.sales_meta.SalesMeta(
+                meta = cs2cap.models.sales_meta.SalesMeta(
                     currency = '', 
                     filters = null, 
                     providers_queried = [
@@ -80,7 +80,7 @@ class TestSalesHistoryResponse(unittest.TestCase):
                         ], 
                     result_count = 0.0, ),
                 items = [
-                    cs2cap_sdk.models.sale_record_detail.SaleRecordDetail(
+                    cs2cap.models.sale_record_detail.SaleRecordDetail(
                         date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         provider = '', 
                         price = 56, 
@@ -91,13 +91,13 @@ class TestSalesHistoryResponse(unittest.TestCase):
                         float = 1.337, 
                         paint_seed = 56, 
                         stickers = [
-                            cs2cap_sdk.models.sticker_info.StickerInfo(
+                            cs2cap.models.sticker_info.StickerInfo(
                                 name = '', 
                                 slot = 56, 
                                 wear = 1.337, )
                             ], 
                         charms = [
-                            cs2cap_sdk.models.charm_info.CharmInfo(
+                            cs2cap.models.charm_info.CharmInfo(
                                 name = '', 
                                 pattern_id = 56, )
                             ], 

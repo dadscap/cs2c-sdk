@@ -17,7 +17,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PriceHistoryFiltersMeta } from '@cs2cap.com/sdk'
+import type { PriceHistoryFiltersMeta } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

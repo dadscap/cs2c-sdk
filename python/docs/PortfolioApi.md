@@ -1,4 +1,4 @@
-# cs2cap_sdk.PortfolioApi
+# cs2cap.PortfolioApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -32,15 +32,15 @@ Add a single item to a portfolio by `item_id` or `market_hash_name`. Use this fo
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_add_item_request import PortfolioAddItemRequest
-from cs2cap_sdk.models.portfolio_item_out import PortfolioItemOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_add_item_request import PortfolioAddItemRequest
+from cs2cap.models.portfolio_item_out import PortfolioItemOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -50,16 +50,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    portfolio_add_item_request = cs2cap_sdk.PortfolioAddItemRequest() # PortfolioAddItemRequest | 
+    portfolio_add_item_request = cs2cap.PortfolioAddItemRequest() # PortfolioAddItemRequest | 
 
     try:
         # Add Item to Portfolio
@@ -119,15 +119,15 @@ Record a buy or sell transaction for an item in this portfolio.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.transaction_create_request import TransactionCreateRequest
-from cs2cap_sdk.models.transaction_out import TransactionOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.transaction_create_request import TransactionCreateRequest
+from cs2cap.models.transaction_out import TransactionOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -137,16 +137,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    transaction_create_request = cs2cap_sdk.TransactionCreateRequest() # TransactionCreateRequest | 
+    transaction_create_request = cs2cap.TransactionCreateRequest() # TransactionCreateRequest | 
 
     try:
         # Add Transaction
@@ -206,15 +206,15 @@ Create a new named portfolio. The maximum number of portfolios depends on your t
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_create import PortfolioCreate
-from cs2cap_sdk.models.portfolio_out import PortfolioOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_create import PortfolioCreate
+from cs2cap.models.portfolio_out import PortfolioOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -224,15 +224,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
-    portfolio_create = cs2cap_sdk.PortfolioCreate() # PortfolioCreate | 
+    api_instance = cs2cap.PortfolioApi(api_client)
+    portfolio_create = cs2cap.PortfolioCreate() # PortfolioCreate | 
 
     try:
         # Create Portfolio
@@ -290,13 +290,13 @@ Delete a portfolio and all its items.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -306,14 +306,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -370,13 +370,13 @@ Delete a transaction from a portfolio.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -386,14 +386,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     transaction_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
@@ -452,14 +452,14 @@ Replay saved-portfolio holdings from the transaction ledger and return daily his
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_history_page import PortfolioHistoryPage
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_history_page import PortfolioHistoryPage
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -469,14 +469,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     start_date = '2013-10-20' # date | Inclusive UTC start date (YYYY-MM-DD). (optional)
     end_date = '2013-10-20' # date | Inclusive UTC end date (YYYY-MM-DD). Defaults to today. (optional)
@@ -550,15 +550,15 @@ Import items from the user's Steam inventory into a portfolio. Optionally supply
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_import_request import PortfolioImportRequest
-from cs2cap_sdk.models.portfolio_import_result import PortfolioImportResult
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_import_request import PortfolioImportRequest
+from cs2cap.models.portfolio_import_result import PortfolioImportResult
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -568,16 +568,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    portfolio_import_request = cs2cap_sdk.PortfolioImportRequest() # PortfolioImportRequest | 
+    portfolio_import_request = cs2cap.PortfolioImportRequest() # PortfolioImportRequest | 
 
     try:
         # Import Steam Inventory
@@ -637,14 +637,14 @@ List all items in a saved portfolio.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_item_out import PortfolioItemOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_item_out import PortfolioItemOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -654,14 +654,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -720,14 +720,14 @@ List all named portfolios belonging to the authenticated user.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_list_response import PortfolioListResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_list_response import PortfolioListResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -737,14 +737,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
 
     try:
         # List Portfolios
@@ -798,14 +798,14 @@ List all transactions in a portfolio, newest first.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.transaction_out import TransactionOut
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.transaction_out import TransactionOut
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -815,14 +815,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
     try:
@@ -887,15 +887,15 @@ All money values are in minor units of the requested currency (e.g. USD cents wh
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_request import PortfolioRequest
-from cs2cap_sdk.models.portfolio_response import PortfolioResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_request import PortfolioRequest
+from cs2cap.models.portfolio_response import PortfolioResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -905,15 +905,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
-    portfolio_request = cs2cap_sdk.PortfolioRequest() # PortfolioRequest | 
+    api_instance = cs2cap.PortfolioApi(api_client)
+    portfolio_request = cs2cap.PortfolioRequest() # PortfolioRequest | 
 
     try:
         # Portfolio Valuation
@@ -971,13 +971,13 @@ Remove a specific item entry from a portfolio.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -987,14 +987,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     entry_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
 
@@ -1053,15 +1053,15 @@ Partially update a transaction.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.transaction_out import TransactionOut
-from cs2cap_sdk.models.transaction_update_request import TransactionUpdateRequest
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.transaction_out import TransactionOut
+from cs2cap.models.transaction_update_request import TransactionUpdateRequest
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -1071,17 +1071,17 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     transaction_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
-    transaction_update_request = cs2cap_sdk.TransactionUpdateRequest() # TransactionUpdateRequest | 
+    transaction_update_request = cs2cap.TransactionUpdateRequest() # TransactionUpdateRequest | 
 
     try:
         # Update Transaction
@@ -1141,14 +1141,14 @@ Value all items in a saved portfolio at live market prices. Items without price 
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.portfolio_response import PortfolioResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.portfolio_response import PortfolioResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -1158,14 +1158,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.PortfolioApi(api_client)
+    api_instance = cs2cap.PortfolioApi(api_client)
     portfolio_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | 
     currency = 'USD' # str | Target currency code. (optional) (default to 'USD')
     providers = ['providers_example'] # List[str] | Provider keys to include. Repeat to pass multiple, e.g. providers=steam&providers=skinport. Omit for all providers. (optional)

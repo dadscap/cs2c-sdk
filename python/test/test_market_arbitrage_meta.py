@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_arbitrage_meta import MarketArbitrageMeta
+from cs2cap.models.market_arbitrage_meta import MarketArbitrageMeta
 
 class TestMarketArbitrageMeta(unittest.TestCase):
     """MarketArbitrageMeta unit test stubs"""
@@ -38,7 +38,7 @@ class TestMarketArbitrageMeta(unittest.TestCase):
                 generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 data_source = 'cache',
                 freshness_sec = 0.0,
-                window = cs2cap_sdk.models.market_time_window_meta.MarketTimeWindowMeta(
+                window = cs2cap.models.market_time_window_meta.MarketTimeWindowMeta(
                     timeframe = '', )
             )
         else:

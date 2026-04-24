@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_indicators_item_data import MarketIndicatorsItemData
+from cs2cap.models.market_indicators_item_data import MarketIndicatorsItemData
 
 class TestMarketIndicatorsItemData(unittest.TestCase):
     """MarketIndicatorsItemData unit test stubs"""
@@ -41,7 +41,7 @@ class TestMarketIndicatorsItemData(unittest.TestCase):
                 provider = '',
                 interval = '',
                 close_price_usd = ERROR_TO_EXAMPLE_VALUE,
-                momentum = cs2cap_sdk.models.indicator_momentum.IndicatorMomentum(
+                momentum = cs2cap.models.indicator_momentum.IndicatorMomentum(
                     rsi_14 = 1.337, 
                     macd_line = 1.337, 
                     macd_signal = 1.337, 
@@ -54,24 +54,24 @@ class TestMarketIndicatorsItemData(unittest.TestCase):
                     bb_upper = 1.337, 
                     bb_middle = 1.337, 
                     bb_lower = 1.337, ),
-                volatility = cs2cap_sdk.models.indicator_volatility.IndicatorVolatility(
+                volatility = cs2cap.models.indicator_volatility.IndicatorVolatility(
                     atr_14 = 1.337, 
                     historical_volatility_20 = 1.337, 
                     kc_upper = 1.337, 
                     kc_middle = 1.337, 
                     kc_lower = 1.337, ),
-                volume = cs2cap_sdk.models.indicator_volume.IndicatorVolume(
+                volume = cs2cap.models.indicator_volume.IndicatorVolume(
                     vwap = 1.337, 
                     obv = 1.337, 
                     volume_sma_20 = 1.337, ),
-                signals = cs2cap_sdk.models.indicator_signals.IndicatorSignals(
+                signals = cs2cap.models.indicator_signals.IndicatorSignals(
                     rsi = '', 
                     macd = '', 
                     trend = '', 
                     bollinger = '', 
                     volatility = '', 
                     composite_score = 1.337, ),
-                coverage = cs2cap_sdk.models.indicator_data_coverage.IndicatorDataCoverage(
+                coverage = cs2cap.models.indicator_data_coverage.IndicatorDataCoverage(
                     candle_count = 56, 
                     first_bucket = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     last_bucket = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -89,7 +89,7 @@ class TestMarketIndicatorsItemData(unittest.TestCase):
                 provider = '',
                 interval = '',
                 close_price_usd = ERROR_TO_EXAMPLE_VALUE,
-                momentum = cs2cap_sdk.models.indicator_momentum.IndicatorMomentum(
+                momentum = cs2cap.models.indicator_momentum.IndicatorMomentum(
                     rsi_14 = 1.337, 
                     macd_line = 1.337, 
                     macd_signal = 1.337, 
@@ -102,24 +102,24 @@ class TestMarketIndicatorsItemData(unittest.TestCase):
                     bb_upper = 1.337, 
                     bb_middle = 1.337, 
                     bb_lower = 1.337, ),
-                volatility = cs2cap_sdk.models.indicator_volatility.IndicatorVolatility(
+                volatility = cs2cap.models.indicator_volatility.IndicatorVolatility(
                     atr_14 = 1.337, 
                     historical_volatility_20 = 1.337, 
                     kc_upper = 1.337, 
                     kc_middle = 1.337, 
                     kc_lower = 1.337, ),
-                volume = cs2cap_sdk.models.indicator_volume.IndicatorVolume(
+                volume = cs2cap.models.indicator_volume.IndicatorVolume(
                     vwap = 1.337, 
                     obv = 1.337, 
                     volume_sma_20 = 1.337, ),
-                signals = cs2cap_sdk.models.indicator_signals.IndicatorSignals(
+                signals = cs2cap.models.indicator_signals.IndicatorSignals(
                     rsi = '', 
                     macd = '', 
                     trend = '', 
                     bollinger = '', 
                     volatility = '', 
                     composite_score = 1.337, ),
-                coverage = cs2cap_sdk.models.indicator_data_coverage.IndicatorDataCoverage(
+                coverage = cs2cap.models.indicator_data_coverage.IndicatorDataCoverage(
                     candle_count = 56, 
                     first_bucket = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     last_bucket = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

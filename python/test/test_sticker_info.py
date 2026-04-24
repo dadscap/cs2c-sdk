@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.sticker_info import StickerInfo
+from cs2cap.models.sticker_info import StickerInfo
 
 class TestStickerInfo(unittest.TestCase):
     """StickerInfo unit test stubs"""

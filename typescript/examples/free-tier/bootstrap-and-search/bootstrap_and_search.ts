@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
-import { ItemsApi } from "cs2cap-sdk";
+import { ItemsApi } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";

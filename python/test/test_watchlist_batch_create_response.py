@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_batch_create_response import WatchlistBatchCreateResponse
+from cs2cap.models.watchlist_batch_create_response import WatchlistBatchCreateResponse
 
 class TestWatchlistBatchCreateResponse(unittest.TestCase):
     """WatchlistBatchCreateResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestWatchlistBatchCreateResponse(unittest.TestCase):
         if include_optional:
             return WatchlistBatchCreateResponse(
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 
@@ -48,7 +48,7 @@ class TestWatchlistBatchCreateResponse(unittest.TestCase):
         else:
             return WatchlistBatchCreateResponse(
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 

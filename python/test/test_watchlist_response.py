@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_response import WatchlistResponse
+from cs2cap.models.watchlist_response import WatchlistResponse
 
 class TestWatchlistResponse(unittest.TestCase):
     """WatchlistResponse unit test stubs"""
@@ -36,14 +36,14 @@ class TestWatchlistResponse(unittest.TestCase):
         if include_optional:
             return WatchlistResponse(
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -54,14 +54,14 @@ class TestWatchlistResponse(unittest.TestCase):
         else:
             return WatchlistResponse(
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 
                         phase = '', 
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

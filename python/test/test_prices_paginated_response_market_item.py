@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.prices_paginated_response_market_item import PricesPaginatedResponseMarketItem
+from cs2cap.models.prices_paginated_response_market_item import PricesPaginatedResponseMarketItem
 
 class TestPricesPaginatedResponseMarketItem(unittest.TestCase):
     """PricesPaginatedResponseMarketItem unit test stubs"""
@@ -35,14 +35,14 @@ class TestPricesPaginatedResponseMarketItem(unittest.TestCase):
         model = PricesPaginatedResponseMarketItem()
         if include_optional:
             return PricesPaginatedResponseMarketItem(
-                meta = cs2cap_sdk.models.prices_meta.PricesMeta(
+                meta = cs2cap.models.prices_meta.PricesMeta(
                     currency = '', 
                     filters = null, 
                     returned_providers = [
                         ''
                         ], ),
                 items = [
-                    cs2cap_sdk.models.market_item.MarketItem(
+                    cs2cap.models.market_item.MarketItem(
                         provider = '', 
                         item_id = 56, 
                         market_hash_name = '', 
@@ -54,7 +54,7 @@ class TestPricesPaginatedResponseMarketItem(unittest.TestCase):
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -64,14 +64,14 @@ class TestPricesPaginatedResponseMarketItem(unittest.TestCase):
             )
         else:
             return PricesPaginatedResponseMarketItem(
-                meta = cs2cap_sdk.models.prices_meta.PricesMeta(
+                meta = cs2cap.models.prices_meta.PricesMeta(
                     currency = '', 
                     filters = null, 
                     returned_providers = [
                         ''
                         ], ),
                 items = [
-                    cs2cap_sdk.models.market_item.MarketItem(
+                    cs2cap.models.market_item.MarketItem(
                         provider = '', 
                         item_id = 56, 
                         market_hash_name = '', 
@@ -83,7 +83,7 @@ class TestPricesPaginatedResponseMarketItem(unittest.TestCase):
                         timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         last_updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

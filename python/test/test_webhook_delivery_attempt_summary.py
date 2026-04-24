@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_delivery_attempt_summary import WebhookDeliveryAttemptSummary
+from cs2cap.models.webhook_delivery_attempt_summary import WebhookDeliveryAttemptSummary
 
 class TestWebhookDeliveryAttemptSummary(unittest.TestCase):
     """WebhookDeliveryAttemptSummary unit test stubs"""

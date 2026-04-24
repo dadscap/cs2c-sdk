@@ -8,8 +8,8 @@ import type {
   PortfolioResponse,
   PortfolioOut,
   SteamInventoryResponse,
-} from "cs2cap-sdk";
-import { InventoryApi, ItemsApi, PortfolioApi, ResponseError } from "cs2cap-sdk";
+} from "cs2cap";
+import { InventoryApi, ItemsApi, PortfolioApi, ResponseError } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";

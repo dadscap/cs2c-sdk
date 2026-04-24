@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_prices_meta import BatchPricesMeta
+from cs2cap.models.batch_prices_meta import BatchPricesMeta
 
 class TestBatchPricesMeta(unittest.TestCase):
     """BatchPricesMeta unit test stubs"""

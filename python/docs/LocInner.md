@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.loc_inner import LocInner
+from cs2cap.models.loc_inner import LocInner
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.market_intelligence_api import MarketIntelligenceApi
+from cs2cap.api.market_intelligence_api import MarketIntelligenceApi
 
 
 class TestMarketIntelligenceApi(unittest.TestCase):

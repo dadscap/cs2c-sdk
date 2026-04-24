@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.account_webhooks_api import AccountWebhooksApi
+from cs2cap.api.account_webhooks_api import AccountWebhooksApi
 
 
 class TestAccountWebhooksApi(unittest.TestCase):

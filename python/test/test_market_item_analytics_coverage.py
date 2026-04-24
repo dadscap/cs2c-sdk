@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item_analytics_coverage import MarketItemAnalyticsCoverage
+from cs2cap.models.market_item_analytics_coverage import MarketItemAnalyticsCoverage
 
 class TestMarketItemAnalyticsCoverage(unittest.TestCase):
     """MarketItemAnalyticsCoverage unit test stubs"""

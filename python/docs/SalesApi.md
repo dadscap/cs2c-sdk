@@ -1,4 +1,4 @@
-# cs2cap_sdk.SalesApi
+# cs2cap.SalesApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -35,15 +35,15 @@ Response:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.recent_sales_provider import RecentSalesProvider
-from cs2cap_sdk.models.sales_history_response import SalesHistoryResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.recent_sales_provider import RecentSalesProvider
+from cs2cap.models.sales_history_response import SalesHistoryResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -53,18 +53,18 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.SalesApi(api_client)
+    api_instance = cs2cap.SalesApi(api_client)
     item_id = 56 # int | Filter by item ID. When provided, canonical market_hash_name and phase from catalog are used and take precedence over request market_hash_name/phase. (optional)
     market_hash_name = 'market_hash_name_example' # str | Exact market_hash_name match (required if item_id not provided). Ignored when item_id is provided. (optional)
-    phase = cs2cap_sdk.PhaseName() # PhaseName | Filter by phase (when applicable). Ignored when item_id is provided. (optional)
-    providers = [cs2cap_sdk.RecentSalesProvider()] # List[RecentSalesProvider] | Providers to query (provider-key enum values with sales support). Repeat `providers` to pass multiple values. (optional)
+    phase = cs2cap.PhaseName() # PhaseName | Filter by phase (when applicable). Ignored when item_id is provided. (optional)
+    providers = [cs2cap.RecentSalesProvider()] # List[RecentSalesProvider] | Providers to query (provider-key enum values with sales support). Repeat `providers` to pass multiple values. (optional)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
     limit = 56 # int | Maximum number of sales to return. Defaults to the effective tier cap. (optional)
 

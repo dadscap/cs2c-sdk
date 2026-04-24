@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_time_window_meta import MarketTimeWindowMeta
+from cs2cap.models.market_time_window_meta import MarketTimeWindowMeta
 
 class TestMarketTimeWindowMeta(unittest.TestCase):
     """MarketTimeWindowMeta unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.validation_error_item import ValidationErrorItem
+from cs2cap.models.validation_error_item import ValidationErrorItem
 
 class TestValidationErrorItem(unittest.TestCase):
     """ValidationErrorItem unit test stubs"""

@@ -2,8 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -34,12 +34,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def unwrap_watchlist_items(
-    response: cs2cap_sdk.WatchlistCreateResponse,
-) -> list[cs2cap_sdk.WatchlistItem]:
+    response: cs2cap.WatchlistCreateResponse,
+) -> list[cs2cap.WatchlistItem]:
     actual = response.actual_instance
-    if isinstance(actual, cs2cap_sdk.WatchlistItem):
+    if isinstance(actual, cs2cap.WatchlistItem):
         return [actual]
-    if isinstance(actual, cs2cap_sdk.WatchlistBatchCreateResponse):
+    if isinstance(actual, cs2cap.WatchlistBatchCreateResponse):
         return list(actual.items)
     raise ValueError(f"Unexpected watchlist create response type: {type(actual).__name__}")
 
@@ -57,9 +57,9 @@ def main() -> int:
     configuration = build_configuration(bearer_token)
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
-            items_api = cs2cap_sdk.ItemsApi(client)
-            account_api = cs2cap_sdk.AccountApi(client)
+        with cs2cap.ApiClient(configuration) as client:
+            items_api = cs2cap.ItemsApi(client)
+            account_api = cs2cap.AccountApi(client)
 
             selected_items = resolve_catalog_items(
                 items_api,
@@ -73,8 +73,8 @@ def main() -> int:
 
             item_ids = collect_item_ids(selected_items)
             watchlist_response = account_api.create_watchlist_entry_v1_account_watchlist_post(
-                cs2cap_sdk.WatchlistCreateRequest(
-                    cs2cap_sdk.WatchlistCreateBatchRequest(item_ids=item_ids)
+                cs2cap.WatchlistCreateRequest(
+                    cs2cap.WatchlistCreateBatchRequest(item_ids=item_ids)
                 )
             )
             created_watchlist_items = unwrap_watchlist_items(watchlist_response)
@@ -89,7 +89,7 @@ def main() -> int:
                 )
 
             alert = account_api.create_alert_route_v1_account_alerts_post(
-                cs2cap_sdk.AlertCreateRequest(
+                cs2cap.AlertCreateRequest(
                     item_id=item_ids[0],
                     kind="price_below",
                     threshold_value="10.00",
@@ -108,7 +108,7 @@ def main() -> int:
 
             updated_alert = account_api.patch_alert_v1_account_alerts_alert_id_patch(
                 alert.id,
-                cs2cap_sdk.AlertUpdateRequest(
+                cs2cap.AlertUpdateRequest(
                     threshold_value="9.50",
                     is_enabled=False,
                 ),

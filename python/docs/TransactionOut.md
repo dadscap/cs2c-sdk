@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.transaction_out import TransactionOut
+from cs2cap.models.transaction_out import TransactionOut
 
 # TODO update the JSON string below
 json = "{}"

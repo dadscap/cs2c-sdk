@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_history_meta import PriceHistoryMeta
+from cs2cap.models.price_history_meta import PriceHistoryMeta
 
 class TestPriceHistoryMeta(unittest.TestCase):
     """PriceHistoryMeta unit test stubs"""
@@ -36,7 +36,7 @@ class TestPriceHistoryMeta(unittest.TestCase):
         if include_optional:
             return PriceHistoryMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.price_history_filters_meta.PriceHistoryFiltersMeta(
+                filters = cs2cap.models.price_history_filters_meta.PriceHistoryFiltersMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 
@@ -48,7 +48,7 @@ class TestPriceHistoryMeta(unittest.TestCase):
         else:
             return PriceHistoryMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.price_history_filters_meta.PriceHistoryFiltersMeta(
+                filters = cs2cap.models.price_history_filters_meta.PriceHistoryFiltersMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 

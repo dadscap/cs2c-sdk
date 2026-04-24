@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.steam_inventory_response import SteamInventoryResponse
+from cs2cap.models.steam_inventory_response import SteamInventoryResponse
 
 class TestSteamInventoryResponse(unittest.TestCase):
     """SteamInventoryResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestSteamInventoryResponse(unittest.TestCase):
         if include_optional:
             return SteamInventoryResponse(
                 data = [
-                    cs2cap_sdk.models.steam_inventory_item.SteamInventoryItem(
+                    cs2cap.models.steam_inventory_item.SteamInventoryItem(
                         assetid = '', 
                         market_hash_name = '', 
                         phase = '', 
@@ -50,13 +50,13 @@ class TestSteamInventoryResponse(unittest.TestCase):
                         inspect_link = '', 
                         name_tag = '', 
                         stickers = [
-                            cs2cap_sdk.models.sticker_info.StickerInfo(
+                            cs2cap.models.sticker_info.StickerInfo(
                                 name = '', 
                                 slot = 56, 
                                 wear = 1.337, )
                             ], 
                         charms = [
-                            cs2cap_sdk.models.charm_info.CharmInfo(
+                            cs2cap.models.charm_info.CharmInfo(
                                 name = '', 
                                 pattern_id = 56, )
                             ], )
@@ -66,7 +66,7 @@ class TestSteamInventoryResponse(unittest.TestCase):
         else:
             return SteamInventoryResponse(
                 data = [
-                    cs2cap_sdk.models.steam_inventory_item.SteamInventoryItem(
+                    cs2cap.models.steam_inventory_item.SteamInventoryItem(
                         assetid = '', 
                         market_hash_name = '', 
                         phase = '', 
@@ -80,13 +80,13 @@ class TestSteamInventoryResponse(unittest.TestCase):
                         inspect_link = '', 
                         name_tag = '', 
                         stickers = [
-                            cs2cap_sdk.models.sticker_info.StickerInfo(
+                            cs2cap.models.sticker_info.StickerInfo(
                                 name = '', 
                                 slot = 56, 
                                 wear = 1.337, )
                             ], 
                         charms = [
-                            cs2cap_sdk.models.charm_info.CharmInfo(
+                            cs2cap.models.charm_info.CharmInfo(
                                 name = '', 
                                 pattern_id = 56, )
                             ], )

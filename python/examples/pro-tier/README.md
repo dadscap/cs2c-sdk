@@ -9,7 +9,7 @@ Use a pro-tier key for deeper account and analytics workflows.
 
 ## Run
 
-Run from the `python/` directory after installing `cs2cap-sdk`:
+Run from the `python/` directory after installing `cs2cap`:
 
 ```bash
 python examples/pro-tier/create-comparison-table/create_comparison_table.py

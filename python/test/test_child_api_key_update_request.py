@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.child_api_key_update_request import ChildAPIKeyUpdateRequest
+from cs2cap.models.child_api_key_update_request import ChildAPIKeyUpdateRequest
 
 class TestChildAPIKeyUpdateRequest(unittest.TestCase):
     """ChildAPIKeyUpdateRequest unit test stubs"""

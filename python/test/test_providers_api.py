@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.providers_api import ProvidersApi
+from cs2cap.api.providers_api import ProvidersApi
 
 
 class TestProvidersApi(unittest.TestCase):

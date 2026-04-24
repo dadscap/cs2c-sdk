@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.account_api_keys_api import AccountAPIKeysApi
+from cs2cap.api.account_api_keys_api import AccountAPIKeysApi
 
 
 class TestAccountAPIKeysApi(unittest.TestCase):

@@ -47,9 +47,9 @@ def load_api_key(key_name: str, start: Path | None = None) -> str:
 
 
 def build_configuration(access_token: str):
-    import cs2cap_sdk
+    import cs2cap
 
-    return cs2cap_sdk.Configuration(access_token=access_token)
+    return cs2cap.Configuration(access_token=access_token)
 
 
 def require_real_api_key(access_token: str) -> None:

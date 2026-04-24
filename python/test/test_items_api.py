@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.items_api import ItemsApi
+from cs2cap.api.items_api import ItemsApi
 
 
 class TestItemsApi(unittest.TestCase):

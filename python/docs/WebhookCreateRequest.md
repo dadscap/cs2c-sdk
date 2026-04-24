@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.webhook_create_request import WebhookCreateRequest
+from cs2cap.models.webhook_create_request import WebhookCreateRequest
 
 # TODO update the JSON string below
 json = "{}"

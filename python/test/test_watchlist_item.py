@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_item import WatchlistItem
+from cs2cap.models.watchlist_item import WatchlistItem
 
 class TestWatchlistItem(unittest.TestCase):
     """WatchlistItem unit test stubs"""

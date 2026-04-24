@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.indicator_momentum import IndicatorMomentum
+from cs2cap.models.indicator_momentum import IndicatorMomentum
 
 # TODO update the JSON string below
 json = "{}"

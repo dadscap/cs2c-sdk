@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_endpoint_summary import WebhookEndpointSummary
+from cs2cap.models.webhook_endpoint_summary import WebhookEndpointSummary
 
 class TestWebhookEndpointSummary(unittest.TestCase):
     """WebhookEndpointSummary unit test stubs"""

@@ -3,8 +3,8 @@ import json
 import sys
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -50,18 +50,18 @@ def main() -> int:
         return 1
 
     configuration = build_configuration(bearer_token)
-    collected: list[cs2cap_sdk.BuyOrderItem] = []
+    collected: list[cs2cap.BuyOrderItem] = []
     processed_lines = 0
     response = None
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
-            bids_api = cs2cap_sdk.BidsApi(client)
+        with cs2cap.ApiClient(configuration) as client:
+            bids_api = cs2cap.BidsApi(client)
             response = bids_api.stream_bids_snapshot_v1_bids_post_without_preload_content()
 
             for line in decode_lines(response):
                 payload = json.loads(line)
-                item = cs2cap_sdk.BuyOrderItem.from_dict(payload)
+                item = cs2cap.BuyOrderItem.from_dict(payload)
                 processed_lines += 1
 
                 if args.provider and item.provider != args.provider:

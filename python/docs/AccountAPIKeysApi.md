@@ -1,4 +1,4 @@
-# cs2cap_sdk.AccountAPIKeysApi
+# cs2cap.AccountAPIKeysApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -24,15 +24,15 @@ Create one child API key under the active root key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.child_api_key_create_request import ChildAPIKeyCreateRequest
-from cs2cap_sdk.models.child_api_key_create_response import ChildAPIKeyCreateResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.child_api_key_create_request import ChildAPIKeyCreateRequest
+from cs2cap.models.child_api_key_create_response import ChildAPIKeyCreateResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -42,15 +42,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
-    child_api_key_create_request = cs2cap_sdk.ChildAPIKeyCreateRequest() # ChildAPIKeyCreateRequest | 
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
+    child_api_key_create_request = cs2cap.ChildAPIKeyCreateRequest() # ChildAPIKeyCreateRequest | 
 
     try:
         # Create Sub Key
@@ -107,13 +107,13 @@ Revoke one active child API key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -123,14 +123,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
     key_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Child API key ID.
 
     try:
@@ -188,14 +188,14 @@ Get one active child API key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -205,14 +205,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
     key_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Child API key ID.
 
     try:
@@ -270,14 +270,14 @@ List active child API keys.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.child_api_key_list_response import ChildAPIKeyListResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.child_api_key_list_response import ChildAPIKeyListResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -287,14 +287,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
     limit = 25 # int | Requested page size. Values are clamped to the range 1..100. (optional) (default to 25)
     offset = 0 # int | Zero-based starting position for this page. (optional) (default to 0)
 
@@ -354,14 +354,14 @@ Rotate one active child API key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.child_api_key_create_response import ChildAPIKeyCreateResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.child_api_key_create_response import ChildAPIKeyCreateResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -371,14 +371,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
     key_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Child API key ID.
 
     try:
@@ -436,15 +436,15 @@ Update one active child API key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
-from cs2cap_sdk.models.child_api_key_update_request import ChildAPIKeyUpdateRequest
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
+from cs2cap.models.child_api_key_update_request import ChildAPIKeyUpdateRequest
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -454,16 +454,16 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountAPIKeysApi(api_client)
+    api_instance = cs2cap.AccountAPIKeysApi(api_client)
     key_id = UUID('38400000-8cf0-11bd-b23e-10b96e4ef00d') # UUID | Child API key ID.
-    child_api_key_update_request = cs2cap_sdk.ChildAPIKeyUpdateRequest() # ChildAPIKeyUpdateRequest | 
+    child_api_key_update_request = cs2cap.ChildAPIKeyUpdateRequest() # ChildAPIKeyUpdateRequest | 
 
     try:
         # Update Sub Key

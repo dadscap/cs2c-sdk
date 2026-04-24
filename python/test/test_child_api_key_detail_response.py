@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
+from cs2cap.models.child_api_key_detail_response import ChildAPIKeyDetailResponse
 
 class TestChildAPIKeyDetailResponse(unittest.TestCase):
     """ChildAPIKeyDetailResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestChildAPIKeyDetailResponse(unittest.TestCase):
         model = ChildAPIKeyDetailResponse()
         if include_optional:
             return ChildAPIKeyDetailResponse(
-                key = cs2cap_sdk.models.api_key_info.APIKeyInfo(
+                key = cs2cap.models.api_key_info.APIKeyInfo(
                     id = '', 
                     key_prefix = '', 
                     name = '', 
@@ -53,7 +53,7 @@ class TestChildAPIKeyDetailResponse(unittest.TestCase):
             )
         else:
             return ChildAPIKeyDetailResponse(
-                key = cs2cap_sdk.models.api_key_info.APIKeyInfo(
+                key = cs2cap.models.api_key_info.APIKeyInfo(
                     id = '', 
                     key_prefix = '', 
                     name = '', 

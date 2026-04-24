@@ -1,7 +1,7 @@
 {
-  "name": "@cs2cap.com/sdk",
+  "name": "cs2cap",
   "version": "1.0.0",
-  "description": "OpenAPI client for @cs2cap.com/sdk",
+  "description": "OpenAPI client for cs2cap",
   "author": "OpenAPI-Generator",
   "repository": {
     "type": "git",

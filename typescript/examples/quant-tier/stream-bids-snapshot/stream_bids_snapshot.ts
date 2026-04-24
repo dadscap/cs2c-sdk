@@ -1,8 +1,8 @@
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
-import type { ApiResponse, BuyOrderItem } from "cs2cap-sdk";
-import { BidsApi, BuyOrderItemFromJSON } from "cs2cap-sdk";
+import type { ApiResponse, BuyOrderItem } from "cs2cap";
+import { BidsApi, BuyOrderItemFromJSON } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import {

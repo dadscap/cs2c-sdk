@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.error_response import ErrorResponse
+from cs2cap.models.error_response import ErrorResponse
 
 class TestErrorResponse(unittest.TestCase):
     """ErrorResponse unit test stubs"""

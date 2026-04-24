@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.transaction_out import TransactionOut
+from cs2cap.models.transaction_out import TransactionOut
 
 class TestTransactionOut(unittest.TestCase):
     """TransactionOut unit test stubs"""

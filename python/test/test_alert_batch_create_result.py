@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_batch_create_result import AlertBatchCreateResult
+from cs2cap.models.alert_batch_create_result import AlertBatchCreateResult
 
 class TestAlertBatchCreateResult(unittest.TestCase):
     """AlertBatchCreateResult unit test stubs"""

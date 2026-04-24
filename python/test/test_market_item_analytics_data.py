@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item_analytics_data import MarketItemAnalyticsData
+from cs2cap.models.market_item_analytics_data import MarketItemAnalyticsData
 
 class TestMarketItemAnalyticsData(unittest.TestCase):
     """MarketItemAnalyticsData unit test stubs"""
@@ -40,7 +40,7 @@ class TestMarketItemAnalyticsData(unittest.TestCase):
                 phase = '',
                 summary = ERROR_TO_EXAMPLE_VALUE,
                 providers = ERROR_TO_EXAMPLE_VALUE,
-                coverage = cs2cap_sdk.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
+                coverage = cs2cap.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
                     provider_count = 56, 
                     providers_with_volume = 56, 
                     providers_with_bid_side = 56, )
@@ -51,7 +51,7 @@ class TestMarketItemAnalyticsData(unittest.TestCase):
                 market_hash_name = '',
                 summary = ERROR_TO_EXAMPLE_VALUE,
                 providers = ERROR_TO_EXAMPLE_VALUE,
-                coverage = cs2cap_sdk.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
+                coverage = cs2cap.models.market_item_analytics_coverage.MarketItemAnalyticsCoverage(
                     provider_count = 56, 
                     providers_with_volume = 56, 
                     providers_with_bid_side = 56, ),

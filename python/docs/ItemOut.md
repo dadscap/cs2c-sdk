@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.item_out import ItemOut
+from cs2cap.models.item_out import ItemOut
 
 # TODO update the JSON string below
 json = "{}"

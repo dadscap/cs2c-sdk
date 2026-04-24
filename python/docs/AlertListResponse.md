@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.alert_list_response import AlertListResponse
+from cs2cap.models.alert_list_response import AlertListResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_bids_request import BatchBidsRequest
+from cs2cap.models.batch_bids_request import BatchBidsRequest
 
 class TestBatchBidsRequest(unittest.TestCase):
     """BatchBidsRequest unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_bid_item import BatchBidItem
+from cs2cap.models.batch_bid_item import BatchBidItem
 
 class TestBatchBidItem(unittest.TestCase):
     """BatchBidItem unit test stubs"""
@@ -39,7 +39,7 @@ class TestBatchBidItem(unittest.TestCase):
                 market_hash_name = '',
                 phase = '',
                 quotes = [
-                    cs2cap_sdk.models.batch_bid_quote.BatchBidQuote(
+                    cs2cap.models.batch_bid_quote.BatchBidQuote(
                         provider = '', 
                         highest_bid = 56, 
                         num_bids = 56, 
@@ -52,7 +52,7 @@ class TestBatchBidItem(unittest.TestCase):
                 item_id = 56,
                 market_hash_name = '',
                 quotes = [
-                    cs2cap_sdk.models.batch_bid_quote.BatchBidQuote(
+                    cs2cap.models.batch_bid_quote.BatchBidQuote(
                         provider = '', 
                         highest_bid = 56, 
                         num_bids = 56, 

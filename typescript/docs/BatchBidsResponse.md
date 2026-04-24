@@ -15,7 +15,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { BatchBidsResponse } from '@cs2cap.com/sdk'
+import type { BatchBidsResponse } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

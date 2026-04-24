@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.sale_record_detail import SaleRecordDetail
+from cs2cap.models.sale_record_detail import SaleRecordDetail
 
 class TestSaleRecordDetail(unittest.TestCase):
     """SaleRecordDetail unit test stubs"""
@@ -45,17 +45,17 @@ class TestSaleRecordDetail(unittest.TestCase):
                 var_float = 1.337,
                 paint_seed = 56,
                 stickers = [
-                    cs2cap_sdk.models.sticker_info.StickerInfo(
+                    cs2cap.models.sticker_info.StickerInfo(
                         name = '', 
                         slot = 56, 
                         wear = 1.337, )
                     ],
                 charms = [
-                    cs2cap_sdk.models.charm_info.CharmInfo(
+                    cs2cap.models.charm_info.CharmInfo(
                         name = '', 
                         pattern_id = 56, )
                     ],
-                inspect = cs2cap_sdk.models.inspect_info.InspectInfo(
+                inspect = cs2cap.models.inspect_info.InspectInfo(
                     in_game = '', 
                     screenshot_front = '', 
                     screenshot_back = '', )

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_create_response import WatchlistCreateResponse
+from cs2cap.models.watchlist_create_response import WatchlistCreateResponse
 
 class TestWatchlistCreateResponse(unittest.TestCase):
     """WatchlistCreateResponse unit test stubs"""
@@ -41,7 +41,7 @@ class TestWatchlistCreateResponse(unittest.TestCase):
                 phase = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 
@@ -57,7 +57,7 @@ class TestWatchlistCreateResponse(unittest.TestCase):
                 market_hash_name = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 items = [
-                    cs2cap_sdk.models.watchlist_item.WatchlistItem(
+                    cs2cap.models.watchlist_item.WatchlistItem(
                         id = '', 
                         item_id = 56, 
                         market_hash_name = '', 

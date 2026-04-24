@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { Configuration } from "cs2cap-sdk";
+import { Configuration } from "cs2cap";
 
 function stripQuotes(value: string): string {
   if (value.length >= 2 && value[0] === value.at(-1) && [`'`, `"`].includes(value[0]!)) {

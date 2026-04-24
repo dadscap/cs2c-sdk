@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_secret_response import WebhookSecretResponse
+from cs2cap.models.webhook_secret_response import WebhookSecretResponse
 
 class TestWebhookSecretResponse(unittest.TestCase):
     """WebhookSecretResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestWebhookSecretResponse(unittest.TestCase):
         model = WebhookSecretResponse()
         if include_optional:
             return WebhookSecretResponse(
-                webhook = cs2cap_sdk.models.webhook_endpoint_summary.WebhookEndpointSummary(
+                webhook = cs2cap.models.webhook_endpoint_summary.WebhookEndpointSummary(
                     id = '', 
                     label = '', 
                     url = '', 
@@ -50,7 +50,7 @@ class TestWebhookSecretResponse(unittest.TestCase):
             )
         else:
             return WebhookSecretResponse(
-                webhook = cs2cap_sdk.models.webhook_endpoint_summary.WebhookEndpointSummary(
+                webhook = cs2cap.models.webhook_endpoint_summary.WebhookEndpointSummary(
                     id = '', 
                     label = '', 
                     url = '', 

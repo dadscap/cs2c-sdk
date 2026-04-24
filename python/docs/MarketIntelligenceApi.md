@@ -1,4 +1,4 @@
-# cs2cap_sdk.MarketIntelligenceApi
+# cs2cap.MarketIntelligenceApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -33,16 +33,16 @@ Tier: Quant-only.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.all_providers import AllProviders
-from cs2cap_sdk.models.buy_order_provider import BuyOrderProvider
-from cs2cap_sdk.models.market_arbitrage_response import MarketArbitrageResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.all_providers import AllProviders
+from cs2cap.models.buy_order_provider import BuyOrderProvider
+from cs2cap.models.market_arbitrage_response import MarketArbitrageResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -52,19 +52,19 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    api_instance = cs2cap.MarketIntelligenceApi(api_client)
     limit = 56 # int | Maximum number of results to return. Defaults to the effective tier cap. (optional)
     offset = 0 # int | Requested offset into the ranked opportunity list. (optional) (default to 0)
     min_spread_pct = 1.0 # float | Minimum gross spread percentage between buy and sell prices. (optional) (default to 1.0)
-    providers_buy = [cs2cap_sdk.AllProviders()] # List[AllProviders] | Buy-side provider key enum filters (plural parameter). Repeat `providers_buy` to pass multiple values. (optional)
-    providers_sell = [cs2cap_sdk.BuyOrderProvider()] # List[BuyOrderProvider] | Sell-side provider key enum filters for providers with buy orders (plural parameter). Repeat `providers_sell` to pass multiple values. (optional)
+    providers_buy = [cs2cap.AllProviders()] # List[AllProviders] | Buy-side provider key enum filters (plural parameter). Repeat `providers_buy` to pass multiple values. (optional)
+    providers_sell = [cs2cap.BuyOrderProvider()] # List[BuyOrderProvider] | Sell-side provider key enum filters for providers with buy orders (plural parameter). Repeat `providers_sell` to pass multiple values. (optional)
 
     try:
         # Get Arbitrage Opportunities
@@ -134,14 +134,14 @@ Compute technical analysis indicators for one item from OHLCV candle data.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.market_indicators_item_response import MarketIndicatorsItemResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.market_indicators_item_response import MarketIndicatorsItemResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -151,14 +151,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    api_instance = cs2cap.MarketIntelligenceApi(api_client)
     item_id = 56 # int | Item ID for live indicator computation. (optional)
     market_hash_name = 'market_hash_name_example' # str | Market hash name (alternative to item_id). (optional)
     phase = 'phase_example' # str | Doppler phase filter. (optional)
@@ -235,14 +235,14 @@ Tier: Pro and Quant.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.market_item_analytics_response import MarketItemAnalyticsResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.market_item_analytics_response import MarketItemAnalyticsResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -252,14 +252,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    api_instance = cs2cap.MarketIntelligenceApi(api_client)
     item_id = 56 # int | Item ID.
 
     try:
@@ -329,14 +329,14 @@ Tier: Pro and Quant.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.market_items_snapshot_response import MarketItemsSnapshotResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.market_items_snapshot_response import MarketItemsSnapshotResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -346,14 +346,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    api_instance = cs2cap.MarketIntelligenceApi(api_client)
 
     try:
         # Get Market Analytics Snapshot
@@ -418,14 +418,14 @@ Tier: Quant-only.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.market_indices_response import MarketIndicesResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.market_indices_response import MarketIndicesResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -435,14 +435,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.MarketIntelligenceApi(api_client)
+    api_instance = cs2cap.MarketIntelligenceApi(api_client)
     group_by = item_type # str | Catalog dimension used to group snapshot items. (optional) (default to item_type)
 
     try:

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.validation_error_response import ValidationErrorResponse
+from cs2cap.models.validation_error_response import ValidationErrorResponse
 
 class TestValidationErrorResponse(unittest.TestCase):
     """ValidationErrorResponse unit test stubs"""
@@ -37,26 +37,26 @@ class TestValidationErrorResponse(unittest.TestCase):
             return ValidationErrorResponse(
                 code = 'VALIDATION_ERROR',
                 detail = [
-                    cs2cap_sdk.models.validation_error_item.ValidationErrorItem(
+                    cs2cap.models.validation_error_item.ValidationErrorItem(
                         type = '', 
                         loc = [
                             null
                             ], 
                         msg = '', 
-                        input = cs2cap_sdk.models.input.input(), 
+                        input = cs2cap.models.input.input(), 
                         ctx = { }, )
                     ]
             )
         else:
             return ValidationErrorResponse(
                 detail = [
-                    cs2cap_sdk.models.validation_error_item.ValidationErrorItem(
+                    cs2cap.models.validation_error_item.ValidationErrorItem(
                         type = '', 
                         loc = [
                             null
                             ], 
                         msg = '', 
-                        input = cs2cap_sdk.models.input.input(), 
+                        input = cs2cap.models.input.input(), 
                         ctx = { }, )
                     ],
         )

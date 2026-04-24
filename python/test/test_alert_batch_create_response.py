@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_batch_create_response import AlertBatchCreateResponse
+from cs2cap.models.alert_batch_create_response import AlertBatchCreateResponse
 
 class TestAlertBatchCreateResponse(unittest.TestCase):
     """AlertBatchCreateResponse unit test stubs"""
@@ -38,7 +38,7 @@ class TestAlertBatchCreateResponse(unittest.TestCase):
                 created = 56,
                 failed = 56,
                 results = [
-                    cs2cap_sdk.models.alert_batch_create_result.AlertBatchCreateResult(
+                    cs2cap.models.alert_batch_create_result.AlertBatchCreateResult(
                         index = 56, 
                         status = 'created', 
                         alert_id = '', 
@@ -51,7 +51,7 @@ class TestAlertBatchCreateResponse(unittest.TestCase):
                 created = 56,
                 failed = 56,
                 results = [
-                    cs2cap_sdk.models.alert_batch_create_result.AlertBatchCreateResult(
+                    cs2cap.models.alert_batch_create_result.AlertBatchCreateResult(
                         index = 56, 
                         status = 'created', 
                         alert_id = '', 

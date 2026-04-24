@@ -3,8 +3,8 @@ import json
 import sys
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -61,13 +61,13 @@ def main() -> int:
     # Reuse one authenticated client for the streaming request.
     configuration = build_configuration(bearer_token)
 
-    collected: list[cs2cap_sdk.MarketItem] = []
+    collected: list[cs2cap.MarketItem] = []
     processed_lines = 0
     response = None
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
-            prices_api = cs2cap_sdk.PricesApi(client)
+        with cs2cap.ApiClient(configuration) as client:
+            prices_api = cs2cap.PricesApi(client)
 
             # Use the raw streaming variant so rows can be processed as they arrive.
             response = prices_api.stream_prices_snapshot_v1_prices_post_without_preload_content()
@@ -75,7 +75,7 @@ def main() -> int:
             for line in decode_lines(response):
                 # Deserialize each NDJSON object into the generated model type.
                 payload = json.loads(line)
-                item = cs2cap_sdk.MarketItem.from_dict(payload)
+                item = cs2cap.MarketItem.from_dict(payload)
                 processed_lines += 1
 
                 # Provider filtering happens locally because the endpoint is unfiltered.

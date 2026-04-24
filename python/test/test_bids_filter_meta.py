@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.bids_filter_meta import BidsFilterMeta
+from cs2cap.models.bids_filter_meta import BidsFilterMeta
 
 class TestBidsFilterMeta(unittest.TestCase):
     """BidsFilterMeta unit test stubs"""

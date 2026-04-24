@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.bids_meta import BidsMeta
+from cs2cap.models.bids_meta import BidsMeta
 
 class TestBidsMeta(unittest.TestCase):
     """BidsMeta unit test stubs"""
@@ -36,7 +36,7 @@ class TestBidsMeta(unittest.TestCase):
         if include_optional:
             return BidsMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.bids_filter_meta.BidsFilterMeta(
+                filters = cs2cap.models.bids_filter_meta.BidsFilterMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 
@@ -50,7 +50,7 @@ class TestBidsMeta(unittest.TestCase):
         else:
             return BidsMeta(
                 currency = '',
-                filters = cs2cap_sdk.models.bids_filter_meta.BidsFilterMeta(
+                filters = cs2cap.models.bids_filter_meta.BidsFilterMeta(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', 

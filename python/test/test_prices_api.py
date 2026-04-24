@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.prices_api import PricesApi
+from cs2cap.api.prices_api import PricesApi
 
 
 class TestPricesApi(unittest.TestCase):

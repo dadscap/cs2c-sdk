@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.provider_fees import ProviderFees
+from cs2cap.models.provider_fees import ProviderFees
 
 class TestProviderFees(unittest.TestCase):
     """ProviderFees unit test stubs"""

@@ -1,4 +1,4 @@
-# @cs2cap.com/sdk@1.0.0
+# cs2cap@1.0.0
 
 A TypeScript SDK client for the api.cs2c.app API.
 
@@ -7,7 +7,7 @@ A TypeScript SDK client for the api.cs2c.app API.
 First, install the SDK from npm.
 
 ```bash
-npm install @cs2cap.com/sdk --save
+npm install cs2cap --save
 ```
 
 Next, try it out.
@@ -17,11 +17,11 @@ Next, try it out.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from '@cs2cap.com/sdk';
-import type { CreateSubKeyRequest } from '@cs2cap.com/sdk';
+} from 'cs2cap';
+import type { CreateSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing @cs2cap.com/sdk SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

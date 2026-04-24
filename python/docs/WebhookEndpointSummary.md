@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.webhook_endpoint_summary import WebhookEndpointSummary
+from cs2cap.models.webhook_endpoint_summary import WebhookEndpointSummary
 
 # TODO update the JSON string below
 json = "{}"

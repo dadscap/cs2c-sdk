@@ -16,7 +16,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { IndicatorVolatility } from '@cs2cap.com/sdk'
+import type { IndicatorVolatility } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

@@ -3,8 +3,8 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-import cs2cap_sdk
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.rest import ApiException
 
 EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
@@ -52,10 +52,10 @@ def main() -> int:
     configuration = build_configuration(bearer_token)
 
     try:
-        with cs2cap_sdk.ApiClient(configuration) as client:
-            items_api = cs2cap_sdk.ItemsApi(client)
-            portfolio_api = cs2cap_sdk.PortfolioApi(client)
-            inventory_api = cs2cap_sdk.InventoryApi(client)
+        with cs2cap.ApiClient(configuration) as client:
+            items_api = cs2cap.ItemsApi(client)
+            portfolio_api = cs2cap.PortfolioApi(client)
+            inventory_api = cs2cap.InventoryApi(client)
 
             resolved_items = resolve_catalog_items(
                 items_api,
@@ -69,7 +69,7 @@ def main() -> int:
 
             item_ids = collect_item_ids(resolved_items)
             portfolio = portfolio_api.create_portfolio_endpoint_v1_portfolio_post(
-                cs2cap_sdk.PortfolioCreate(
+                cs2cap.PortfolioCreate(
                     name=f"SDK Example {datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}"
                 )
             )
@@ -86,7 +86,7 @@ def main() -> int:
             first_entry = (
                 portfolio_api.add_portfolio_item_endpoint_v1_portfolio_portfolio_id_items_post(  # noqa: E501
                     portfolio.id,
-                    cs2cap_sdk.PortfolioAddItemRequest(
+                    cs2cap.PortfolioAddItemRequest(
                         item_id=item_ids[0],
                         quantity=2,
                     ),
@@ -94,7 +94,7 @@ def main() -> int:
             )
             portfolio_api.add_portfolio_item_endpoint_v1_portfolio_portfolio_id_items_post(
                 portfolio.id,
-                cs2cap_sdk.PortfolioAddItemRequest(
+                cs2cap.PortfolioAddItemRequest(
                     item_id=item_ids[1],
                     quantity=1,
                 ),
@@ -105,10 +105,10 @@ def main() -> int:
                 )
             )
             ad_hoc_value = portfolio_api.portfolio_value_v1_portfolio_value_post(
-                cs2cap_sdk.PortfolioRequest(
+                cs2cap.PortfolioRequest(
                     items=[
-                        cs2cap_sdk.PortfolioRequestItem(item_id=item_ids[0], quantity=2),
-                        cs2cap_sdk.PortfolioRequestItem(item_id=item_ids[1], quantity=1),
+                        cs2cap.PortfolioRequestItem(item_id=item_ids[0], quantity=2),
+                        cs2cap.PortfolioRequestItem(item_id=item_ids[1], quantity=1),
                     ],
                     currency="USD",
                 )
@@ -141,7 +141,7 @@ def main() -> int:
                     if steam_inventory.data:
                         import_summary = portfolio_api.import_inventory_endpoint_v1_portfolio_portfolio_id_import_post(  # noqa: E501
                             portfolio.id,
-                            cs2cap_sdk.PortfolioImportRequest(
+                            cs2cap.PortfolioImportRequest(
                                 asset_ids=[steam_inventory.data[0].assetid]
                             ),
                         )

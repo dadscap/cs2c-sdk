@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_indices_response import MarketIndicesResponse
+from cs2cap.models.market_indices_response import MarketIndicesResponse
 
 class TestMarketIndicesResponse(unittest.TestCase):
     """MarketIndicesResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestMarketIndicesResponse(unittest.TestCase):
         model = MarketIndicesResponse()
         if include_optional:
             return MarketIndicesResponse(
-                meta = cs2cap_sdk.models.market_indices_meta.MarketIndicesMeta(
+                meta = cs2cap.models.market_indices_meta.MarketIndicesMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
@@ -45,7 +45,7 @@ class TestMarketIndicesResponse(unittest.TestCase):
             )
         else:
             return MarketIndicesResponse(
-                meta = cs2cap_sdk.models.market_indices_meta.MarketIndicesMeta(
+                meta = cs2cap.models.market_indices_meta.MarketIndicesMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 

@@ -1,4 +1,4 @@
-import type { ItemOut, ItemsApi } from "cs2cap-sdk";
+import type { ItemOut, ItemsApi } from "cs2cap";
 
 export async function resolveCatalogItems(
   itemsApi: ItemsApi,

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.watchlist_create_single_request import WatchlistCreateSingleRequest
+from cs2cap.models.watchlist_create_single_request import WatchlistCreateSingleRequest
 
 # TODO update the JSON string below
 json = "{}"

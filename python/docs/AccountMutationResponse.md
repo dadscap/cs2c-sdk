@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.account_mutation_response import AccountMutationResponse
+from cs2cap.models.account_mutation_response import AccountMutationResponse
 
 # TODO update the JSON string below
 json = "{}"

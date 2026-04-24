@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_event_summary import AlertEventSummary
+from cs2cap.models.alert_event_summary import AlertEventSummary
 
 class TestAlertEventSummary(unittest.TestCase):
     """AlertEventSummary unit test stubs"""
@@ -38,7 +38,7 @@ class TestAlertEventSummary(unittest.TestCase):
                 id = '',
                 alert_id = '',
                 kind = '',
-                item = cs2cap_sdk.models.alert_item_summary.AlertItemSummary(
+                item = cs2cap.models.alert_item_summary.AlertItemSummary(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', ),
@@ -47,7 +47,7 @@ class TestAlertEventSummary(unittest.TestCase):
                 reason = '',
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 deliveries = [
-                    cs2cap_sdk.models.alert_delivery_summary.AlertDeliverySummary(
+                    cs2cap.models.alert_delivery_summary.AlertDeliverySummary(
                         channel = '', 
                         status = '', 
                         delivery_id = '', 
@@ -65,14 +65,14 @@ class TestAlertEventSummary(unittest.TestCase):
                 id = '',
                 alert_id = '',
                 kind = '',
-                item = cs2cap_sdk.models.alert_item_summary.AlertItemSummary(
+                item = cs2cap.models.alert_item_summary.AlertItemSummary(
                     item_id = 56, 
                     market_hash_name = '', 
                     phase = '', ),
                 triggered_value = ERROR_TO_EXAMPLE_VALUE,
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 deliveries = [
-                    cs2cap_sdk.models.alert_delivery_summary.AlertDeliverySummary(
+                    cs2cap.models.alert_delivery_summary.AlertDeliverySummary(
                         channel = '', 
                         status = '', 
                         delivery_id = '', 

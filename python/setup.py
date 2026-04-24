@@ -18,7 +18,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "cs2cap-sdk"
+NAME = "cs2cap"
 VERSION = "1.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
@@ -43,5 +43,5 @@ setup(
     long_description="""\
     CS2Cap aggregates and analyzes Counter-Strike 2 marketplace data across multiple providers via a unified REST API.
     """,  # noqa: E501
-    package_data={"cs2cap_sdk": ["py.typed"]},
+    package_data={"cs2cap": ["py.typed"]},
 )

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.price_candle_item import PriceCandleItem
+from cs2cap.models.price_candle_item import PriceCandleItem
 
 class TestPriceCandleItem(unittest.TestCase):
     """PriceCandleItem unit test stubs"""
@@ -42,7 +42,7 @@ class TestPriceCandleItem(unittest.TestCase):
                 c = 56,
                 v = 56,
                 q = 56,
-                providers = cs2cap_sdk.models.providers.Providers(
+                providers = cs2cap.models.providers.Providers(
                     h = '', 
                     l = '', )
             )
@@ -54,7 +54,7 @@ class TestPriceCandleItem(unittest.TestCase):
                 l = 56,
                 c = 56,
                 v = 56,
-                providers = cs2cap_sdk.models.providers.Providers(
+                providers = cs2cap.models.providers.Providers(
                     h = '', 
                     l = '', ),
         )

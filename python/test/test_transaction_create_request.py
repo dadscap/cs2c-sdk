@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.transaction_create_request import TransactionCreateRequest
+from cs2cap.models.transaction_create_request import TransactionCreateRequest
 
 class TestTransactionCreateRequest(unittest.TestCase):
     """TransactionCreateRequest unit test stubs"""

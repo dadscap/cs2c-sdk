@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_items_snapshot_item import MarketItemsSnapshotItem
+from cs2cap.models.market_items_snapshot_item import MarketItemsSnapshotItem
 
 class TestMarketItemsSnapshotItem(unittest.TestCase):
     """MarketItemsSnapshotItem unit test stubs"""

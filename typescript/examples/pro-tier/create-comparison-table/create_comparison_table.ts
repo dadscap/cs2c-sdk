@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 
-import type { BuyOrderItem, MarketItem, SaleRecordDetail } from "cs2cap-sdk";
-import { BidsApi, ItemsApi, PricesApi, SalesApi } from "cs2cap-sdk";
+import type { BuyOrderItem, MarketItem, SaleRecordDetail } from "cs2cap";
+import { BidsApi, ItemsApi, PricesApi, SalesApi } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";

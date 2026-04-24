@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_item_analytics_response import MarketItemAnalyticsResponse
+from cs2cap.models.market_item_analytics_response import MarketItemAnalyticsResponse
 
 class TestMarketItemAnalyticsResponse(unittest.TestCase):
     """MarketItemAnalyticsResponse unit test stubs"""
@@ -35,7 +35,7 @@ class TestMarketItemAnalyticsResponse(unittest.TestCase):
         model = MarketItemAnalyticsResponse()
         if include_optional:
             return MarketItemAnalyticsResponse(
-                meta = cs2cap_sdk.models.market_meta.MarketMeta(
+                meta = cs2cap.models.market_meta.MarketMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
@@ -44,7 +44,7 @@ class TestMarketItemAnalyticsResponse(unittest.TestCase):
             )
         else:
             return MarketItemAnalyticsResponse(
-                meta = cs2cap_sdk.models.market_meta.MarketMeta(
+                meta = cs2cap.models.market_meta.MarketMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 

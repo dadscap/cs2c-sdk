@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.items_pagination_meta import ItemsPaginationMeta
+from cs2cap.models.items_pagination_meta import ItemsPaginationMeta
 
 class TestItemsPaginationMeta(unittest.TestCase):
     """ItemsPaginationMeta unit test stubs"""

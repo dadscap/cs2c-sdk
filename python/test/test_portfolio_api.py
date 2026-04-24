@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.portfolio_api import PortfolioApi
+from cs2cap.api.portfolio_api import PortfolioApi
 
 
 class TestPortfolioApi(unittest.TestCase):

@@ -1,4 +1,4 @@
-# cs2cap_sdk.ProvidersApi
+# cs2cap.ProvidersApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -21,14 +21,14 @@ Use the optional `provider` query parameter to fetch a single provider by key.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.provider_info import ProviderInfo
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.provider_info import ProviderInfo
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -38,14 +38,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.ProvidersApi(api_client)
+    api_instance = cs2cap.ProvidersApi(api_client)
     provider = 'provider_example' # str | Optional provider key filter (e.g. \"skinport\"). Omit to return all providers. (optional)
 
     try:

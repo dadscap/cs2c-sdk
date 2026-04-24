@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.portfolio_out import PortfolioOut
+from cs2cap.models.portfolio_out import PortfolioOut
 
 # TODO update the JSON string below
 json = "{}"

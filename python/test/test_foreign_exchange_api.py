@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.api.foreign_exchange_api import ForeignExchangeApi
+from cs2cap.api.foreign_exchange_api import ForeignExchangeApi
 
 
 class TestForeignExchangeApi(unittest.TestCase):

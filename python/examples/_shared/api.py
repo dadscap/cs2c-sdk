@@ -8,7 +8,7 @@ from typing import TypeVar
 
 T = TypeVar("T")
 
-from cs2cap_sdk.rest import ApiException
+from cs2cap.rest import ApiException
 
 _WHITESPACE = re.compile(r"\s+")
 

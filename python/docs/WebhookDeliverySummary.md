@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.webhook_delivery_summary import WebhookDeliverySummary
+from cs2cap.models.webhook_delivery_summary import WebhookDeliverySummary
 
 # TODO update the JSON string below
 json = "{}"

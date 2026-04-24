@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap_sdk.models.buy_order_item import BuyOrderItem
+from cs2cap.models.buy_order_item import BuyOrderItem
 
 # TODO update the JSON string below
 json = "{}"

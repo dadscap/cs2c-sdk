@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_endpoints_response import WebhookEndpointsResponse
+from cs2cap.models.webhook_endpoints_response import WebhookEndpointsResponse
 
 class TestWebhookEndpointsResponse(unittest.TestCase):
     """WebhookEndpointsResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestWebhookEndpointsResponse(unittest.TestCase):
         if include_optional:
             return WebhookEndpointsResponse(
                 webhooks = [
-                    cs2cap_sdk.models.webhook_endpoint_summary.WebhookEndpointSummary(
+                    cs2cap.models.webhook_endpoint_summary.WebhookEndpointSummary(
                         id = '', 
                         label = '', 
                         url = '', 
@@ -52,7 +52,7 @@ class TestWebhookEndpointsResponse(unittest.TestCase):
         else:
             return WebhookEndpointsResponse(
                 webhooks = [
-                    cs2cap_sdk.models.webhook_endpoint_summary.WebhookEndpointSummary(
+                    cs2cap.models.webhook_endpoint_summary.WebhookEndpointSummary(
                         id = '', 
                         label = '', 
                         url = '', 

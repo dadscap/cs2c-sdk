@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_import_result import PortfolioImportResult
+from cs2cap.models.portfolio_import_result import PortfolioImportResult
 
 class TestPortfolioImportResult(unittest.TestCase):
     """PortfolioImportResult unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.prices_filter_meta import PricesFilterMeta
+from cs2cap.models.prices_filter_meta import PricesFilterMeta
 
 class TestPricesFilterMeta(unittest.TestCase):
     """PricesFilterMeta unit test stubs"""

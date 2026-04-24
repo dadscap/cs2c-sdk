@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.alert_events_response import AlertEventsResponse
+from cs2cap.models.alert_events_response import AlertEventsResponse
 
 class TestAlertEventsResponse(unittest.TestCase):
     """AlertEventsResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestAlertEventsResponse(unittest.TestCase):
         if include_optional:
             return AlertEventsResponse(
                 events = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -47,7 +47,7 @@ class TestAlertEventsResponse(unittest.TestCase):
         else:
             return AlertEventsResponse(
                 events = ERROR_TO_EXAMPLE_VALUE,
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

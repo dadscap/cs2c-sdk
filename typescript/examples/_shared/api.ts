@@ -1,4 +1,4 @@
-import { ResponseError } from "cs2cap-sdk";
+import { ResponseError } from "cs2cap";
 
 function compactWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();

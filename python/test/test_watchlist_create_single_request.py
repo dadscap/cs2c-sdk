@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.watchlist_create_single_request import WatchlistCreateSingleRequest
+from cs2cap.models.watchlist_create_single_request import WatchlistCreateSingleRequest
 
 class TestWatchlistCreateSingleRequest(unittest.TestCase):
     """WatchlistCreateSingleRequest unit test stubs"""

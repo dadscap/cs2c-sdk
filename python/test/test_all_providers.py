@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.all_providers import AllProviders
+from cs2cap.models.all_providers import AllProviders
 
 class TestAllProviders(unittest.TestCase):
     """AllProviders unit test stubs"""

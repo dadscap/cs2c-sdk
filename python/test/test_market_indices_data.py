@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.market_indices_data import MarketIndicesData
+from cs2cap.models.market_indices_data import MarketIndicesData
 
 class TestMarketIndicesData(unittest.TestCase):
     """MarketIndicesData unit test stubs"""

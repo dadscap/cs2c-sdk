@@ -1,4 +1,4 @@
-# cs2cap_sdk.AccountWatchlistApi
+# cs2cap.AccountWatchlistApi
 
 All URIs are relative to *https://api.cs2c.app*
 
@@ -29,15 +29,15 @@ Rules:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.watchlist_create_request import WatchlistCreateRequest
-from cs2cap_sdk.models.watchlist_create_response import WatchlistCreateResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.watchlist_create_request import WatchlistCreateRequest
+from cs2cap.models.watchlist_create_response import WatchlistCreateResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -47,15 +47,15 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWatchlistApi(api_client)
-    watchlist_create_request = cs2cap_sdk.WatchlistCreateRequest() # WatchlistCreateRequest | 
+    api_instance = cs2cap.AccountWatchlistApi(api_client)
+    watchlist_create_request = cs2cap.WatchlistCreateRequest() # WatchlistCreateRequest | 
 
     try:
         # Create Watchlist Entries
@@ -114,14 +114,14 @@ This path uses the catalog item ID, not the watchlist entry UUID.
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.account_mutation_response import AccountMutationResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.account_mutation_response import AccountMutationResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -131,14 +131,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWatchlistApi(api_client)
+    api_instance = cs2cap.AccountWatchlistApi(api_client)
     item_id = 56 # int | 
 
     try:
@@ -202,14 +202,14 @@ Behavior:
 * Bearer Authentication (BearerAuth):
 
 ```python
-import cs2cap_sdk
-from cs2cap_sdk.models.watchlist_response import WatchlistResponse
-from cs2cap_sdk.rest import ApiException
+import cs2cap
+from cs2cap.models.watchlist_response import WatchlistResponse
+from cs2cap.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.cs2c.app
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     host = "https://api.cs2c.app"
 )
 
@@ -219,14 +219,14 @@ configuration = cs2cap_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: BearerAuth
-configuration = cs2cap_sdk.Configuration(
+configuration = cs2cap.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with cs2cap_sdk.ApiClient(configuration) as api_client:
+with cs2cap.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cs2cap_sdk.AccountWatchlistApi(api_client)
+    api_instance = cs2cap.AccountWatchlistApi(api_client)
     limit = 50 # int | Requested page size. Values are clamped to the range 1..200. (optional) (default to 50)
     offset = 0 # int | Zero-based starting position for this page. (optional) (default to 0)
     search = 'search_example' # str | Exact numeric item_id match or case-insensitive market_hash_name substring. (optional)

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.batch_price_item import BatchPriceItem
+from cs2cap.models.batch_price_item import BatchPriceItem
 
 class TestBatchPriceItem(unittest.TestCase):
     """BatchPriceItem unit test stubs"""
@@ -39,7 +39,7 @@ class TestBatchPriceItem(unittest.TestCase):
                 market_hash_name = '',
                 phase = '',
                 quotes = [
-                    cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                    cs2cap.models.batch_price_quote.BatchPriceQuote(
                         provider = '', 
                         lowest_ask = 56, 
                         quantity = 56, 
@@ -52,7 +52,7 @@ class TestBatchPriceItem(unittest.TestCase):
                 item_id = 56,
                 market_hash_name = '',
                 quotes = [
-                    cs2cap_sdk.models.batch_price_quote.BatchPriceQuote(
+                    cs2cap.models.batch_price_quote.BatchPriceQuote(
                         provider = '', 
                         lowest_ask = 56, 
                         quantity = 56, 

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_list_response import PortfolioListResponse
+from cs2cap.models.portfolio_list_response import PortfolioListResponse
 
 class TestPortfolioListResponse(unittest.TestCase):
     """PortfolioListResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestPortfolioListResponse(unittest.TestCase):
         if include_optional:
             return PortfolioListResponse(
                 data = [
-                    cs2cap_sdk.models.portfolio_out.PortfolioOut(
+                    cs2cap.models.portfolio_out.PortfolioOut(
                         id = '', 
                         name = '', 
                         item_count = 56, 
@@ -47,7 +47,7 @@ class TestPortfolioListResponse(unittest.TestCase):
         else:
             return PortfolioListResponse(
                 data = [
-                    cs2cap_sdk.models.portfolio_out.PortfolioOut(
+                    cs2cap.models.portfolio_out.PortfolioOut(
                         id = '', 
                         name = '', 
                         item_count = 56, 

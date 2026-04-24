@@ -8,7 +8,7 @@ Use a quant-tier key for live streams and market-intelligence workflows.
 
 ## Run
 
-Run from the `python/` directory after installing `cs2cap-sdk`:
+Run from the `python/` directory after installing `cs2cap`:
 
 ```bash
 python examples/quant-tier/stream-prices-snapshot/stream_prices_snapshot.py --max-lines 5000 --top 15

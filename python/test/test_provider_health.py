@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.provider_health import ProviderHealth
+from cs2cap.models.provider_health import ProviderHealth
 
 class TestProviderHealth(unittest.TestCase):
     """ProviderHealth unit test stubs"""

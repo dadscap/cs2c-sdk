@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_deliveries_response import WebhookDeliveriesResponse
+from cs2cap.models.webhook_deliveries_response import WebhookDeliveriesResponse
 
 class TestWebhookDeliveriesResponse(unittest.TestCase):
     """WebhookDeliveriesResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestWebhookDeliveriesResponse(unittest.TestCase):
         if include_optional:
             return WebhookDeliveriesResponse(
                 deliveries = [
-                    cs2cap_sdk.models.webhook_delivery_summary.WebhookDeliverySummary(
+                    cs2cap.models.webhook_delivery_summary.WebhookDeliverySummary(
                         id = '', 
                         event_id = '', 
                         endpoint_id = '', 
@@ -51,7 +51,7 @@ class TestWebhookDeliveriesResponse(unittest.TestCase):
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         completed_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 
@@ -62,7 +62,7 @@ class TestWebhookDeliveriesResponse(unittest.TestCase):
         else:
             return WebhookDeliveriesResponse(
                 deliveries = [
-                    cs2cap_sdk.models.webhook_delivery_summary.WebhookDeliverySummary(
+                    cs2cap.models.webhook_delivery_summary.WebhookDeliverySummary(
                         id = '', 
                         event_id = '', 
                         endpoint_id = '', 
@@ -77,7 +77,7 @@ class TestWebhookDeliveriesResponse(unittest.TestCase):
                         created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         completed_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
-                pagination = cs2cap_sdk.models.pagination_meta.PaginationMeta(
+                pagination = cs2cap.models.pagination_meta.PaginationMeta(
                     limit = 1.0, 
                     offset = 0.0, 
                     total = -1.0, 

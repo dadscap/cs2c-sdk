@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.indicator_signals import IndicatorSignals
+from cs2cap.models.indicator_signals import IndicatorSignals
 
 class TestIndicatorSignals(unittest.TestCase):
     """IndicatorSignals unit test stubs"""

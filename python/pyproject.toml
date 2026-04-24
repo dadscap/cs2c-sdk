@@ -1,5 +1,5 @@
 [project]
-name = "cs2cap_sdk"
+name = "cs2cap"
 version = "1.0.0"
 description = "CS2Cap"
 authors = [
@@ -40,7 +40,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "cs2cap_sdk",
+  "cs2cap",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -78,7 +78,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "cs2cap_sdk.configuration",
+  "cs2cap.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true

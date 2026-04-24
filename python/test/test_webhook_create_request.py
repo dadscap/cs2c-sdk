@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.webhook_create_request import WebhookCreateRequest
+from cs2cap.models.webhook_create_request import WebhookCreateRequest
 
 class TestWebhookCreateRequest(unittest.TestCase):
     """WebhookCreateRequest unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from cs2cap_sdk.models.portfolio_item_out import PortfolioItemOut
+from cs2cap.models.portfolio_item_out import PortfolioItemOut
 
 class TestPortfolioItemOut(unittest.TestCase):
     """PortfolioItemOut unit test stubs"""
@@ -47,13 +47,13 @@ class TestPortfolioItemOut(unittest.TestCase):
                 inspect_link = '',
                 name_tag = '',
                 stickers = [
-                    cs2cap_sdk.models.sticker_info.StickerInfo(
+                    cs2cap.models.sticker_info.StickerInfo(
                         name = '', 
                         slot = 56, 
                         wear = 1.337, )
                     ],
                 charms = [
-                    cs2cap_sdk.models.charm_info.CharmInfo(
+                    cs2cap.models.charm_info.CharmInfo(
                         name = '', 
                         pattern_id = 56, )
                     ],
