@@ -75,18 +75,6 @@ export interface APIKeyInfo {
     expiresAt?: Date | null;
     /**
      * 
-     * @type {string}
-     * @memberof APIKeyInfo
-     */
-    boundIp?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof APIKeyInfo
-     */
-    boundIpSetAt?: Date | null;
-    /**
-     * 
      * @type {number}
      * @memberof APIKeyInfo
      */
@@ -141,8 +129,6 @@ export function APIKeyInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'createdAt': (new Date(json['created_at'])),
         'lastUsedAt': json['last_used_at'] == null ? undefined : (new Date(json['last_used_at'])),
         'expiresAt': json['expires_at'] == null ? undefined : (new Date(json['expires_at'])),
-        'boundIp': json['bound_ip'] == null ? undefined : json['bound_ip'],
-        'boundIpSetAt': json['bound_ip_set_at'] == null ? undefined : (new Date(json['bound_ip_set_at'])),
         'quotaRequestsPerMonthOverride': json['quota_requests_per_month_override'] == null ? undefined : json['quota_requests_per_month_override'],
         'rateRequestsPerMinuteOverride': json['rate_requests_per_minute_override'] == null ? undefined : json['rate_requests_per_minute_override'],
         'effectiveQuotaRequestsPerMonth': json['effective_quota_requests_per_month'] == null ? undefined : json['effective_quota_requests_per_month'],
@@ -170,8 +156,6 @@ export function APIKeyInfoToJSONTyped(value?: APIKeyInfo | null, ignoreDiscrimin
         'created_at': value['createdAt'].toISOString(),
         'last_used_at': value['lastUsedAt'] == null ? value['lastUsedAt'] : value['lastUsedAt'].toISOString(),
         'expires_at': value['expiresAt'] == null ? value['expiresAt'] : value['expiresAt'].toISOString(),
-        'bound_ip': value['boundIp'],
-        'bound_ip_set_at': value['boundIpSetAt'] == null ? value['boundIpSetAt'] : value['boundIpSetAt'].toISOString(),
         'quota_requests_per_month_override': value['quotaRequestsPerMonthOverride'],
         'rate_requests_per_minute_override': value['rateRequestsPerMinuteOverride'],
         'effective_quota_requests_per_month': value['effectiveQuotaRequestsPerMonth'],

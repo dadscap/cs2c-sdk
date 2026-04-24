@@ -9,7 +9,7 @@ Use a pro-tier key for deeper account and analytics workflows.
 
 ## Run
 
-Run from the `sdk-scripts/typescript/` directory after completing setup:
+Run from the `typescript/` directory after running `npm install`:
 
 ```bash
 npm run example -- examples/pro-tier/create-comparison-table/create_comparison_table.ts

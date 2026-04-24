@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from typing import TypeVar
+
+T = TypeVar("T")
 
 from cs2cap_sdk.rest import ApiException
 
@@ -23,7 +26,7 @@ def format_api_error(exc: ApiException) -> str:
     return f"API request failed ({exc.status} {reason})."
 
 
-def call_or_skip[T](
+def call_or_skip(
     label: str,
     func: Callable[[], T],
 ) -> tuple[T | None, str | None]:

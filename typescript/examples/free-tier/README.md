@@ -8,7 +8,7 @@ endpoints available on that tier.
 
 ## Run
 
-Run from the `sdk-scripts/typescript/` directory after completing setup:
+Run from the `typescript/` directory after running `npm install`:
 
 ```bash
 npm run example -- examples/free-tier/bootstrap-and-search/bootstrap_and_search.ts

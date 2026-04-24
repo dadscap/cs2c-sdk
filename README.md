@@ -1,14 +1,21 @@
-# CS2C-API SDKs
+# CS2Cap SDKs
 
-Client SDKs for the public CS2C-API market-data surface. Languages available: Python, TypeScript
+Client SDKs for the CS2Cap market-data API. Available for Python and TypeScript.
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
+## Packages
+
+| Language | Package | Install |
+| --- | --- | --- |
+| Python | [`cs2cap-sdk`](https://pypi.org/project/cs2cap-sdk/) | `pip install cs2cap-sdk` |
+| TypeScript | [`@cs2cap.com/sdk`](https://www.npmjs.com/package/@cs2cap.com/sdk) | `npm install @cs2cap.com/sdk` |
+
 ## Contents
 
-- `python/` — generated Python client plus bundled example workflows in `python/examples/`
-- `typescript/` — generated TypeScript Fetch client plus bundled example workflows in `typescript/examples/`
-- `openapi/openapi.json` — public OpenAPI source used for generation
+- `python/` — Python SDK source and bundled example workflows in `python/examples/`
+- `typescript/` — TypeScript SDK source and bundled example workflows in `typescript/examples/`
+- `openapi/openapi.json` — public OpenAPI spec used to generate these SDKs
 
 ## API Base URL
 
@@ -23,34 +30,37 @@ https://api.cs2c.app
 1. Create an account at [cs2cap.com](https://cs2cap.com) and verify your email address.
 2. Navigate to [cs2cap.com/account/api-keys](https://cs2cap.com/account/api-keys) and generate a key.
 
-> **Note for free-tier keys:** Free keys are bound to the IP address that made the generation request. If your active IP at request time differs from the IP you query from, calls will be rejected. Avoid using a VPN or Use the bootstrap example to rebind the key to your current IP if needed.
+> **Note for free-tier keys:** Free keys are bound to the IP address that made the generation request. If your IP at request time differs from the IP you query from, calls will be rejected. Use the bootstrap example to rebind the key to your current IP if needed.
 
 When you are ready to unlock additional endpoints and higher rate limits, upgrade at [cs2cap.com/account/billing](https://cs2cap.com/account/billing).
+
+---
 
 ### Python
 
 **Requirements:** Python 3.9+
 
+Install the SDK from PyPI:
+
 ```bash
-cd python
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install .
+pip install cs2cap-sdk
 ```
 
-Provide your API key via environment variable:
+Provide your API key:
 
 ```bash
 export BEARER_TOKEN=sk_your_key_here
 ```
 
-Or copy the template and fill in your key:
+Or copy the env template and fill in your key:
 
 ```bash
+cd python
 cp .env.example .env
-# then edit .env and set CS2C_API_KEY=sk_your_key_here
+# edit .env and set CS2C_API_KEY=sk_your_key_here
 ```
 
-Run examples from the `python/` directory with your virtual environment active:
+Run examples from the `python/` directory:
 
 | Tier | Example | Command |
 | --- | --- | --- |
@@ -66,30 +76,38 @@ Run examples from the `python/` directory with your virtual environment active:
 
 See [`python/examples/`](python/examples/) for per-tier README files with full option descriptions.
 
+---
+
 ### TypeScript
 
 **Requirements:** Node.js 18+
 
+Install the SDK from npm:
+
 ```bash
-cd typescript
-npm install
-npm run build
+npm install @cs2cap.com/sdk
 ```
 
-Provide your API key via environment variable:
+Provide your API key:
 
 ```bash
 export BEARER_TOKEN=sk_your_key_here
 ```
 
-Or copy the template and fill in your key:
+Or copy the env template and fill in your key:
 
 ```bash
+cd typescript
 cp .env.example .env
-# then edit .env and set CS2C_API_KEY=sk_your_key_here
+# edit .env and set CS2C_API_KEY=sk_your_key_here
 ```
 
-Run examples from the `typescript/` directory:
+Install example runner dependencies and run examples from the `typescript/` directory:
+
+```bash
+cd typescript
+npm install
+```
 
 | Tier | Example | Command |
 | --- | --- | --- |

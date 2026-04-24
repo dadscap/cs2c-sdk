@@ -59,7 +59,6 @@ All URIs are relative to *https://api.cs2c.app*
 *AccountAPIKeysApi* | [**getSubKey**](docs/AccountAPIKeysApi.md#getsubkey) | **GET** /v1/account/sub-keys/{key_id} | Get Sub Key
 *AccountAPIKeysApi* | [**listSubKeys**](docs/AccountAPIKeysApi.md#listsubkeys) | **GET** /v1/account/sub-keys | List Sub Keys
 *AccountAPIKeysApi* | [**reissueSubKey**](docs/AccountAPIKeysApi.md#reissuesubkey) | **POST** /v1/account/sub-keys/{key_id}/reissue | Reissue Sub Key
-*AccountAPIKeysApi* | [**resetFreeTierIpBinding**](docs/AccountAPIKeysApi.md#resetfreetieripbinding) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *AccountAPIKeysApi* | [**updateSubKey**](docs/AccountAPIKeysApi.md#updatesubkey) | **PATCH** /v1/account/sub-keys/{key_id} | Update Sub Key
 *AccountAlertsApi* | [**createAlert**](docs/AccountAlertsApi.md#createalert) | **POST** /v1/account/alerts | Create Alert
 *AccountAlertsApi* | [**createAlertsBatch**](docs/AccountAlertsApi.md#createalertsbatch) | **POST** /v1/account/alerts/batch | Create Alerts Batch
@@ -89,7 +88,7 @@ All URIs are relative to *https://api.cs2c.app*
 *MarketIntelligenceApi* | [**getIndicators**](docs/MarketIntelligenceApi.md#getindicators) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**getItemAnalytics**](docs/MarketIntelligenceApi.md#getitemanalytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 *MarketIntelligenceApi* | [**getMarketAnalyticsSnapshot**](docs/MarketIntelligenceApi.md#getmarketanalyticssnapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
-*MarketIntelligenceApi* | [**getMarketCapIndices**](docs/MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indices | Get Market Cap Indices
+*MarketIntelligenceApi* | [**getMarketCapIndices**](docs/MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indexes | Get Market Cap Indices
 *PortfolioApi* | [**addItemToPortfolio**](docs/PortfolioApi.md#additemtoportfolio) | **POST** /v1/portfolio/{portfolio_id}/items | Add Item to Portfolio
 *PortfolioApi* | [**addTransaction**](docs/PortfolioApi.md#addtransaction) | **POST** /v1/portfolio/{portfolio_id}/transactions | Add Transaction
 *PortfolioApi* | [**createPortfolio**](docs/PortfolioApi.md#createportfolio) | **POST** /v1/portfolio | Create Portfolio
@@ -153,7 +152,6 @@ All URIs are relative to *https://api.cs2c.app*
 - [CursorPaginationMeta](docs/CursorPaginationMeta.md)
 - [ErrorResponse](docs/ErrorResponse.md)
 - [FXRatesResponse](docs/FXRatesResponse.md)
-- [IPResetResponse](docs/IPResetResponse.md)
 - [IndicatorDataCoverage](docs/IndicatorDataCoverage.md)
 - [IndicatorMomentum](docs/IndicatorMomentum.md)
 - [IndicatorSignals](docs/IndicatorSignals.md)

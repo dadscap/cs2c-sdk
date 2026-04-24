@@ -61,13 +61,6 @@ class TestAccountAPIKeysApi(unittest.TestCase):
         """
         pass
 
-    def test_reset_free_tier_ip_binding(self) -> None:
-        """Test case for reset_free_tier_ip_binding
-
-        Reset Free Tier Ip Binding
-        """
-        pass
-
     def test_update_sub_key(self) -> None:
         """Test case for update_sub_key
 

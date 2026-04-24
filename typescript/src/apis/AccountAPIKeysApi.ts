@@ -21,7 +21,6 @@ import type {
   ChildAPIKeyListResponse,
   ChildAPIKeyUpdateRequest,
   ErrorResponse,
-  IPResetResponse,
   ValidationErrorResponse,
 } from '../models/index';
 import {
@@ -37,8 +36,6 @@ import {
     ChildAPIKeyUpdateRequestToJSON,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
-    IPResetResponseFromJSON,
-    IPResetResponseToJSON,
     ValidationErrorResponseFromJSON,
     ValidationErrorResponseToJSON,
 } from '../models/index';
@@ -348,53 +345,6 @@ export class AccountAPIKeysApi extends runtime.BaseAPI {
      */
     async reissueSubKey(requestParameters: ReissueSubKeyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChildAPIKeyCreateResponse> {
         const response = await this.reissueSubKeyRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Creates request options for resetFreeTierIpBinding without sending the request
-     */
-    async resetFreeTierIpBindingRequestOpts(): Promise<runtime.RequestOpts> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-
-        let urlPath = `/v1/account/key/reset-ip`;
-
-        return {
-            path: urlPath,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        };
-    }
-
-    /**
-     * Rebind the active key to the caller IP for free tier with cooldown protection.
-     * Reset Free Tier Ip Binding
-     */
-    async resetFreeTierIpBindingRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<IPResetResponse>> {
-        const requestOptions = await this.resetFreeTierIpBindingRequestOpts();
-        const response = await this.request(requestOptions, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => IPResetResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Rebind the active key to the caller IP for free tier with cooldown protection.
-     * Reset Free Tier Ip Binding
-     */
-    async resetFreeTierIpBinding(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IPResetResponse> {
-        const response = await this.resetFreeTierIpBindingRaw(initOverrides);
         return await response.value();
     }
 

@@ -36,13 +36,11 @@ class APIKeyInfo(BaseModel):
     created_at: datetime = Field(description="ISO 8601 UTC timestamp when this record was created.")
     last_used_at: Optional[datetime] = None
     expires_at: Optional[datetime] = None
-    bound_ip: Optional[StrictStr] = None
-    bound_ip_set_at: Optional[datetime] = None
     quota_requests_per_month_override: Optional[StrictInt] = None
     rate_requests_per_minute_override: Optional[StrictInt] = None
     effective_quota_requests_per_month: Optional[StrictInt] = Field(default=0, description="Effective monthly quota cap for this key.")
     effective_rate_requests_per_minute: Optional[StrictInt] = Field(default=0, description="Effective requests-per-minute cap for this key.")
-    __properties: ClassVar[List[str]] = ["id", "key_prefix", "name", "root_key_id", "is_root_key", "is_active", "created_at", "last_used_at", "expires_at", "bound_ip", "bound_ip_set_at", "quota_requests_per_month_override", "rate_requests_per_minute_override", "effective_quota_requests_per_month", "effective_rate_requests_per_minute"]
+    __properties: ClassVar[List[str]] = ["id", "key_prefix", "name", "root_key_id", "is_root_key", "is_active", "created_at", "last_used_at", "expires_at", "quota_requests_per_month_override", "rate_requests_per_minute_override", "effective_quota_requests_per_month", "effective_rate_requests_per_minute"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,16 +101,6 @@ class APIKeyInfo(BaseModel):
         if self.expires_at is None and "expires_at" in self.model_fields_set:
             _dict['expires_at'] = None
 
-        # set to None if bound_ip (nullable) is None
-        # and model_fields_set contains the field
-        if self.bound_ip is None and "bound_ip" in self.model_fields_set:
-            _dict['bound_ip'] = None
-
-        # set to None if bound_ip_set_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.bound_ip_set_at is None and "bound_ip_set_at" in self.model_fields_set:
-            _dict['bound_ip_set_at'] = None
-
         # set to None if quota_requests_per_month_override (nullable) is None
         # and model_fields_set contains the field
         if self.quota_requests_per_month_override is None and "quota_requests_per_month_override" in self.model_fields_set:
@@ -144,8 +132,6 @@ class APIKeyInfo(BaseModel):
             "created_at": obj.get("created_at"),
             "last_used_at": obj.get("last_used_at"),
             "expires_at": obj.get("expires_at"),
-            "bound_ip": obj.get("bound_ip"),
-            "bound_ip_set_at": obj.get("bound_ip_set_at"),
             "quota_requests_per_month_override": obj.get("quota_requests_per_month_override"),
             "rate_requests_per_minute_override": obj.get("rate_requests_per_minute_override"),
             "effective_quota_requests_per_month": obj.get("effective_quota_requests_per_month") if obj.get("effective_quota_requests_per_month") is not None else 0,

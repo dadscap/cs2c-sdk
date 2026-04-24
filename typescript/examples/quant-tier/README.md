@@ -8,7 +8,7 @@ Use a quant-tier key for live streams and market-intelligence workflows.
 
 ## Run
 
-Run from the `sdk-scripts/typescript/` directory after completing setup:
+Run from the `typescript/` directory after running `npm install`:
 
 ```bash
 npm run example -- examples/quant-tier/stream-prices-snapshot/stream_prices_snapshot.ts --max-lines 5000 --top 15

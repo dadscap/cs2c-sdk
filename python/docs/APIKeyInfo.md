@@ -15,8 +15,6 @@ Name | Type | Description | Notes
 **created_at** | **datetime** | ISO 8601 UTC timestamp when this record was created. | 
 **last_used_at** | **datetime** |  | [optional] 
 **expires_at** | **datetime** |  | [optional] 
-**bound_ip** | **str** |  | [optional] 
-**bound_ip_set_at** | **datetime** |  | [optional] 
 **quota_requests_per_month_override** | **int** |  | [optional] 
 **rate_requests_per_minute_override** | **int** |  | [optional] 
 **effective_quota_requests_per_month** | **int** | Effective monthly quota cap for this key. | [optional] [default to 0]

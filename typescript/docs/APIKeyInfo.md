@@ -16,8 +16,6 @@ Name | Type
 `createdAt` | Date
 `lastUsedAt` | Date
 `expiresAt` | Date
-`boundIp` | string
-`boundIpSetAt` | Date
 `quotaRequestsPerMonthOverride` | number
 `rateRequestsPerMinuteOverride` | number
 `effectiveQuotaRequestsPerMonth` | number
@@ -39,8 +37,6 @@ const example = {
   "createdAt": null,
   "lastUsedAt": null,
   "expiresAt": null,
-  "boundIp": null,
-  "boundIpSetAt": null,
   "quotaRequestsPerMonthOverride": null,
   "rateRequestsPerMinuteOverride": null,
   "effectiveQuotaRequestsPerMonth": null,

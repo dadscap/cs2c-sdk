@@ -332,7 +332,7 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
             }
         }
 
-        let urlPath = `/v1/market/indices`;
+        let urlPath = `/v1/market/indexes`;
 
         return {
             path: urlPath,

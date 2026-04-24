@@ -51,7 +51,6 @@ from cs2cap_sdk.models.child_api_key_update_request import ChildAPIKeyUpdateRequ
 from cs2cap_sdk.models.cursor_pagination_meta import CursorPaginationMeta
 from cs2cap_sdk.models.error_response import ErrorResponse
 from cs2cap_sdk.models.fx_rates_response import FXRatesResponse
-from cs2cap_sdk.models.ip_reset_response import IPResetResponse
 from cs2cap_sdk.models.indicator_data_coverage import IndicatorDataCoverage
 from cs2cap_sdk.models.indicator_momentum import IndicatorMomentum
 from cs2cap_sdk.models.indicator_signals import IndicatorSignals

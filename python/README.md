@@ -99,7 +99,6 @@ Class | Method | HTTP request | Description
 *AccountAPIKeysApi* | [**get_sub_key**](docs/AccountAPIKeysApi.md#get_sub_key) | **GET** /v1/account/sub-keys/{key_id} | Get Sub Key
 *AccountAPIKeysApi* | [**list_sub_keys**](docs/AccountAPIKeysApi.md#list_sub_keys) | **GET** /v1/account/sub-keys | List Sub Keys
 *AccountAPIKeysApi* | [**reissue_sub_key**](docs/AccountAPIKeysApi.md#reissue_sub_key) | **POST** /v1/account/sub-keys/{key_id}/reissue | Reissue Sub Key
-*AccountAPIKeysApi* | [**reset_free_tier_ip_binding**](docs/AccountAPIKeysApi.md#reset_free_tier_ip_binding) | **POST** /v1/account/key/reset-ip | Reset Free Tier Ip Binding
 *AccountAPIKeysApi* | [**update_sub_key**](docs/AccountAPIKeysApi.md#update_sub_key) | **PATCH** /v1/account/sub-keys/{key_id} | Update Sub Key
 *AccountAlertsApi* | [**create_alert**](docs/AccountAlertsApi.md#create_alert) | **POST** /v1/account/alerts | Create Alert
 *AccountAlertsApi* | [**create_alerts_batch**](docs/AccountAlertsApi.md#create_alerts_batch) | **POST** /v1/account/alerts/batch | Create Alerts Batch
@@ -129,7 +128,7 @@ Class | Method | HTTP request | Description
 *MarketIntelligenceApi* | [**get_indicators**](docs/MarketIntelligenceApi.md#get_indicators) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**get_item_analytics**](docs/MarketIntelligenceApi.md#get_item_analytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 *MarketIntelligenceApi* | [**get_market_analytics_snapshot**](docs/MarketIntelligenceApi.md#get_market_analytics_snapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
-*MarketIntelligenceApi* | [**get_market_cap_indices**](docs/MarketIntelligenceApi.md#get_market_cap_indices) | **GET** /v1/market/indices | Get Market Cap Indices
+*MarketIntelligenceApi* | [**get_market_cap_indices**](docs/MarketIntelligenceApi.md#get_market_cap_indices) | **GET** /v1/market/indexes | Get Market Cap Indices
 *PortfolioApi* | [**add_item_to_portfolio**](docs/PortfolioApi.md#add_item_to_portfolio) | **POST** /v1/portfolio/{portfolio_id}/items | Add Item to Portfolio
 *PortfolioApi* | [**add_transaction**](docs/PortfolioApi.md#add_transaction) | **POST** /v1/portfolio/{portfolio_id}/transactions | Add Transaction
 *PortfolioApi* | [**create_portfolio**](docs/PortfolioApi.md#create_portfolio) | **POST** /v1/portfolio | Create Portfolio
@@ -193,7 +192,6 @@ Class | Method | HTTP request | Description
  - [CursorPaginationMeta](docs/CursorPaginationMeta.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [FXRatesResponse](docs/FXRatesResponse.md)
- - [IPResetResponse](docs/IPResetResponse.md)
  - [IndicatorDataCoverage](docs/IndicatorDataCoverage.md)
  - [IndicatorMomentum](docs/IndicatorMomentum.md)
  - [IndicatorSignals](docs/IndicatorSignals.md)

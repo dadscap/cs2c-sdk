@@ -38,7 +38,6 @@ export * from './ChildAPIKeyUpdateRequest';
 export * from './CursorPaginationMeta';
 export * from './ErrorResponse';
 export * from './FXRatesResponse';
-export * from './IPResetResponse';
 export * from './IndicatorDataCoverage';
 export * from './IndicatorMomentum';
 export * from './IndicatorSignals';
