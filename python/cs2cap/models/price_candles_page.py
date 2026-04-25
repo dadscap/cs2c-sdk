@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from cs2cap.models.cursor_pagination_meta import CursorPaginationMeta
 from cs2cap.models.price_candle_item import PriceCandleItem
 from cs2cap.models.price_candles_meta import PriceCandlesMeta
 from typing import Optional, Set
@@ -27,12 +26,11 @@ from typing_extensions import Self
 
 class PriceCandlesPage(BaseModel):
     """
-    Paginated candle response with cursor-based pagination.
+    Candle response for a requested time window.
     """ # noqa: E501
     meta: PriceCandlesMeta = Field(description="Response metadata for this payload.")
     data: List[PriceCandleItem] = Field(description="Primary data payload for this response.")
-    pagination: CursorPaginationMeta = Field(description="Pagination metadata for this response.")
-    __properties: ClassVar[List[str]] = ["meta", "data", "pagination"]
+    __properties: ClassVar[List[str]] = ["meta", "data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,9 +81,6 @@ class PriceCandlesPage(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
-        # override the default output from pydantic by calling `to_dict()` of pagination
-        if self.pagination:
-            _dict['pagination'] = self.pagination.to_dict()
         return _dict
 
     @classmethod
@@ -99,8 +94,7 @@ class PriceCandlesPage(BaseModel):
 
         _obj = cls.model_validate({
             "meta": PriceCandlesMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
-            "data": [PriceCandleItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "pagination": CursorPaginationMeta.from_dict(obj["pagination"]) if obj.get("pagination") is not None else None
+            "data": [PriceCandleItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

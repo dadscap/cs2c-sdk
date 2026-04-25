@@ -70,8 +70,6 @@ export interface PriceCandlesRequest {
     interval?: PriceCandlesIntervalEnum;
     fill?: boolean;
     currency?: string;
-    limit?: number | null;
-    cursor?: string | null;
 }
 
 export interface PriceHistoryRequest {
@@ -269,14 +267,6 @@ export class PricesApi extends runtime.BaseAPI {
             queryParameters['currency'] = requestParameters['currency'];
         }
 
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        if (requestParameters['cursor'] != null) {
-            queryParameters['cursor'] = requestParameters['cursor'];
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -299,7 +289,7 @@ export class PricesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: `item_id` or `market_hash_name` (one is required). - Optional filter: `phase`. - Time window: `start`/`end` (ISO 8601) or `lookback` (for example `7d` or `7`). - `interval`: `5m`, `1h`, or `1d`. - `fill`: Include empty buckets with carry-forward prices when `true`. - `currency`: Quote currency (default `USD`). - `limit`, `cursor`: Cursor-based pagination controls.  Notes: - If both `start` and `lookback` are sent, `lookback` takes precedence. - Maximum lookback depends on `interval`:   `5m` up to 7 days, `1h` up to 30 days, `1d` up to 365 days.  Response: - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps. - `data`: Candle buckets in oldest-to-newest order   (`t`, `o`, `h`, `l`, `c`, `v`, `q`, `providers`).   `o`/`c` are the lowest effective provider prices, `l` is the minimum provider   low, `h` is capped at `median(provider_highs) * 1.5`, `v` is the non-negative depletion   flow between buckets, and `q` is the summed close-side inventory at bucket end when   available. `providers.l` and `providers.h` identify the provider keys contributing the   returned low/high values. For `1d` requests starting more than 30 days back, `v` falls   back to legacy depletion-derived `volume_qty` and `q` is `null`. - `pagination`: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to `/v1/prices/candles`. - `item_id` or `market_hash_name` is required. - `start`/`end` must be valid ISO 8601 timestamps. - `limit` is capped by your tier.
+     * Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: `item_id` or `market_hash_name` (one is required). - Optional filter: `phase`. - Time window: `start`/`end` (ISO 8601) or `lookback` (for example `7d` or `7`). - `interval`: `5m`, `1h`, or `1d`. - `fill`: Include empty buckets with carry-forward prices when `true`. - `currency`: Quote currency (default `USD`).  Notes: - If both `start` and `lookback` are sent, `lookback` takes precedence. - Maximum lookback depends on `interval`:   `5m` up to 7 days, `1h` up to 30 days, `1d` up to 365 days.  Response: - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps. - `data`: Candle buckets in oldest-to-newest order   (`t`, `o`, `h`, `l`, `c`, `v`, `q`, `providers`).   `o`/`c` are the lowest effective provider prices, `l` is the minimum provider   low, `h` is capped at `median(provider_highs) * 1.5`, `v` is the non-negative depletion   flow between buckets, and `q` is the summed close-side inventory at bucket end when   available. `providers.l` and `providers.h` identify the provider keys contributing the   returned low/high values. For `1d` requests starting more than 30 days back, `v` falls   back to legacy depletion-derived `volume_qty` and `q` is `null`.  Requirements: - Valid API key with access to `/v1/prices/candles`. - `item_id` or `market_hash_name` is required. - `start`/`end` must be valid ISO 8601 timestamps.
      * Price Candles
      */
     async priceCandlesRaw(requestParameters: PriceCandlesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PriceCandlesPage>> {
@@ -310,7 +300,7 @@ export class PricesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: `item_id` or `market_hash_name` (one is required). - Optional filter: `phase`. - Time window: `start`/`end` (ISO 8601) or `lookback` (for example `7d` or `7`). - `interval`: `5m`, `1h`, or `1d`. - `fill`: Include empty buckets with carry-forward prices when `true`. - `currency`: Quote currency (default `USD`). - `limit`, `cursor`: Cursor-based pagination controls.  Notes: - If both `start` and `lookback` are sent, `lookback` takes precedence. - Maximum lookback depends on `interval`:   `5m` up to 7 days, `1h` up to 30 days, `1d` up to 365 days.  Response: - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps. - `data`: Candle buckets in oldest-to-newest order   (`t`, `o`, `h`, `l`, `c`, `v`, `q`, `providers`).   `o`/`c` are the lowest effective provider prices, `l` is the minimum provider   low, `h` is capped at `median(provider_highs) * 1.5`, `v` is the non-negative depletion   flow between buckets, and `q` is the summed close-side inventory at bucket end when   available. `providers.l` and `providers.h` identify the provider keys contributing the   returned low/high values. For `1d` requests starting more than 30 days back, `v` falls   back to legacy depletion-derived `volume_qty` and `q` is `null`. - `pagination`: Standardized pagination footer with cursor state.  Requirements: - Valid API key with access to `/v1/prices/candles`. - `item_id` or `market_hash_name` is required. - `start`/`end` must be valid ISO 8601 timestamps. - `limit` is capped by your tier.
+     * Return composite OHLCV candle data for a single item across all providers.  Parameters: - Item filter: `item_id` or `market_hash_name` (one is required). - Optional filter: `phase`. - Time window: `start`/`end` (ISO 8601) or `lookback` (for example `7d` or `7`). - `interval`: `5m`, `1h`, or `1d`. - `fill`: Include empty buckets with carry-forward prices when `true`. - `currency`: Quote currency (default `USD`).  Notes: - If both `start` and `lookback` are sent, `lookback` takes precedence. - Maximum lookback depends on `interval`:   `5m` up to 7 days, `1h` up to 30 days, `1d` up to 365 days.  Response: - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps. - `data`: Candle buckets in oldest-to-newest order   (`t`, `o`, `h`, `l`, `c`, `v`, `q`, `providers`).   `o`/`c` are the lowest effective provider prices, `l` is the minimum provider   low, `h` is capped at `median(provider_highs) * 1.5`, `v` is the non-negative depletion   flow between buckets, and `q` is the summed close-side inventory at bucket end when   available. `providers.l` and `providers.h` identify the provider keys contributing the   returned low/high values. For `1d` requests starting more than 30 days back, `v` falls   back to legacy depletion-derived `volume_qty` and `q` is `null`.  Requirements: - Valid API key with access to `/v1/prices/candles`. - `item_id` or `market_hash_name` is required. - `start`/`end` must be valid ISO 8601 timestamps.
      * Price Candles
      */
     async priceCandles(requestParameters: PriceCandlesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PriceCandlesPage> {

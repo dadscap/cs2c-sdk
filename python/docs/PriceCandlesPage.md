@@ -1,6 +1,6 @@
 # PriceCandlesPage
 
-Paginated candle response with cursor-based pagination.
+Candle response for a requested time window.
 
 ## Properties
 
@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **meta** | [**PriceCandlesMeta**](PriceCandlesMeta.md) | Response metadata for this payload. | 
 **data** | [**List[PriceCandleItem]**](PriceCandleItem.md) | Primary data payload for this response. | 
-**pagination** | [**CursorPaginationMeta**](CursorPaginationMeta.md) | Pagination metadata for this response. | 
 
 ## Example
 

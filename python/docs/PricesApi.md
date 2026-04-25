@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **price_candles**
-> PriceCandlesPage price_candles(item_id=item_id, market_hash_name=market_hash_name, phase=phase, start=start, end=end, lookback=lookback, interval=interval, fill=fill, currency=currency, limit=limit, cursor=cursor)
+> PriceCandlesPage price_candles(item_id=item_id, market_hash_name=market_hash_name, phase=phase, start=start, end=end, lookback=lookback, interval=interval, fill=fill, currency=currency)
 
 Price Candles
 
@@ -233,7 +233,6 @@ Parameters:
 - `interval`: `5m`, `1h`, or `1d`.
 - `fill`: Include empty buckets with carry-forward prices when `true`.
 - `currency`: Quote currency (default `USD`).
-- `limit`, `cursor`: Cursor-based pagination controls.
 
 Notes:
 - If both `start` and `lookback` are sent, `lookback` takes precedence.
@@ -250,13 +249,11 @@ Response:
   available. `providers.l` and `providers.h` identify the provider keys contributing the
   returned low/high values. For `1d` requests starting more than 30 days back, `v` falls
   back to legacy depletion-derived `volume_qty` and `q` is `null`.
-- `pagination`: Standardized pagination footer with cursor state.
 
 Requirements:
 - Valid API key with access to `/v1/prices/candles`.
 - `item_id` or `market_hash_name` is required.
 - `start`/`end` must be valid ISO 8601 timestamps.
-- `limit` is capped by your tier.
 
 ### Example
 
@@ -297,12 +294,10 @@ with cs2cap.ApiClient(configuration) as api_client:
     interval = 1h # str | Time bucket interval (optional) (default to 1h)
     fill = False # bool | Fill gaps with forward-filled data (default: false for sparse data) (optional) (default to False)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
-    limit = 56 # int | Maximum number of candles to return. Defaults to the effective tier cap. (optional)
-    cursor = 'cursor_example' # str | Opaque pagination cursor from previous response (optional)
 
     try:
         # Price Candles
-        api_response = api_instance.price_candles(item_id=item_id, market_hash_name=market_hash_name, phase=phase, start=start, end=end, lookback=lookback, interval=interval, fill=fill, currency=currency, limit=limit, cursor=cursor)
+        api_response = api_instance.price_candles(item_id=item_id, market_hash_name=market_hash_name, phase=phase, start=start, end=end, lookback=lookback, interval=interval, fill=fill, currency=currency)
         print("The response of PricesApi->price_candles:\n")
         pprint(api_response)
     except Exception as e:
@@ -325,8 +320,6 @@ Name | Type | Description  | Notes
  **interval** | **str**| Time bucket interval | [optional] [default to 1h]
  **fill** | **bool**| Fill gaps with forward-filled data (default: false for sparse data) | [optional] [default to False]
  **currency** | **str**| Target currency. Any ISO 4217 code supported by &#x60;/v1/fx&#x60; (see &#x60;/v1/fx&#x60; for the full list). Invalid codes return a 422 validation error. | [optional] [default to &#39;USD&#39;]
- **limit** | **int**| Maximum number of candles to return. Defaults to the effective tier cap. | [optional] 
- **cursor** | **str**| Opaque pagination cursor from previous response | [optional] 
 
 ### Return type
 

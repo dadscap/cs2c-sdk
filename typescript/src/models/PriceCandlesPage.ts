@@ -20,13 +20,6 @@ import {
     PriceCandlesMetaToJSON,
     PriceCandlesMetaToJSONTyped,
 } from './PriceCandlesMeta';
-import type { CursorPaginationMeta } from './CursorPaginationMeta';
-import {
-    CursorPaginationMetaFromJSON,
-    CursorPaginationMetaFromJSONTyped,
-    CursorPaginationMetaToJSON,
-    CursorPaginationMetaToJSONTyped,
-} from './CursorPaginationMeta';
 import type { PriceCandleItem } from './PriceCandleItem';
 import {
     PriceCandleItemFromJSON,
@@ -36,7 +29,7 @@ import {
 } from './PriceCandleItem';
 
 /**
- * Paginated candle response with cursor-based pagination.
+ * Candle response for a requested time window.
  * @export
  * @interface PriceCandlesPage
  */
@@ -53,12 +46,6 @@ export interface PriceCandlesPage {
      * @memberof PriceCandlesPage
      */
     data: Array<PriceCandleItem>;
-    /**
-     * Pagination metadata for this response.
-     * @type {CursorPaginationMeta}
-     * @memberof PriceCandlesPage
-     */
-    pagination: CursorPaginationMeta;
 }
 
 /**
@@ -67,7 +54,6 @@ export interface PriceCandlesPage {
 export function instanceOfPriceCandlesPage(value: object): value is PriceCandlesPage {
     if (!('meta' in value) || value['meta'] === undefined) return false;
     if (!('data' in value) || value['data'] === undefined) return false;
-    if (!('pagination' in value) || value['pagination'] === undefined) return false;
     return true;
 }
 
@@ -83,7 +69,6 @@ export function PriceCandlesPageFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'meta': PriceCandlesMetaFromJSON(json['meta']),
         'data': ((json['data'] as Array<any>).map(PriceCandleItemFromJSON)),
-        'pagination': CursorPaginationMetaFromJSON(json['pagination']),
     };
 }
 
@@ -100,7 +85,6 @@ export function PriceCandlesPageToJSONTyped(value?: PriceCandlesPage | null, ign
         
         'meta': PriceCandlesMetaToJSON(value['meta']),
         'data': ((value['data'] as Array<any>).map(PriceCandleItemToJSON)),
-        'pagination': CursorPaginationMetaToJSON(value['pagination']),
     };
 }
 

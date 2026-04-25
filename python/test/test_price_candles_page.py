@@ -54,12 +54,7 @@ class TestPriceCandlesPage(unittest.TestCase):
                         v = 56, 
                         q = 56, 
                         providers = null, )
-                    ],
-                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
-                    limit = 1, 
-                    has_next = True, 
-                    has_prev = True, 
-                    next_cursor = '', )
+                    ]
             )
         else:
             return PriceCandlesPage(
@@ -83,11 +78,6 @@ class TestPriceCandlesPage(unittest.TestCase):
                         q = 56, 
                         providers = null, )
                     ],
-                pagination = cs2cap.models.cursor_pagination_meta.CursorPaginationMeta(
-                    limit = 1, 
-                    has_next = True, 
-                    has_prev = True, 
-                    next_cursor = '', ),
         )
         """
 

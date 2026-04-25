@@ -1,7 +1,7 @@
 
 # PriceCandlesPage
 
-Paginated candle response with cursor-based pagination.
+Candle response for a requested time window.
 
 ## Properties
 
@@ -9,7 +9,6 @@ Name | Type
 ------------ | -------------
 `meta` | [PriceCandlesMeta](PriceCandlesMeta.md)
 `data` | [Array&lt;PriceCandleItem&gt;](PriceCandleItem.md)
-`pagination` | [CursorPaginationMeta](CursorPaginationMeta.md)
 
 ## Example
 
@@ -20,7 +19,6 @@ import type { PriceCandlesPage } from 'cs2cap'
 const example = {
   "meta": null,
   "data": null,
-  "pagination": null,
 } satisfies PriceCandlesPage
 
 console.log(example)
