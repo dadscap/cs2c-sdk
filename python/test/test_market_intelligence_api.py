@@ -54,10 +54,10 @@ class TestMarketIntelligenceApi(unittest.TestCase):
         """
         pass
 
-    def test_get_market_cap_indices(self) -> None:
-        """Test case for get_market_cap_indices
+    def test_get_market_cap_indexes(self) -> None:
+        """Test case for get_market_cap_indexes
 
-        Get Market Cap Indices
+        Get Market Cap Indexes
         """
         pass
 

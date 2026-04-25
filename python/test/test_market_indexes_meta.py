@@ -14,10 +14,10 @@
 
 import unittest
 
-from cs2cap.models.market_indices_meta import MarketIndicesMeta
+from cs2cap.models.market_indexes_meta import MarketIndexesMeta
 
-class TestMarketIndicesMeta(unittest.TestCase):
-    """MarketIndicesMeta unit test stubs"""
+class TestMarketIndexesMeta(unittest.TestCase):
+    """MarketIndexesMeta unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestMarketIndicesMeta(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MarketIndicesMeta:
-        """Test MarketIndicesMeta
+    def make_instance(self, include_optional) -> MarketIndexesMeta:
+        """Test MarketIndexesMeta
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MarketIndicesMeta`
+        # uncomment below to create an instance of `MarketIndexesMeta`
         """
-        model = MarketIndicesMeta()
+        model = MarketIndexesMeta()
         if include_optional:
-            return MarketIndicesMeta(
+            return MarketIndexesMeta(
                 generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 data_source = 'cache',
                 freshness_sec = 0.0,
@@ -43,7 +43,7 @@ class TestMarketIndicesMeta(unittest.TestCase):
                 group_by = 'item_type'
             )
         else:
-            return MarketIndicesMeta(
+            return MarketIndexesMeta(
                 generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 data_source = 'cache',
                 freshness_sec = 0.0,
@@ -51,8 +51,8 @@ class TestMarketIndicesMeta(unittest.TestCase):
         )
         """
 
-    def testMarketIndicesMeta(self):
-        """Test MarketIndicesMeta"""
+    def testMarketIndexesMeta(self):
+        """Test MarketIndexesMeta"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

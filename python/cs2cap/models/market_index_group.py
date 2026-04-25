@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class MarketIndexGroup(BaseModel):
     """
-    Single group row for /v1/market/indices.
+    Single group row for /v1/market/indexes.
     """ # noqa: E501
     group: StrictStr = Field(description="Catalog category label for this group.")
     marketcap_usd: Annotated[str, Field(strict=True)] = Field(description="Money amount as a decimal string in USD major units (for example \"25.82\").")

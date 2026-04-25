@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**get_indicators**](MarketIntelligenceApi.md#get_indicators) | **GET** /v1/market/indicators | Get Indicators
 [**get_item_analytics**](MarketIntelligenceApi.md#get_item_analytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 [**get_market_analytics_snapshot**](MarketIntelligenceApi.md#get_market_analytics_snapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
-[**get_market_cap_indices**](MarketIntelligenceApi.md#get_market_cap_indices) | **GET** /v1/market/indexes | Get Market Cap Indices
+[**get_market_cap_indexes**](MarketIntelligenceApi.md#get_market_cap_indexes) | **GET** /v1/market/indexes | Get Market Cap Indexes
 
 
 # **get_arbitrage_opportunities**
@@ -396,12 +396,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_market_cap_indices**
-> MarketIndicesResponse get_market_cap_indices(group_by=group_by)
+# **get_market_cap_indexes**
+> MarketIndexesResponse get_market_cap_indexes(group_by=group_by)
 
-Get Market Cap Indices
+Get Market Cap Indexes
 
-Aggregate the cached 24h market snapshot into category-level indices.
+Aggregate the cached 24h market snapshot into category-level indexes.
 
 Supports grouping by `item_type` or `weapon_type`.
 Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.
@@ -419,7 +419,7 @@ Tier: Quant-only.
 
 ```python
 import cs2cap
-from cs2cap.models.market_indices_response import MarketIndicesResponse
+from cs2cap.models.market_indexes_response import MarketIndexesResponse
 from cs2cap.rest import ApiException
 from pprint import pprint
 
@@ -446,12 +446,12 @@ with cs2cap.ApiClient(configuration) as api_client:
     group_by = item_type # str | Catalog dimension used to group snapshot items. (optional) (default to item_type)
 
     try:
-        # Get Market Cap Indices
-        api_response = api_instance.get_market_cap_indices(group_by=group_by)
-        print("The response of MarketIntelligenceApi->get_market_cap_indices:\n")
+        # Get Market Cap Indexes
+        api_response = api_instance.get_market_cap_indexes(group_by=group_by)
+        print("The response of MarketIntelligenceApi->get_market_cap_indexes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling MarketIntelligenceApi->get_market_cap_indices: %s\n" % e)
+        print("Exception when calling MarketIntelligenceApi->get_market_cap_indexes: %s\n" % e)
 ```
 
 
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MarketIndicesResponse**](MarketIndicesResponse.md)
+[**MarketIndexesResponse**](MarketIndexesResponse.md)
 
 ### Authorization
 

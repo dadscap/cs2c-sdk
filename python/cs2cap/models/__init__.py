@@ -69,12 +69,12 @@ from cs2cap.models.market_arbitrage_item import MarketArbitrageItem
 from cs2cap.models.market_arbitrage_meta import MarketArbitrageMeta
 from cs2cap.models.market_arbitrage_response import MarketArbitrageResponse
 from cs2cap.models.market_index_group import MarketIndexGroup
+from cs2cap.models.market_indexes_data import MarketIndexesData
+from cs2cap.models.market_indexes_meta import MarketIndexesMeta
+from cs2cap.models.market_indexes_response import MarketIndexesResponse
 from cs2cap.models.market_indicators_item_data import MarketIndicatorsItemData
 from cs2cap.models.market_indicators_item_response import MarketIndicatorsItemResponse
 from cs2cap.models.market_indicators_meta import MarketIndicatorsMeta
-from cs2cap.models.market_indices_data import MarketIndicesData
-from cs2cap.models.market_indices_meta import MarketIndicesMeta
-from cs2cap.models.market_indices_response import MarketIndicesResponse
 from cs2cap.models.market_item import MarketItem
 from cs2cap.models.market_item_analytics_coverage import MarketItemAnalyticsCoverage
 from cs2cap.models.market_item_analytics_data import MarketItemAnalyticsData

@@ -14,10 +14,10 @@
 
 import unittest
 
-from cs2cap.models.market_indices_response import MarketIndicesResponse
+from cs2cap.models.market_indexes_response import MarketIndexesResponse
 
-class TestMarketIndicesResponse(unittest.TestCase):
-    """MarketIndicesResponse unit test stubs"""
+class TestMarketIndexesResponse(unittest.TestCase):
+    """MarketIndexesResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,17 +25,17 @@ class TestMarketIndicesResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MarketIndicesResponse:
-        """Test MarketIndicesResponse
+    def make_instance(self, include_optional) -> MarketIndexesResponse:
+        """Test MarketIndexesResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MarketIndicesResponse`
+        # uncomment below to create an instance of `MarketIndexesResponse`
         """
-        model = MarketIndicesResponse()
+        model = MarketIndexesResponse()
         if include_optional:
-            return MarketIndicesResponse(
-                meta = cs2cap.models.market_indices_meta.MarketIndicesMeta(
+            return MarketIndexesResponse(
+                meta = cs2cap.models.market_indexes_meta.MarketIndexesMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
@@ -44,8 +44,8 @@ class TestMarketIndicesResponse(unittest.TestCase):
                 data = ERROR_TO_EXAMPLE_VALUE
             )
         else:
-            return MarketIndicesResponse(
-                meta = cs2cap.models.market_indices_meta.MarketIndicesMeta(
+            return MarketIndexesResponse(
+                meta = cs2cap.models.market_indexes_meta.MarketIndexesMeta(
                     generated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     data_source = 'cache', 
                     freshness_sec = 0.0, 
@@ -55,8 +55,8 @@ class TestMarketIndicesResponse(unittest.TestCase):
         )
         """
 
-    def testMarketIndicesResponse(self):
-        """Test MarketIndicesResponse"""
+    def testMarketIndexesResponse(self):
+        """Test MarketIndexesResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

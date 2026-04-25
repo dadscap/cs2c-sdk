@@ -14,10 +14,10 @@
 
 import unittest
 
-from cs2cap.models.market_indices_data import MarketIndicesData
+from cs2cap.models.market_indexes_data import MarketIndexesData
 
-class TestMarketIndicesData(unittest.TestCase):
-    """MarketIndicesData unit test stubs"""
+class TestMarketIndexesData(unittest.TestCase):
+    """MarketIndexesData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,28 @@ class TestMarketIndicesData(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MarketIndicesData:
-        """Test MarketIndicesData
+    def make_instance(self, include_optional) -> MarketIndexesData:
+        """Test MarketIndexesData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MarketIndicesData`
+        # uncomment below to create an instance of `MarketIndexesData`
         """
-        model = MarketIndicesData()
+        model = MarketIndexesData()
         if include_optional:
-            return MarketIndicesData(
+            return MarketIndexesData(
                 total_marketcap_usd = ERROR_TO_EXAMPLE_VALUE,
                 groups = ERROR_TO_EXAMPLE_VALUE
             )
         else:
-            return MarketIndicesData(
+            return MarketIndexesData(
                 total_marketcap_usd = ERROR_TO_EXAMPLE_VALUE,
                 groups = ERROR_TO_EXAMPLE_VALUE,
         )
         """
 
-    def testMarketIndicesData(self):
-        """Test MarketIndicesData"""
+    def testMarketIndexesData(self):
+        """Test MarketIndexesData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

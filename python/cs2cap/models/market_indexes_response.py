@@ -19,17 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from cs2cap.models.market_indices_data import MarketIndicesData
-from cs2cap.models.market_indices_meta import MarketIndicesMeta
+from cs2cap.models.market_indexes_data import MarketIndexesData
+from cs2cap.models.market_indexes_meta import MarketIndexesMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MarketIndicesResponse(BaseModel):
+class MarketIndexesResponse(BaseModel):
     """
-    Response envelope for /v1/market/indices.
+    Response envelope for /v1/market/indexes.
     """ # noqa: E501
-    meta: MarketIndicesMeta = Field(description="Response metadata for this payload.")
-    data: MarketIndicesData = Field(description="Primary data payload for this response.")
+    meta: MarketIndexesMeta = Field(description="Response metadata for this payload.")
+    data: MarketIndexesData = Field(description="Primary data payload for this response.")
     __properties: ClassVar[List[str]] = ["meta", "data"]
 
     model_config = ConfigDict(
@@ -50,7 +50,7 @@ class MarketIndicesResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MarketIndicesResponse from a JSON string"""
+        """Create an instance of MarketIndexesResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,7 +81,7 @@ class MarketIndicesResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MarketIndicesResponse from a dict"""
+        """Create an instance of MarketIndexesResponse from a dict"""
         if obj is None:
             return None
 
@@ -89,8 +89,8 @@ class MarketIndicesResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "meta": MarketIndicesMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
-            "data": MarketIndicesData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "meta": MarketIndexesMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None,
+            "data": MarketIndexesData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

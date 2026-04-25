@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * Single group row for /v1/market/indices.
+ * Single group row for /v1/market/indexes.
  * @export
  * @interface MarketIndexGroup
  */

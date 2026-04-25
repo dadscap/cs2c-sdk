@@ -22,68 +22,68 @@ import {
 } from './MarketTimeWindowMeta';
 
 /**
- * Metadata for /v1/market/indices.
+ * Metadata for /v1/market/indexes.
  * @export
- * @interface MarketIndicesMeta
+ * @interface MarketIndexesMeta
  */
-export interface MarketIndicesMeta {
+export interface MarketIndexesMeta {
     /**
      * ISO 8601 UTC timestamp when this response was generated.
      * @type {Date}
-     * @memberof MarketIndicesMeta
+     * @memberof MarketIndexesMeta
      */
     generatedAt: Date;
     /**
      * Primary data source used to build this response.
-     * @type {MarketIndicesMetaDataSourceEnum}
-     * @memberof MarketIndicesMeta
+     * @type {MarketIndexesMetaDataSourceEnum}
+     * @memberof MarketIndexesMeta
      */
-    dataSource: MarketIndicesMetaDataSourceEnum;
+    dataSource: MarketIndexesMetaDataSourceEnum;
     /**
      * Estimated freshness of source data in seconds.
      * @type {number}
-     * @memberof MarketIndicesMeta
+     * @memberof MarketIndexesMeta
      */
     freshnessSec: number;
     /**
      * 
      * @type {MarketTimeWindowMeta}
-     * @memberof MarketIndicesMeta
+     * @memberof MarketIndexesMeta
      */
     window?: MarketTimeWindowMeta | null;
     /**
      * Catalog dimension used to group market items.
-     * @type {MarketIndicesMetaGroupByEnum}
-     * @memberof MarketIndicesMeta
+     * @type {MarketIndexesMetaGroupByEnum}
+     * @memberof MarketIndexesMeta
      */
-    groupBy: MarketIndicesMetaGroupByEnum;
+    groupBy: MarketIndexesMetaGroupByEnum;
 }
 
 
 /**
  * @export
  */
-export const MarketIndicesMetaDataSourceEnum = {
+export const MarketIndexesMetaDataSourceEnum = {
     Cache: 'cache',
     Live: 'live',
     Mixed: 'mixed'
 } as const;
-export type MarketIndicesMetaDataSourceEnum = typeof MarketIndicesMetaDataSourceEnum[keyof typeof MarketIndicesMetaDataSourceEnum];
+export type MarketIndexesMetaDataSourceEnum = typeof MarketIndexesMetaDataSourceEnum[keyof typeof MarketIndexesMetaDataSourceEnum];
 
 /**
  * @export
  */
-export const MarketIndicesMetaGroupByEnum = {
+export const MarketIndexesMetaGroupByEnum = {
     ItemType: 'item_type',
     WeaponType: 'weapon_type'
 } as const;
-export type MarketIndicesMetaGroupByEnum = typeof MarketIndicesMetaGroupByEnum[keyof typeof MarketIndicesMetaGroupByEnum];
+export type MarketIndexesMetaGroupByEnum = typeof MarketIndexesMetaGroupByEnum[keyof typeof MarketIndexesMetaGroupByEnum];
 
 
 /**
- * Check if a given object implements the MarketIndicesMeta interface.
+ * Check if a given object implements the MarketIndexesMeta interface.
  */
-export function instanceOfMarketIndicesMeta(value: object): value is MarketIndicesMeta {
+export function instanceOfMarketIndexesMeta(value: object): value is MarketIndexesMeta {
     if (!('generatedAt' in value) || value['generatedAt'] === undefined) return false;
     if (!('dataSource' in value) || value['dataSource'] === undefined) return false;
     if (!('freshnessSec' in value) || value['freshnessSec'] === undefined) return false;
@@ -91,11 +91,11 @@ export function instanceOfMarketIndicesMeta(value: object): value is MarketIndic
     return true;
 }
 
-export function MarketIndicesMetaFromJSON(json: any): MarketIndicesMeta {
-    return MarketIndicesMetaFromJSONTyped(json, false);
+export function MarketIndexesMetaFromJSON(json: any): MarketIndexesMeta {
+    return MarketIndexesMetaFromJSONTyped(json, false);
 }
 
-export function MarketIndicesMetaFromJSONTyped(json: any, ignoreDiscriminator: boolean): MarketIndicesMeta {
+export function MarketIndexesMetaFromJSONTyped(json: any, ignoreDiscriminator: boolean): MarketIndexesMeta {
     if (json == null) {
         return json;
     }
@@ -109,11 +109,11 @@ export function MarketIndicesMetaFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function MarketIndicesMetaToJSON(json: any): MarketIndicesMeta {
-    return MarketIndicesMetaToJSONTyped(json, false);
+export function MarketIndexesMetaToJSON(json: any): MarketIndexesMeta {
+    return MarketIndexesMetaToJSONTyped(json, false);
 }
 
-export function MarketIndicesMetaToJSONTyped(value?: MarketIndicesMeta | null, ignoreDiscriminator: boolean = false): any {
+export function MarketIndexesMetaToJSONTyped(value?: MarketIndexesMeta | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

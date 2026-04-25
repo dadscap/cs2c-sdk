@@ -19,8 +19,8 @@ import type {
   BuyOrderProvider,
   ErrorResponse,
   MarketArbitrageResponse,
+  MarketIndexesResponse,
   MarketIndicatorsItemResponse,
-  MarketIndicesResponse,
   MarketItemAnalyticsResponse,
   MarketItemsSnapshotResponse,
   ValidationErrorResponse,
@@ -34,10 +34,10 @@ import {
     ErrorResponseToJSON,
     MarketArbitrageResponseFromJSON,
     MarketArbitrageResponseToJSON,
+    MarketIndexesResponseFromJSON,
+    MarketIndexesResponseToJSON,
     MarketIndicatorsItemResponseFromJSON,
     MarketIndicatorsItemResponseToJSON,
-    MarketIndicesResponseFromJSON,
-    MarketIndicesResponseToJSON,
     MarketItemAnalyticsResponseFromJSON,
     MarketItemAnalyticsResponseToJSON,
     MarketItemsSnapshotResponseFromJSON,
@@ -66,8 +66,8 @@ export interface GetItemAnalyticsRequest {
     itemId: number;
 }
 
-export interface GetMarketCapIndicesRequest {
-    groupBy?: GetMarketCapIndicesGroupByEnum;
+export interface GetMarketCapIndexesRequest {
+    groupBy?: GetMarketCapIndexesGroupByEnum;
 }
 
 /**
@@ -312,9 +312,9 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for getMarketCapIndices without sending the request
+     * Creates request options for getMarketCapIndexes without sending the request
      */
-    async getMarketCapIndicesRequestOpts(requestParameters: GetMarketCapIndicesRequest): Promise<runtime.RequestOpts> {
+    async getMarketCapIndexesRequestOpts(requestParameters: GetMarketCapIndexesRequest): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
 
         if (requestParameters['groupBy'] != null) {
@@ -343,22 +343,22 @@ export class MarketIntelligenceApi extends runtime.BaseAPI {
     }
 
     /**
-     * Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
-     * Get Market Cap Indices
+     * Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+     * Get Market Cap Indexes
      */
-    async getMarketCapIndicesRaw(requestParameters: GetMarketCapIndicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketIndicesResponse>> {
-        const requestOptions = await this.getMarketCapIndicesRequestOpts(requestParameters);
+    async getMarketCapIndexesRaw(requestParameters: GetMarketCapIndexesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MarketIndexesResponse>> {
+        const requestOptions = await this.getMarketCapIndexesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => MarketIndicesResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => MarketIndexesResponseFromJSON(jsonValue));
     }
 
     /**
-     * Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
-     * Get Market Cap Indices
+     * Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+     * Get Market Cap Indexes
      */
-    async getMarketCapIndices(requestParameters: GetMarketCapIndicesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketIndicesResponse> {
-        const response = await this.getMarketCapIndicesRaw(requestParameters, initOverrides);
+    async getMarketCapIndexes(requestParameters: GetMarketCapIndexesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MarketIndexesResponse> {
+        const response = await this.getMarketCapIndexesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -375,8 +375,8 @@ export type GetIndicatorsIntervalEnum = typeof GetIndicatorsIntervalEnum[keyof t
 /**
  * @export
  */
-export const GetMarketCapIndicesGroupByEnum = {
+export const GetMarketCapIndexesGroupByEnum = {
     ItemType: 'item_type',
     WeaponType: 'weapon_type'
 } as const;
-export type GetMarketCapIndicesGroupByEnum = typeof GetMarketCapIndicesGroupByEnum[keyof typeof GetMarketCapIndicesGroupByEnum];
+export type GetMarketCapIndexesGroupByEnum = typeof GetMarketCapIndexesGroupByEnum[keyof typeof GetMarketCapIndexesGroupByEnum];

@@ -1,7 +1,7 @@
 
 # MarketIndexGroup
 
-Single group row for /v1/market/indices.
+Single group row for /v1/market/indexes.
 
 ## Properties
 

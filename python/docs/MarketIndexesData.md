@@ -1,6 +1,6 @@
-# MarketIndicesData
+# MarketIndexesData
 
-Payload for /v1/market/indices.
+Payload for /v1/market/indexes.
 
 ## Properties
 
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap.models.market_indices_data import MarketIndicesData
+from cs2cap.models.market_indexes_data import MarketIndexesData
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of MarketIndicesData from a JSON string
-market_indices_data_instance = MarketIndicesData.from_json(json)
+# create an instance of MarketIndexesData from a JSON string
+market_indexes_data_instance = MarketIndexesData.from_json(json)
 # print the JSON string representation of the object
-print(MarketIndicesData.to_json())
+print(MarketIndexesData.to_json())
 
 # convert the object into a dict
-market_indices_data_dict = market_indices_data_instance.to_dict()
-# create an instance of MarketIndicesData from a dict
-market_indices_data_from_dict = MarketIndicesData.from_dict(market_indices_data_dict)
+market_indexes_data_dict = market_indexes_data_instance.to_dict()
+# create an instance of MarketIndexesData from a dict
+market_indexes_data_from_dict = MarketIndexesData.from_dict(market_indexes_data_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

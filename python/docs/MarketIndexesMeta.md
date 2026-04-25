@@ -1,6 +1,6 @@
-# MarketIndicesMeta
+# MarketIndexesMeta
 
-Metadata for /v1/market/indices.
+Metadata for /v1/market/indexes.
 
 ## Properties
 
@@ -15,19 +15,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cs2cap.models.market_indices_meta import MarketIndicesMeta
+from cs2cap.models.market_indexes_meta import MarketIndexesMeta
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of MarketIndicesMeta from a JSON string
-market_indices_meta_instance = MarketIndicesMeta.from_json(json)
+# create an instance of MarketIndexesMeta from a JSON string
+market_indexes_meta_instance = MarketIndexesMeta.from_json(json)
 # print the JSON string representation of the object
-print(MarketIndicesMeta.to_json())
+print(MarketIndexesMeta.to_json())
 
 # convert the object into a dict
-market_indices_meta_dict = market_indices_meta_instance.to_dict()
-# create an instance of MarketIndicesMeta from a dict
-market_indices_meta_from_dict = MarketIndicesMeta.from_dict(market_indices_meta_dict)
+market_indexes_meta_dict = market_indexes_meta_instance.to_dict()
+# create an instance of MarketIndexesMeta from a dict
+market_indexes_meta_from_dict = MarketIndexesMeta.from_dict(market_indexes_meta_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

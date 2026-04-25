@@ -24,9 +24,9 @@ from cs2cap.models.market_index_group import MarketIndexGroup
 from typing import Optional, Set
 from typing_extensions import Self
 
-class MarketIndicesData(BaseModel):
+class MarketIndexesData(BaseModel):
     """
-    Payload for /v1/market/indices.
+    Payload for /v1/market/indexes.
     """ # noqa: E501
     total_marketcap_usd: Annotated[str, Field(strict=True)] = Field(description="Money amount as a decimal string in USD major units (for example \"25.82\").")
     groups: List[MarketIndexGroup] = Field(description="Category groups sorted by market cap descending.")
@@ -57,7 +57,7 @@ class MarketIndicesData(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MarketIndicesData from a JSON string"""
+        """Create an instance of MarketIndexesData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -89,7 +89,7 @@ class MarketIndicesData(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MarketIndicesData from a dict"""
+        """Create an instance of MarketIndexesData from a dict"""
         if obj is None:
             return None
 

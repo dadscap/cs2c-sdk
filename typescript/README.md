@@ -88,7 +88,7 @@ All URIs are relative to *https://api.cs2c.app*
 *MarketIntelligenceApi* | [**getIndicators**](docs/MarketIntelligenceApi.md#getindicators) | **GET** /v1/market/indicators | Get Indicators
 *MarketIntelligenceApi* | [**getItemAnalytics**](docs/MarketIntelligenceApi.md#getitemanalytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics
 *MarketIntelligenceApi* | [**getMarketAnalyticsSnapshot**](docs/MarketIntelligenceApi.md#getmarketanalyticssnapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot
-*MarketIntelligenceApi* | [**getMarketCapIndices**](docs/MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indexes | Get Market Cap Indices
+*MarketIntelligenceApi* | [**getMarketCapIndexes**](docs/MarketIntelligenceApi.md#getmarketcapindexes) | **GET** /v1/market/indexes | Get Market Cap Indexes
 *PortfolioApi* | [**addItemToPortfolio**](docs/PortfolioApi.md#additemtoportfolio) | **POST** /v1/portfolio/{portfolio_id}/items | Add Item to Portfolio
 *PortfolioApi* | [**addTransaction**](docs/PortfolioApi.md#addtransaction) | **POST** /v1/portfolio/{portfolio_id}/transactions | Add Transaction
 *PortfolioApi* | [**createPortfolio**](docs/PortfolioApi.md#createportfolio) | **POST** /v1/portfolio | Create Portfolio
@@ -170,12 +170,12 @@ All URIs are relative to *https://api.cs2c.app*
 - [MarketArbitrageMeta](docs/MarketArbitrageMeta.md)
 - [MarketArbitrageResponse](docs/MarketArbitrageResponse.md)
 - [MarketIndexGroup](docs/MarketIndexGroup.md)
+- [MarketIndexesData](docs/MarketIndexesData.md)
+- [MarketIndexesMeta](docs/MarketIndexesMeta.md)
+- [MarketIndexesResponse](docs/MarketIndexesResponse.md)
 - [MarketIndicatorsItemData](docs/MarketIndicatorsItemData.md)
 - [MarketIndicatorsItemResponse](docs/MarketIndicatorsItemResponse.md)
 - [MarketIndicatorsMeta](docs/MarketIndicatorsMeta.md)
-- [MarketIndicesData](docs/MarketIndicesData.md)
-- [MarketIndicesMeta](docs/MarketIndicesMeta.md)
-- [MarketIndicesResponse](docs/MarketIndicesResponse.md)
 - [MarketItem](docs/MarketItem.md)
 - [MarketItemAnalyticsCoverage](docs/MarketItemAnalyticsCoverage.md)
 - [MarketItemAnalyticsData](docs/MarketItemAnalyticsData.md)

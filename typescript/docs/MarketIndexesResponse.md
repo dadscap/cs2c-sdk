@@ -1,25 +1,25 @@
 
-# MarketIndicesResponse
+# MarketIndexesResponse
 
-Response envelope for /v1/market/indices.
+Response envelope for /v1/market/indexes.
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`meta` | [MarketIndicesMeta](MarketIndicesMeta.md)
-`data` | [MarketIndicesData](MarketIndicesData.md)
+`meta` | [MarketIndexesMeta](MarketIndexesMeta.md)
+`data` | [MarketIndexesData](MarketIndexesData.md)
 
 ## Example
 
 ```typescript
-import type { MarketIndicesResponse } from 'cs2cap'
+import type { MarketIndexesResponse } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {
   "meta": null,
   "data": null,
-} satisfies MarketIndicesResponse
+} satisfies MarketIndexesResponse
 
 console.log(example)
 
@@ -28,7 +28,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as MarketIndicesResponse
+const exampleParsed = JSON.parse(exampleJSON) as MarketIndexesResponse
 console.log(exampleParsed)
 ```
 

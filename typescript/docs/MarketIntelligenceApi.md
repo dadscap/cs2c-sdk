@@ -8,7 +8,7 @@ All URIs are relative to *https://api.cs2c.app*
 | [**getIndicators**](MarketIntelligenceApi.md#getindicators) | **GET** /v1/market/indicators | Get Indicators |
 | [**getItemAnalytics**](MarketIntelligenceApi.md#getitemanalytics) | **GET** /v1/market/items/{item_id} | Get Item Analytics |
 | [**getMarketAnalyticsSnapshot**](MarketIntelligenceApi.md#getmarketanalyticssnapshot) | **GET** /v1/market/items | Get Market Analytics Snapshot |
-| [**getMarketCapIndices**](MarketIntelligenceApi.md#getmarketcapindices) | **GET** /v1/market/indexes | Get Market Cap Indices |
+| [**getMarketCapIndexes**](MarketIntelligenceApi.md#getmarketcapindexes) | **GET** /v1/market/indexes | Get Market Cap Indexes |
 
 
 
@@ -332,13 +332,13 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
-## getMarketCapIndices
+## getMarketCapIndexes
 
-> MarketIndicesResponse getMarketCapIndices(groupBy)
+> MarketIndexesResponse getMarketCapIndexes(groupBy)
 
-Get Market Cap Indices
+Get Market Cap Indexes
 
-Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by &#x60;item_type&#x60; or &#x60;weapon_type&#x60;. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by &#x60;marketcap_usd desc&#x60; - totals computed from the same filtered item set  Tier: Quant-only.
+Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by &#x60;item_type&#x60; or &#x60;weapon_type&#x60;. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by &#x60;marketcap_usd desc&#x60; - totals computed from the same filtered item set  Tier: Quant-only.
 
 ### Example
 
@@ -347,7 +347,7 @@ import {
   Configuration,
   MarketIntelligenceApi,
 } from 'cs2cap';
-import type { GetMarketCapIndicesRequest } from 'cs2cap';
+import type { GetMarketCapIndexesRequest } from 'cs2cap';
 
 async function example() {
   console.log("🚀 Testing cs2cap SDK...");
@@ -360,10 +360,10 @@ async function example() {
   const body = {
     // 'item_type' | 'weapon_type' | Catalog dimension used to group snapshot items. (optional)
     groupBy: groupBy_example,
-  } satisfies GetMarketCapIndicesRequest;
+  } satisfies GetMarketCapIndexesRequest;
 
   try {
-    const data = await api.getMarketCapIndices(body);
+    const data = await api.getMarketCapIndexes(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -383,7 +383,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**MarketIndicesResponse**](MarketIndicesResponse.md)
+[**MarketIndexesResponse**](MarketIndexesResponse.md)
 
 ### Authorization
 

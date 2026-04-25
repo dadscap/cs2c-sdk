@@ -22,39 +22,39 @@ import {
 } from './MarketIndexGroup';
 
 /**
- * Payload for /v1/market/indices.
+ * Payload for /v1/market/indexes.
  * @export
- * @interface MarketIndicesData
+ * @interface MarketIndexesData
  */
-export interface MarketIndicesData {
+export interface MarketIndexesData {
     /**
      * Money amount as a decimal string in USD major units (for example "25.82").
      * @type {string}
-     * @memberof MarketIndicesData
+     * @memberof MarketIndexesData
      */
     totalMarketcapUsd: string;
     /**
      * Category groups sorted by market cap descending.
      * @type {Array<MarketIndexGroup>}
-     * @memberof MarketIndicesData
+     * @memberof MarketIndexesData
      */
     groups: Array<MarketIndexGroup>;
 }
 
 /**
- * Check if a given object implements the MarketIndicesData interface.
+ * Check if a given object implements the MarketIndexesData interface.
  */
-export function instanceOfMarketIndicesData(value: object): value is MarketIndicesData {
+export function instanceOfMarketIndexesData(value: object): value is MarketIndexesData {
     if (!('totalMarketcapUsd' in value) || value['totalMarketcapUsd'] === undefined) return false;
     if (!('groups' in value) || value['groups'] === undefined) return false;
     return true;
 }
 
-export function MarketIndicesDataFromJSON(json: any): MarketIndicesData {
-    return MarketIndicesDataFromJSONTyped(json, false);
+export function MarketIndexesDataFromJSON(json: any): MarketIndexesData {
+    return MarketIndexesDataFromJSONTyped(json, false);
 }
 
-export function MarketIndicesDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): MarketIndicesData {
+export function MarketIndexesDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): MarketIndexesData {
     if (json == null) {
         return json;
     }
@@ -65,11 +65,11 @@ export function MarketIndicesDataFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function MarketIndicesDataToJSON(json: any): MarketIndicesData {
-    return MarketIndicesDataToJSONTyped(json, false);
+export function MarketIndexesDataToJSON(json: any): MarketIndexesData {
+    return MarketIndexesDataToJSONTyped(json, false);
 }
 
-export function MarketIndicesDataToJSONTyped(value?: MarketIndicesData | null, ignoreDiscriminator: boolean = false): any {
+export function MarketIndexesDataToJSONTyped(value?: MarketIndexesData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

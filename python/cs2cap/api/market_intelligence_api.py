@@ -21,8 +21,8 @@ from typing_extensions import Annotated
 from cs2cap.models.all_providers import AllProviders
 from cs2cap.models.buy_order_provider import BuyOrderProvider
 from cs2cap.models.market_arbitrage_response import MarketArbitrageResponse
+from cs2cap.models.market_indexes_response import MarketIndexesResponse
 from cs2cap.models.market_indicators_item_response import MarketIndicatorsItemResponse
-from cs2cap.models.market_indices_response import MarketIndicesResponse
 from cs2cap.models.market_item_analytics_response import MarketItemAnalyticsResponse
 from cs2cap.models.market_items_snapshot_response import MarketItemsSnapshotResponse
 
@@ -1276,7 +1276,7 @@ class MarketIntelligenceApi:
 
 
     @validate_call
-    def get_market_cap_indices(
+    def get_market_cap_indexes(
         self,
         group_by: Annotated[Optional[StrictStr], Field(description="Catalog dimension used to group snapshot items.")] = None,
         _request_timeout: Union[
@@ -1291,10 +1291,10 @@ class MarketIntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> MarketIndicesResponse:
-        """Get Market Cap Indices
+    ) -> MarketIndexesResponse:
+        """Get Market Cap Indexes
 
-        Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+        Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
 
         :param group_by: Catalog dimension used to group snapshot items.
         :type group_by: str
@@ -1320,7 +1320,7 @@ class MarketIntelligenceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_market_cap_indices_serialize(
+        _param = self._get_market_cap_indexes_serialize(
             group_by=group_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1329,7 +1329,7 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketIndicesResponse",
+            '200': "MarketIndexesResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
@@ -1348,7 +1348,7 @@ class MarketIntelligenceApi:
 
 
     @validate_call
-    def get_market_cap_indices_with_http_info(
+    def get_market_cap_indexes_with_http_info(
         self,
         group_by: Annotated[Optional[StrictStr], Field(description="Catalog dimension used to group snapshot items.")] = None,
         _request_timeout: Union[
@@ -1363,10 +1363,10 @@ class MarketIntelligenceApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[MarketIndicesResponse]:
-        """Get Market Cap Indices
+    ) -> ApiResponse[MarketIndexesResponse]:
+        """Get Market Cap Indexes
 
-        Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+        Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
 
         :param group_by: Catalog dimension used to group snapshot items.
         :type group_by: str
@@ -1392,7 +1392,7 @@ class MarketIntelligenceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_market_cap_indices_serialize(
+        _param = self._get_market_cap_indexes_serialize(
             group_by=group_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1401,7 +1401,7 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketIndicesResponse",
+            '200': "MarketIndexesResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
@@ -1420,7 +1420,7 @@ class MarketIntelligenceApi:
 
 
     @validate_call
-    def get_market_cap_indices_without_preload_content(
+    def get_market_cap_indexes_without_preload_content(
         self,
         group_by: Annotated[Optional[StrictStr], Field(description="Catalog dimension used to group snapshot items.")] = None,
         _request_timeout: Union[
@@ -1436,9 +1436,9 @@ class MarketIntelligenceApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Get Market Cap Indices
+        """Get Market Cap Indexes
 
-        Aggregate the cached 24h market snapshot into category-level indices.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
+        Aggregate the cached 24h market snapshot into category-level indexes.  Supports grouping by `item_type` or `weapon_type`. Items are excluded from market cap totals when bid/ask/marketcap data is incomplete or spread exceeds the internal spread threshold.  Response: - no pagination - groups sorted by `marketcap_usd desc` - totals computed from the same filtered item set  Tier: Quant-only.
 
         :param group_by: Catalog dimension used to group snapshot items.
         :type group_by: str
@@ -1464,7 +1464,7 @@ class MarketIntelligenceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_market_cap_indices_serialize(
+        _param = self._get_market_cap_indexes_serialize(
             group_by=group_by,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1473,7 +1473,7 @@ class MarketIntelligenceApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "MarketIndicesResponse",
+            '200': "MarketIndexesResponse",
             '401': "ErrorResponse",
             '403': "ErrorResponse",
             '429': "ErrorResponse",
@@ -1487,7 +1487,7 @@ class MarketIntelligenceApi:
         return response_data.response
 
 
-    def _get_market_cap_indices_serialize(
+    def _get_market_cap_indexes_serialize(
         self,
         group_by,
         _request_auth,
