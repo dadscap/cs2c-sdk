@@ -238,6 +238,8 @@ Notes:
 - If both `start` and `lookback` are sent, `lookback` takes precedence.
 - Maximum lookback depends on `interval`:
   `5m` up to 7 days, `1h` up to 30 days, `1d` up to 365 days.
+- Free tiers are additionally capped by their tier restrictions and default
+  to the maximum allowed window when no explicit lookback is supplied.
 
 Response:
 - `meta`: Item, provider scope, interval, phase, currency, start/end timestamps.
@@ -290,8 +292,8 @@ with cs2cap.ApiClient(configuration) as api_client:
     phase = cs2cap.PhaseName() # PhaseName | Filter by phase (e.g., Phase 1, Ruby, Sapphire) (optional)
     start = '2013-10-20T19:20:30+01:00' # datetime | Start timestamp (ISO 8601, inclusive) (optional)
     end = '2013-10-20T19:20:30+01:00' # datetime | End timestamp (ISO 8601, exclusive) (optional)
-    lookback = '7d' # str | Lookback window in days. Use `7d` or plain `7`; both mean 7 days and set start=now-lookback. (optional)
-    interval = 1h # str | Time bucket interval (optional) (default to 1h)
+    lookback = '7d' # str | Lookback window in days. Use `7d` or plain `7`; both mean 7 days and set start=now-lookback. Free tiers cap this at 30 days. (optional)
+    interval = 1d # str | Time bucket interval (default: `1d`) (optional) (default to 1d)
     fill = False # bool | Fill gaps with forward-filled data (default: false for sparse data) (optional) (default to False)
     currency = 'USD' # str | Target currency. Any ISO 4217 code supported by `/v1/fx` (see `/v1/fx` for the full list). Invalid codes return a 422 validation error. (optional) (default to 'USD')
 
@@ -316,8 +318,8 @@ Name | Type | Description  | Notes
  **phase** | [**PhaseName**](.md)| Filter by phase (e.g., Phase 1, Ruby, Sapphire) | [optional] 
  **start** | **datetime**| Start timestamp (ISO 8601, inclusive) | [optional] 
  **end** | **datetime**| End timestamp (ISO 8601, exclusive) | [optional] 
- **lookback** | **str**| Lookback window in days. Use &#x60;7d&#x60; or plain &#x60;7&#x60;; both mean 7 days and set start&#x3D;now-lookback. | [optional] 
- **interval** | **str**| Time bucket interval | [optional] [default to 1h]
+ **lookback** | **str**| Lookback window in days. Use &#x60;7d&#x60; or plain &#x60;7&#x60;; both mean 7 days and set start&#x3D;now-lookback. Free tiers cap this at 30 days. | [optional] 
+ **interval** | **str**| Time bucket interval (default: &#x60;1d&#x60;) | [optional] [default to 1d]
  **fill** | **bool**| Fill gaps with forward-filled data (default: false for sparse data) | [optional] [default to False]
  **currency** | **str**| Target currency. Any ISO 4217 code supported by &#x60;/v1/fx&#x60; (see &#x60;/v1/fx&#x60; for the full list). Invalid codes return a 422 validation error. | [optional] [default to &#39;USD&#39;]
 
