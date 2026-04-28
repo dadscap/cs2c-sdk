@@ -1,10 +1,11 @@
 [project]
-name = "cs2cap"
+name = "cs2cap-py"
 version = "1.0.0"
-description = "CS2Cap"
+description = "CS2Cap market data API client"
 authors = [
-  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
+  {name = "CS2Cap", email = "support@cs2c.app"},
 ]
+license = {text = "MIT"}
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "CS2Cap"]
 requires-python = ">=3.9"
@@ -17,7 +18,9 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Homepage = "https://cs2cap.com"
+Repository = "https://github.com/CS2Cap/SDKs"
+Documentation = "https://docs.cs2c.app"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
