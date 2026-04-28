@@ -19,7 +19,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PriceCandleItem } from 'cs2cap'
+import type { PriceCandleItem } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {

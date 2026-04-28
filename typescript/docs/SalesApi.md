@@ -22,11 +22,11 @@ Return recent sales history from providers with recent-sales support.  Filters: 
 import {
   Configuration,
   SalesApi,
-} from 'cs2cap';
-import type { ListRecentSalesRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { ListRecentSalesRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

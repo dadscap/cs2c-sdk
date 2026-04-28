@@ -12,7 +12,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PortfolioCreate } from 'cs2cap'
+import type { PortfolioCreate } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {

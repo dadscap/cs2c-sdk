@@ -26,11 +26,11 @@ Scan providers for cross-market arbitrage opportunities.  Filters: - &#x60;min_s
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap';
-import type { GetArbitrageOpportunitiesRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { GetArbitrageOpportunitiesRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -114,11 +114,11 @@ Compute technical analysis indicators for one item from OHLCV candle data.  **In
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap';
-import type { GetIndicatorsRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { GetIndicatorsRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -202,11 +202,11 @@ Return per-item market analytics across providers.  Includes: - best ask, best b
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap';
-import type { GetItemAnalyticsRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { GetItemAnalyticsRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -278,11 +278,11 @@ Return the full market as a cached, summary-only snapshot.  Includes: - one row 
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap';
-import type { GetMarketAnalyticsSnapshotRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { GetMarketAnalyticsSnapshotRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -346,11 +346,11 @@ Aggregate the cached 24h market snapshot into category-level indexes.  Supports 
 import {
   Configuration,
   MarketIntelligenceApi,
-} from 'cs2cap';
-import type { GetMarketCapIndexesRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { GetMarketCapIndexesRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

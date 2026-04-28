@@ -18,8 +18,8 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "cs2cap"
-VERSION = "1.0.1"
+NAME = "cs2cap-py"
+VERSION = "1.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
     "urllib3 >= 2.1.0, < 3.0.0",
@@ -32,9 +32,9 @@ setup(
     name=NAME,
     version=VERSION,
     description="CS2Cap",
-    author="CS2Cap",
-    author_email="support@cs2c.app",
-    url="https://cs2cap.com",
+    author="OpenAPI Generator community",
+    author_email="team@openapitools.org",
+    url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "CS2Cap"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),

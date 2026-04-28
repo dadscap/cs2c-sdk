@@ -24,11 +24,11 @@ Save one or more normalized catalog items to the authenticated user\&#39;s defau
 import {
   Configuration,
   AccountWatchlistApi,
-} from 'cs2cap';
-import type { CreateWatchlistEntriesRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { CreateWatchlistEntriesRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -99,11 +99,11 @@ Remove one saved watchlist entry by normalized &#x60;item_id&#x60;.  This path u
 import {
   Configuration,
   AccountWatchlistApi,
-} from 'cs2cap';
-import type { DeleteWatchlistEntryRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { DeleteWatchlistEntryRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -174,11 +174,11 @@ List saved watchlist items for the authenticated user.  Behavior: - accepts eith
 import {
   Configuration,
   AccountWatchlistApi,
-} from 'cs2cap';
-import type { ListWatchlistRequest } from 'cs2cap';
+} from 'cs2cap-ts';
+import type { ListWatchlistRequest } from 'cs2cap-ts';
 
 async function example() {
-  console.log("🚀 Testing cs2cap SDK...");
+  console.log("🚀 Testing cs2cap-ts SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

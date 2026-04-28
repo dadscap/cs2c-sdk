@@ -13,7 +13,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { WatchlistCreateRequest } from 'cs2cap'
+import type { WatchlistCreateRequest } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {

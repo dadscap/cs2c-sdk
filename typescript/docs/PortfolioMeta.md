@@ -14,7 +14,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PortfolioMeta } from 'cs2cap'
+import type { PortfolioMeta } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {

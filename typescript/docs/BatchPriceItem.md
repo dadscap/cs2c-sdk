@@ -15,7 +15,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { BatchPriceItem } from 'cs2cap'
+import type { BatchPriceItem } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {

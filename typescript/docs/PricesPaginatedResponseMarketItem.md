@@ -13,7 +13,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { PricesPaginatedResponseMarketItem } from 'cs2cap'
+import type { PricesPaginatedResponseMarketItem } from 'cs2cap-ts'
 
 // TODO: Update the object below with actual values
 const example = {
