@@ -1,6 +1,6 @@
 # cs2cap@1.0.0
 
-A TypeScript SDK client for the CS2Cap API.
+A TypeScript SDK client for the api.cs2c.app API.
 
 ## Usage
 
