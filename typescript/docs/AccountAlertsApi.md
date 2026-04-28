@@ -27,11 +27,11 @@ Create a new item-scoped account alert.  Supported kinds: - &#x60;price_below&#x
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { CreateAlertRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { CreateAlertRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -102,11 +102,11 @@ Create multiple item-scoped account alerts in one request.  Rules: - accepts eit
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { CreateAlertsBatchRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { CreateAlertsBatchRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -179,11 +179,11 @@ Delete one alert definition owned by the authenticated user.
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { DeleteAlertRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { DeleteAlertRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -254,11 +254,11 @@ List recent alert trigger events and delivery attempts for the authenticated use
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { ListAlertEventsRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListAlertEventsRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -332,11 +332,11 @@ List configured item alerts for the authenticated user.  Behavior: - accepts eit
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { ListAlertsRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListAlertsRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -413,11 +413,11 @@ Update threshold fields or enabled state for an existing alert.  At least one of
 import {
   Configuration,
   AccountAlertsApi,
-} from 'cs2cap-ts';
-import type { UpdateAlertRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { UpdateAlertRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

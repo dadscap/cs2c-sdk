@@ -35,11 +35,11 @@ Add a single item to a portfolio by &#x60;item_id&#x60; or &#x60;market_hash_nam
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { AddItemToPortfolioRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { AddItemToPortfolioRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -115,11 +115,11 @@ Record a buy or sell transaction for an item in this portfolio.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { AddTransactionRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { AddTransactionRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -195,11 +195,11 @@ Create a new named portfolio. The maximum number of portfolios depends on your t
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { CreatePortfolioRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { CreatePortfolioRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -271,11 +271,11 @@ Delete a portfolio and all its items.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { DeletePortfolioRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { DeletePortfolioRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -347,11 +347,11 @@ Delete a transaction from a portfolio.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { DeleteTransactionRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { DeleteTransactionRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -426,11 +426,11 @@ Replay saved-portfolio holdings from the transaction ledger and return daily his
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { HistoricalSavedPortfolioValuationRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { HistoricalSavedPortfolioValuationRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -524,11 +524,11 @@ Import items from the user\&#39;s Steam inventory into a portfolio. Optionally s
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { ImportSteamInventoryRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ImportSteamInventoryRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -604,11 +604,11 @@ List all items in a saved portfolio.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { ListPortfolioItemsRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListPortfolioItemsRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -680,11 +680,11 @@ List all named portfolios belonging to the authenticated user.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { ListPortfoliosRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListPortfoliosRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -747,11 +747,11 @@ List all transactions in a portfolio, newest first.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { ListTransactionsRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListTransactionsRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -823,11 +823,11 @@ Value an inventory of CS2 items at live market prices.  Send a list of &#x60;{it
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { PortfolioValuationRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { PortfolioValuationRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -899,11 +899,11 @@ Remove a specific item entry from a portfolio.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { RemoveItemFromPortfolioRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { RemoveItemFromPortfolioRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -978,11 +978,11 @@ Partially update a transaction.
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { UpdateTransactionRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { UpdateTransactionRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -1060,11 +1060,11 @@ Value all items in a saved portfolio at live market prices. Items without price 
 import {
   Configuration,
   PortfolioApi,
-} from 'cs2cap-ts';
-import type { ValueSavedPortfolioRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ValueSavedPortfolioRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

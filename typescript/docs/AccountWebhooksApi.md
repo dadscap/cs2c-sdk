@@ -28,11 +28,11 @@ Create one outbound webhook destination and return its signing secret once.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { CreateWebhookRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { CreateWebhookRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -103,11 +103,11 @@ Delete one outbound webhook destination owned by the authenticated account.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { DeleteWebhookRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { DeleteWebhookRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -178,11 +178,11 @@ Fetch one outbound webhook delivery job with its attempt history.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { GetWebhookDeliveryRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { GetWebhookDeliveryRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -253,11 +253,11 @@ List outbound webhook delivery jobs for the authenticated account.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { ListWebhookDeliveriesRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListWebhookDeliveriesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -331,11 +331,11 @@ List outbound webhook destinations configured for the authenticated account.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { ListWebhooksRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListWebhooksRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -398,11 +398,11 @@ Rotate one webhook destination signing secret and return the new secret once.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { RotateWebhookSecretRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { RotateWebhookSecretRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -473,11 +473,11 @@ Update mutable outbound webhook destination fields.
 import {
   Configuration,
   AccountWebhooksApi,
-} from 'cs2cap-ts';
-import type { UpdateWebhookRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { UpdateWebhookRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

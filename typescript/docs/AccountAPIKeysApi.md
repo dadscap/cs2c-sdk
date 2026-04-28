@@ -27,11 +27,11 @@ Create one child API key under the active root key.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { CreateSubKeyRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { CreateSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -102,11 +102,11 @@ Revoke one active child API key.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { DeleteSubKeyRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { DeleteSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -177,11 +177,11 @@ Get one active child API key.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { GetSubKeyRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { GetSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -252,11 +252,11 @@ List active child API keys.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { ListSubKeysRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListSubKeysRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -330,11 +330,11 @@ Rotate one active child API key.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { ReissueSubKeyRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ReissueSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -405,11 +405,11 @@ Update one active child API key.
 import {
   Configuration,
   AccountAPIKeysApi,
-} from 'cs2cap-ts';
-import type { UpdateSubKeyRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { UpdateSubKeyRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

@@ -8,8 +8,8 @@ Client SDKs for the CS2Cap market-data API. Available for Python and TypeScript.
 
 | Language | Package | Install |
 | --- | --- | --- |
-| Python | [`cs2cap-py`](https://pypi.org/project/cs2cap-py/) | `pip install cs2cap-py` |
-| TypeScript | [`cs2cap-ts`](https://www.npmjs.com/package/cs2cap-ts) | `npm install cs2cap-ts` |
+| Python | [`cs2cap`](https://pypi.org/project/cs2cap/) | `pip install cs2cap` |
+| TypeScript | [`cs2cap`](https://www.npmjs.com/package/cs2cap) | `npm install cs2cap` |
 
 ## Contents
 
@@ -41,7 +41,7 @@ When you are ready to unlock additional endpoints and higher rate limits, upgrad
 Install the SDK from PyPI:
 
 ```bash
-pip install cs2cap-py
+pip install cs2cap
 ```
 
 Provide your API key:
@@ -83,7 +83,7 @@ See [`python/examples/`](python/examples/) for per-tier README files with full o
 Install the SDK from npm:
 
 ```bash
-npm install cs2cap-ts
+npm install cs2cap
 ```
 
 Provide your API key:

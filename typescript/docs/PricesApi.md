@@ -26,11 +26,11 @@ Retrieve current prices for multiple items in a single request.  Maximum 100 ite
 import {
   Configuration,
   PricesApi,
-} from 'cs2cap-ts';
-import type { BatchPriceLookupRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { BatchPriceLookupRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -102,11 +102,11 @@ Return current lowest ask listings.  Parameters: - &#x60;item_id&#x60;: Exact it
 import {
   Configuration,
   PricesApi,
-} from 'cs2cap-ts';
-import type { ListPricesRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListPricesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -196,11 +196,11 @@ Return composite OHLCV candle data for a single item across all providers.  Para
 import {
   Configuration,
   PricesApi,
-} from 'cs2cap-ts';
-import type { PriceCandlesRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { PriceCandlesRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -296,11 +296,11 @@ Return historical price snapshots.  Parameters: - Filters: &#x60;item_id&#x60;, 
 import {
   Configuration,
   PricesApi,
-} from 'cs2cap-ts';
-import type { PriceHistoryRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { PriceHistoryRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -396,11 +396,11 @@ Return the full live prices snapshot as an NDJSON stream.  Behavior: - pro and q
 import {
   Configuration,
   PricesApi,
-} from 'cs2cap-ts';
-import type { StreamFullPricesSnapshotRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { StreamFullPricesSnapshotRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",

@@ -1,0 +1,146 @@
+name: Publish SDK Packages
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: publish-sdk-packages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Build, Publish, and Release SDKs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Resolve release versions
+        id: versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_tag="${GITHUB_REF_NAME}"
+          npm_version="${release_tag#v}"
+
+          if [[ "$npm_version" == "1.0.0" ]]; then
+            python_version="1.0"
+          else
+            python_version="$npm_version"
+          fi
+
+          echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
+          echo "python_version=$python_version" >> "$GITHUB_OUTPUT"
+          echo "npm_version=$npm_version" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+          cache: "pip"
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Python build tools
+        run: python -m pip install --upgrade build twine
+
+      - name: Verify Python metadata version
+        run: |
+          python - <<'PY'
+          import tomllib
+          from pathlib import Path
+
+          data = tomllib.loads(Path("python/pyproject.toml").read_text())
+          assert data["project"]["name"] == "cs2cap", data["project"]["name"]
+          assert data["project"]["version"] == "${{ steps.versions.outputs.python_version }}", data["project"]["version"]
+          PY
+
+      - name: Build Python wheel and sdist
+        working-directory: python
+        run: python -m build
+
+      - name: Check Python distributions
+        working-directory: python
+        run: twine check dist/*
+
+      - name: Verify Python wheel install
+        run: |
+          set -euo pipefail
+          python -m venv .venv-package-check
+          . .venv-package-check/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install python/dist/*.whl
+          python - <<'PY'
+          import cs2cap
+
+          assert cs2cap is not None
+          PY
+
+      - name: Verify TypeScript metadata version
+        run: |
+          node - <<'NODE'
+          const pkg = require("./typescript/package.json");
+          if (pkg.name !== "cs2cap") {
+            throw new Error(`Expected npm name cs2cap, got ${pkg.name}`);
+          }
+          if (pkg.version !== "${{ steps.versions.outputs.npm_version }}") {
+            throw new Error(`Expected npm version ${{ steps.versions.outputs.npm_version }}, got ${pkg.version}`);
+          }
+          NODE
+
+      - name: Preflight npm package version
+        run: |
+          if npm view "cs2cap@${{ steps.versions.outputs.npm_version }}" version >/dev/null 2>&1; then
+            echo "::error::cs2cap@${{ steps.versions.outputs.npm_version }} already exists on npm"
+            exit 1
+          fi
+
+      - name: Install TypeScript dependencies
+        working-directory: typescript
+        run: npm install
+
+      - name: Build TypeScript SDK
+        working-directory: typescript
+        run: npm run build
+
+      - name: Pack TypeScript SDK
+        id: npm_pack
+        working-directory: typescript
+        run: |
+          set -euo pipefail
+          package_file="$(npm pack --pack-destination ../ --json | node -e 'const fs=require("fs"); const data=JSON.parse(fs.readFileSync(0, "utf8")); console.log(data[0].filename)')"
+          echo "package_file=${package_file}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist/
+
+      - name: Publish to npm
+        working-directory: typescript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.versions.outputs.release_tag }}
+          name: CS2Cap SDK ${{ steps.versions.outputs.release_tag }}
+          body: |
+            Python: `pip install cs2cap==${{ steps.versions.outputs.python_version }}`
+
+            TypeScript: `npm install cs2cap@${{ steps.versions.outputs.npm_version }}`
+          files: |
+            python/dist/*
+            ${{ steps.npm_pack.outputs.package_file }}

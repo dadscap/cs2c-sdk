@@ -24,7 +24,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { WebhookDeliverySummary } from 'cs2cap-ts'
+import type { WebhookDeliverySummary } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

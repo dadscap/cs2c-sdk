@@ -18,7 +18,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { WatchlistCreateResponse } from 'cs2cap-ts'
+import type { WatchlistCreateResponse } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

@@ -21,7 +21,7 @@ Name | Type
 ## Example
 
 ```typescript
-import type { MarketItem } from 'cs2cap-ts'
+import type { MarketItem } from 'cs2cap'
 
 // TODO: Update the object below with actual values
 const example = {

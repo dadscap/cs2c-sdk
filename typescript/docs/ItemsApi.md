@@ -23,11 +23,11 @@ Return catalog counts and filter option values for frontend search controls.
 import {
   Configuration,
   ItemsApi,
-} from 'cs2cap-ts';
-import type { GetItemCatalogMetadataRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { GetItemCatalogMetadataRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
@@ -90,11 +90,11 @@ Search the normalized CS2 item catalog with exact-match metadata filters and sim
 import {
   Configuration,
   ItemsApi,
-} from 'cs2cap-ts';
-import type { ListItemsRequest } from 'cs2cap-ts';
+} from 'cs2cap';
+import type { ListItemsRequest } from 'cs2cap';
 
 async function example() {
-  console.log("🚀 Testing cs2cap-ts SDK...");
+  console.log("🚀 Testing cs2cap SDK...");
   const config = new Configuration({ 
     // Configure HTTP bearer authorization: BearerAuth
     accessToken: "YOUR BEARER TOKEN",
