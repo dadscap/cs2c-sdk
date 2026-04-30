@@ -29,11 +29,7 @@ jobs:
           release_tag="${GITHUB_REF_NAME}"
           npm_version="${release_tag#v}"
 
-          if [[ "$npm_version" == "1.0.0" ]]; then
-            python_version="1.0"
-          else
-            python_version="$npm_version"
-          fi
+          python_version="$npm_version"
 
           echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
           echo "python_version=$python_version" >> "$GITHUB_OUTPUT"
@@ -98,13 +94,6 @@ jobs:
           }
           NODE
 
-      - name: Preflight npm package version
-        run: |
-          if npm view "cs2cap@${{ steps.versions.outputs.npm_version }}" version >/dev/null 2>&1; then
-            echo "::error::cs2cap@${{ steps.versions.outputs.npm_version }} already exists on npm"
-            exit 1
-          fi
-
       - name: Install TypeScript dependencies
         working-directory: typescript
         run: npm install
@@ -131,7 +120,12 @@ jobs:
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: |
+          if npm view "cs2cap@${{ steps.versions.outputs.npm_version }}" version >/dev/null 2>&1; then
+            echo "cs2cap@${{ steps.versions.outputs.npm_version }} already published, skipping"
+          else
+            npm publish --access public
+          fi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

@@ -1,6 +1,6 @@
 {
   "name": "cs2cap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript SDK client for the CS2Cap API.",
   "author": "CS2Cap",
   "repository": {
