@@ -47,3 +47,21 @@ export async function callOrSkip<T>(
     throw error;
   }
 }
+
+export function parseNdjsonLines(payload: string, maxRows: number): Array<Record<string, unknown>> {
+  const rows: Array<Record<string, unknown>> = [];
+  for (const line of payload.split(/\r?\n/)) {
+    if (rows.length >= maxRows) {
+      break;
+    }
+    const trimmed = line.trim();
+    if (!trimmed) {
+      continue;
+    }
+    const parsed: unknown = JSON.parse(trimmed);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      rows.push(parsed as Record<string, unknown>);
+    }
+  }
+  return rows;
+}

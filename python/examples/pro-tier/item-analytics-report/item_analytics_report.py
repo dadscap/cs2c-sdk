@@ -10,21 +10,19 @@ if str(EXAMPLES_ROOT) not in sys.path:
     sys.path.insert(0, str(EXAMPLES_ROOT))
 
 from _shared.auth import build_configuration, load_api_key  # noqa: E402
-from _shared.items import require_item_id, resolve_catalog_items  # noqa: E402
 from _shared.render import format_decimal_money, format_percent, render_table  # noqa: E402
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Resolve an item and print a market analytics report for it.",
+        description="Use /v1/market/items to select candidates, then inspect detail rows.",
     )
-    parser.add_argument("--query", default="AK-47", help="Catalog substring query.")
-    parser.add_argument(
-        "--item-type",
-        default="Weapon",
-        help="Exact item_type filter for /v1/items.",
-    )
+    parser.add_argument("--top", type=int, default=5, help="Number of snapshot rows to inspect.")
     return parser
+
+
+def money(value: str | None) -> str:
+    return format_decimal_money(value)
 
 
 def main() -> int:
@@ -40,91 +38,58 @@ def main() -> int:
 
     try:
         with cs2cap.ApiClient(configuration) as client:
-            items_api = cs2cap.ItemsApi(client)
             market_api = cs2cap.MarketIntelligenceApi(client)
-
-            resolved_items = resolve_catalog_items(
-                items_api,
-                query=args.query,
-                item_type=args.item_type,
-                limit=1,
-            )
-            if not resolved_items:
-                print("No catalog item matched the requested filters.")
-                return 0
-
-            item = resolved_items[0]
-            item_id = require_item_id(item)
-            analytics_24h = market_api.get_item_analytics_v1_market_items_item_id_get(
-                item_id,
-                timeframe="24h",
-            )
-            analytics_7d = market_api.get_item_analytics_v1_market_items_item_id_get(
-                item_id,
-                timeframe="7d",
-            )
+            snapshot = market_api.get_market_analytics_snapshot()
+            candidates = sorted(
+                snapshot.data.items,
+                key=lambda item: item.summary.liquidity or 0,
+                reverse=True,
+            )[: max(args.top, 1)]
+            details = [
+                market_api.get_item_analytics(item.item_id).data
+                for item in candidates
+            ]
 
     except ApiException as exc:
         print(f"API request failed: {exc}", file=sys.stderr)
         return 1
 
-    print(f"Analytics item: {analytics_24h.data.market_hash_name}")
-    if analytics_24h.data.phase:
-        print(f"Phase: {analytics_24h.data.phase}")
-    print()
-
-    timeframe_rows = [
-        [
-            "24h",
-            str(analytics_24h.data.summary.provider_count),
-            format_decimal_money(analytics_24h.data.summary.best_ask_usd),
-            format_decimal_money(analytics_24h.data.summary.best_bid_usd),
-            format_percent(analytics_24h.data.summary.avg_spread_pct),
-            str(analytics_24h.data.summary.total_volume_24h),
-        ],
-        [
-            "7d",
-            str(analytics_7d.data.summary.provider_count),
-            format_decimal_money(analytics_7d.data.summary.best_ask_usd),
-            format_decimal_money(analytics_7d.data.summary.best_bid_usd),
-            format_percent(analytics_7d.data.summary.avg_spread_pct),
-            str(analytics_7d.data.summary.total_volume_24h),
-        ],
-    ]
-    print("Timeframe comparison:")
+    print("Market snapshot candidates (/v1/market/items):")
     print(
         render_table(
-            ["timeframe", "providers", "best_ask", "best_bid", "avg_spread", "volume_24h"],
-            timeframe_rows,
+            ["rank", "item_id", "item", "liquidity", "ask", "bid", "spread"],
+            [
+                [
+                    str(item.summary.rank or "N/A"),
+                    str(item.item_id),
+                    item.market_hash_name,
+                    str(item.summary.liquidity or "N/A"),
+                    money(item.summary.best_ask_usd),
+                    money(item.summary.best_bid_usd),
+                    format_percent(item.summary.avg_spread_pct),
+                ]
+                for item in candidates
+            ],
         )
     )
     print()
 
-    print("Provider detail:")
-    provider_rows = [
-        [
-            provider.provider,
-            format_decimal_money(provider.ask_usd),
-            format_decimal_money(provider.bid_usd),
-            format_percent(provider.spread_pct),
-            str(provider.volume_24h or 0),
-            str(provider.ask_depth or 0),
-        ]
-        for provider in analytics_24h.data.providers
-    ]
+    print("Detail coverage (/v1/market/items/{item_id}):")
     print(
         render_table(
-            ["provider", "ask", "bid", "spread", "vol_24h", "ask_depth"],
-            provider_rows,
+            ["item_id", "providers", "volume_providers", "bid_side_providers", "provider_rows"],
+            [
+                [
+                    str(detail.item_id),
+                    str(detail.coverage.provider_count),
+                    str(detail.coverage.providers_with_volume),
+                    str(detail.coverage.providers_with_bid_side),
+                    str(len(detail.providers)),
+                ]
+                for detail in details
+            ],
         )
     )
-    print()
-
-    coverage = analytics_24h.data.coverage
-    print("Coverage diagnostics:")
-    print(f"- provider_count: {coverage.provider_count}")
-    print(f"- providers_with_volume: {coverage.providers_with_volume}")
-    print(f"- providers_with_bid_side: {coverage.providers_with_bid_side}")
     return 0
 
 

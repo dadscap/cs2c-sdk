@@ -29,3 +29,11 @@ export function parseFloatOption(
   }
   return parsed;
 }
+
+export function printHelpIfRequested(usage: string): boolean {
+  if (!process.argv.includes("--help") && !process.argv.includes("-h")) {
+    return false;
+  }
+  console.log(usage.trim());
+  return true;
+}

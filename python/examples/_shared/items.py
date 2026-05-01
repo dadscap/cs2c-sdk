@@ -12,7 +12,7 @@ def resolve_catalog_items(
     item_type: str | None = None,
     limit: int = 10,
 ) -> list[cs2cap.ItemOut]:
-    response = items_api.list_items_v1_items_get(
+    response = items_api.list_items(
         q=query,
         item_type=item_type,
         limit=limit,

@@ -5,7 +5,7 @@ import { ItemsApi } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";
-import { parseIntegerOption } from "../../_shared/cli.js";
+import { parseIntegerOption, printHelpIfRequested } from "../../_shared/cli.js";
 import { renderTable } from "../../_shared/render.js";
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
@@ -27,6 +27,9 @@ function readOptions(): { itemType: string; query: string; limit: number } {
 }
 
 async function main(): Promise<number> {
+  if (printHelpIfRequested("Usage: npm run example -- examples/free-tier/bootstrap-and-search/bootstrap_and_search.ts [--query AK-47] [--item-type Weapon] [--limit 10]")) {
+    return 0;
+  }
   const args = readOptions();
 
   let bearerToken: string;
@@ -42,11 +45,28 @@ async function main(): Promise<number> {
   try {
     const itemsApi = new ItemsApi(configuration);
 
-    const itemsResponse = await itemsApi.listItemsV1ItemsGet({
+    const metadata = await itemsApi.getItemCatalogMetadata();
+    const itemsResponse = await itemsApi.listItems({
       itemType: args.itemType,
       q: args.query,
       limit: args.limit,
     });
+
+    console.log("Catalog metadata (/v1/items/metadata):");
+    console.log(
+      renderTable(
+        ["total_items", "item_types", "collections", "rarities"],
+        [
+          [
+            metadata.catalog.totalItems,
+            metadata.filters.itemType.length,
+            metadata.filters.collection.length,
+            metadata.filters.rarityName.length,
+          ],
+        ],
+      ),
+    );
+    console.log();
 
     const rows = itemsResponse.items.map((item) => [
       item.itemId ?? "N/A",
@@ -60,6 +80,7 @@ async function main(): Promise<number> {
       return 0;
     }
 
+    console.log("Catalog matches (/v1/items):");
     console.log(renderTable(["item_id", "market_hash_name", "rarity", "collection"], rows));
     return 0;
   } catch (error) {

@@ -16,20 +16,11 @@ from _shared.render import format_decimal_money, format_percent, render_table  #
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Fetch quant-tier indicators for one item and the arbitrage leaderboard.",
+        description="Quant market-intelligence report from indexes, arbitrage, and indicators.",
     )
     parser.add_argument("--query", default="AK-47", help="Catalog substring query.")
-    parser.add_argument(
-        "--item-type",
-        default="Weapon",
-        help="Exact item_type filter for /v1/items.",
-    )
-    parser.add_argument(
-        "--min-spread-pct",
-        type=float,
-        default=1.0,
-        help="Minimum gross spread percentage for arbitrage results.",
-    )
+    parser.add_argument("--item-type", default="Weapon", help="Exact item_type filter.")
+    parser.add_argument("--min-spread-pct", type=float, default=1.0)
     return parser
 
 
@@ -49,76 +40,80 @@ def main() -> int:
             items_api = cs2cap.ItemsApi(client)
             market_api = cs2cap.MarketIntelligenceApi(client)
 
-            resolved_items = resolve_catalog_items(
+            item = resolve_catalog_items(
                 items_api,
                 query=args.query,
                 item_type=args.item_type,
                 limit=1,
-            )
-            if not resolved_items:
-                print("No catalog item matched the requested filters.")
-                return 0
-
-            item = resolved_items[0]
+            )[0]
             item_id = require_item_id(item)
-            indicators = market_api.get_indicators_v1_market_indicators_get(
+            indexes = market_api.get_market_cap_indexes(group_by="item_type")
+            arbitrage = market_api.get_arbitrage_opportunities(
+                limit=10,
+                min_spread_pct=args.min_spread_pct,
+            )
+            indicators = market_api.get_indicators(
                 item_id=item_id,
                 interval="1d",
                 currency="USD",
             )
-            arbitrage = market_api.get_arbitrage_opportunities_v1_market_arbitrage_get(
-                limit=10,
-                min_spread_pct=args.min_spread_pct,
-            )
 
+    except IndexError:
+        print("No catalog item matched the requested filters.")
+        return 0
     except ApiException as exc:
         print(f"API request failed: {exc}", file=sys.stderr)
         return 1
 
-    indicator_data = indicators.data
-    print(f"Indicator target: {indicator_data.market_hash_name}")
-    print(f"- provider: {indicator_data.provider}")
-    print(f"- interval: {indicator_data.interval}")
-    print(f"- close_price: {format_decimal_money(indicator_data.close_price_usd)}")
-    print()
-
-    indicator_rows = [
-        ["RSI 14", str(indicator_data.momentum.rsi_14 or "N/A")],
-        ["MACD line", str(indicator_data.momentum.macd_line or "N/A")],
-        ["ATR 14", str(indicator_data.volatility.atr_14 or "N/A")],
-        ["Hist vol 20", str(indicator_data.volatility.historical_volatility_20 or "N/A")],
-        ["VWAP", str(indicator_data.volume.vwap or "N/A")],
-        ["OBV", str(indicator_data.volume.obv or "N/A")],
-    ]
-    print("Indicator sample:")
-    print(render_table(["metric", "value"], indicator_rows))
-    print()
-
-    print("Indicator coverage:")
-    print(f"- candle_count: {indicator_data.coverage.candle_count}")
-    print(f"- sufficient_for: {', '.join(indicator_data.coverage.sufficient_for or []) or 'N/A'}")
-    print(
-        f"- insufficient_for: {', '.join(indicator_data.coverage.insufficient_for or []) or 'N/A'}"
-    )  # noqa: E501
-    print()
-
-    print("Arbitrage leaderboard:")
-    arbitrage_rows = [
-        [
-            item.market_hash_name,
-            item.buy_provider,
-            item.sell_provider,
-            format_decimal_money(item.buy_price_usd),
-            format_decimal_money(item.sell_price_usd),
-            format_percent(item.gross_spread_pct),
-            format_decimal_money(item.net_profit_usd),
-        ]
-        for item in arbitrage.data.items
-    ]
+    print("Market cap indexes (/v1/market/indexes):")
     print(
         render_table(
-            ["item", "buy_from", "sell_to", "buy", "sell", "spread", "net_profit"],
-            arbitrage_rows,
+            ["group", "marketcap", "items", "included", "excluded"],
+            [
+                [
+                    group.group,
+                    format_decimal_money(group.marketcap_usd),
+                    str(group.item_count),
+                    str(group.included_count),
+                    str(group.excluded_count),
+                ]
+                for group in indexes.data.groups[:8]
+            ],
+        )
+    )
+    print()
+
+    print("Arbitrage candidates (/v1/market/arbitrage):")
+    print(
+        render_table(
+            ["item", "buy", "sell", "spread", "net_profit"],
+            [
+                [
+                    row.market_hash_name,
+                    f"{row.buy_provider} {format_decimal_money(row.buy_price_usd)}",
+                    f"{row.sell_provider} {format_decimal_money(row.sell_price_usd)}",
+                    format_percent(row.gross_spread_pct),
+                    format_decimal_money(row.net_profit_usd),
+                ]
+                for row in arbitrage.data.items
+            ],
+        )
+    )
+    print()
+
+    data = indicators.data
+    print(f"Indicator signal for {data.market_hash_name} (/v1/market/indicators):")
+    print(
+        render_table(
+            ["metric", "value"],
+            [
+                ["close", format_decimal_money(data.close_price_usd)],
+                ["RSI 14", str(data.momentum.rsi_14 or "N/A")],
+                ["MACD", str(data.momentum.macd_line or "N/A")],
+                ["ATR 14", str(data.volatility.atr_14 or "N/A")],
+                ["VWAP", str(data.volume.vwap or "N/A")],
+                ["candle_count", str(data.coverage.candle_count)],
+            ],
         )
     )
     return 0

@@ -1,18 +1,8 @@
-# Create Comparison Table
+# Bulk Price And Bid Report
 
-Compare prices, bids, and recent sales for a small set of catalog items, then print a
-side-by-side table.
-
-This script makes no writes — safe to run repeatedly.
-
-## Tier
-
-Pro
-
-## Run
-
-From the `sdk-scripts/python/` directory with your virtual environment active:
+Streams a bounded `POST /v1/prices` snapshot, groups rows by item, enriches the selected items with `POST /v1/bids/batch`, and prints ask/bid spread rows.
 
 ```bash
 python examples/pro-tier/create-comparison-table/create_comparison_table.py
+python examples/pro-tier/create-comparison-table/create_comparison_table.py --max-rows 1000 --top 12
 ```

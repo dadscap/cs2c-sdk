@@ -56,7 +56,8 @@ def main() -> int:
             # Split APIs by surface so each call site stays explicit.
             items_api = cs2cap.ItemsApi(client)
 
-            items_response = items_api.list_items_v1_items_get(
+            metadata = items_api.get_item_catalog_metadata()
+            items_response = items_api.list_items(
                 item_type=args.item_type,
                 q=args.query,
                 limit=args.limit,
@@ -66,6 +67,22 @@ def main() -> int:
         # API errors are shown tersely because this is an example script.
         print(f"API request failed: {exc}", file=sys.stderr)
         return 1
+
+    print("Catalog metadata (/v1/items/metadata):")
+    print(
+        render_table(
+            ["total_items", "item_types", "collections", "rarities"],
+            [
+                [
+                    str(metadata.catalog.total_items),
+                    str(len(metadata.filters.item_type)),
+                    str(len(metadata.filters.collection)),
+                    str(len(metadata.filters.rarity_name)),
+                ]
+            ],
+        )
+    )
+    print()
 
     # Flatten the returned item models into plain strings for terminal output.
     rows: list[list[str]] = []
@@ -86,6 +103,7 @@ def main() -> int:
 
     # Render the final catalog sample as a simple terminal table.
     headers = ["item_id", "market_hash_name", "rarity", "collection"]
+    print("Catalog matches (/v1/items):")
     print(render_table(headers, rows))
     return 0
 

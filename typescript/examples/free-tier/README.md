@@ -1,10 +1,9 @@
 # Free Tier Examples
 
-Use a free-tier key to get started with catalog browsing and the market-data
-endpoints available on that tier.
+Use a free-tier key to get started with catalog browsing and read-only market data.
 
-- [`bootstrap-and-search/bootstrap_and_search.ts`](bootstrap-and-search/bootstrap_and_search.ts) - Search the catalog.
-- [`market-data-workbench/market_data_workbench.ts`](market-data-workbench/market_data_workbench.ts) - Review catalog, providers, FX, per-item `/v1/prices` lookups, and free-tier-compatible `/v1/prices/candles` requests (`interval=1d`, `fill=false`, `lookback` only).
+- [`bootstrap-and-search/bootstrap_and_search.ts`](bootstrap-and-search/bootstrap_and_search.ts) - Call `GET /v1/items/metadata` and `GET /v1/items`.
+- [`market-data-workbench/market_data_workbench.ts`](market-data-workbench/market_data_workbench.ts) - Build a starter sheet from `GET /v1/prices` and `GET /v1/prices/candles`.
 
 ## Run
 

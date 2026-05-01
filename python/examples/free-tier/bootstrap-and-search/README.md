@@ -1,27 +1,8 @@
-# Bootstrap and Search
+# Bootstrap And Search
 
-Search the catalog and print a compact result table.
-
-## Tier
-
-Free
-
-## Run
-
-From the `sdk-scripts/python/` directory with your virtual environment active:
+Calls `GET /v1/items/metadata` to summarize catalog filter options, then calls `GET /v1/items` to print matching catalog rows.
 
 ```bash
 python examples/free-tier/bootstrap-and-search/bootstrap_and_search.py
-```
-
-Optional flags:
-
-```bash
 python examples/free-tier/bootstrap-and-search/bootstrap_and_search.py --query "AWP" --limit 20
 ```
-
-| Flag | Default | Description |
-| --- | --- | --- |
-| `--query` | `AK-47` | Catalog search term |
-| `--item-type` | `Weapon` | Item type filter |
-| `--limit` | `10` | Number of items to print |

@@ -1,9 +1,9 @@
 # Free Tier Examples
 
-Use a free-tier key to get started with catalog browsing and the read-only market-data endpoints available on that tier.
+Use a free-tier key to get started with catalog browsing and read-only market data.
 
-- [`bootstrap-and-search/bootstrap_and_search.py`](bootstrap-and-search/bootstrap_and_search.py) - Search the catalog.
-- [`market-data-workbench/market_data_workbench.py`](market-data-workbench/market_data_workbench.py) - Review catalog, providers, FX, per-item `/v1/prices` lookups, and free-tier-compatible `/v1/prices/candles` requests (`interval=1d`, `fill=false`, `lookback` only).
+- [`bootstrap-and-search/bootstrap_and_search.py`](bootstrap-and-search/bootstrap_and_search.py) - Call `GET /v1/items/metadata` and `GET /v1/items`.
+- [`market-data-workbench/market_data_workbench.py`](market-data-workbench/market_data_workbench.py) - Build a starter sheet from `GET /v1/prices` and `GET /v1/prices/candles`.
 
 ## Run
 

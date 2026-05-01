@@ -1,22 +1,14 @@
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
-import {
-  ForeignExchangeApi,
-  ItemsApi,
-  PricesApi,
-  ProvidersApi,
-} from "cs2cap";
+import type { MarketItem, PriceCandlesPage } from "cs2cap";
+import { ItemsApi, PricesApi } from "cs2cap";
 
-import { callOrSkip, formatApiError } from "../../_shared/api.js";
+import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";
-import { parseIntegerOption } from "../../_shared/cli.js";
+import { parseIntegerOption, printHelpIfRequested } from "../../_shared/cli.js";
 import { collectItemIds, resolveCatalogItems } from "../../_shared/items.js";
-import {
-  formatMoney,
-  formatTimestamp,
-  renderTable,
-} from "../../_shared/render.js";
+import { formatMoney, formatTimestamp, renderTable } from "../../_shared/render.js";
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
 
@@ -36,7 +28,29 @@ function readOptions(): { query: string; itemType: string; count: number } {
   };
 }
 
+function bestQuote(quotes: MarketItem[]): MarketItem | undefined {
+  return quotes.reduce<MarketItem | undefined>(
+    (best, quote) => (best == null || quote.lowestAsk < best.lowestAsk ? quote : best),
+    undefined,
+  );
+}
+
+function candleChange(candles: PriceCandlesPage): string {
+  if (candles.data.length < 2) {
+    return "N/A";
+  }
+  const first = candles.data[0]!;
+  const last = candles.data.at(-1)!;
+  if (!first.o) {
+    return "N/A";
+  }
+  return `${(((last.c - first.o) / first.o) * 100).toFixed(2)}%`;
+}
+
 async function main(): Promise<number> {
+  if (printHelpIfRequested("Usage: npm run example -- examples/free-tier/market-data-workbench/market_data_workbench.ts [--query AK-47] [--item-type Weapon] [--count 3]")) {
+    return 0;
+  }
   const args = readOptions();
 
   let bearerToken: string;
@@ -51,159 +65,63 @@ async function main(): Promise<number> {
 
   try {
     const itemsApi = new ItemsApi(configuration);
-    const providersApi = new ProvidersApi(configuration);
-    const fxApi = new ForeignExchangeApi(configuration);
     const pricesApi = new PricesApi(configuration);
 
-    const catalogItems = await resolveCatalogItems(itemsApi, {
+    const selectedItems = (await resolveCatalogItems(itemsApi, {
       query: args.query,
       itemType: args.itemType,
-      limit: Math.max(args.count, 3),
-    });
-    const selectedItems = catalogItems.slice(0, args.count);
-
+      limit: Math.max(args.count, 1),
+    })).slice(0, args.count);
     if (selectedItems.length === 0) {
       console.log("No catalog items matched the requested filters.");
       return 0;
     }
 
     const itemIds = collectItemIds(selectedItems);
-    const primaryItem = selectedItems[0]!;
-
-    const { data: providers, note: providersNote } = await callOrSkip(
-      "Provider metadata",
-      () => providersApi.listProvidersV1ProvidersGet(),
-    );
-    const { data: fxRates, note: fxNote } = await callOrSkip("FX rates", () =>
-      fxApi.getFxRatesV1FxGet(),
-    );
-
-    const priceRows: Array<Array<string | number>> = [];
-    const priceNotes: string[] = [];
-
+    const priceRows: string[][] = [];
     for (const item of selectedItems) {
-      if (item.itemId == null) {
-        continue;
-      }
-
-      const { data: pricePage, note: priceNote } = await callOrSkip(
-        `Prices for ${item.marketHashName}`,
-        () =>
-          pricesApi.listPricesV1PricesGet({
-            itemId: item.itemId!,
-            currency: "USD",
-            limit: 10,
-          }),
-      );
-      if (priceNote) {
-        priceNotes.push(priceNote);
-      }
-      if (pricePage) {
-        const bestQuote =
-          pricePage.items.length > 0
-            ? pricePage.items.reduce((best, quote) =>
-                quote.lowestAsk < best.lowestAsk ? quote : best,
-              )
-            : null;
-
-        priceRows.push([
-          item.itemId,
-          item.marketHashName,
-          formatMoney(bestQuote?.lowestAsk),
-          bestQuote?.provider ?? "N/A",
-        ]);
-      }
-
+      const quotes = await pricesApi.listPrices({
+        itemId: item.itemId,
+        currency: "USD",
+        limit: 50,
+      });
+      const best = bestQuote(quotes.items);
+      priceRows.push([
+        String(item.itemId),
+        item.marketHashName,
+        formatMoney(best?.lowestAsk),
+        best?.provider ?? "N/A",
+        best?.quantity == null ? "N/A" : String(best.quantity),
+      ]);
     }
 
-    const { data: candles, note: candlesNote } = await callOrSkip("Price candles", () =>
-      pricesApi.priceCandlesV1PricesCandlesGet({
-        itemId: itemIds[0],
-        interval: "1d",
-        lookback: "7d",
-        fill: false,
-        currency: "USD",
-        limit: 7,
-      }),
-    );
-    console.log("Resolved catalog items:");
+    const primary = selectedItems[0]!;
+    const candles = await pricesApi.priceCandles({
+      itemId: itemIds[0],
+      interval: "1d",
+      lookback: "7d",
+      fill: false,
+      currency: "USD",
+    });
+
+    console.log("Starter market sheet:");
+    console.log(renderTable(["item_id", "item", "best_ask", "provider", "qty"], priceRows));
+    console.log();
+
+    console.log(`Daily candles for ${primary.marketHashName} (/v1/prices/candles):`);
     console.log(
       renderTable(
-        ["item_id", "market_hash_name", "rarity"],
-        selectedItems.map((item) => [
-          item.itemId ?? "N/A",
-          item.marketHashName,
-          item.rarityName ?? "N/A",
+        ["bucket", "open", "close", "volume"],
+        candles.data.slice(-7).map((candle) => [
+          formatTimestamp(new Date(candle.t * 1000)),
+          formatMoney(candle.o),
+          formatMoney(candle.c),
+          String(candle.v),
         ]),
       ),
     );
     console.log();
-
-    if (providers) {
-      const providerRows = Object.values(providers)
-        .slice(0, 5)
-        .map((provider) => [
-          provider.key,
-          provider.marketType ?? "N/A",
-          provider.features.hasBuyOrders ? "yes" : "no",
-          provider.features.hasRecentSales ? "yes" : "no",
-          provider.health.status,
-        ]);
-      console.log("Provider metadata sample (/v1/providers):");
-      console.log(
-        renderTable(
-          ["provider", "market_type", "buy_orders", "recent_sales", "health"],
-          providerRows,
-        ),
-      );
-      console.log();
-    }
-    if (providersNote) {
-      console.log(providersNote);
-      console.log();
-    }
-
-    if (fxRates) {
-      const fxRows = ["USD", "EUR", "GBP", "CNY"]
-        .filter((currency) => currency in fxRates.rates)
-        .map((currency) => [currency, fxRates.rates[currency]!.toFixed(4)]);
-      console.log(`FX snapshot timestamp: ${fxRates.timestamp ?? "N/A"}`);
-      console.log(renderTable(["currency", "usd_to_x"], fxRows));
-      console.log();
-    }
-    if (fxNote) {
-      console.log(fxNote);
-      console.log();
-    }
-
-    if (priceRows.length > 0) {
-      console.log("Prices (/v1/prices):");
-      console.log(
-        renderTable(["item_id", "market_hash_name", "best_ask", "provider"], priceRows),
-      );
-      console.log();
-    }
-    for (const note of priceNotes) {
-      console.log(note);
-      console.log();
-    }
-
-    if (candles) {
-      console.log(`Candles for ${primaryItem.marketHashName} (/v1/prices/candles):`);
-      const candleRows = candles.data.slice(-5).map((candle) => [
-        formatTimestamp(new Date(candle.t * 1000)),
-        formatMoney(candle.o),
-        formatMoney(candle.c),
-        candle.v,
-      ]);
-      console.log(renderTable(["bucket", "open", "close", "volume"], candleRows));
-      console.log();
-    }
-    if (candlesNote) {
-      console.log(candlesNote);
-      console.log();
-    }
-
+    console.log(`7d open-to-close move: ${candleChange(candles)}`);
     return 0;
   } catch (error) {
     console.error(await formatApiError(error));

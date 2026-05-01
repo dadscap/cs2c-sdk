@@ -5,13 +5,9 @@ import { ItemsApi, MarketIntelligenceApi } from "cs2cap";
 
 import { formatApiError } from "../../_shared/api.js";
 import { buildConfiguration, loadApiKey } from "../../_shared/auth.js";
-import { parseFloatOption } from "../../_shared/cli.js";
+import { parseFloatOption, printHelpIfRequested } from "../../_shared/cli.js";
 import { requireItemId, resolveCatalogItems } from "../../_shared/items.js";
-import {
-  formatDecimalMoney,
-  formatPercent,
-  renderTable,
-} from "../../_shared/render.js";
+import { formatDecimalMoney, formatPercent, renderTable } from "../../_shared/render.js";
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
 
@@ -23,7 +19,6 @@ function readOptions(): { query: string; itemType: string; minSpreadPct: number 
       "min-spread-pct": { type: "string" },
     },
   });
-
   return {
     query: values.query ?? "AK-47",
     itemType: values["item-type"] ?? "Weapon",
@@ -32,6 +27,9 @@ function readOptions(): { query: string; itemType: string; minSpreadPct: number 
 }
 
 async function main(): Promise<number> {
+  if (printHelpIfRequested("Usage: npm run example -- examples/quant-tier/quant-signals-and-arbitrage/quant_signals_and_arbitrage.ts [--query AK-47] [--item-type Weapon] [--min-spread-pct 1]")) {
+    return 0;
+  }
   const args = readOptions();
 
   let bearerToken: string;
@@ -47,78 +45,71 @@ async function main(): Promise<number> {
   try {
     const itemsApi = new ItemsApi(configuration);
     const marketApi = new MarketIntelligenceApi(configuration);
-
-    const resolvedItems = await resolveCatalogItems(itemsApi, {
+    const resolved = await resolveCatalogItems(itemsApi, {
       query: args.query,
       itemType: args.itemType,
       limit: 1,
     });
-    if (resolvedItems.length === 0) {
+    if (resolved.length === 0) {
       console.log("No catalog item matched the requested filters.");
       return 0;
     }
 
-    const item = resolvedItems[0]!;
-    const itemId = requireItemId(item);
-    const indicators = await marketApi.getIndicatorsV1MarketIndicatorsGet({
+    const itemId = requireItemId(resolved[0]!);
+    const indexes = await marketApi.getMarketCapIndexes({ groupBy: "item_type" });
+    const arbitrage = await marketApi.getArbitrageOpportunities({
+      limit: 10,
+      minSpreadPct: args.minSpreadPct,
+    });
+    const indicators = await marketApi.getIndicators({
       itemId,
       interval: "1d",
       currency: "USD",
     });
-    const arbitrage = await marketApi.getArbitrageOpportunitiesV1MarketArbitrageGet({
-      limit: 10,
-      minSpreadPct: args.minSpreadPct,
-    });
 
-    const indicatorData = indicators.data;
-    console.log(`Indicator target: ${indicatorData.marketHashName}`);
-    console.log(`- provider: ${indicatorData.provider}`);
-    console.log(`- interval: ${indicatorData.interval}`);
-    console.log(`- close_price: ${formatDecimalMoney(indicatorData.closePriceUsd)}`);
-    console.log();
-
-    console.log("Indicator sample:");
+    console.log("Market cap indexes (/v1/market/indexes):");
     console.log(
       renderTable(
-        ["metric", "value"],
-        [
-          ["RSI 14", indicatorData.momentum.rsi14 ?? "N/A"],
-          ["MACD line", indicatorData.momentum.macdLine ?? "N/A"],
-          ["ATR 14", indicatorData.volatility.atr14 ?? "N/A"],
-          [
-            "Hist vol 20",
-            indicatorData.volatility.historicalVolatility20 ?? "N/A",
-          ],
-          ["VWAP", indicatorData.volume.vwap ?? "N/A"],
-          ["OBV", indicatorData.volume.obv ?? "N/A"],
-        ],
+        ["group", "marketcap", "items", "included", "excluded"],
+        indexes.data.groups.slice(0, 8).map((group) => [
+          group.group,
+          formatDecimalMoney(group.marketcapUsd),
+          group.itemCount,
+          group.includedCount,
+          group.excludedCount,
+        ]),
       ),
     );
     console.log();
 
-    console.log("Indicator coverage:");
-    console.log(`- candle_count: ${indicatorData.coverage.candleCount}`);
-    console.log(
-      `- sufficient_for: ${indicatorData.coverage.sufficientFor?.join(", ") || "N/A"}`,
-    );
-    console.log(
-      `- insufficient_for: ${indicatorData.coverage.insufficientFor?.join(", ") || "N/A"}`,
-    );
-    console.log();
-
-    console.log("Arbitrage leaderboard:");
+    console.log("Arbitrage candidates (/v1/market/arbitrage):");
     console.log(
       renderTable(
-        ["item", "buy_from", "sell_to", "buy", "sell", "spread", "net_profit"],
+        ["item", "buy", "sell", "spread", "net_profit"],
         arbitrage.data.items.map((row) => [
           row.marketHashName,
-          row.buyProvider,
-          row.sellProvider,
-          formatDecimalMoney(row.buyPriceUsd),
-          formatDecimalMoney(row.sellPriceUsd),
+          `${row.buyProvider} ${formatDecimalMoney(row.buyPriceUsd)}`,
+          `${row.sellProvider} ${formatDecimalMoney(row.sellPriceUsd)}`,
           formatPercent(row.grossSpreadPct),
           formatDecimalMoney(row.netProfitUsd),
         ]),
+      ),
+    );
+    console.log();
+
+    const data = indicators.data;
+    console.log(`Indicator signal for ${data.marketHashName} (/v1/market/indicators):`);
+    console.log(
+      renderTable(
+        ["metric", "value"],
+        [
+          ["close", formatDecimalMoney(data.closePriceUsd)],
+          ["RSI 14", data.momentum.rsi14 ?? "N/A"],
+          ["MACD", data.momentum.macdLine ?? "N/A"],
+          ["ATR 14", data.volatility.atr14 ?? "N/A"],
+          ["VWAP", data.volume.vwap ?? "N/A"],
+          ["candle_count", data.coverage.candleCount],
+        ],
       ),
     );
     return 0;

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import json
 from collections.abc import Callable
 from typing import TypeVar
 
@@ -44,3 +45,18 @@ def call_or_skip(
             reason = detail or exc.reason or "forbidden"
             return None, f"{label} skipped: {reason}"
         raise
+
+
+def parse_ndjson_lines(payload: str, *, max_rows: int) -> list[dict[str, object]]:
+    """Parse up to max_rows JSON objects from an NDJSON response body."""
+    rows: list[dict[str, object]] = []
+    for line in payload.splitlines():
+        if len(rows) >= max_rows:
+            break
+        stripped = line.strip()
+        if not stripped:
+            continue
+        value = json.loads(stripped)
+        if isinstance(value, dict):
+            rows.append(value)
+    return rows

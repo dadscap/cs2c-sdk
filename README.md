@@ -64,13 +64,12 @@ Run examples from the `python/` directory:
 | --- | --- | --- |
 | Free | Bootstrap & search | `python examples/free-tier/bootstrap-and-search/bootstrap_and_search.py` |
 | Free | Market data workbench | `python examples/free-tier/market-data-workbench/market_data_workbench.py` |
-| Pro | Comparison table | `python examples/pro-tier/create-comparison-table/create_comparison_table.py` |
-| Pro | Account management | `python examples/pro-tier/account-management/account_management.py` |
-| Pro | Portfolio workflow | `python examples/pro-tier/portfolio-workflow/portfolio_workflow.py` |
-| Pro | Item analytics report | `python examples/pro-tier/item-analytics-report/item_analytics_report.py` |
-| Quant | Stream prices | `python examples/quant-tier/stream-prices-snapshot/stream_prices_snapshot.py --max-lines 5000 --top 15` |
-| Quant | Stream bids | `python examples/quant-tier/stream-bids-snapshot/stream_bids_snapshot.py --max-lines 5000 --top 15` |
-| Quant | Signals & arbitrage | `python examples/quant-tier/quant-signals-and-arbitrage/quant_signals_and_arbitrage.py` |
+| Pro | Bulk price and bid report | `python examples/pro-tier/create-comparison-table/create_comparison_table.py` |
+| Pro | Sales and history report | `python examples/pro-tier/sales-history-report/sales_history_report.py` |
+| Pro | Market research report | `python examples/pro-tier/item-analytics-report/item_analytics_report.py` |
+| Quant | Signals and arbitrage | `python examples/quant-tier/quant-signals-and-arbitrage/quant_signals_and_arbitrage.py` |
+| Quant | Sub-key lifecycle | `python examples/quant-tier/sub-key-lifecycle/sub_key_lifecycle.py` |
+| Quant | Webhook lifecycle | `python examples/quant-tier/webhook-lifecycle/webhook_lifecycle.py` |
 
 See [`python/examples/`](python/examples/) for per-tier README files with full option descriptions.
 
@@ -111,12 +110,11 @@ npm install
 | --- | --- | --- |
 | Free | Bootstrap & search | `npm run example -- examples/free-tier/bootstrap-and-search/bootstrap_and_search.ts` |
 | Free | Market data workbench | `npm run example -- examples/free-tier/market-data-workbench/market_data_workbench.ts` |
-| Pro | Comparison table | `npm run example -- examples/pro-tier/create-comparison-table/create_comparison_table.ts` |
-| Pro | Account management | `npm run example -- examples/pro-tier/account-management/account_management.ts` |
-| Pro | Portfolio workflow | `npm run example -- examples/pro-tier/portfolio-workflow/portfolio_workflow.ts` |
-| Pro | Item analytics report | `npm run example -- examples/pro-tier/item-analytics-report/item_analytics_report.ts` |
-| Quant | Stream prices | `npm run example -- examples/quant-tier/stream-prices-snapshot/stream_prices_snapshot.ts --max-lines 5000 --top 15` |
-| Quant | Stream bids | `npm run example -- examples/quant-tier/stream-bids-snapshot/stream_bids_snapshot.ts --max-lines 5000 --top 15` |
-| Quant | Signals & arbitrage | `npm run example -- examples/quant-tier/quant-signals-and-arbitrage/quant_signals_and_arbitrage.ts` |
+| Pro | Bulk price and bid report | `npm run example -- examples/pro-tier/create-comparison-table/create_comparison_table.ts` |
+| Pro | Sales and history report | `npm run example -- examples/pro-tier/sales-history-report/sales_history_report.ts` |
+| Pro | Market research report | `npm run example -- examples/pro-tier/item-analytics-report/item_analytics_report.ts` |
+| Quant | Signals and arbitrage | `npm run example -- examples/quant-tier/quant-signals-and-arbitrage/quant_signals_and_arbitrage.ts` |
+| Quant | Sub-key lifecycle | `npm run example -- examples/quant-tier/sub-key-lifecycle/sub_key_lifecycle.ts` |
+| Quant | Webhook lifecycle | `npm run example -- examples/quant-tier/webhook-lifecycle/webhook_lifecycle.ts` |
 
 See [`typescript/examples/`](typescript/examples/) for per-tier README files with full option descriptions.

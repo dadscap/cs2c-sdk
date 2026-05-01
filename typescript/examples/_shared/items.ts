@@ -8,7 +8,7 @@ export async function resolveCatalogItems(
     limit?: number;
   } = {},
 ): Promise<ItemOut[]> {
-  const response = await itemsApi.listItemsV1ItemsGet({
+  const response = await itemsApi.listItems({
     q: options.query,
     itemType: options.itemType,
     limit: options.limit ?? 10,

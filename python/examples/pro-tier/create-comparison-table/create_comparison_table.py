@@ -1,5 +1,8 @@
+import argparse
 import sys
+from collections import defaultdict
 from pathlib import Path
+from typing import Any
 
 import cs2cap
 from cs2cap.rest import ApiException
@@ -8,133 +11,103 @@ EXAMPLES_ROOT = Path(__file__).resolve().parents[2]
 if str(EXAMPLES_ROOT) not in sys.path:
     sys.path.insert(0, str(EXAMPLES_ROOT))
 
-from _shared.auth import build_configuration, load_api_key  # noqa: E402
-from _shared.items import require_item_id  # noqa: E402
-from _shared.render import format_money, format_timestamp, parse_iso8601, render_table  # noqa: E402
+from _shared.api import parse_ndjson_lines  # noqa: E402
+from _shared.auth import build_configuration, load_api_key, require_real_api_key  # noqa: E402
+from _shared.render import format_money, format_percent, render_table  # noqa: E402
 
 
-def summarize_prices(
-    prices: list[cs2cap.MarketItem],
-    currency: str = "USD",
-) -> str:
-    if not prices:
-        return "N/A"
-
-    # The API returns one row per provider; we collapse that to the best ask.
-    best = min(prices, key=lambda item: item.lowest_ask)
-    return f"{format_money(best.lowest_ask, currency)} ({best.provider})"
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Stream a bounded prices snapshot and enrich selected items with batch bids.",
+    )
+    parser.add_argument("--max-rows", type=int, default=500, help="Maximum NDJSON rows to parse.")
+    parser.add_argument("--top", type=int, default=8, help="Number of spread rows to print.")
+    return parser
 
 
-def summarize_bids(
-    bids: list[cs2cap.BuyOrderItem],
-    currency: str = "USD",
-) -> str:
-    if not bids:
-        return "N/A"
-
-    # Bids are also provider-scoped, so take the strongest bid across providers.
-    best = max(bids, key=lambda item: item.highest_bid)
-    return f"{format_money(best.highest_bid, currency)} ({best.provider})"
+def as_int(value: object) -> int | None:
+    return value if isinstance(value, int) else None
 
 
-def summarize_sales(
-    sales: list[cs2cap.SaleRecordDetail],
-    currency: str = "USD",
-) -> str:
-    if not sales:
-        return "N/A"
-
-    # Recent sales are event rows; pick the most recent sale and show its source.
-    latest = max(sales, key=lambda item: parse_iso8601(item.var_date))
-    timestamp = format_timestamp(parse_iso8601(latest.var_date))
-    return f"{format_money(latest.price, currency)} ({latest.provider}, {timestamp})"
+def as_str(value: object) -> str | None:
+    return value if isinstance(value, str) else None
 
 
 def main() -> int:
+    args = build_parser().parse_args()
+
     try:
         bearer_token = load_api_key("CS2C_API_KEY", start=Path(__file__))
+        require_real_api_key(bearer_token)
     except RuntimeError as exc:
-        # Treat missing local config as a normal user error.
         print(str(exc), file=sys.stderr)
         return 1
 
-    # Build one shared authenticated client for all requests in this example.
     configuration = build_configuration(bearer_token)
 
     try:
         with cs2cap.ApiClient(configuration) as client:
-            # Keep each API surface explicit instead of hiding calls behind wrappers.
-            items_api = cs2cap.ItemsApi(client)
             prices_api = cs2cap.PricesApi(client)
             bids_api = cs2cap.BidsApi(client)
-            sales_api = cs2cap.SalesApi(client)
 
-            # Start from the catalog so downstream calls can use canonical item IDs.
-            items_response = items_api.list_items_v1_items_get(
-                item_type="Weapon",
-                limit=5,
+            snapshot = prices_api.stream_full_prices_snapshot()
+            price_rows = parse_ndjson_lines(snapshot, max_rows=max(args.max_rows, 1))
+
+            grouped: dict[int, list[dict[str, Any]]] = defaultdict(list)
+            names: dict[int, str] = {}
+            for row in price_rows:
+                item_id = as_int(row.get("item_id"))
+                name = as_str(row.get("market_hash_name"))
+                if item_id is None or name is None:
+                    continue
+                grouped[item_id].append(row)
+                names[item_id] = name
+
+            item_ids = list(grouped)[: max(args.top * 2, args.top)]
+            bid_response = bids_api.batch_bid_lookup(
+                cs2cap.BatchBidsRequest(item_ids=item_ids, currency="USD")
             )
 
-            selected_items = items_response.items[:5]
-            if len(selected_items) < 5:
-                print(
-                    f"Expected at least 5 weapon items, got {len(selected_items)}.",
-                    file=sys.stderr,
-                )
-                return 1
-
-            print("Selected market_hash_names from /v1/items:")
-            for item in selected_items:
-                # Echo the chosen inputs before making the comparison calls.
-                print(f"- {item.market_hash_name}")
-            print()
-
-            # Build one output row per selected catalog item.
-            rows: list[list[str]] = []
-            for item in selected_items:
-                # Downstream endpoints are safest to call with canonical item IDs.
-                item_id = require_item_id(item)
-
-                # Intentionally omit `providers` so the API returns the full set of providers.
-                prices_response = prices_api.list_prices_v1_prices_get(
-                    item_id=item_id,
-                    currency="USD",
-                    limit=1000,
-                )
-                bids_response = bids_api.list_bids_v1_bids_get(
-                    item_id=item_id,
-                    currency="USD",
-                    limit=1000,
-                )
-                sales_response = sales_api.list_sales_v1_sales_get(
-                    item_id=item_id,
-                    currency="USD",
-                    limit=50,
-                )
-
-                # Collapse provider-level responses into a single comparison row.
-                rows.append(
-                    [
-                        item.market_hash_name,
-                        summarize_prices(prices_response.items),
-                        summarize_bids(bids_response.items),
-                        summarize_sales(sales_response.items),
-                    ]
-                )
-
     except ApiException as exc:
-        # Keep network failures readable in a terminal-first example.
         print(f"API request failed: {exc}", file=sys.stderr)
         return 1
 
-    # Print the final comparison as a plain text table.
-    headers = [
-        "market_hash_name",
-        "lowest_price",
-        "highest_bid",
-        "most_recent_sale",
-    ]
-    print(render_table(headers, rows))
+    bids_by_item: dict[int, cs2cap.BatchBidItem] = {
+        item.item_id: item for item in bid_response.items
+    }
+    spread_rows: list[list[str]] = []
+    for item_id in item_ids:
+        asks = grouped[item_id]
+        best_ask = min(asks, key=lambda row: as_int(row.get("lowest_ask")) or 10**12)
+        ask = as_int(best_ask.get("lowest_ask"))
+        bid_item = bids_by_item.get(item_id)
+        best_bid = (
+            max(bid_item.quotes, key=lambda quote: quote.highest_bid)
+            if bid_item and bid_item.quotes
+            else None
+        )
+        bid = best_bid.highest_bid if best_bid else None
+        spread_pct = ((ask - bid) / ask) * 100 if ask and bid else None
+        spread_rows.append(
+            [
+                str(item_id),
+                names[item_id],
+                as_str(best_ask.get("provider")) or "N/A",
+                format_money(ask),
+                best_bid.provider if best_bid else "N/A",
+                format_money(bid),
+                format_percent(spread_pct),
+                str(sum(as_int(row.get("quantity")) or 0 for row in asks)),
+            ]
+        )
+
+    print("Bulk price snapshot + batch bid spread report:")
+    print(
+        render_table(
+            ["item_id", "item", "ask_provider", "ask", "bid_provider", "bid", "spread", "ask_qty"],
+            spread_rows[: args.top],
+        )
+    )
     return 0
 
 
