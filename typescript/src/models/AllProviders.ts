@@ -34,7 +34,6 @@ export const AllProviders = {
     Cstrade: 'cstrade',
     Dmarket: 'dmarket',
     Ecosteam: 'ecosteam',
-    Gamerpay: 'gamerpay',
     Haloskins: 'haloskins',
     Itradegg: 'itradegg',
     Lisskins: 'lisskins',

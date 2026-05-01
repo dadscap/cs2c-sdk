@@ -32,8 +32,6 @@ All available provider keys.  Members are generated from canonical endpoint meta
 
 * `ECOSTEAM` (value: `'ecosteam'`)
 
-* `GAMERPAY` (value: `'gamerpay'`)
-
 * `HALOSKINS` (value: `'haloskins'`)
 
 * `ITRADEGG` (value: `'itradegg'`)

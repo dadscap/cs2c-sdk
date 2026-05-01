@@ -1,6 +1,6 @@
 {
   "name": "cs2cap",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A TypeScript SDK client for the CS2Cap API.",
   "author": "CS2Cap",
   "repository": {
@@ -21,5 +21,13 @@
     "tsx": "^4.20.0"
   },
   "license": "MIT",
-  "homepage": "https://cs2cap.com"
+  "homepage": "https://cs2cap.com",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  }
 }

@@ -40,7 +40,6 @@ class AllProviders(str, Enum):
     CSTRADE = 'cstrade'
     DMARKET = 'dmarket'
     ECOSTEAM = 'ecosteam'
-    GAMERPAY = 'gamerpay'
     HALOSKINS = 'haloskins'
     ITRADEGG = 'itradegg'
     LISSKINS = 'lisskins'
